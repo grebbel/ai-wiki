@@ -3,8 +3,8 @@ type: concept
 aliases: ["GenAI", "generative AI", "generative artificial intelligence"]
 tags: [generative-ai, foundation-models, ai-adoption]
 confidence: 0.95
-last_confirmed: "2026-05-05"
-source_count: 12
+last_confirmed: "2026-05-07"
+source_count: 13
 relationships:
   - type: uses
     target: foundation-models
@@ -138,6 +138,7 @@ Anand-Wu compare this to the **MS-DOS → GUI transition** of the 1980s: not nec
 | **Salesforce Agentforce** | Business operations agents | [[2026-04-28-ai-index-report-2025\|AI Index 2025]] |
 | **Microsoft Copilot** | Embedded productivity assistant | [[2026-04-28-ai-index-report-2025\|AI Index 2025]] (job-postings data) |
 | **Italgas DANA** | Generative-AI network control | [[2026-04-28-mit-sloan-ai-maturity\|MIT Sloan]] |
+| **Vantage / Executive LLM** ([[Google Research]], **Gemini 2.5 Pro** + **Gemini 3**) | Scalable assessment of human [[durable-skills]] (collaboration / creativity / critical thinking); LLM-as-conversational-teammate-and-autorater; Pearson 0.88 vs human experts | [[2026-05-07-globerson-et-al-scalable-measurement-durable-skills\|Globerson et al. 2026]] |
 
 ### Limits
 

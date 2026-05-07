@@ -2,9 +2,9 @@
 type: concept
 aliases: ["micro-productivity trap", "micro-productivity-trap", "offering lock-in", "process lock-in"]
 tags: [micro-productivity-trap, AI-transformation, EBITDA, process-redesign, workflow-redesign, enterprise-ai]
-confidence: 0.75
-last_confirmed: "2026-05-05"
-source_count: 2
+confidence: 0.80
+last_confirmed: "2026-05-07"
+source_count: 3
 relationships:
   - type: instance-of
     target: enterprise-ai-adoption
@@ -65,6 +65,20 @@ The mechanism Nishar-Nohria name as the trap is the same one Bain/OpenAI named a
 
 The two sources together — practitioner consulting (Bain/OpenAI) and practitioner investor + academic (Nishar/Nohria) — converge on **data architecture + process redesign first, technology second** as the load-bearing decision. Source overlap is low (different vantage, different audience), so this is real cross-source agreement, not an echo. Confidence on this concept lifts from single-source 0.70 to two-source 0.75.
 
+### Third-source corroboration: leadership response patterns ([[2026-05-07-carucci-resistance-as-data|Carucci 2026]])
+
+[[Ron Carucci]]'s practitioner essay reframes the trap from a *third* vantage — leadership behavior. His four-category typology of resistance includes a category that maps directly to the operators-see-problems-leaders-dismiss pattern of process lock-in:
+
+> "Sometimes resistance isn't about emotion at all. It's about execution. Employees may see practical issues leaders have overlooked, such as: timelines that aren't realistic, processes that don't match how work actually gets done, conflicts with other ongoing initiatives. But when leaders dismiss resistance too quickly, they also dismiss the possibility that the change itself needs refinement... The very people resisting the change are the ones closest to the risks that could derail it."
+
+Carucci's prescription matches the Bain/OpenAI and Nishar-Nohria diagnoses in spirit but operates at the **leadership-behavior layer** rather than the strategy or transformation-architecture layers:
+
+- **Get curious before you get corrective** — treat pushback as potential insight; ask follow-up questions to understand the operational reality behind the concern.
+- **Separate the signal from the delivery** — feedback may come wrapped in frustration or bluntness, but tone shouldn't disqualify content.
+- **Be willing to adapt the plan** — strong change efforts evolve.
+
+Three independent sources, three vantages (consulting practice, investor + academic, executive coaching), three vocabularies — all converging on the same point: **the trap is fundamentally a listening failure, not a technology failure**. Confidence lifts from 0.75 (two-source) to 0.80 (three-source agreement across distinct vantages).
+
 ## Cross-source positioning (descriptive only, per cross-source neutrality)
 
 The micro-productivity-trap framing sits among several wiki vocabularies addressing the same broad territory of "AI adoption breadth ≠ transformation depth":
@@ -78,8 +92,9 @@ The micro-productivity-trap framing sits among several wiki vocabularies address
 - [[2026-05-03-rewired-second-edition-sample|McKinsey "Rewired" 2nd ed (2026)]] — *6 capabilities* (business-led roadmap, talent, operating model, technology, data, adoption-and-scaling); 20% EBITDA uplift / $3:$1 / 1–2yr breakeven across ~20 deep-dive AI-leader companies; 70% talent-density shifts.
 - [[2026-04-30-ai-index-report-2026|AI Index 2026]] — empirical context: 88% organizational AI adoption but **AI agent deployment in single digits per business function**.
 - [[2026-05-05-nishar-nohria-end-of-one-size-fits-all|Nishar & Nohria 2026]] — *firm-boundary 4-model lens* (Build / Compose / Collaborate / Buy Outcomes); the trap manifests when a firm rushes to "Build" or rushes to automate any layer without first treating **data architecture, governance, and ownership** as the foundation.
+- [[2026-05-07-carucci-resistance-as-data|Carucci 2026]] — *human-reaction lens* on the trap; the Flaws-in-change resistance signal is operators surfacing exactly what process lock-in misses; leaders' three traps (personalize / moralize / rush) systematically suppress it.
 
-Each names the same broad gap with a different vocabulary; the wiki's [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] synthesis maps the cluster (the synthesis was filed when 6 frameworks were ingested; Nishar-Nohria is the 7th, at a layer the synthesis didn't surface).
+Each names the same broad gap with a different vocabulary; the wiki's [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] synthesis maps the cluster (the synthesis was filed when 6 frameworks were ingested; Nishar-Nohria is the 7th and Carucci is the 8th, at layers the synthesis didn't surface).
 
 ## Related concepts
 

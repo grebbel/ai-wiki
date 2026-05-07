@@ -3,8 +3,8 @@ type: concept
 aliases: ["AI employment effects", "AI labor effects", "AI job displacement", "AI labor market", "AI employment impact"]
 tags: [employment, labor-market, ai-displacement, automation, labor-economics, age-effects]
 confidence: 0.95
-last_confirmed: "2026-04-30"
-source_count: 10
+last_confirmed: "2026-05-07"
+source_count: 11
 relationships:
   - type: supports
     target: automation-vs-augmentation
@@ -99,6 +99,15 @@ Pooled across all reports through Nov 2025: 49% of jobs have Claude used for at 
 ### Task-content shift and deskilling ([[2026-04-28-anthropic-economic-index-q4-2025|Anthropic Economic Index, 4th report]])
 
 A finding distinct from displacement and from wage effects: AI-covered tasks skew toward higher-education content (Claude-covered: 14.4 years average; economy-wide: 13.2 years). As a first-order effect, removing AI-covered tasks from a job *deskills* the remaining task mix on average — shifting it toward lower-education content while the job itself persists. Most-affected named occupations: technical writers, travel agents, teachers. See [[ai-deskilling]] for the dedicated concept page.
+
+### The supply-side answer: durable skills ([[2026-05-07-globerson-et-al-scalable-measurement-durable-skills|Globerson et al. 2026]])
+
+[[2026-04-28-brynjolfsson-canaries-coal-mine|Brynjolfsson et al. (2025)]] showed early-career employment declines concentrated in *automation* uses but did not operationalise *which skills* remain valuable for the workers who keep their jobs (or for those entering the labor market). The 2026 [[durable-skills]] literature — anchored by [[2026-05-07-globerson-et-al-scalable-measurement-durable-skills|Globerson et al. (Google Research)]] — provides the supply-side measurement: collaboration, creativity, critical thinking are the canonical examples, and the Vantage / Executive LLM platform makes them measurable at scale (large-N validation; Pearson 0.88 with human experts on creativity assessment).
+
+Together with [[ai-deskilling]], this gives the wiki a complete labor-skill carve:
+- **What gets hollowed out:** codified knowledge and procedural tasks (deskilling).
+- **What gets retained:** open-ended, socially/contextually situated skills (durable skills).
+- **What it implies for the entry-level pipeline:** [[2026-04-28-brynjolfsson-canaries-coal-mine|Canaries]] showed the squeeze; [[durable-skills]] shows what training/curriculum/hiring should target if firms want to build their next generation of workers around what AI cannot substitute.
 
 ### Productivity gains alongside employment declines
 

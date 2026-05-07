@@ -814,3 +814,89 @@ This is the **7th named framework** in the wiki's "adoption breadth ≠ transfor
 **v0.4 hooks observation:** This is the first ingest with the v0.4 PostToolUse lint hook live. The hook would have fired on every Write/Edit to a wiki page during this ingest. (Whether stderr warnings surfaced visibly back to the session depends on the harness; no warnings were observed during this ingest run.)
 
 **Total file touch: 10** (1 new source + 2 new entities + 1 entity update + 4 concept enrichments + index + log; raw PDF on disk under `raw/articles/` — not committed by gitignore rule).
+
+## [2026-05-07] ingest | Carucci — Leaders, Treat Resistance to Change as Valuable Data (HBR.org Digital, 20 Apr 2026)
+
+Practitioner essay by **[[Ron Carucci]]** (cofounder and managing partner at **Navalent**; author of 10 leadership/change-management books including *To Be Honest*, Kogan Page 2021). Identity confirmed via cover/title page; 8 pages of body; full ingest. No data points or studies cited — opinion / consulting wisdom anchored in author's experience.
+
+**Core reframing:** the practical leadership question "how do you tell legitimate concerns from kneejerk resistance?" is the wrong question. The framing assumes some resistance is invalid, which licences leaders to dismiss what they're seeing. **All resistance is meaningful data.** The leader's job isn't to determine validity; it's to diagnose what pushback is signalling.
+
+**Three traps when leaders misread resistance:** personalize the pushback (read it as reaction *to the leader*), moralize the pushback (frame it as loyalty / team-player attitude), rush to resolution (persuade harder, escalate authority). Pushing to eliminate resistance amplifies it or drives it underground.
+
+**Four signal categories** (often co-occurring):
+- **Loss** — "What am I losing?" (authority, expertise, identity); leader response = name the loss directly, honor the old way, re-anchor value in the future.
+- **Anxiety** — "What does this mean for me?"; leader response = communicate consistently (not just clearly), normalize uncertainty, create space for questions.
+- **Lack of control** — "Why is this being done to me?"; warns against *faux-inclusion* (asking for input *after* decisions are made); leader response = be explicit where input matters, involve early to shape, turn participation into co-creation.
+- **Flaws in the change** — "This doesn't actually work."; leader response = get curious before corrective, separate signal from delivery, be willing to adapt the plan.
+
+**"Holding the line" framework:** when behaviour patterns *persist* after diagnostic engagement, three steps — name the behaviour and impact clearly without judgment; separate the person from the expectation; follow through consistently (escalate clarity, not emotion).
+
+**Wiki impact (8 files touched):**
+
+- **1 new source page:** [[2026-05-07-carucci-resistance-as-data]].
+- **1 new entity:** [[Ron Carucci]] (single source; practitioner-quality flag noted on the entity page).
+- **1 entity update:** [[Harvard Business Review]] (`source_count: 7 → 8`; new digital piece added to the table; `last_confirmed → 2026-05-07`).
+- **2 concept enrichments:**
+  - [[enterprise-ai-adoption]] — added a "Human-reaction lens" subsection alongside the existing 7 lenses; bumped `source_count: 16 → 17`, `last_confirmed → 2026-05-07` (confidence 0.95 unchanged — at cap). Updated the all-lenses-agree summary to seven lenses; flagged Carucci as the 8th framework in the synthesis cluster.
+  - [[micro-productivity-trap]] — added third-source corroboration subsection; bumped `confidence: 0.75 → 0.80`, `source_count: 2 → 3`, `last_confirmed → 2026-05-07`. **Three independent vantages now converge** (consulting practice via Bain/OpenAI; investor + academic via Nishar/Nohria; executive coaching via Carucci) on the same point: **the trap is fundamentally a listening failure, not a technology failure**. Carucci's category #4 (Flaws in change) maps directly to the operators-see-problems-leaders-dismiss pattern.
+
+**Cross-source positioning:** Carucci operates at a **decision layer not previously surfaced** by the [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] synthesis cluster. Carucci adds a **human-reaction layer** (the 8th in the cluster). Synthesis page left as-is per the convention established at the v0.3.4 close-out — synthesis pages should be durable, not amended every time a new framework is ingested.
+
+**Contradictions checked:** none. Reinforces existing wiki claims on process redesign as load-bearing and senior-leader ownership patterns.
+
+**Dangling references** (single-source mention, deferred): Navalent (Carucci's firm).
+
+**Source-quality flag:** practitioner opinion writing, not empirical research; no studies cited; treat the four-category typology as a working framework but not a validated taxonomy. Confidence boost from this source is +0.05 per the §Lifecycle "additional supporting source" rule, with no peer-review or empirical-study bonus.
+
+**Total file touch: 8** (1 new source + 1 new entity + 1 entity update + 2 concept enrichments + index + log).
+
+## [2026-05-07] ingest | Globerson et al. (Google Research) — Towards Scalable Measurement of Durable Skills (preprint, 12 Apr 2026)
+
+A **Google Research preprint** by ~30 authors with collaborators at NYU, UT Austin, and OpenMic. 31 pages, full ingest including appendix rubrics. Identity matches filename; no scope concerns.
+
+**Core contribution:** the wiki's first operational anchor for measuring **durable skills** (collaboration, creativity, critical thinking — also called "21st-century skills" or "future-ready skills"). Resolves the validity-vs-rigor tradeoff that has constrained scalable assessment of these constructs since PISA 2015 (scripted simulated teammates) and ATC21S (human-human dyads).
+
+**The Vantage / Executive LLM architecture:**
+
+- **Single Executive LLM** drives multiple AI teammates (rather than independent agents) AND **steers the conversation** to elicit observable evidence of the skill being measured. Has access to the assessment rubric; prompted to maximize information about the participant's skill level.
+- **Separate AI Evaluator** scores the transcript against psychometric rubrics (linear regression for scores; logistic for "no-evidence" labels; 20 ratings per turn per dimension; LOO cross-validation).
+- Analogous to a **computerized adaptive test (CAT)** — but for *complex social/cognitive constructs* rather than item-difficulty calibration.
+
+**Validation (large-N empirical):**
+
+- **188 US-based participants ages 18-25** (Prolific platform), **373 conversations**, ~30 minutes / 50 turns each. Two NYU pedagogical raters provided ground-truth ratings.
+- **LLM-vs-human-expert agreement matches inter-human-expert agreement** (Cohen's κ ~0.45–0.64 — moderate per Landis-Koch, consistent with the inherent ambiguity of these constructs). Auto-rating is a viable scalable substitute.
+- **Executive LLM significantly increases skill-evidence elicitation** vs Independent Agents (p ≤ 0.05, Fisher exact). At conversation level with skill-matched Executive LLM: **92.4%** evidence rate for Project Management, **85%** for Conflict Resolution.
+- **Telling subjects "focus on this skill"** without LLM steering had **no effect** (p > 0.6) — the steering must come from the AI side.
+- **Recovery error** (mean absolute error |L̂ − L| via simulated subjects): Executive LLM ~0.20 (CR) / ~0.40 (PM) vs Independent Agents ~0.65 / ~0.55.
+- **Creativity downstream:** OpenMic partnership; 280 high-school students; 100 train, 180 held-out. **Pearson r = 0.88** between Gemini autorater and human expert scores on total submission grades.
+
+**Models used:** Gemini 2.5 Pro (collaboration); Gemini 3 (creativity / critical-thinking initial results).
+
+**Notable methodological choice:** the **critical-thinking** rubric explicitly evaluates how well participants **use AI tools** during the assessment (fact-checking, retrieval, stress-testing arguments) — including "AI-Supported Exploration" and "AI-Supported Verification" as sub-categories. AI fluency is treated as a sub-component of CT in 2026, not a confounder. Tasks deliberately use ill-structured / ambiguous editorial drafts (e.g., flawed-reasoning teen-social-media editorial; exaggerated coffee-danger article) to force motivated-reasoning detection rather than fact-checking.
+
+**Wiki impact (10 files touched):**
+
+- **1 new source page:** [[2026-05-07-globerson-et-al-scalable-measurement-durable-skills]].
+- **1 new entity:** [[Google Research]] (promoted from dangling — Google has been mentioned across multiple sources as a model contributor and AI Index funder; this paper is the first dedicated entity-level anchor).
+- **1 new concept page:** [[durable-skills]]. Single primary source for the operational definition; multiple wiki sources cover the underlying construct under different vocabularies (PISA "21st-century skills", McKinsey workforce-reshaping data, Brynjolfsson Canaries supply-side question). Per CLAUDE.md convention, "promotion happens when a recurring observation across multiple sources stabilizes" — observation is recurring; this paper provides the operational anchor. Confidence 0.75 (single-source baseline + large-N empirical bonus).
+- **4 concept enrichments:**
+  - [[ai-benchmarks]] — added a "Vantage / Executive LLM" subsection (heavy enrichment; methodologically distinct from existing benchmarks); added a row to the benchmark roster table; bumped `source_count: 3 → 4`, `last_confirmed → 2026-05-07`.
+  - [[ai-deskilling]] — added "The inverse frame: durable skills" section; bumped `confidence: 0.70 → 0.75`, `source_count: 1 → 2`, `last_confirmed → 2026-05-07`. Added `relationships.contradicts: durable-skills` (inverse measurement frames of the same labour-economics question).
+  - [[ai-employment-effects]] — added "The supply-side answer: durable skills" subsection; bumped `source_count: 10 → 11`, `last_confirmed → 2026-05-07`.
+  - [[generative-ai]] — added Vantage / Executive LLM (Gemini 2.5 Pro + Gemini 3) to the deployed-tools table; bumped `source_count: 12 → 13`, `last_confirmed → 2026-05-07`.
+- **index.md:** new source entry; new entity (Google Research); new concept (durable-skills).
+
+**Cross-source positioning:**
+
+This paper anchors a **new wiki concept** ([[durable-skills]]) at the labor-skill-supply-side layer — adjacent to but distinct from [[ai-deskilling]] (substitution direction) and [[ai-employment-effects]] (consequence direction). Methodologically overlaps with [[2026-04-29-boussioux-crowdless-future|Boussioux et al. (Crowdless Future)]] — both papers use LLMs to evaluate creative outputs against rubrics; together they establish "LLM-as-judge" as a recurring methodological pattern in 2024-2026 AI research, worth tracking as a possible future concept page.
+
+**Contradictions checked:** none.
+
+**Dangling references** (single-source mention, deferred): Amir Globerson and ~30 other individual paper authors; **OpenMic** (the AI-skills-assessment startup partner — promote on 2nd-source coverage); **NYU** and **UT Austin** (academic affiliations); **Yossi Matias** (VP and Head of Google Research; flagged on the Google Research entity page).
+
+**Source-quality flag:** Google Research preprint, not a peer-reviewed journal article (© 2026 Google). Empirical rigor is high (large-N, multi-method validation). Confidence boost: +0.05 per the §Lifecycle "additional supporting source" rule, plus +0.05 for being a large-N empirical study (counts once). Vendor-of-deployment caveat noted on the source page (Google Research has commercial interests in Gemini deployment).
+
+**Limitations the paper acknowledges:** cultural situatedness (current results are US, English-speaking, ages 18-25); construct validity established but not criterion validity (whether scores predict downstream career outcomes); CT and creativity validation is partial (CT relies on simulated-subject recovery; full human-rated validation is "ongoing").
+
+**Total file touch: 10** (1 new source + 1 new entity + 1 new concept + 4 concept enrichments + index + log; raw PDF on disk under `raw/papers/`).

@@ -3,8 +3,8 @@ type: concept
 aliases: ["AI adoption", "enterprise AI use", "business AI adoption", "organizational AI adoption", "AI maturity"]
 tags: [ai-adoption, enterprise-ai, ai-strategy, ai-maturity]
 confidence: 0.95
-last_confirmed: "2026-05-05"
-source_count: 16
+last_confirmed: "2026-05-07"
+source_count: 17
 relationships:
   - type: uses
     target: automation-vs-augmentation
@@ -79,7 +79,9 @@ Multiple complementary lenses are used by sources in this wiki:
 - **Empirical anchors:** enterprise GenAI app spending **$1.7B (2023) → $37B (2025)** (~22× in 2 years; SaaS took ~10 years for comparable penetration); **40% of code AI-generated**; **>1/3 of companies** have replaced ≥1 SaaS tool with a custom GenAI alternative; public SaaS valuations **30–60% below 2021 peaks**.
 - **Strategic implication:** "the boundary of the firm becomes a variable rather than a given." Reinforces the [[micro-productivity-trap]] thesis from [[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation|Dutt, Chatterji et al.]] — **data architecture and process redesign are load-bearing**, not afterthoughts. Caveat from the article: "moving quickly is not the same as moving effectively."
 
-All six lenses agree qualitatively: **most organizations are using AI in some form, but very few are actually mature/ready/adapted.** The AI Index pegs "mature" at 1%; MIT CISR pegs Stage 4 at 7%; Cisco pegs "ready" at 13%; Werner-Le-Brun's 12% transformation-success baseline gives the broader org-change context. See [[ai-maturity-measurement-comparison]] for methodological cross-walk and [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] for the framework comparison (the Nishar-Nohria firm-boundary lens is the **7th** named framework and operates at a layer the original 6-framework synthesis didn't surface — see the synthesis for the running cluster).
+**Human-reaction lens — resistance as data** ([[2026-05-07-carucci-resistance-as-data|Carucci 2026]]): a practitioner framework for interpreting how *people* respond to deployments. All resistance is meaningful data; the leader's job isn't to determine whether pushback is valid but to diagnose what it's signalling. Three traps when leaders misread resistance (personalize / moralize / rush to resolution) and four signal categories (Loss / Anxiety / Lack of control / Flaws in change). Operationalizes the *human-side* mechanics of MIT CISR's "Synchronization" pillar and Werner-Le-Brun's Octopus principles ("make changes WITH people, not TO them"). Distinct decision layer from the deployment frameworks above — the question shifts from "what should we deploy?" to "what is the team's reaction telling us about whether what we deployed is working?" See [[micro-productivity-trap]] for how Carucci's category #4 (Flaws in change) aligns with the operators-see-problems-leaders-dismiss pattern.
+
+All seven lenses agree qualitatively: **most organizations are using AI in some form, but very few are actually mature/ready/adapted.** The AI Index pegs "mature" at 1%; MIT CISR pegs Stage 4 at 7%; Cisco pegs "ready" at 13%; Werner-Le-Brun's 12% transformation-success baseline gives the broader org-change context. See [[ai-maturity-measurement-comparison]] for methodological cross-walk and [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] for the framework comparison (the Nishar-Nohria firm-boundary lens and the Carucci human-reaction lens are the **7th and 8th** named frameworks and operate at layers the original 6-framework synthesis didn't surface — see the synthesis for the running cluster).
 
 The shape of adoption can be measured along several dimensions:
 

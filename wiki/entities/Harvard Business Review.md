@@ -6,8 +6,8 @@ tags: [publisher, business-magazine, management-research, harvard]
 parent: "[[Harvard Business School]]"
 website: "https://hbr.org"
 confidence: 0.85
-last_confirmed: "2026-05-05"
-source_count: 7
+last_confirmed: "2026-05-07"
+source_count: 8
 ---
 
 # Harvard Business Review
@@ -41,6 +41,7 @@ HBR sources span both the print magazine (with `hbr_reprint` codes) and HBR.org 
 | [[2026-04-28-reitz-higgins-spacious-thinking\|The Best Leaders Encourage "Spacious Thinking"]] | [[Megan Reitz]], [[John Higgins]] | July 2025 | Leadership attention modes |
 | [[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation\|How to Move from AI Experimentation to AI Transformation]] | [[Arjun Dutt]] et al. ([[Bain & Company]] + [[OpenAI]]) | 30 April 2026 | AI transformation framework + [[micro-productivity-trap]] |
 | [[2026-05-05-nishar-nohria-end-of-one-size-fits-all\|The End of One-Size-Fits-All Enterprise Software]] | [[Deep Nishar]], [[Nitin Nohria]] | 23 April 2026 | Firm-boundary 4-model framework (Build / Compose / Collaborate / Buy Outcomes) |
+| [[2026-05-07-carucci-resistance-as-data\|Leaders, Treat Resistance to Change as Valuable Data]] | [[Ron Carucci]] | 20 April 2026 | Resistance-as-data framework with four signal categories and three leader traps |
 
 HBR articles in the wiki use this convention: source `kind: article`. Print pieces include an `hbr_reprint` field; digital pieces use `journal_volume: "HBR.org Digital, <date>"`.
 

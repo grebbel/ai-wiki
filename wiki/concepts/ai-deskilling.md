@@ -2,13 +2,16 @@
 type: concept
 aliases: ["AI deskilling", "ai-deskilling", "task composition shift", "deskilling"]
 tags: [deskilling, task-composition, ai-employment-effects, occupations]
-confidence: 0.70
-last_confirmed: "2026-04-28"
-source_count: 1
+confidence: 0.75
+last_confirmed: "2026-05-07"
+source_count: 2
 relationships:
   - type: instance-of
     target: ai-employment-effects
     via: "task-composition shift is one specific mechanism within broader employment effects"
+  - type: contradicts
+    target: durable-skills
+    via: "deskilling = which skills get hollowed out by AI; durable-skills = which skills resist substitution. Inverse measurement frames of the same labour-economics question"
 ---
 
 # AI Deskilling
@@ -50,9 +53,19 @@ Deskilling, in the [[Anthropic Economic Index]] sense ([[2026-04-28-anthropic-ec
 
 The report frames the analysis as a *useful first-order signal*, not a labor-market forecast.
 
+## The inverse frame: durable skills ([[2026-05-07-globerson-et-al-scalable-measurement-durable-skills|Globerson et al. 2026]])
+
+If deskilling tracks *which skills get hollowed out by AI*, [[durable-skills]] tracks *which skills resist substitution* — the same labor-economics question viewed from the other side. The two frames carve up the labor-skill space:
+
+- **Codified-and-AI-substitutable** — what deskilling depletes (information retrieval, formulaic generation, well-defined procedural tasks).
+- **Open-ended-and-AI-resistant** — what durable-skills measures (collaboration, creativity, critical thinking; skills requiring grounding in social/contextual reality).
+
+[[2026-05-07-globerson-et-al-scalable-measurement-durable-skills|Globerson et al. (Google Research 2026)]] provide the **first scalable operational measurement** for the durable-skills side via the Vantage / Executive LLM platform — large-N validation (188 participants, 373 conversations, Pearson 0.88 with human experts on creativity tasks). Without this measurement methodology, claims about which skills "should" be retained as AI handles more codified work were prescriptive without empirical anchoring. With it, the deskilling-vs-durable-skills carve becomes empirically tractable.
+
 ## Related concepts
 
 - [[ai-employment-effects]] — broader labor-market consequences (displacement, hiring, wages, age effects)
+- [[durable-skills]] — the inverse frame: which skills humans should retain and how to measure them
 - [[automation-vs-augmentation]] — deskilling overlaps with automation when entire tasks are removed
 - [[enterprise-ai-adoption]] — organizational decisions about which tasks to delegate
 

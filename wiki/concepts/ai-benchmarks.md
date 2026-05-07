@@ -3,8 +3,8 @@ type: concept
 aliases: ["AI benchmark", "AI benchmarks", "AI evaluation", "AI evals"]
 tags: [ai-benchmarks, ai-evaluation, foundation-models]
 confidence: 0.85
-last_confirmed: "2026-04-30"
-source_count: 3
+last_confirmed: "2026-05-07"
+source_count: 4
 relationships:
   - type: uses
     target: foundation-models
@@ -52,6 +52,18 @@ Major one-year benchmark gains in 2024 ([[2026-04-28-ai-index-report-2025|AI Ind
 - **PlanBench** — logical planning; AI **fails consistently** even when provably correct solutions exist.
 - **RE-Bench** — agent evaluation: in 2-hour budgets AI scores **4× human experts**, but humans win **2:1 at 32 hours**.
 
+### Vantage / Executive LLM — benchmarking *human* skills, not models ([[2026-05-07-globerson-et-al-scalable-measurement-durable-skills|Globerson et al. 2026]])
+
+A **structurally different** type of benchmark: assesses humans on *durable skills* (collaboration, creativity, critical thinking) using LLMs as both **conversational teammates** and **autoraters**. Methodologically distinct from PISA 2015 (scripted simulated teammates with multiple-choice answers) and ATC21S (human-human dyads in digital environments), both of which sat at narrow points on the validity-vs-rigor tradeoff.
+
+- **Architecture:** a single Executive LLM drives multiple AI teammates *and steers the conversation* to elicit observable skill evidence. A separate AI Evaluator scores transcripts against psychometric rubrics. Analogous to a **computerized adaptive test (CAT)**, but for *complex social/cognitive constructs* rather than item-difficulty calibration.
+- **Validation (large-N empirical):** 188 US-based participants ages 18-25, 373 conversations. **LLM-vs-human-rater agreement matches inter-human-rater agreement** (Cohen's κ ~0.45–0.64). For a downstream creativity task with 280 high-school students (180 held-out): **Pearson r = 0.88** between Gemini autorater and human expert scores.
+- **Models:** Gemini 2.5 Pro (collaboration); Gemini 3 (creativity / critical thinking initial results).
+- **Evidence elicitation:** at conversation level with skill-matched Executive LLM, evidence rates of **92.4% (Project Management)** and **85% (Conflict Resolution)**. Independent Agents (no steering) elicit significantly less. Telling subjects "focus on this skill" without LLM steering has *no effect* (p > 0.6) — the steering must come from the AI side.
+- **Notable:** the critical-thinking rubric explicitly evaluates how well participants **use AI tools** during the assessment — fact-checking, retrieval, stress-testing arguments. AI fluency treated as a sub-component of CT in 2026, not a confounder.
+
+This expands the wiki's benchmark roster from "fixed-task evaluations of model capability" to include **scalable evaluations of human skills using LLM scaffolding**. See [[durable-skills]] for the broader concept.
+
 ### Task horizons ([[METR]] / [[2026-04-28-anthropic-economic-index-q4-2025|Anthropic Economic Index, 4th report]])
 
 A complement to single-shot benchmarks: **task horizons** measure the *duration* of tasks at which an AI achieves a given success rate. [[METR]] introduced this measure; the Anthropic Economic Index applies the same lens to its own data.
@@ -92,6 +104,7 @@ Per the Anthropic report, the Claude.ai number is much higher because of selecti
 | **BigCodeBench** | Coding | New 2024; AI 35.5% vs. human 97% |
 | **PlanBench** | Logical planning | AI consistently fails |
 | **RE-Bench** | Agent / time-budget | New 2024; 4× humans @ 2hr, humans win 2:1 @ 32hr |
+| **Vantage** ([[durable-skills]]) | Human skill assessment via LLM scaffolding | New 2026 (Globerson et al., Google Research); LLM autoraters match human raters; Pearson 0.88 vs experts on creativity tasks |
 
 ## Debates / contradictions
 
