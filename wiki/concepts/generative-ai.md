@@ -4,7 +4,7 @@ aliases: ["GenAI", "generative AI", "generative artificial intelligence"]
 tags: [generative-ai, foundation-models, ai-adoption]
 confidence: 0.95
 last_confirmed: "2026-05-07"
-source_count: 17
+source_count: 19
 relationships:
   - type: uses
     target: foundation-models
@@ -164,6 +164,7 @@ Anand-Wu compare this to the **MS-DOS → GUI transition** of the 1980s: not nec
 | **Microsoft Copilot** | Embedded productivity assistant | [[2026-04-28-ai-index-report-2025\|AI Index 2025]] (job-postings data) |
 | **Italgas DANA** | Generative-AI network control | [[2026-04-28-mit-sloan-ai-maturity\|MIT Sloan]] |
 | **Vantage / Executive LLM** ([[Google Research]], **Gemini 2.5 Pro** + **Gemini 3**) | Scalable assessment of human [[durable-skills]] (collaboration / creativity / critical thinking); LLM-as-conversational-teammate-and-autorater; Pearson 0.88 vs human experts | [[2026-05-07-globerson-et-al-scalable-measurement-durable-skills\|Globerson et al. 2026]] |
+| **Harness frameworks** (LangChain / LangGraph, Microsoft Agent Framework v1.0, Google ADK, LlamaIndex, CrewAI, Haystack, DSPy) | Pre-assembled [[agent-harness\|agent harness]] kits — chains, agents, memory modules, tool wrappers; sit at Layer 2 of the standard 4-layer agent stack | [[2026-05-07-kokane-agent-harness-vs-systems-design\|Kokane 2026]], [[2026-05-07-chatterjee-anatomy-of-agent-harness\|Chatterjee 2026]] |
 
 ### Limits
 

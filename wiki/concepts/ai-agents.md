@@ -4,7 +4,7 @@ aliases: ["AI agent", "AI agents", "agentic AI", "autonomous agents", "agent", "
 tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
 last_confirmed: "2026-05-07"
-source_count: 6
+source_count: 8
 relationships:
   - type: instance-of
     target: generative-ai
@@ -58,6 +58,19 @@ The time-budget pattern is a sharp framing: **agents win at short horizons, huma
 - **Cisco's customer-support agents** — Cisco internal deployment per [[2026-04-28-mittri-cisco-ai-enabled-enterprise|MITTRI/Cisco]].
 - **Claude Code** ([[Anthropic]]) — agentic coding harness now leaving a *measurable* signature in usage data: per the [[2026-05-07-anthropic-economic-index-5-learning-curves|fifth Anthropic Economic Index report]] (Feb 2026), the 1P API task-share for "Computer & Mathematical" jumped from 36% (Aug 2025) to 47% (Feb 2026), driven in large part by coding agents that decompose work into many shorter task-labelled API calls. Where Claude.ai shows a single user-Claude conversation per task, an agentic harness shows up as N labelled calls per task — agents are visible in the data, not just in product launches.
 
+### The application-layer counterpart: the agent harness
+
+Throughout April–May 2026 a body of practitioner writing converged on **[[agent-harness|agent harness]]** as the dominant frame for production-grade agent engineering at the application layer — *complementary* to Anthropic's brain/hands/session at the platform layer. Two new wiki sources name the construct directly:
+
+- [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]] — provocation-style argument that "agent harness" is mostly **systems design we've always done** with a 10% genuinely novel kernel (non-determinism at the execution layer + context as a degrading resource). 4-layer stack: Your App / Harness Frameworks (LangChain, Microsoft Agent Framework, Google ADK, LlamaIndex, CrewAI, Haystack, DSPy) / Agent Harness Runtime / swappable Model Layer.
+- [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]] — taxonomical 4-layer anatomy: **Context** (system prompt as a document, KV-cached stable parts + dynamic parts) / **Constraints** (pre/post-tool middleware: destructive-verb detection, workspace isolation, loop detection, output scoring) / **Contracts** (formal evaluable specifications of "successful output" calibrated to inputs) / **Compounding** (telemetry as training data for the harness itself, with human-reviewed workspace overrides).
+
+The full treatment of the harness construct lives in the dedicated [[agent-harness]] concept page; this section flags the connection from the [[ai-agents|ai-agents]] page.
+
+**Worked failure mode worth flagging here**: Chatterjee's *Friday-in-March* story — a user said "clean things up before the board review"; the agent — *competent, helpful, working exactly as designed* — interpreted this as archive stale documents + prune duplicates + remove stale sources, soft-deleting two weeks of research history 40 minutes before a board meeting. **The model was not the problem.** The problem was the absence of an intent-validation layer in the harness. The lesson generalizes: **most agent failures in production are harness failures, not model failures.**
+
+**Practitioner consensus on the implication**: build constraints before you build cleverness; the model is rented and replaceable; the harness is owned and compounds.
+
 ### Engineering pattern: brain / hands / session decoupling
 
 The [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]] engineering post (8 April 2026) names the architecture beneath production-grade agents — the layer the working-definition table abstracts over. Three concerns are deliberately split into independently-scaled tiers:
@@ -103,8 +116,9 @@ Customer experience (CX) is the most-cited near-term agent application. Per [[20
 
 ## Related concepts
 
+- [[agent-harness]] — the runtime engineering layer that wraps a model to make a production agent; where most agent failures actually originate
 - [[generative-ai]] — the substrate; most agents are LLM-based
-- [[foundation-models]] — what agents are typically built on
+- [[foundation-models]] — what agents are typically built on (rented, swappable; the harness is what's owned)
 - [[enterprise-ai-adoption]] — the deployment context
 - [[ai-benchmarks]] — RE-Bench specifically targets agent evaluation; PlanBench tests reasoning that agents need
 

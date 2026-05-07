@@ -1072,3 +1072,71 @@ Ingested **David Kiron, Michael Schrage — *How to Reap Compound Benefits From 
 **Dangling references** (single-source mention, deferred): Michael Schrage; Boris Cherny (Anthropic); Jaana Dogan (Google); Michael Polanyi (1966 *Tacit Dimension*); William Stanley Jevons (1865 paradox).
 
 **Joint commit**: ingested concurrently with Ransbotham et al. 2024 above in a single commit per user request — both MIT SMR sources, mutually reinforcing, share co-author David Kiron. Together they form the wiki's "MIT SMR organizational-learning lens" on enterprise AI — the 9th adoption framework.
+
+## [2026-05-07] ingest | Kokane — *What is Agent Harness? How it is different than System Design?* (Level Up Coding, Apr 2026)
+
+Ingested **Akshay Kokane — *What is Agent Harness? How it is different than System Design?*** (Level Up Coding / Medium publication, 10 April 2026, ~4 pages of body content / 8-page PDF / 4-min reading time). **Provocation-style** practitioner article arguing the term "agent harness" is mostly a rebranding of mature systems engineering, with a small but genuine ~10% kernel of novelty.
+
+**Central claim**: 90% of agent-harness engineering is systems design we've always done (cache management = Context management; database + job queue = State persistence; API middleware = Tool orchestration; approval workflows = HITL; memory leak / stale state = Context rot; summarization + offload = Compaction; process lifecycle = Harness lifecycle). The patterns are identical — only the wrapped surface (an LLM instead of a database driver) is new.
+
+**The 10% genuinely novel** has two named components:
+
+1. **Non-determinism at the execution layer** — classical middleware assumes the wrapped service behaves consistently; LLMs hallucinate tool calls, return semantically wrong responses, lose track of original goals 40 turns in. *You cannot unit test for it. You cannot formally specify it.* Validation must check **intent**, not just output format. The Claude Code permission pipeline confirms this: it checks whether the model is *authorized to want what it wants*.
+2. **Context as a first-class degrading resource** — working memory that *actively gets worse the longer it runs.* Garbage collection ≠ semantic drift correction. Named phenomenon: **context rot**.
+
+**4-layer architectural stack**: Your App / Harness Frameworks (LangChain, Microsoft Agent Framework v1.0, Google ADK, LlamaIndex, CrewAI, Haystack, DSPy) / Agent Harness Runtime (context manager, permissions, state, tool executor, retry, HITL, observability) / swappable Model Layer (Azure OpenAI/GPT-5, Claude, Gemini/Llama/Ollama, AWS Bedrock).
+
+**Three reasons for the rename** (one genuine, two cynical): (1) genuine — non-determinism at the core logic layer requires intent-validation; (2) cynical — companies need a category to sell; (3) cynical — new entrants need vocabulary, and incumbents who coin it get the SEO/mindshare.
+
+**Honest verdict**: *"If you've shipped real backend systems, you're already 80% of the way there. The skill gap isn't architecture. It's learning to think about prompt state as program state, and treating the context window as your most constrained and most expensive resource."*
+
+**Cross-source positioning**: same topic as [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]] (ingested concurrently below), opposite rhetorical stance. Kokane is sceptical-provocative; Chatterjee is taxonomical-affirmative. Both can be true and the wiki holds them as complementary vantages on [[agent-harness]]. Kokane's "inference-only model + execution-only tool executor" maps directly to [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]]'s **brain / hands** decomposition — same engineering pattern, different vocabulary.
+
+**Wiki impact** (counted as part of the joint 11-file touch with Chatterjee 2026 below):
+
+- 1 new source page: [[2026-05-07-kokane-agent-harness-vs-systems-design]]
+- 0 new entity pages (Akshay Kokane is single-source, deferred)
+- Heavy contribution to the new [[agent-harness]] concept page (the "10% genuinely novel" framing; the rename mapping table; the 4-layer stack diagram).
+
+**Source-quality flag**: opinion essay, not empirical research. Practitioner author with explicit credentials (ex-Microsoft, ex-AWS, currently Enterprise AI Architect / Forward Deployed Engineer). The "Claude Code leak" anchor is third-hand (interpreting analyses by others, not reading the source directly). Some time-sensitive factual claims (Microsoft Agent Framework v1.0 GA April 2026) warrant verification before being treated as authoritative. Confidence **0.70** — single-source baseline with no empirical anchor.
+
+**Dangling references** (single-source mention, deferred): Akshay Kokane (author); Vivek Trivedy (LangChain blog *Anatomy of an Agent Harness* — different from Chatterjee's similarly-titled piece); Ken Huang / DistributedApps.ai *Claude Code Leak: 10 Agentic AI Harness Patterns*; arstechnica reporting on the leak; LangChain / LangGraph; Microsoft Agent Framework v1.0; Google Agent Development Kit; LlamaIndex; CrewAI; Haystack; DSPy.
+
+## [2026-05-07] ingest | Chatterjee — *The Anatomy of an Agent Harness* (Medium, May 2026)
+
+Ingested **Abhishek Chatterjee — *The Anatomy of an Agent Harness*** (Medium, ~3 May 2026, ~6 pages of body content / 9-page PDF / 8-min reading time). Long-form practitioner essay anchored in a vivid production-failure story; complement to [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]] above.
+
+**The Friday-in-March story** (the essay's rhetorical anchor): a user said *"clean things up before the board review."* The agent — *competent, helpful, working exactly as designed* — interpreted this as archive stale documents + prune duplicates + remove stale sources, soft-deleting two weeks of research history 40 minutes before a board meeting. *"The model was not the problem. The model had reasoned correctly given what it was asked. The problem lived in the layer around the model."*
+
+**The wiki's clearest worked example of agent-failures-are-harness-failures**: the load-bearing claim is that production agent failures are usually *harness* failures masquerading as *model* failures. This propagates through [[ai-agents]], [[responsible-ai]] (intent validation as Constraints-layer RAI control), and [[micro-productivity-trap]].
+
+**4-layer harness anatomy** (in build order):
+
+1. **Context** — system prompt as a *document*, assembled fresh per request, with stable parts (KV-cached) + dynamic parts (user memory + workspace knowledge + delta summary + behavioral persona). *"Context is not a feature you bolt on. It is the room the agent walks into."*
+2. **Constraints** — middleware-pattern pre/post-tool hooks: destructive-verb recognition, workspace isolation, loop detection, output scoring across citation coverage / source triangulation / severity distribution / density / thematic diversity. Harness as **active editor**, not passive observer.
+3. **Contracts** — formal evaluable specifications of "successful output," **calibrated to inputs available** (a synthesis contract over 5 sources is not the same as one over 50). Function, not checklist. Makes agent failures **debuggable**. Domain-specific.
+4. **Compounding** — structured telemetry records (NOT log lines) feeding a nightly meta-learning loop that proposes **harness adjustments** (not model fine-tuning — the model is rented and frozen). Human-reviewed; approved adjustments become **workspace overrides** that compound. *"This is what people mean when they say AI products will get better with use. They do not mean the model is learning. They mean the infrastructure around the model is learning, and the surface area where learning lives is the harness."*
+
+**The CEO sentence** (the version that lands in a boardroom): *"the model is rented from a vendor whose competitor will outperform them within the year; the harness — our memory architecture, our quality contracts, our learned per-customer overrides, our telemetry — is what we own and what compounds; it is the only part of our stack that gets more valuable with every customer we ship to."*
+
+**Critical cross-source convergence**: Chatterjee's **Compounding** layer is operationally identical to [[2026-05-07-kiron-schrage-compound-benefits|Kiron-Schrage 2026]]'s **verification → evaluation → learning capture** flywheel. Independent convergence — two practitioner essays, different vantages (PM-facing engineering essay vs. MIT SMR column), arrive at the same operational mechanism. Lifts the construct from single-source (Kiron-Schrage) to confirmed cross-source.
+
+**Wiki impact (joint with Kokane 2026 above; total 11 files touched)**:
+
+- **2 new source pages**: [[2026-05-07-kokane-agent-harness-vs-systems-design]], [[2026-05-07-chatterjee-anatomy-of-agent-harness]].
+- **1 new concept page**: [[agent-harness]] — promoted because 4 wiki sources now reference the construct substantively (these two new sources + [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]] + [[2026-05-07-kiron-schrage-compound-benefits|Kiron-Schrage]] via the Boris Cherny / CLAUDE.md anchor). Confidence **0.80** (baseline 0.7 + 0.05 additional supporting source + 0.05 cross-source-convergence).
+- **0 new entity pages**: Abhishek Chatterjee, Akshay Kokane both single-source (skipped per the 2+ source convention).
+- **1 concept enrichment (heavy)**: [[ai-agents]] — added "The application-layer counterpart: the agent harness" subsection; added the Friday-in-March worked example; added [[agent-harness]] to Related concepts. `confidence: 0.95` unchanged, `source_count: 6 → 8`, `last_confirmed: 2026-05-07`.
+- **5 concept enrichments (light)**:
+  - [[foundation-models]] — added "Models converging to commodity status: the rent vs own framing" subsection. `confidence: 0.85` unchanged, `source_count: 4 → 6`.
+  - [[generative-ai]] — added Harness frameworks row (LangChain etc.) to the deployed-tools table. `source_count: 17 → 19`.
+  - [[micro-productivity-trap]] — added "Sixth- and seventh-source corroboration" subsection on agent-harness practitioner essays; the Compounding-layer / Kiron-Schrage flywheel cross-source convergence is the wiki's strongest concept-level convergence so far. `confidence: 0.85 → 0.90`, `source_count: 5 → 7`.
+  - [[responsible-ai]] — added "Intent validation as a Constraints-layer RAI control" subsection with the three-layer RAI runtime taxonomy table. `source_count: 8 → 10`.
+  - [[enterprise-ai-adoption]] — added "The runtime-engineering lens: agent harnesses as the new moat" subsection (10th adoption-framework lens); updated lens count from 9 → 10. `source_count: 21 → 23`.
+- **index.md**: 2 new source entries, 1 new concept entry ([[agent-harness]]).
+
+**Source-quality flag**: opinion essay, not empirical research — no data, no n, no benchmarks. Single-source on the Friday-in-March story (anonymized customer; details non-verifiable). Author has commercial interest in the "harness is the moat" framing (building praxiomai.xyz, an AI PM agent product). Confidence **0.75** (baseline 0.7 + 0.05 additional supporting source — Kokane / Anthropic Managed Agents / Kiron-Schrage mutually reinforce). Not raised to 0.80 because opinion-format.
+
+**Dangling references** (single-source mention, deferred): Abhishek Chatterjee (author); praxiomai.xyz; getpolaris.xyz; the *Claude Code leak* (referenced in both new sources — first-party ingest would be valuable); LangChain / Microsoft Agent Framework / Google ADK / LlamaIndex / CrewAI / Haystack / DSPy (single-source named; promote on 2nd source coverage).
+
+**Joint commit**: ingested concurrently with Kokane 2026 above in a single commit per user request — both new sources are practitioner essays on the same topic from opposite rhetorical stances, mutually reinforcing the [[agent-harness]] construct's promotion to a wiki concept page.

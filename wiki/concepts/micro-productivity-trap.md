@@ -2,9 +2,9 @@
 type: concept
 aliases: ["micro-productivity trap", "micro-productivity-trap", "offering lock-in", "process lock-in"]
 tags: [micro-productivity-trap, AI-transformation, EBITDA, process-redesign, workflow-redesign, enterprise-ai]
-confidence: 0.85
+confidence: 0.90
 last_confirmed: "2026-05-07"
-source_count: 5
+source_count: 7
 relationships:
   - type: instance-of
     target: enterprise-ai-adoption
@@ -111,6 +111,26 @@ The flywheel that escapes the trap:
 
 Five independent sources now (Bain/OpenAI, Nishar-Nohria, Carucci, Ransbotham et al., Kiron & Schrage), four vantages (consulting practice, investor/academic, executive coaching, academic survey + practitioner column), all converging. Confidence lifts to **0.85** (five-source agreement; the new sources add the operational mechanism missing from the prior three). The trap is robustly named; what remains is *measurement* — how would an external auditor distinguish a verification-only org from a verify-evaluate-capture org without insider access?
 
+### Sixth- and seventh-source corroboration: agent-harness practitioner essays ([[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]] + [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]])
+
+Two practitioner essays on **[[agent-harness|agent harness]]** engineering, ingested concurrently, supply a *fifth vantage* (working AI engineers / product PMs at the runtime level) that independently arrives at the same operational mechanism the prior five sources named.
+
+[[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]]'s **fourth layer — Compounding** — is operationally identical to Kiron-Schrage's verification → evaluation → learning capture flywheel:
+
+| Kiron-Schrage step | Chatterjee equivalent |
+|---|---|
+| Verification — does this output meet the standard? | Constraints layer — pre/post-tool hooks score outputs against criteria |
+| Evaluation — what does this output reveal? | Contracts layer — formal evaluable specifications, score breakdowns, "your last synthesis scored a C, here is why" |
+| Learning capture — how do we ensure this insight persists? | Compounding layer — telemetry as training data for the harness; nightly meta-learning loop proposes harness adjustments; human-reviewed approvals become workspace overrides |
+
+The construct is now visible *both* at the **organizational learning level** (Kiron-Schrage's CLAUDE.md as version control for organizational judgment) and at the **runtime engineering level** (Chatterjee's structured telemetry → harness tuning → workspace overrides). Same mechanism, two scales — strong cross-source convergence.
+
+[[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]] adds the sceptical-vantage corollary: most of the work that escapes the trap is **mature systems engineering** (retries, state machines, idempotency, observability) applied to a new substrate. The 10% genuinely novel — non-determinism at the execution layer + context as a degrading resource — is precisely what *cannot* be solved by checklist; it is where domain expertise and human evaluation are non-substitutable.
+
+**Chatterjee's Friday-in-March story** as the wiki's clearest worked example of the trap's failure mode at the engineering layer: an agent emptied a customer's workspace because the harness lacked an intent-validation layer. *"The model was not the problem. The problem lived in the layer around the model."* Operationally identical to *"verification masquerading as evaluation"* but at a different stack layer — the same diagnostic principle (failures are in the *layer around the model*, not the model itself) generalises.
+
+Seven independent sources now, five vantages (consulting / investor + academic / executive coaching / academic survey + practitioner column / runtime engineering practitioner essays), all converging. **Confidence lifts to 0.90** — among the wiki's most strongly corroborated concepts. What remains genuinely open is *quantitative measurement*: nobody has yet measured the slope of harness-tuning compounding (how much contract-score uplift per unit of telemetry-driven adjustment, over what timeframe). The trap is robustly named *and* its escape mechanism is robustly described; what is missing is *empirical confirmation* that the escape mechanism delivers on its promise at scale.
+
 ## Cross-source positioning (descriptive only, per cross-source neutrality)
 
 The micro-productivity-trap framing sits among several wiki vocabularies addressing the same broad territory of "AI adoption breadth ≠ transformation depth":
@@ -126,6 +146,7 @@ The micro-productivity-trap framing sits among several wiki vocabularies address
 - [[2026-05-05-nishar-nohria-end-of-one-size-fits-all|Nishar & Nohria 2026]] — *firm-boundary 4-model lens* (Build / Compose / Collaborate / Buy Outcomes); the trap manifests when a firm rushes to "Build" or rushes to automate any layer without first treating **data architecture, governance, and ownership** as the foundation.
 - [[2026-05-07-carucci-resistance-as-data|Carucci 2026]] — *human-reaction lens* on the trap; the Flaws-in-change resistance signal is operators surfacing exactly what process lock-in misses; leaders' three traps (personalize / moralize / rush) systematically suppress it.
 - [[2026-05-07-ransbotham-augmented-learners|Ransbotham et al. 2024]] + [[2026-05-07-kiron-schrage-compound-benefits|Kiron & Schrage 2026]] — *organizational-learning lens* on the trap; 59% of orgs are "Limited Learners" stuck in the trap; the verification → evaluation → learning capture flywheel is the operational machinery to escape it. ROI reframed as **return on iteration**.
+- [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]] + [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]] — *agent-harness engineering lens* on the trap; the [[agent-harness|agent harness]] is the runtime infrastructure where the trap is escaped or perpetuated. Friday-in-March story makes the failure-mode concrete; "build constraints before you build cleverness" is the operational discipline.
 
 Each names the same broad gap with a different vocabulary; the wiki's [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] synthesis maps the cluster (the synthesis was filed when 6 frameworks were ingested; Nishar-Nohria is the 7th and Carucci is the 8th, at layers the synthesis didn't surface).
 

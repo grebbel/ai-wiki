@@ -4,7 +4,7 @@ aliases: ["AI adoption", "enterprise AI use", "business AI adoption", "organizat
 tags: [ai-adoption, enterprise-ai, ai-strategy, ai-maturity]
 confidence: 0.95
 last_confirmed: "2026-05-07"
-source_count: 21
+source_count: 23
 relationships:
   - type: uses
     target: automation-vs-augmentation
@@ -90,7 +90,9 @@ Multiple complementary lenses are used by sources in this wiki:
 
 **Human-reaction lens — resistance as data** ([[2026-05-07-carucci-resistance-as-data|Carucci 2026]]): a practitioner framework for interpreting how *people* respond to deployments. All resistance is meaningful data; the leader's job isn't to determine whether pushback is valid but to diagnose what it's signalling. Three traps when leaders misread resistance (personalize / moralize / rush to resolution) and four signal categories (Loss / Anxiety / Lack of control / Flaws in change). Operationalizes the *human-side* mechanics of MIT CISR's "Synchronization" pillar and Werner-Le-Brun's Octopus principles ("make changes WITH people, not TO them"). Distinct decision layer from the deployment frameworks above — the question shifts from "what should we deploy?" to "what is the team's reaction telling us about whether what we deployed is working?" See [[micro-productivity-trap]] for how Carucci's category #4 (Flaws in change) aligns with the operators-see-problems-leaders-dismiss pattern.
 
-All nine lenses agree qualitatively: **most organizations are using AI in some form, but very few are actually mature/ready/adapted.** The AI Index pegs "mature" at 1%; MIT CISR pegs Stage 4 at 7%; Cisco pegs "ready" at 13%; Ransbotham et al. peg Augmented Learners at 15%; Werner-Le-Brun's 12% transformation-success baseline gives the broader org-change context. The convergence of *seven independent measurements all clustering around 7-15% upper-tail* is the wiki's strongest evidence that the high-value-from-AI cohort is structurally narrow, not measurement-artefactual. See [[ai-maturity-measurement-comparison]] for methodological cross-walk and [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] for the framework comparison (the Nishar-Nohria firm-boundary lens, the Carucci human-reaction lens, and now the Ransbotham/Kiron organizational-learning lens are the **7th, 8th, and 9th** named frameworks; see the synthesis for the running cluster).
+**Runtime-engineering lens — agent harnesses as the new moat** ([[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]] + [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]]): a 10th lens at the engineering-stack level — see the dedicated subsection below for the full treatment. Headline: **the model is rented and converging to commodity; the [[agent-harness|harness]] is owned and compounds.** Plan for model swap, not marriage. Build Constraints before cleverness. Hire systems engineers, not AI specialists.
+
+All ten lenses agree qualitatively: **most organizations are using AI in some form, but very few are actually mature/ready/adapted.** The AI Index pegs "mature" at 1%; MIT CISR pegs Stage 4 at 7%; Cisco pegs "ready" at 13%; Ransbotham et al. peg Augmented Learners at 15%; Werner-Le-Brun's 12% transformation-success baseline gives the broader org-change context. The convergence of *seven independent measurements all clustering around 7-15% upper-tail* is the wiki's strongest evidence that the high-value-from-AI cohort is structurally narrow, not measurement-artefactual. See [[ai-maturity-measurement-comparison]] for methodological cross-walk and [[syntheses/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] for the framework comparison (the Nishar-Nohria firm-boundary lens, the Carucci human-reaction lens, the Ransbotham/Kiron organizational-learning lens, and now the agent-harness runtime-engineering lens are the **7th through 10th** named frameworks; see the synthesis for the running cluster).
 
 The shape of adoption can be measured along several dimensions:
 
@@ -255,6 +257,19 @@ This is the wiki's first **measurable empirical evidence** for AI labor displace
 ### Integration depth correlates with productivity payoff
 
 Necula et al. 2024 (Romanian survey, n=233): organizations with high AI integration showed a **72% probability of significant productivity improvements** vs. **3.4%** for those with minimal integration.
+
+### The runtime-engineering lens: agent harnesses as the new moat ([[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]] + [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]])
+
+A 10th lens on enterprise AI adoption emerges from the practitioner literature on [[agent-harness|agent harnesses]] (April–May 2026). The vantage is *engineering-level* — sitting beneath the strategy/maturity/transformation frameworks above — and offers a sharp prescription that complements [[2026-05-05-nishar-nohria-end-of-one-size-fits-all|Nishar-Nohria's]] firm-boundary lens:
+
+- **"Plan for swap, not for marriage."** Foundation models are converging to commodity status. The decision still matters, but the moat it produces lasts months, not years. Keep the agent harness model-agnostic where reasonable.
+- **The harness investment is a permanent allocation, not a phase.** Build Context / Constraints / Contracts in year 1; build the Compounding (self-tuning telemetry → harness adjustment) layer in year 2; calibrate every quarter after. *"This is the work."*
+- **Sequence matters: build constraints before you build cleverness.** The Friday-in-March story (an agent emptied a customer's workspace because no intent-validation existed) repeats itself in every AI product without a hook layer. *"It is cheaper to build the layer than to write the apology emails."*
+- **The under-resourced role**: an engineer who thinks about agents the way SREs think about distributed systems — failure modes, observability, graceful degradation, long-tail edge cases. Not a model researcher, not a prompt engineer.
+
+Where the [[2026-05-07-ransbotham-augmented-learners|Ransbotham/Kiron Augmented Learners]] lens measures *organizational learning capability* (the 9th lens above), the agent-harness lens measures *runtime engineering maturity*. They are complementary, not redundant: an org can have strong organizational learning culture *and* a weak harness layer (or vice versa), and AI products require both.
+
+**Critical caveat from [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]]**: ~90% of the harness work is *mature systems engineering applied to a new substrate.* If your engineering team has shipped real backend systems, *"you're already 80% of the way there."* The remaining 10% (non-determinism at the execution layer + context as a degrading resource) is where the genuine new design discipline lives. **Implication for hiring**: don't hire AI specialists for harness work — hire systems engineers and let them ramp on the 10%.
 
 ### The Augmented Learner advantage and its operational machinery ([[2026-05-07-ransbotham-augmented-learners|Ransbotham et al. 2024]] + [[2026-05-07-kiron-schrage-compound-benefits|Kiron & Schrage 2026]])
 

@@ -4,7 +4,7 @@ aliases: ["foundation model", "foundation models", "FM", "frontier model", "fron
 tags: [foundation-models, generative-ai, ai-research]
 confidence: 0.85
 last_confirmed: "2026-05-07"
-source_count: 4
+source_count: 6
 ---
 
 # Foundation Models
@@ -72,6 +72,20 @@ A **foundation model** is a model trained on broad data at scale that can be ada
 ### Smaller is mighty
 
 - **142× model-size reduction for the same MMLU >60% threshold** in two years: **PaLM (540B params, 2022) → Phi-3-mini (3.8B, 2024)**.
+
+### Models converging to commodity status: the "rent vs own" framing ([[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]] + [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]])
+
+By April–May 2026, practitioner writing on [[agent-harness|agent harnesses]] had converged on a sharp framing of foundation models as **commercial inputs to differentiated products** rather than as the differentiator itself:
+
+> *"Models are converging toward commodity status. They are rented from vendors whose competitors will outperform them within the year. They are swapped between, routed across, replaced quarterly. Two years ago, choosing a foundation model felt like choosing a database. Today it feels closer to choosing a CDN. The decision still matters, but the moat it produces lasts months, not years."* — [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]]
+
+The framing has three implications worth flagging:
+
+1. **The CDN analogy** is sharper than prior wiki framings (database, library, API). It captures the *speed* of substitution: you do not architect a multi-quarter CDN selection process; you keep your stack CDN-agnostic and switch when the price/performance gradient justifies it.
+2. **Layer-4-swappable architectures are now the practitioner default.** Kokane's harness diagram explicitly labels the model layer as "swappable backends" — Azure OpenAI/GPT-5, Claude (Anthropic), Gemini/Llama/Ollama, AWS Bedrock — selected at runtime. This is consistent with the open-weight performance gap closing trend documented above (1.7% on Chatbot Arena by Feb 2025).
+3. **Where competitive advantage moves**: from model selection to the **harness layer** (memory architecture, quality contracts, learned per-customer overrides, telemetry). The "rent vs own" aphorism: *"The model is what you rent. The harness is what you own."* See [[agent-harness]] for the full treatment.
+
+**Caveat against over-commoditization narrative**: [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]] documented that Claude Sonnet 4.5's "context anxiety" failure mode was *absent* on Opus 4.5 — same family, different reliability. Within-family variation can be large enough that the "models converging" framing needs nuance: the *frontier* converges in benchmark performance, but *production-relevant reliability characteristics* (long-horizon stability, refusal behaviour, cost/latency curves) can vary substantially even between sibling models. The "plan for swap, not for marriage" prescription survives the caveat — but harness designers should expect to discover model-specific quirks at production scale and budget for them.
 
 ## Notable foundation model series (mentioned via [[2026-04-28-ai-index-report-2025|AI Index 2025]])
 
