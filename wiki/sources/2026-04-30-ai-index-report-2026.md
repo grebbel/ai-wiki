@@ -194,15 +194,22 @@ Chapters 2 (Technical Performance), 3 (Responsible AI), 4 (Economy), 5 (Science)
 - Most-cited AI papers (top 100) lag 1–2 years; 2024 paper data is as recent as available.
 - Public-opinion data gathered in survey years that may pre-date the latest model releases.
 
+## Authorship and steering
+
+The full author list is recorded in the source frontmatter and the citation block below. Promoted-to-entity contributors with steering or research-management roles on this edition:
+
+- **Editor-in-Chief** — [[Sha Sajadieh]] (replacing [[Nestor Maslej]] from the 2025 edition).
+- **Co-chairs of the Steering Committee** — [[Yolanda Gil]] (chair, USC ISI; co-author of the headline Co-chairs' message) and [[Raymond Perrault]] (co-chair, SRI International; co-author of the same message).
+- **Steering Committee members** — [[Erik Brynjolfsson]] (Stanford Digital Economy Lab), [[James Manyika]] (Google / UN High-Level Advisory Body on AI), [[Yoav Shoham]] (Stanford CS / AI21 Labs), [[Russell Wald]] (Stanford HAI Executive Director), [[Terah Lyons]] (Partnership on AI), [[Juan Carlos Niebles]] (Salesforce / Stanford), [[Vanessa Parli]] (Stanford HAI), [[Jack Clark]] (Anthropic).
+- **Research team contributors** — [[Loredana Fattorini]] (Stanford HAI Research Manager), [[Lapo Santarlasci]] (IMT School for Advanced Studies Lucca), [[Nestor Maslej]] (continuing contributor after handing off the EiC role).
+
+Additional named co-authors on the 2026 edition (single-source mentions, deferred per [§Lifecycle "Author-entity promotion"](../../CLAUDE.md#author-entity-promotion)): Juan Pava, Russ Altman, Carla Brodley, Virginia Dignum, Vipin Kumar, James Landay, Elham Tabassi, Toby Walsh, Dan Weld.
+
 ## Related in this wiki
 
 - [[AI Index]] — entity; updated to reflect 9th edition leadership and chapters
 - [[Stanford HAI]] — publisher
 - [[2026-04-28-ai-index-report-2025]] — prior (8th) edition; same pages now have 2026 updates
-- [[Sha Sajadieh]] — new Editor-in-Chief
-- [[Yolanda Gil]] — new chair
-- [[Raymond Perrault]] — co-chair (was chair)
-- [[Nestor Maslej]] — 2025 EiC; remains a contributor
 - [[Schmidt Sciences]] — new analytics/research partner
 - [[generative-ai]] — 53% population adoption; $172B U.S. consumer value; $285.9B U.S. private investment
 - [[foundation-models]] — 91.18% industry; 17.1M H100-equivalents; OLMo 3.1 Think 32B vs Grok 4

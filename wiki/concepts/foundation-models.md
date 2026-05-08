@@ -3,8 +3,8 @@ type: concept
 aliases: ["foundation model", "foundation models", "FM", "frontier model", "frontier models"]
 tags: [foundation-models, generative-ai, ai-research]
 confidence: 0.85
-last_confirmed: "2026-05-07"
-source_count: 6
+last_confirmed: "2026-05-08"
+source_count: 7
 ---
 
 # Foundation Models
@@ -83,7 +83,7 @@ The framing has three implications worth flagging:
 
 1. **The CDN analogy** is sharper than prior wiki framings (database, library, API). It captures the *speed* of substitution: you do not architect a multi-quarter CDN selection process; you keep your stack CDN-agnostic and switch when the price/performance gradient justifies it.
 2. **Layer-4-swappable architectures are now the practitioner default.** Kokane's harness diagram explicitly labels the model layer as "swappable backends" — Azure OpenAI/GPT-5, Claude (Anthropic), Gemini/Llama/Ollama, AWS Bedrock — selected at runtime. This is consistent with the open-weight performance gap closing trend documented above (1.7% on Chatbot Arena by Feb 2025).
-3. **Where competitive advantage moves**: from model selection to the **harness layer** (memory architecture, quality contracts, learned per-customer overrides, telemetry). The "rent vs own" aphorism: *"The model is what you rent. The harness is what you own."* See [[agent-harness]] for the full treatment.
+3. **Where competitive advantage moves**: from model selection to the **harness layer** (memory architecture, quality contracts, learned per-customer overrides, telemetry). The "rent vs own" aphorism: *"The model is what you rent. The harness is what you own."* See [[agent-harness]] for the full treatment. As of [[2026-05-04-rethinking-agents-harness-is-all-you-need|May 2026]] this framing now has its first **empirical anchor**: an optimised harness from Khattab et al. (DSPy team) **transferred across five different foundation models** without re-optimisation, lifting all of them — turning *"plan for swap"* from a prudential design hint into a measured property of the harness layer.
 
 **Caveat against over-commoditization narrative**: [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]] documented that Claude Sonnet 4.5's "context anxiety" failure mode was *absent* on Opus 4.5 — same family, different reliability. Within-family variation can be large enough that the "models converging" framing needs nuance: the *frontier* converges in benchmark performance, but *production-relevant reliability characteristics* (long-horizon stability, refusal behaviour, cost/latency curves) can vary substantially even between sibling models. The "plan for swap, not for marriage" prescription survives the caveat — but harness designers should expect to discover model-specific quirks at production scale and budget for them.
 

@@ -12,7 +12,7 @@ This is **not** a software project. It is a personal **LLM wiki** repository fol
 
 The wiki is instantiated. As of v0.2 the repo contains:
 
-- `raw/` — source material under `articles/`, `assets/`, `books/`, `images/`, `lectures/`, `papers/`, `reports/`. Immutable.
+- `raw/` — source material under `articles/`, `assets/`, `books/`, `images/`, `lectures/`, `papers/`, `reports/`, `videos/`. Immutable.
 - `wiki/` — `sources/`, `entities/`, `concepts/`, `threads/`, `syntheses/` plus the catalogues `index.md` and `log.md`. Wikilinks-only cross-refs.
 - Page-type frontmatter: `type: source | entity | concept | thread | synthesis`; `kind:` discriminator on entities and sources.
 - Log entries: `## [YYYY-MM-DD] <op> | <title>` where `<op>` ∈ `ingest | query | lint | synthesize | refactor | bulk-refactor`.
@@ -61,6 +61,37 @@ Report findings; let the user decide what to act on.
 ## Verifying sources before ingest
 
 Filenames lie, samples masquerade as full sources, and PDFs get truncated. **Before treating any raw source as authoritative, run these pre-flight checks. Surface mismatches to the user *before* writing wiki pages — bad source data corrupts the wiki and is hard to remove cleanly later.**
+
+### Pre-flight check (videos): rename the raw file before reading further
+
+Video transcripts arrive in `raw/videos/` with non-descriptive filenames (e.g. `video1.md`). The first four lines of the file carry the human-readable identity:
+
+```
+title: <video title>
+author: <channel or creator name>
+url: <source URL>
+date published: <YYYY-mon-DD or YYYY-MM-DD>
+```
+
+**Before treating the file as a source for ingest:**
+
+1. Read only the first ~6 lines to extract `title:`, `author:`, `url:`, and `date published:`. The four-line metadata block is mandatory; if any line is missing or empty, stop and ask the user.
+2. Slugify the title to a filesystem-safe form: lowercase, ASCII, words joined by `-`, drop punctuation. Example: `Rethinking Agents - Harness is All you Need` → `rethinking-agents-harness-is-all-you-need.md`.
+3. Rename the raw file in place (`mv raw/videos/video1.md raw/videos/<slug>.md`; use `git mv` once the file is tracked). **The non-descriptive name does not survive into the repo's history-of-record beyond this rename commit.**
+4. The source URL goes onto the wiki source page as a top-level frontmatter field: `url: "<youtube-or-other url>"`.
+5. The wiki source page filename uses `date published` as its date prefix: `wiki/sources/<YYYY-MM-DD>-<slug>.md`. Normalise month-name forms (`2026-may-04`) to ISO (`2026-05-04`) for the filename and the `date_published:` frontmatter.
+6. The raw `author:` line is the canonical attribution. For YouTube videos this is typically the **channel name**; presenter name, when known, can be added later as a body sentence ("Presented by ..."). Use the raw `author:` value verbatim in the source page's `author:` array.
+7. Then proceed with Checks 1–3 below (Scope / Identity / Honest scoping) adapted as: *scope* = full transcript? *identity* = does the title at top match what the transcript actually delivers? *honest scoping* = state runtime in mm:ss.
+
+Source-page conventions specific to videos:
+
+- `kind: video`
+- `length: "~MM:SS minutes (transcript ~N lines)"` — duration first, line count parenthetical.
+- `raw: "../../raw/videos/<slug>.md"` — points to the renamed file.
+- `url:` is mandatory (videos are first-class web sources; the file we hold is just a transcript snapshot).
+- `date_published:` taken from the raw file's `date published:` line (ISO-normalised).
+- `author:` taken verbatim from the raw file's `author:` line (single-element array; channel name).
+- **No separate `channel:` field** — the convention is `author = channel` for videos. If a presenter ≠ channel ever needs separate tracking, do that as a body sentence, not a new frontmatter field.
 
 ### Check 1 — Scope: is this the whole source?
 
@@ -182,6 +213,22 @@ Empty placeholder text is acceptable on early pages; the section's presence is m
 ### Tier vocabulary
 
 The pipeline `raw/` → `wiki/sources/` → `wiki/concepts/` and `wiki/entities/` → `CLAUDE.md` corresponds to four implicit memory tiers from `llm-wiki-v2.md`: working (raw observations), episodic (per-source summaries), semantic (cross-session facts), procedural (workflow patterns encoded in this schema). The wiki does not maintain separate storage for each tier — directories already serve that purpose. Promotion happens when a recurring observation across multiple sources stabilizes into a concept page, or when a recurring lint pattern becomes a CLAUDE.md rule.
+
+### Author-entity promotion
+
+When ingesting a source, every named author goes into the source page's `author:` frontmatter array. Whether to also create an entity page for each author follows a **second-source promotion rule**:
+
+- **First source**: list the author in `author:`. In the source page's "Linked entities and concepts" section, list any not-yet-promoted authors under "**Dangling** (single-source mention, deferred): ...". Do **not** create an entity page yet.
+- **Second source citing the same author**: create an entity page on that ingest, and update the first source's "Dangling" line accordingly. Treat this as a normal cross-cutting touch (per [§Working principles](#working-principles)).
+- **Aliases**: if the same person's surface form varies across sources (e.g. `Erik Brynjolfsson` / `Brynjolfsson`, or filesystem-canonical diacritic strips like `Jesper B. Sorensen.md` for `Jesper B. Sørensen`), record every form in the entity page's `aliases:` so the audit treats them as equivalent.
+
+The convention exists to reduce sparse single-mention entity pages while ensuring **recurring** authors get tracked. It is enforceable — the silent-skip failure mode (an author named on multiple sources but never given a page because each ingest deferred independently) is auditable via [`scripts/lint-dangling-authors.mjs`](scripts/lint-dangling-authors.mjs):
+
+```bash
+node scripts/lint-dangling-authors.mjs
+```
+
+The script walks `wiki/sources/` and `wiki/entities/`, reports any name in `author:` on ≥2 source pages without a matching entity (canonical filename or alias), and exits non-zero when dangling authors are found. Run after every ingest that adds source pages, or periodically as a corpus health check. The convention only governs **`author:` frontmatter**; people referenced incidentally in source bodies are out of scope.
 
 ## Graph
 

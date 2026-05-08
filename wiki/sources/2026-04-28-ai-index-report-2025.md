@@ -115,9 +115,22 @@ The non-obvious story: the **data-commons shrinkage** (5–7% → 20–33% restr
 
 The other unexamined-in-the-report assumption I want to flag: **the equalizing effect studies are all on tasks where AI augments existing human work**. Whether the equalizing effect persists when AI restructures the *task itself* (e.g., agent workflows replacing entire workstreams) is an open question that 2024 data can't yet answer.
 
+## Authorship and steering
+
+The full author list is recorded in the source frontmatter and the citation block below. Promoted-to-entity contributors with steering or research-management roles on this edition:
+
+- **Lead author** — [[Nestor Maslej]] (then-EiC of the AI Index).
+- **Co-chairs of the Steering Committee** — [[Raymond Perrault]] (chair, SRI International) and [[Yolanda Gil]] (chair-elect, USC ISI).
+- **Steering Committee members** — [[Erik Brynjolfsson]] (Stanford Digital Economy Lab), [[James Manyika]] (Google / UN High-Level Advisory Body on AI), [[Yoav Shoham]] (Stanford CS / AI21 Labs), [[Russell Wald]] (Stanford HAI), [[Terah Lyons]] (Partnership on AI), [[Juan Carlos Niebles]] (Salesforce / Stanford), [[Vanessa Parli]] (Stanford HAI Director of Research Programs).
+- **Research team contributors** — [[Loredana Fattorini]] (Stanford HAI Research Manager), [[Lapo Santarlasci]] (IMT School for Advanced Studies Lucca).
+
+Additional named co-authors on the 2025 edition (single-source mentions, deferred per [§Lifecycle "Author-entity promotion"](../../CLAUDE.md#author-entity-promotion)): Njenga Kariuki, Emily Capstick, Anka Reuel, John Etchemendy, Katrina Ligett, Tobi Walsh, Armin Hamrah, Julia Betts Lotufo, Alexandra Rome, Andrew Shi, Sukrut Oak.
+
 ## Linked entities and concepts
 
-**Entities:** [[Stanford HAI]], [[AI Index]], [[Nestor Maslej]]. Mentioned but not yet promoted to standalone pages: [[Erik Brynjolfsson]], [[Yolanda Gil]], [[Raymond Perrault]], [[James Manyika]], [[McKinsey & Company]], [[International Federation of Robotics]], [[Center for Research on Foundation Models]], [[Epoch AI]], [[Lightcast]], [[Quid]], [[OpenAI]], [[Anthropic]], [[Google DeepMind]], [[Microsoft]], [[Meta]], [[Mistral AI]], [[xAI]], [[NVIDIA]], [[Databricks]], [[Salesforce]], [[Perplexity]], [[Cohere]], [[Figure AI]], [[Safe Superintelligence]].
+**Entities (promoted):** [[Stanford HAI]], [[AI Index]], [[Nestor Maslej]], [[Yolanda Gil]], [[Raymond Perrault]], [[Erik Brynjolfsson]], [[James Manyika]], [[Yoav Shoham]], [[Juan Carlos Niebles]], [[Russell Wald]], [[Vanessa Parli]], [[Terah Lyons]], [[Loredana Fattorini]], [[Lapo Santarlasci]], [[McKinsey & Company]], [[OpenAI]], [[Anthropic]].
+
+**Mentioned but not yet promoted to standalone pages:** International Federation of Robotics, Center for Research on Foundation Models, Epoch AI, Lightcast, Quid, Google DeepMind, Microsoft, Meta, Mistral AI, xAI, NVIDIA, Databricks, Salesforce, Perplexity, Cohere, Figure AI, Safe Superintelligence.
 
 **Concepts:** [[enterprise-ai-adoption]], [[responsible-ai]], [[generative-ai]], [[foundation-models]], [[ai-benchmarks]].
 

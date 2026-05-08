@@ -1171,3 +1171,114 @@ Refreshed [[syntheses/organizational-frameworks-for-ai-adoption]] (originally fi
 **Files touched (3)**: [[syntheses/organizational-frameworks-for-ai-adoption]] (substantial expansion, ~150 line additions across 9 sections); `wiki/log.md` (this entry); the touched-source [[enterprise-ai-adoption]] is *not* updated by this refresh — the synthesis adds content, the concept page already reflects the 10 lenses.
 
 **Cross-source convergence worth flagging at synthesis level**: the **"compounding cycle"** is now the wiki's strongest concept-level cross-source agreement. Kiron-Schrage 2026 (organizational level: verification → evaluation → learning capture) and Chatterjee 2026 (runtime level: Compounding telemetry → harness adjustments → workspace overrides) describe operationally identical machinery from different practitioner communities. Both anchor onto the same architectural commitment ([[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]]) and the same empirical foundation ([[2026-05-07-ransbotham-augmented-learners|Ransbotham et al. 2024]]). When 4 sources from 3 vantages converge on the same operational mechanism, the construct is robust enough to be load-bearing for the synthesis.
+
+## [2026-05-08] ingest | Cheung, Ippolito, Secchi — *Agents CLI in Agent Platform: create to production in one CLI* (Google Developers Blog, Apr 2026)
+
+Ingested [[2026-04-22-cheung-ippolito-secchi-google-agents-cli]] — Google Developers Blog announcement (22 April 2026) of the **Agents CLI in Agent Platform**: a single CLI bundling the full **Agent Development Lifecycle (ADLC)** on Google Cloud (scaffold → evaluate → deploy → publish → observe). Three integrated artifacts: the `google-agents-cli` package, an Agents CLI Skills bundle injected into AI coding agents, and opinionated project templates. Two-mode design — **Agent Mode** (skills-driven by Gemini CLI / Claude Code / Cursor) and **Human Mode** (deterministic terminal CLI). Seven specialized skills (Workflow / ADK Code / Scaffold / Evaluation / Deployment / Publish / Observability) and a 9-stage ADLC wheel.
+
+**Source page also embeds the three article images** (extracted into `raw/images/`): `fragmented_gcp_1.original.png` (the nine-domain fragmented stack), `agents_cli_skills.original.png` (the seven-skills grid), `agents_cli_lifecycle.original.png` (the ADLC wheel).
+
+**Files touched (6):**
+
+1. **NEW** [[2026-04-22-cheung-ippolito-secchi-google-agents-cli]] — full source page.
+2. **NEW** [[Google]] — entity page (organization). Covers Google as parent of [[Google Research]] and **Google Cloud / Google Developers**, and as ADK / Agent Platform / Gemini Enterprise publisher. The [[Google]] entity was previously absent — only [[Google Research]] existed — so this fills a real gap (Google was being referenced in body text without a page to link to).
+3. **NEW** [[agent-development-lifecycle]] — concept stub (single-source; confidence 0.70). The ADLC is a **process** construct (parallel to SDLC) where [[agent-harness]] is a **runtime** construct; the two overlap heavily but are not the same thing.
+4. **UPDATED** [[agent-harness]] — `source_count: 4 → 5`; `last_confirmed: 2026-05-07 → 2026-05-08`; `confidence: 0.80 → 0.85` (per [§Lifecycle](../CLAUDE.md#lifecycle), +0.05 for an additional supporting source). Added Google Agents CLI as the fifth row of the cross-source convergence table; updated the headline framing to call out two big-vendor productizations within two weeks; expanded the "Frameworks vs roll-your-own" open question to flag a possible *third tier* emerging — vendor-published lifecycle toolkits *over* harness frameworks.
+5. **UPDATED** [[index]] — added the new source at the top of Sources (chronologically earliest; 2026-04-22 < 2026-04-28); added [[Google]] entity entry between [[Glenn R. Carroll]] and [[Google Research]]; added [[agent-development-lifecycle]] concept entry; updated the [[agent-harness]] index line from "4 sources" to "5 sources" with the vendor-productization framing.
+6. **UPDATED** `wiki/log.md` (this entry).
+
+**Cross-source positioning**: this article is the Google-side companion to [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic's Managed Agents post]] (8 April 2026) — same fortnight, both vendors productizing the harness/runtime layer, different rhetorical registers (engineering retrospective vs product announcement) but heavily overlapping technical territory. With Microsoft Agent Framework v1.0 named in [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane]], **three of the major-lab vendors** are now in the wiki shipping productized harness/runtime infrastructure. The interpretive question — is this a market-defining moment? — belongs in [[agent-harness]] and any future synthesis page, not in the source page (cross-source neutrality rule).
+
+**Authors deferred as dangling**: per the convention used for [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands]] (Lance Martin, Gabe Cemaj, Michael Cohen — three Anthropic engineers, not given dedicated entity pages on first ingest), the three Google authors (Ivan Cheung, Pier Paolo Ippolito, Elia Secchi) are listed in the source frontmatter but not given individual entity pages. Promote on second-source coverage.
+
+**Open question for the next ingest**: ADK has now been mentioned in three sources (Kokane / Chatterjee implicit / Cheung et al. explicit) but is treated as a brand mention on the [[Google]] entity page rather than its own concept or product entity. If a primary ADK technical-deep-dive lands, it justifies a dedicated page. The wiki has not yet ingested any Microsoft Agent Framework primary, despite it being named alongside ADK; that's another candidate gap.
+
+## [2026-05-08] refactor | Codify "Author-entity promotion" convention; add audit script; backfill 9 dangling AI Index authors
+
+Two-part schema-and-corpus refactor closing the silent-skip failure mode in the dangling-author convention.
+
+**Schema codification (CLAUDE.md):**
+
+- New sub-section [§Lifecycle "Author-entity promotion"](../CLAUDE.md#author-entity-promotion). Documents the second-source promotion rule (first source = list in `author:` frontmatter and add to source page's "Dangling" line; second source = create entity page on that ingest). Documents the alias handling for surface-form variation and the audit command.
+
+**Audit script (NEW):**
+
+- [`scripts/lint-dangling-authors.mjs`](../scripts/lint-dangling-authors.mjs) — read-only walker over `wiki/sources/*.md` and `wiki/entities/*.md`. Reports any name in `author:` on ≥2 source pages without a matching entity (canonical filename or alias). Exits non-zero when dangling authors are found. Run: `node scripts/lint-dangling-authors.mjs`. First run found **9 silent-skip cases**, all AI Index 2025 + 2026 co-authors who had been in `author:` on both editions but never promoted because there was no enforcement on the convention.
+
+**Backfill (NEW entity pages, 9):**
+
+Heavy backfill — each entity page carries affiliation, role, prior work, AI Index involvement (chair / steering committee / research team), and `## Appears in this wiki via` block linking both AI Index editions. Sources verified via WebSearch on stanford.edu / hai.stanford.edu / linkedin / wikipedia / company sites; not training-data fabrications.
+
+| Entity | Primary affiliation | AI Index role |
+| ------ | ------------------- | ------------- |
+| [[James Manyika]] | Google–Alphabet (SVP Research, Labs, Technology & Society); UN AI High-Level Advisory Body co-chair | Steering Committee |
+| [[Juan Carlos Niebles]] | Salesforce Research (Director); Stanford CS Adjunct; Stanford Vision and Learning Lab co-Director | Steering Committee |
+| [[Lapo Santarlasci]] | IMT School for Advanced Studies Lucca (Economics PhD researcher) | 2025 + 2026 co-author (research team) |
+| [[Loredana Fattorini]] | Stanford HAI Research Manager; Global AI Vibrancy Tool co-author | Spearheads the Index in collaboration with the AI Index Lead |
+| [[Raymond Perrault]] | SRI International (Distinguished Computer Scientist Emeritus); CALO/Siri-lineage NLP researcher | Steering Committee chair (2025) and co-chair (2026) |
+| [[Russell Wald]] | Stanford HAI Executive Director (since 2024) | Steering Committee |
+| [[Terah Lyons]] | Partnership on AI (founding ED); former White House OSTP Policy Advisor under Obama | Steering Committee |
+| [[Vanessa Parli]] | Stanford HAI Director of Research Programs | Steering Committee |
+| [[Yoav Shoham]] | Stanford CS Professor Emeritus; AI21 Labs co-founder & co-CEO; Allen Newell Award (2012); IJCAI Research Excellence Award (2019) | Steering Committee |
+
+**Source-page updates (2 files):**
+
+- [[2026-04-28-ai-index-report-2025]] — added new `## Authorship and steering` subsection that wikilinks the steering committee and the research-team contributors; cleaned up the "Linked entities and concepts" line to move newly-promoted names into the proper "Entities" list (was previously listed under "Mentioned but not yet promoted to standalone pages"). Single-source author names remain deferred there.
+- [[2026-04-30-ai-index-report-2026]] — added the same `## Authorship and steering` subsection; the prior `## Related in this wiki` section's role-pointer bullets for [[Yolanda Gil]] / [[Raymond Perrault]] / [[Sha Sajadieh]] / [[Nestor Maslej]] are now subsumed by the steering subsection (those bullets removed to avoid duplication).
+
+The body-wikilink rule (v0.3 §Graph) now resolves correctly — every newly-promoted entity has at least one body wikilink in both AI Index source pages, so each entity's `## Mentioned in` dataview block will populate properly via Quartz `file.outlinks`.
+
+**Files touched (13):**
+
+- 9 NEW entity pages (above).
+- NEW [`scripts/lint-dangling-authors.mjs`](../scripts/lint-dangling-authors.mjs).
+- UPDATED [`CLAUDE.md`](../CLAUDE.md) — new §Lifecycle "Author-entity promotion" sub-section.
+- UPDATED [[2026-04-28-ai-index-report-2025]] — Authorship subsection + Linked-entities cleanup.
+- UPDATED [[2026-04-30-ai-index-report-2026]] — Authorship subsection.
+- UPDATED [[index]] — 9 new entity entries inserted at alphabetical positions.
+- UPDATED `wiki/log.md` (this entry).
+
+**Verification**: re-ran `node scripts/lint-dangling-authors.mjs` post-backfill (exit 0 expected); 9 → 0 dangling, 6 → 15 multi-source-promoted, 127 single-source-deferred unchanged.
+
+**Out-of-scope but flagged**: [[Anthropic]] entity page contains a body wikilink to `[[Jack Clark]]` ("co-founder; serves on the AI Index steering committee") which is currently a broken link — Jack Clark is a single-source author on the 2026 AI Index and stays correctly deferred per the convention, but the existing wikilink on the Anthropic page predates the convention and reads as a broken target. Two clean fixes: (a) drop the wikilink and keep him as plain text on the Anthropic page, or (b) treat the Anthropic page's wikilink as a *second* effective mention (employer + AI Index author) and promote him on those grounds. Deferred for the next pass.
+
+## [2026-05-08] refactor | Promote Jack Clark to entity page (cross-page-presence judgment)
+
+Follow-up to the earlier "out-of-scope but flagged" note. Per user direction, treated existing [[Anthropic]] and [[AI Index]] entity-page mentions of Jack Clark as effective second-source presence — sufficient to justify promotion despite his appearing in `author:` on only one source ([[2026-04-30-ai-index-report-2026]]) and as an acknowledgement on a second ([[2026-05-07-anthropic-economic-index-5-learning-curves]]).
+
+**Files touched (4):**
+
+- **NEW** [[Jack Clark]] — co-founder of Anthropic; Head of Public Benefit (leads the new Anthropic Institute) since 2026; previously Anthropic Head of Policy and OpenAI Policy Director; technical journalist before that. Founding member of the AI Index (2017–2024); inaugural NAIAC member (2021–2024); OECD AI co-chair. Author of *Import AI*. Confidence 0.75; source_count 2 (AI Index 2026 + AEI 5th report acknowledgement). Web research via WebSearch on anthropic.com / wikipedia / cset.georgetown.edu / itif.org.
+- **UPDATED** [[2026-05-07-anthropic-economic-index-5-learning-curves]] — Jack Clark removed from "Dangling" list and promoted into the "Entities" list, with a one-line rationale citing the cross-page-presence basis for promotion (so future readers see the judgment call, not just the result).
+- **UPDATED** [[index]] — added [[Jack Clark]] entry between [[Ivey Business School]] and [[Jacqueline N. Lane]].
+- **UPDATED** `wiki/log.md` (this entry).
+
+**Convention NOT extended.** This promotion is a one-off judgment call, *not* a rule change. The CLAUDE.md §Lifecycle "Author-entity promotion" convention still says "≥2 source pages with the name in `author:`" — it does **not** auto-promote on entity-page or acknowledgement-only mentions. The audit ([`scripts/lint-dangling-authors.mjs`](../scripts/lint-dangling-authors.mjs)) was not modified and continues to track only the strict `author:`-frontmatter rule. If similar cross-page-presence cases recur often enough that the heuristic feels load-bearing, the schema can be revisited; for now we treat them as case-by-case.
+
+**Side benefit**: the body wikilinks on [[Anthropic]] and [[AI Index]] (which were broken targets before this promotion) now resolve. Quartz's broken-link surface drops by two.
+
+## [2026-05-08] ingest | Rethinking Agents — Harness is All you Need (Prompt Engineering YouTube, 4 May 2026)
+
+**First video ingest** — also the first ingest under the new `raw/videos/` convention. Two outputs from this operation:
+
+1. **Schema update (CLAUDE.md)**: extended `raw/` collection list to include `videos/`; added a new "Pre-flight check (videos): rename the raw file before reading further" subsection under §Verifying sources before ingest. The convention: video transcripts arrive in `raw/videos/` with non-descriptive filenames + a 4-line metadata block (`title:`, `author:`, `url:`, `date published:`); first action is to slugify the title and rename the raw file (`mv` while untracked, `git mv` once tracked). Source page filename uses the publish date prefix; `kind: video`; `length:` in mm:ss; `author:` taken verbatim from the raw file (channel name for YouTube). User has committed to including all four metadata lines on every future transcript — full automation from raw header.
+
+2. **First ingest (this entry)**: `raw/videos/video1.md` → `raw/videos/rethinking-agents-harness-is-all-you-need.md` per the new pre-flight rule. Video introduces the wiki's first **empirical anchor** for [[agent-harness]] — a synthesis of two academic papers: **Pan et al.** (Tsinghua, March 2026) on natural-language harness representation (SWE-bench verified ablations: verifiers actively hurt, self-evolution helps; OS-Symphony NL-migration **30.4 → 47.2%**) and **Khattab et al.** (DSPy team) on Meta-Harness auto-optimisation (Terminal Bench 2 **76.4%**, +7.7 above SOTA on 215-class text classification, **transferable across 5 models**, raw-traces-irreplaceable: 50 → 34% if removed, 34.9% if summarised). Names Anthropic's **subtraction principle** (Manus 5× rewrites in 6 months; Warel −80% tools / +performance) as a discipline-counter-prescription to the additive build-everything instinct.
+
+**Files touched (8):**
+
+- **UPDATED** [`CLAUDE.md`](../CLAUDE.md) — two surgical inserts (raw collection list + new video pre-flight subsection).
+- **RENAMED** [`raw/videos/video1.md`](../raw/videos/video1.md) → `raw/videos/rethinking-agents-harness-is-all-you-need.md`.
+- **NEW** [[2026-05-04-rethinking-agents-harness-is-all-you-need]] — source page, `kind: video`, confidence 0.70 (single supporting source for the new claims; capped at 0.75 due to opinion format + third-hand on the underlying papers).
+- **UPDATED** [[agent-harness]] — `source_count: 5 → 6`; `last_confirmed: 2026-05-08`; new "The empirical anchor" sub-subsection under Key claims; new convergence-table row; new "model-coupled vs model-portable" debate bullet citing the transferability finding; expanded Open questions (5 new bullets covering primary-source ingest of Pan/Khattab papers, the raw-traces-vs-summaries finding, verifier-hurt mechanism, and Manus/Warel as candidate entity pages).
+- **UPDATED** [[ai-agents]] — `source_count: 8 → 9`; `last_confirmed → 2026-05-08`; intro sentence now references the harness empirical anchor.
+- **UPDATED** [[foundation-models]] — `source_count: 6 → 7`; `last_confirmed → 2026-05-08`; rented-model section gains the transferable-harness sentence (Khattab's harness lifted 5 different models without re-tuning — empirical support for "plan for swap").
+- **UPDATED** [[index]] — new source line under Sources catalogue; `agent-harness` concept entry bumped 5 → 6 sources with empirical-anchor framing.
+- **UPDATED** `wiki/log.md` (this entry).
+
+**Dangling (single-source mention, deferred per CLAUDE.md author-entity promotion rule):** *Prompt Engineering* (channel), *Pan et al.*, *Omar Khattab*, *Manus*, *Warel*, *DSPy*. Promote on second-source mention.
+
+**Open questions surfaced for future ingest:**
+- Primary-source ingest of Pan et al. (Tsinghua, March 2026) — would substantiate the SWE-bench / OS-Symphony deltas.
+- Primary-source ingest of Khattab et al. (Meta-Harness) — would substantiate Terminal Bench 2 76.4% and the transferability claim.
+- Whether *"raw traces > summaries"* generalises beyond auto-optimisation to any compounding-loop telemetry — direct implication for [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee's]] Compounding layer if it does.

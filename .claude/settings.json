@@ -26,7 +26,14 @@
       "Bash(node /Users/witoldtenhove/Projects/ai-wiki/scripts/lint-page.mjs)",
       "Bash(node /Users/witoldtenhove/Projects/ai-wiki/scripts/session-end.mjs)",
       "Bash(echo \"exit: $?\")",
-      "Bash(echo \"exit:$?\")"
+      "Bash(echo \"exit:$?\")",
+      "Bash(awk '/^## \\\\[2026-05-05\\\\] refactor \\\\| v0\\\\.4/,EOF' /Users/witoldtenhove/Projects/ai-wiki/wiki/log.md)",
+      "Bash(node scripts/lint-confidence.mjs)",
+      "Bash(node scripts/graph-export.mjs)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/pip list *)",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(node scripts/lint-dangling-authors.mjs)"
     ]
   },
   "hooks": {

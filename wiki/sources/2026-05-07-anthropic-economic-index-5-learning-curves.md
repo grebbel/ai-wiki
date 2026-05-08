@@ -193,7 +193,7 @@ This 5th-report is the wiki's first **longitudinal Anthropic Economic Index data
 
 ## Linked entities and concepts
 
-**Entities (this wiki):** [[Anthropic Economic Index]] (this is the 5th report; bumps `source_count`), [[Anthropic]] (publisher; bumps `source_count`). **Dangling** (single-source, deferred): Maxim Massenkoff, Eva Lyubich, Peter McCrory (lead authors), Ruth Appel, Ryan Heller (authors); [[Jack Clark]] is in the acknowledgements (already on AI Index 2026 Steering Committee per existing wiki content; would tip into entity territory if a 2nd source named him as primary).
+**Entities (this wiki):** [[Anthropic Economic Index]] (this is the 5th report; bumps `source_count`), [[Anthropic]] (publisher; bumps `source_count`), [[Jack Clark]] (named in the acknowledgements — promoted on cross-page presence: the [[Anthropic]] page lists him as co-founder and the [[AI Index]] page lists him as a Steering Committee member). **Dangling** (single-source, deferred): Maxim Massenkoff, Eva Lyubich, Peter McCrory (lead authors), Ruth Appel, Ryan Heller (authors).
 
 **Concepts:** [[automation-vs-augmentation]] (heavy enrichment — longitudinal Nov→Feb data), [[ai-employment-effects]] (heavy — tenure-success effect; skill-biased technological change framing), [[ai-deskilling]] / [[durable-skills]] (light — learning-by-doing mechanism), [[ai-agents]] (light — Claude Code agentic architecture as empirical signature), [[generative-ai]] / [[foundation-models]] (light — Claude Opus 4.5/4.6), [[enterprise-ai-adoption]] (light — coding workflow migration to API).
 

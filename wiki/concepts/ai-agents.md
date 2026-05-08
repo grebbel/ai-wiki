@@ -3,8 +3,8 @@ type: concept
 aliases: ["AI agent", "AI agents", "agentic AI", "autonomous agents", "agent", "agents"]
 tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
-last_confirmed: "2026-05-07"
-source_count: 8
+last_confirmed: "2026-05-08"
+source_count: 9
 relationships:
   - type: instance-of
     target: generative-ai
@@ -17,7 +17,7 @@ relationships:
 
 Software systems that **pursue complex goals autonomously**, with independent decision-making, planning, and adaptable execution in dynamic environments — typically built on top of [[foundation-models]] with tool-use, memory, and orchestration scaffolding. Agents are distinct from chatbots (which simulate conversation) and from multi-agent systems (which coordinate multiple agents).
 
-As of 2024–2025, agents have moved from research-grade demos to **early enterprise deployment**: 4 of the 6 sources in this wiki discuss them substantively, with growing convergence on a 3-stage progression and on the kinds of tasks where agents are economically viable today.
+As of 2024–2025, agents have moved from research-grade demos to **early enterprise deployment**, with growing convergence on a 3-stage progression and on the kinds of tasks where agents are economically viable today. By April–May 2026 the wiki's sources also converge on a **runtime-engineering** vantage: the [[agent-harness]] (the wrapper around the model) drives more performance variation than the model itself — see [[2026-05-04-rethinking-agents-harness-is-all-you-need|the empirical anchor]] showing same-model 6× variance and harness optimisations transferring across model families.
 
 ## Working definition
 
