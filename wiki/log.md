@@ -1421,3 +1421,37 @@ Plus: added `.env` and `.env.*` to `.gitignore` as a tiny separate task this ses
 - The **fully-automated-review threshold** — Fung names this as a model-capability-tracking moving target; *Daren Lannon*'s referenced session may already address it.
 - The **"roles are blurring" fairness** signal. Flagged but not answered. Could absorb into the wiki's [[ai-employment-effects]] cluster.
 - *Cowork* and *Code with Claude 2026* as candidate entity pages on second-source mention.
+
+## [2026-05-09] refactor | Enrich [[2026-05-08-running-an-ai-native-engineering-org]] with 12 presentation slides from raw/images/
+
+**Trigger:** user supplied 12 screenshots from Fiona Fung's slide deck (originally timestamped `Screenshot 2026-05-09 at 10.27.41.png` … `10.31.14.png`; renamed in this same session per user request to slide-titled slugs `raw/images/fung-slide-01-old-process-quietly-stops-working.png` … `fung-slide-12-pick-noisiest-workflow.png`). The slides crystallise Fung's argument in compacter form than the spoken version and contain several quotable framings absent from the transcript.
+
+**Net additions to the source page:**
+
+- New **Slide-deck visual canon** section walks through all 12 slides in talk order with full on-screen wording, screenshot file references, and one-line *slide-vs-transcript* notes per slide.
+- Augmented **three signals** key-claim with slide-derived **six-month adoption threshold** (*"If these don't shift in six months, adoption isn't working"*) and concrete signal-criteria (*"week-one engineers ship real code"*; *"queue depth stopped being a leading complaint"*).
+- Augmented **closing parable** key-claim with the slide-12 Monday-test diagnostic: *"if it only exists because engineering used to be expensive, it probably doesn't."*
+
+**Quotable framings that were slide-only (not in transcript):**
+
+- *"Cost of asking a 'dumb' question went to zero"* — onboarding (slide 2)
+- *"For most work it was theater"* — re: design docs (slide 3)
+- *"When things break in an AI-native flow, they break in new ways"* — verification (slide 3)
+- Two new "Claude handles" categories: *spec drift and missing tests*; *repeated patterns, bug-bounty triage* (slide 4)
+- *"Taste is scarce, typing is not"* — hiring (slide 5)
+- *"Subtly wrong is still wrong"* — deep systems expertise (slide 5)
+- *"I care what you choose to build and how you know it's right"* — slide 5 footer; explicitly names *spec-design taste* + *evaluation craft* as the two human-load-bearing capabilities
+- *"Humans still decide, they just aren't the first draft anymore"* — XFN-gap process (slide 6)
+- **Forcing function vs Room to adapt** as the canonical mandate-vs-adapt structure (slide 8)
+- Roles-blurring open question's answer-axis is *"feel confident about their changes"* (slide 11) — more actionable than the transcript's "feel productive"
+
+**Frontmatter updates:**
+
+- `length:` extended to *"~28:38 minutes (transcript ~163 lines + 12 presentation slides captured as screenshots)"*
+- New `slides:` field pointing at `raw/images/fung-slide-01-…-12-*.png` (12 substantive slides, slide-titled slugs)
+- `tags:` extended with `presentation-slides`
+- `confidence:` raised 0.75 → 0.80 (slides are the speaker's own canonical distillation; multiple framings sharpen claims that were rhetorical-only in the transcript)
+
+**Untouched:** existing key-claims sections retained verbatim where the transcript adds context (anecdotes, narrative connective tissue) the slides don't carry. The two layers complement: slide canon gives the speaker's chosen wording; key-claims gives the transcript's connective tissue and cross-source positioning. A short note at the top of "Key claims" tells readers slides win on canonical wording.
+
+**No changes** to other wiki pages — this is a single-source enrichment, no cross-cutting concept/entity touches needed.

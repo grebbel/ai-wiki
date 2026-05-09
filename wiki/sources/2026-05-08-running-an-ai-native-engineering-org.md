@@ -7,10 +7,11 @@ publisher: "Anthropic (Claude YouTube channel — Code with Claude 2026)"
 url: "https://www.youtube.com/watch?v=igO8iyca2_g"
 date_published: 2026-05-08
 date_ingested: 2026-05-09
-length: "~28:38 minutes (transcript ~163 lines)"
+length: "~28:38 minutes (transcript ~163 lines + 12 presentation slides captured as screenshots)"
 raw: "../../raw/videos/running-an-ai-native-engineering-org.md"
-tags: [agentic-engineering, claude-code, anthropic, code-review, dogfooding, jit-planning, claudify-everything, octopus-organization, process-pruning, fiona-fung, code-with-claude-2026]
-confidence: 0.75
+slides: "../../raw/images/fung-slide-01-…-12-*.png (12 substantive slides)"
+tags: [agentic-engineering, claude-code, anthropic, code-review, dogfooding, jit-planning, claudify-everything, octopus-organization, process-pruning, fiona-fung, code-with-claude-2026, presentation-slides]
+confidence: 0.80
 last_confirmed: "2026-05-09"
 ---
 
@@ -39,7 +40,182 @@ This source's structural value: it pairs Karpathy's [[agentic-engineering|*agent
 
 Full ~28:38 transcript (cleaned from auto-generated English captions; ASR fixes for product/people names; section headings inferred from topic shifts as the video itself has no YouTube chapters). 163 transcript lines.
 
+**Plus 12 presentation slides** captured as screenshots in `raw/images/fung-slide-01-…-12-*.png`. The slides crystallise Fung's argument in compacter form than the spoken version and add several quotable framings absent from the transcript ("Cost of asking a 'dumb' question went to zero"; "Taste is scarce, typing is not"; "If these don't shift in six months, adoption isn't working"; the Monday-test diagnostic). The Slide-deck visual canon section below walks through them in talk order.
+
+## Slide-deck visual canon
+
+The 12 substantive slides distil the talk into the speaker's chosen on-screen wording — by definition the most boiled-down version of each section. Listed below in talk order, with the screenshot reference (in `raw/images/`), the full slide content, and a one-line note on what the slide adds vs. the transcript.
+
+### Slide 1 — *Where the old process quietly stops working*
+
+`raw/images/fung-slide-01-old-process-quietly-stops-working.png`
+
+Five categories the AI-native shift has invalidated:
+
+| Category | What now matters |
+|---|---|
+| **Planning norms** | Engineering speed and throughput is now very different |
+| **Code ownership** | "Who wrote this" is a weirder question now |
+| **Code review** | New shape, new scale, new tools now available |
+| **Team make-up** | Roles are blurring, what skillsets now serve you? |
+| **Knowledge sharing** | Documentation no longer the source of truth |
+
+*Slide vs. transcript:* the slide title — *"quietly stops working"* — is the verbatim phrase from the transcript she calls out as a favourite. The five-category ordering matches the rest of the deck's section structure.
+
+### Slide 2 — *Five norms we rebuilt from the ground up*
+
+`raw/images/fung-slide-02-five-norms-rebuilt.png`
+
+| Norm | New shape |
+|---|---|
+| **Code review** | Human judgment on what actually needs it |
+| **Onboarding** | Cost of asking a "dumb" question went to zero |
+| **Planning** | Less upfront. More prototype. |
+| **Hiring** | Creativity & judgment over raw output |
+| **Org shape** | Flatter org. Every manager an IC first. |
+
+*Slide vs. transcript:* **"Cost of asking a 'dumb' question went to zero"** is the slide's framing for onboarding — a sharp consequence of having Claude available that the transcript only gestures at. Worth quoting standalone.
+
+### Slide 3 — *One thing we reduced, one thing we're doubling down on*
+
+`raw/images/fung-slide-03-design-docs-out-verification-up.png`
+
+Two-card layout (light card / dark card):
+
+- **Reduced — *The "design doc before any code" ritual.*** *"For most work it was theater. Replaced with prototype-first. The doc, if it needs to exist, comes after."*
+- **Doubling down — *Verification.*** *"When things break in an AI-native flow, they break in new ways. The only way to scale and ensure quality is to keep automating verification to 'shift left.'"*
+
+*Slide vs. transcript:* the slide adds two crisp framings the transcript doesn't have verbatim — **"For most work it was theater"** (design docs) and **"When things break in an AI-native flow, they break in new ways"** (verification). The "break in new ways" line is the canonical reason verification has to scale ahead of throughput.
+
+### Slide 4 — *Human review where it matters*
+
+`raw/images/fung-slide-04-human-review-where-it-matters.png`
+
+Two-column trust-distribution (light card / dark card):
+
+| Claude handles | I still want a human |
+|---|---|
+| Style and lint | Legal review |
+| Obvious bugs | Risk tolerance |
+| **Spec drift and missing tests** | Product sense and taste |
+| **Repeated patterns, bug-bounty triage** | Trust boundaries and security-sensitive code |
+
+*Slide vs. transcript:* the slide adds **two "Claude handles" categories** the transcript only summarised — *spec drift and missing tests* (operationally upstream of [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]]'s *Contracts* layer) and *repeated patterns, bug-bounty triage* (operationally a *Constraints*-layer pattern at fleet scale). Both deserve to be quoted directly when discussing the trust division of labour.
+
+### Slide 5 — *Two profiles I now index on*
+
+`raw/images/fung-slide-05-two-profiles-i-index-on.png`
+
+Two-card layout:
+
+- **Profile 01 — Creative builders with product sense.** *"Can spot the right thing to build and prototype it fast. **Taste is scarce, typing is not.**"*
+- **Profile 02 — Deep systems experts for the hard parts.** *"The places where 'trust but verify' matters most. **Subtly wrong is still wrong.**"*
+
+Footer: *"What I index on less: raw output. I don't care how many lines you can write per hour. **I care what you choose to build and how you know it's right.**"*
+
+*Slide vs. transcript:* three quotable lines here — **"Taste is scarce, typing is not"** (the hiring one-liner of the year), **"Subtly wrong is still wrong"** (the subtle-bugs argument for systems expertise), and **"I care what you choose to build and how you know it's right"** (which explicitly names *spec-design taste* + *evaluation craft* as the two human-load-bearing capabilities).
+
+### Slide 6 — *Filling cross-functional gaps with Claude*
+
+`raw/images/fung-slide-06-filling-xfn-gaps-with-claude.png`
+
+Before/After process diagram:
+
+| | Step 1 | Step 2 | Step 3 | Step 4 |
+|---|---|---|---|---|
+| **Before** | Eng ships bug fix | Wait for content designer | Ship mediocre copy, or wait days | — |
+| **After** | Eng ships bug fix | Claude drafts copy | Human decides | Ship same day |
+
+Caption: *"The XFN gap stops being a bottleneck and becomes a collaborator. **Humans still decide, they just aren't the first draft anymore.**"*
+
+*Slide vs. transcript:* the **Before/After process visualisation** is its own contribution — concretises the "roles blurring" abstraction into a specific four-step workflow. **"Humans still decide, they just aren't the first draft anymore"** is the cleanest framing in the deck for the human-in-the-loop pattern under role-blurring.
+
+### Slide 7 — *No 10:1 ratio here. Every manager started as an IC.*
+
+`raw/images/fung-slide-07-no-10-to-1-ratio-manager-as-ic.png`
+
+Org-shape diagram (Claude Code team):
+
+- Centre: **Manager (also an IC)** — orange-circled
+- Around it: row of ICs (grey circles)
+- Footer label: *"Running an AI-native org"*
+
+Side panel — *Leaders keep some individual work*:
+- *"You can't coach scrappiness if you're not in the code yourself"*
+- *"If I'm asking engineers to prototype fast and throw things away, I need to be doing that too"*
+- *"Plus, this is the best way for me to get hands-on experience with our products"*
+
+*Slide vs. transcript:* the visual emphasises the **break with the standard 10:1 IC-to-manager ratio**. The three bullets are crisper rationales than the transcript provides for "every manager starts as IC."
+
+### Slide 8 — *Align on core team principles*
+
+`raw/images/fung-slide-08-align-on-core-team-principles.png`
+
+Two-column "must-do vs adapt" structure (light card / dark card):
+
+| The forcing function (*"Align with teams on 'Must dos'"*) | The room to adapt (*"Emergent from teams"*) |
+|---|---|
+| Every engineer uses Claude Code | How Claude shows up in each team's triage |
+| "Claudify everything you can" | Planning rituals, standups, on-call shape |
+| Explicit permission to kill old processes | Which workflows get Claudified first |
+
+*Slide vs. transcript:* the **"forcing function vs room to adapt"** two-column structure is sharper than the transcript's mandate-vs-enable description and worth holding as the canonical articulation. It's also a pattern other teams could adopt directly: name your three must-dos, leave everything else to pod agency.
+
+### Slide 9 — *Three things I'd prioritize*
+
+`raw/images/fung-slide-09-three-things-id-prioritize.png`
+
+Numbered cards (01/02/03):
+
+1. *We keep the team as flat as possible. Managers support pods of work, but we stay agile so people can shift to where the work is.*
+2. *If Claude can do it, Claude should. That frees us up for the harder work.*
+3. *People don't delete processes on their own. They pile new ones on top. Name the ones that can go.*
+
+*Slide vs. transcript:* the slide phrasing is cleaner; **"Name the ones that can go"** is more action-oriented than the transcript's "see what you should let go."
+
+### Slide 10 — *If these don't shift in six months, adoption isn't working*
+
+`raw/images/fung-slide-10-six-month-signals-threshold.png`
+
+Three-column signal dashboard with arrows:
+
+| Signal | Direction | Evidence |
+|---|---|---|
+| **Onboarding ramp time** | ↓ | *Materially faster than a year ago. **Week-one engineers ship real code now.*** |
+| **PR cycle time** | ↓ | *Shorter end-to-end. **Queue depth stopped being a leading complaint.*** |
+| **Claude-assisted commits** | ↑ | *Very high share of what ships. This is the default, not the exception.* |
+
+*Slide vs. transcript:* the **slide title is the concrete threshold the transcript doesn't state outright** — *"If these don't shift in six months, adoption isn't working."* That's a clean six-month checkpoint other teams can borrow directly. The two new framings — **"week-one engineers ship real code"** and **"queue depth stopped being a leading complaint"** — are concrete signal-criteria worth holding alongside the directional metrics.
+
+### Slide 11 — *Three questions I'm still working through*
+
+`raw/images/fung-slide-11-three-open-questions.png`
+
+Three-card open-questions panel:
+
+| Question | Why it's open |
+|---|---|
+| **Do you still need separate iOS and Android orgs?** | Engineers can now more easily flex against mobile platforms |
+| **How far do you push fully automated review?** | There's a line between "fast enough" and "we lost something important" |
+| **With roles blurring how do we ensure everyone equally productive?** | How to ensure all roles **feel confident about their changes** |
+
+*Slide vs. transcript:* the **roles-blurring question's answer-axis is "feel confident about their changes"** on the slide, not "feel productive" as the transcript phrases it. *Confidence-about-own-changes* is the more actionable framing — it points at verification tooling for non-traditional coders, not at a fairness measurement problem.
+
+### Slide 12 — *The one thing to do on Monday*
+
+`raw/images/fung-slide-12-pick-noisiest-workflow.png`
+
+Sage-coloured closing slide:
+
+> **Pick your noisiest workflow. Ask if it still earns its place.**
+>
+> *If it only exists because engineering used to be expensive, it probably doesn't. Start there with Claude Code. One thing at a time.*
+
+*Slide vs. transcript:* the slide gives the talk's parable a **single-test diagnostic** — *"if it only exists because engineering used to be expensive, it probably doesn't."* That's a much sharper Monday-morning question than the transcript's longer 50-person-meeting story, and worth landing as the canonical takeaway from the talk.
+
 ## Key claims, with quotes
+
+*The slide canon above carries the speaker's chosen on-screen wording for each section. The prose claims below extend the slides with transcript-only context (anecdotes, asides, narrative connective tissue) and integrate cross-source positioning. When in doubt about canonical wording — slides win.*
 
 ### The bottleneck shift
 
@@ -138,19 +314,25 @@ Combined with the pod-level high-agency for *how* to roll changes out, this is t
 2. **Claudify everything** — frees humans for the harder work.
 3. **Processes pile on** — work with the team to see what to let go.
 
-### The three signals to watch
+### The three signals to watch — with a six-month threshold
 
-Fung can't share absolute numbers but names three direction-of-travel metrics:
+Fung can't share absolute numbers but names three direction-of-travel metrics, and the **slide title states the threshold the transcript leaves implicit**: *"If these don't shift in six months, adoption isn't working."* (Slide 10.) That's a concrete checkpoint other teams can borrow.
 
-- **Onboarding ramp-up time has dramatically reduced.** How fast a new engineer / designer / PM is effective.
-- **PR cycle time shortening.** *"This one is interesting to double-click into, because it might actually help you identify a gap that's not just about lack of AI adoption — it's where the rest of the pipeline might be struggling to scale. As we put through so much more code, sometimes product infrastructure or CI can't keep up."*
-- **Claude-assisted commits going up.** *"For us, by default every commit is Claude-assisted. I don't think I've seen a non-Claude-assisted commit probably in the last four months."*
+- **Onboarding ramp-up time has dramatically reduced.** How fast a new engineer / designer / PM is effective. Slide phrasing: *"Materially faster than a year ago. **Week-one engineers ship real code now.**"*
+- **PR cycle time shortening.** *"This one is interesting to double-click into, because it might actually help you identify a gap that's not just about lack of AI adoption — it's where the rest of the pipeline might be struggling to scale. As we put through so much more code, sometimes product infrastructure or CI can't keep up."* Slide phrasing: *"**Queue depth stopped being a leading complaint.**"*
+- **Claude-assisted commits going up.** *"For us, by default every commit is Claude-assisted. I don't think I've seen a non-Claude-assisted commit probably in the last four months."* Slide phrasing: *"This is the default, not the exception."*
 
 ### Cancel-the-50-person-meeting anecdote
 
 > *"There was a team I was on where we used to have this weekly review. Very expensive — like 50 people in this large room. I noticed everybody was on their laptops, except for when it was their turn to give their status report, and then they'd pop their head up, say the status, and go back down. I'm like, this is a very expensive meeting. I just asked the simple question: why are we having it? And just that one question — everybody's like, 'yeah, it's true.' So we canceled it."*
 
 The closing parable — pick your noisiest workflow and ask whether it's still serving its intended purpose. Operationally it's the *resistance-as-data* posture from [[2026-05-07-carucci-resistance-as-data|Carucci 2026]] applied to one's own meetings.
+
+Slide 12 sharpens the parable into a **single-test diagnostic for Monday morning**:
+
+> ***Pick your noisiest workflow. Ask if it still earns its place.*** *If it only exists because engineering used to be expensive, it probably doesn't. Start there with Claude Code. One thing at a time.*
+
+The question *"does this exist only because engineering used to be expensive?"* is the most action-forwardable framing in the talk — a literal first-Monday-back exercise.
 
 ### Fung's open questions (not yet resolved)
 
