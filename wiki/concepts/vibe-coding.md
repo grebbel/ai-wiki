@@ -2,9 +2,9 @@
 type: concept
 aliases: ["vibe coding", "Vibe coding", "vibe-coding", "vibe-code", "v-coding"]
 tags: [vibe-coding, agentic-engineering, software-3.0, ai-agents, accessibility, hobbyist-coding, karpathy]
-confidence: 0.75
-last_confirmed: "2026-05-08"
-source_count: 1
+confidence: 0.80
+last_confirmed: "2026-05-09"
+source_count: 2
 relationships:
   - type: instance-of
     target: software-3.0

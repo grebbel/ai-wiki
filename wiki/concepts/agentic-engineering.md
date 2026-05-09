@@ -2,9 +2,9 @@
 type: concept
 aliases: ["agentic engineering", "Agentic Engineering", "agentic-engineering", "agent engineering"]
 tags: [agentic-engineering, vibe-coding, software-3.0, ai-agents, agent-harness, software-engineering, hiring, karpathy]
-confidence: 0.75
-last_confirmed: "2026-05-08"
-source_count: 1
+confidence: 0.80
+last_confirmed: "2026-05-09"
+source_count: 2
 relationships:
   - type: depends-on
     target: agent-harness
@@ -137,6 +137,7 @@ The distinction is not about *how much* AI is used — it's about *who owns what
 | [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands\|Anthropic Managed Agents]] | Brain / hands / session decomposition | The *architectural pattern* for shipping agentic-engineered systems as products |
 | [[2026-05-07-kiron-schrage-compound-benefits\|Kiron-Schrage 2026]] | Verification → evaluation → learning capture | The *organisation-level analogue* of the agentic engineer's day-to-day flywheel |
 | [[2026-05-07-ransbotham-augmented-learners\|Ransbotham et al. 2024]] | Augmented Learners 2×2 | The *empirical correlate*: agentic engineers are individual-level Augmented Learners — high org-learning capacity + high AI-specific learning |
+| [[2026-05-08-running-an-ai-native-engineering-org\|Fung 2026]] | What running an AI-native engineering org *looks like operationally* — JIT planning, code-wins-over-whiteboard debate, three-signal dashboard, manager-starts-as-IC dogfooding, "Claudify everything", "explicit permission to kill processes" | The **inside-engineering vantage**: Karpathy named the discipline; Fung shows the team-norms rewrite that ships the 10×-plus product (Claude Code itself). First wiki source on the *org-shape* of agentic engineering at scale |
 
 ## Debates and supersession
 

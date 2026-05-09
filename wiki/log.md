@@ -1380,3 +1380,44 @@ Plus: added `.env` and `.env.*` to `.gitignore` as a tiny separate task this ses
 **Remaining (tracked for future):** the transcript-panel timeout still affects long-format videos (≥20 min observed) — the legacy two videos populated metadata only, not transcript bodies. The skill is shippable because the metadata-only path is graceful. User confirmed the existing manually-copied transcripts in the legacy raw-file bodies are the source of truth; the skill's failure to extract them itself doesn't block the wiki workflow. GH #2 documents the open issue for follow-up.
 
 **Net effect:** the skill works end-to-end for short videos (full transcript), and for any length video produces a usable metadata-only markdown file when the transcript panel doesn't render. The legacy-video deferred backfill from the 2026-05-09 plan is now closed.
+
+## [2026-05-09] ingest | Fiona Fung — *Running an AI-native engineering org* (Claude YouTube / Code with Claude 2026, 8 May 2026)
+
+**Source page:** [[2026-05-08-running-an-ai-native-engineering-org]]. ~28:38-minute conference talk (transcript ~163 lines) by **Fiona Fung** (Director of Engineering for Claude Code at [[Anthropic]]; previously led teams at Meta and Microsoft) on the team-norms rewrite at the Claude Code engineering organisation. The wiki's **first inside-engineering source** on what running an AI-native organisation looks like operationally — distinct from prior 2026 sources that argued the case for AI-native engineering rhetorically (Karpathy, Chatterjee, Kokane) or measured it ablation-by-ablation ([[2026-05-04-rethinking-agents-harness-is-all-you-need|Pan/Khattab via Prompt Engineering YouTube]]).
+
+**Where this fits:** Karpathy 2026 named [[agentic-engineering]] as a discipline; Chatterjee 2026 gave [[agent-harness]] its 4-layer anatomy; Fung 2026 shows **the team-norms rewrite that follows from them** — the org-shape, hiring, review, planning, and process choices that ship the 10×-plus product (Claude Code itself).
+
+**Headline claims:**
+
+- *"What may have served you prior may not serve you any longer."* The bottleneck shift: coding throughput is no longer expensive; verification, review, cross-functional partners, and security are.
+- *"Rarely do processes kill themselves"* — codified as the third core team principle (*explicit permission to kill those processes*).
+- The org-level analogue of [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering|Karpathy's December 2025 phase change]]: *"I just trusted the system more and more, and then I was vibe coding."*
+- Three signals to watch (no absolute numbers shared; direction-of-travel only): onboarding ramp-up time **dramatically reduced**; PR cycle time **shortening** (also surfaces pipeline gaps); Claude-assisted commits **trending toward 100%** (*"I don't think I've seen a non-Claude-assisted commit probably in the last four months"*).
+- The two engineer profiles she indexes on: **creative builders with product sense** + **deep systems expertise**. **Indexes less on**: raw throughput.
+- **Code is the source of truth**, not docs.
+- **Every manager in Claude Code starts as IC** for dogfooding and street cred — recruiters initially pushed back; she held the line.
+
+**Touched (cross-cutting per CLAUDE.md ingest workflow):**
+
+1. **NEW:** [[2026-05-08-running-an-ai-native-engineering-org]] — full source page; description-blockquote leads body per the convention added 2026-05-09.
+2. **NEW:** [[Boris Cherny]] — entity page. Cross-page-presence promotion: third source mention (prior in [[2026-05-07-kiron-schrage-compound-benefits|Kiron-Schrage 2026]] and [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane 2026]]; named here by Fung as her partner in running Claude Code engineering and product). Precedent: [[Andrej Karpathy]], [[Jack Clark]].
+3. **UPDATED:** [[agentic-engineering]] — `source_count: 1 → 2`; `confidence: 0.75 → 0.80`. Added Fung row to the convergence table: the **inside-engineering vantage** that pairs Karpathy's discipline-naming with the operational team-norms rewrite.
+4. **UPDATED:** [[agent-harness]] — `source_count: 7 → 8`; `confidence: 0.85 → 0.90`. Fung's code-review division of labour (Claude on style/lint/bugs/tests; humans on legal/security/product taste) is the on-the-ground concretisation of Chatterjee's *Constraints* layer (pre/post-tool middleware) and *Contracts* layer (formal-evaluable specifications) at the engineering-team level rather than per-agent.
+5. **UPDATED:** [[vibe-coding]] — `source_count: 1 → 2`; `confidence: 0.75 → 0.80`. Fung's *"I just trusted the system more and more, and then I was vibe coding"* mirrors Karpathy's December 2025 phase change at the org level.
+6. **UPDATED:** [[software-3.0]] — `source_count: 1 → 2`; `confidence: 0.75 → 0.80`. Light reinforcement: the talk is implicitly built on the paradigm.
+7. **UPDATED:** [[enterprise-ai-adoption]] — `source_count: 23 → 24`. Inside view of an [[2026-04-28-werner-lebrun-octopus-organization|Octopus-shaped]] technology org: flat, pod-driven, agile-by-design, with leader-dogfooding as a structural commitment. Adds *JIT planning*, *Claudify everything*, *processes-pile-on* as named operational practices.
+8. **UPDATED:** [[Anthropic]] — `source_count: 4 → 5`. Body section on *Claude Code* engineering leadership extended with named individuals (Boris Cherny + Fiona Fung) and the team-norms-rewrite practice. *Cowork* added as a deferred-for-second-source-mention product.
+9. **UPDATED:** [[index]] — new source line at the chronological end (between 2026-05-04-rethinking-agents and the Entities section); new entity line for [[Boris Cherny]] (alphabetical between [[Bharat N. Anand]] and [[Boston Consulting Group]]).
+10. **UPDATED:** `wiki/log.md` (this entry).
+
+**Dangling (single-source mention, deferred per CLAUDE.md author-entity promotion rule):** *Fiona Fung* (speaker), *Cat* (keynote-of-the-morning on Claude Code Review), *Jared* (colleague), *Daren Lannon* (earlier-talk speaker), *Code with Claude 2026* (event), *Cowork* (Anthropic product alongside Claude Code).
+
+**Strongest cross-source synthesis enabled by this ingest:** Fung's three core team principles — *every team member uses Claude Code*, *Claudify everything*, *explicit permission to kill processes* — mirror the wiki's three independent-vantage convergences (engineering / firm-boundary / organisational) on **"models commoditize; what's owned compounds"**. Fung adds a fourth vantage: **at the team-norms layer**, what compounds is the disciplined permission to *prune* old processes as the substrate changes. This is the team-process counterpart to [[2026-05-04-rethinking-agents-harness-is-all-you-need|Anthropic's "subtraction principle"]] at the harness-component layer.
+
+**Open questions surfaced for future ingest:**
+
+- Population-level confirmation of Fung's three signals (onboarding ramp-up time, PR cycle time, Claude-assisted commit share). Tractable; would be ingestable from a follow-up Anthropic Economic Index report or third-party engineering-productivity study.
+- The **iOS/Android org shape** question. If a follow-up resolves it, changes the org-shape thesis for cross-platform deliverables.
+- The **fully-automated-review threshold** — Fung names this as a model-capability-tracking moving target; *Daren Lannon*'s referenced session may already address it.
+- The **"roles are blurring" fairness** signal. Flagged but not answered. Could absorb into the wiki's [[ai-employment-effects]] cluster.
+- *Cowork* and *Code with Claude 2026* as candidate entity pages on second-source mention.

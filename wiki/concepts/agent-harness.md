@@ -2,9 +2,9 @@
 type: concept
 aliases: ["agent harness", "harness", "AI agent harness", "agent runtime", "agent runtime layer"]
 tags: [agent-harness, ai-agents, ai-engineering, harness-frameworks, context-management, constraints, contracts, telemetry, llm-non-determinism]
-confidence: 0.85
-last_confirmed: "2026-05-08"
-source_count: 7
+confidence: 0.90
+last_confirmed: "2026-05-09"
+source_count: 8
 relationships:
   - type: part-of
     target: ai-agents

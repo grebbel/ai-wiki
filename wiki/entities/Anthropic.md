@@ -5,8 +5,8 @@ aliases: ["Anthropic", "Anthropic PBC"]
 tags: [anthropic, ai-lab, foundation-models, claude]
 since: 2021
 confidence: 0.85
-last_confirmed: "2026-05-07"
-source_count: 4
+last_confirmed: "2026-05-09"
+source_count: 5
 ---
 
 # Anthropic
@@ -23,7 +23,8 @@ AI safety and research company; publisher of the [[Claude]] family of models and
 
 - **Claude Platform** — Anthropic's developer-facing platform.
   - **Claude Managed Agents** — hosted service for long-horizon agent work; brain/hands/session decoupled architecture; published April 2026 ([[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Engineering blog]]).
-  - **Claude Code** — agentic coding harness; described as "an excellent harness" in the Managed Agents post; its agentic architecture (splits coding work into smaller API calls labeled as distinct tasks) is the empirical signature of agent-mediated work in the [[2026-05-07-anthropic-economic-index-5-learning-curves|5th Economic Index report]].
+  - **Claude Code** — agentic coding harness; described as "an excellent harness" in the Managed Agents post; its agentic architecture (splits coding work into smaller API calls labeled as distinct tasks) is the empirical signature of agent-mediated work in the [[2026-05-07-anthropic-economic-index-5-learning-curves|5th Economic Index report]]. Engineering leadership: [[Boris Cherny]] (10–15 concurrent Claude instances + CLAUDE.md as in-workflow learning capture per [[2026-05-07-kiron-schrage-compound-benefits|Kiron-Schrage 2026]]) and *Fiona Fung* (Director of Engineering; documents the Claude Code team-norms rewrite — JIT planning, code-wins-over-whiteboard debate, manager-starts-as-IC dogfooding, "Claudify everything", "explicit permission to kill processes" — in [[2026-05-08-running-an-ai-native-engineering-org]]).
+- **Cowork** — Anthropic product co-led by Fung alongside Claude Code; deferred for separate page on second-source mention.
 
 ## Models referenced in this wiki
 
