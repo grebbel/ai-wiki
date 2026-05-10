@@ -326,6 +326,17 @@ Frontmatter is the *typed* layer; body is the *navigable* layer; both are requir
 
 A page's `## Related concepts` / `## Related pages` / in-prose mentions usually already satisfy the body side; the migration just adds the frontmatter twin.
 
+### Wikilink-rendering rule (Quartz compatibility)
+
+**Never put markdown formatting inside the alias portion of a wikilink.** Quartz's default forward-link parser expects a literal string between `|` and `]]`; emphasis (`*…*`), bold (`**…**`), or other markdown inside the alias either leaks the raw characters into the rendered link text or silently breaks the link on the published site. Obsidian renders these fine because it processes the alias as full markdown — so the breakage is invisible in authoring and only shows up after deploy.
+
+Two safe patterns:
+
+- **Full-alias italics**: move the asterisks outside the wikilink — `*[[target|alias]]*`, not `[[target|*alias*]]`.
+- **Partial italics inside an alias** (e.g. a publication title within a longer descriptive alias): drop the inner asterisks — `[[target|Author 2026 — Title of Paper (Journal)]]`, not `[[target|Author 2026 — *Title of Paper* (Journal)]]`. The `[[…]]` rendering already signals the link is to a publication; the visual loss is minor and the link stays clickable.
+
+This rule applies to body text, table cells, and any other markdown context where a wikilink renders. Frontmatter wikilinks (e.g. `relationships.target:`) are a separate matter — those should be slugs only, never wikilinks at all.
+
 ### Graph export
 
 `scripts/graph-export.mjs` walks all `wiki/**/*.md`, reads frontmatter, and emits `wiki/.graph.json` (gitignored) with a node list (slug, type, kind, confidence) and an edge list (type, source, target, confidence, via). Re-run after any migration that changes relationships. v0.5 hybrid search uses this file as its third stream.

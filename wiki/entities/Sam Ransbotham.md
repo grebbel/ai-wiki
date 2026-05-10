@@ -27,13 +27,13 @@ Professor of analytics at the **Carroll School of Management, Boston College**, 
 
 ## Wiki contributions
 
-- **Lead author, [[2026-05-07-ransbotham-augmented-learners|*Learning to Manage Uncertainty, With AI*]] (Nov 2024, with [[David Kiron]], Shervin Khodabandeh, Michael Chu, Leonid Zhukov)** — 3,467-respondent global survey + 9 executive interviews; introduces **Augmented Learners** (15% of orgs combining high organizational + high AI-specific learning); 1.6× uncertainty-management advantage; explicit appendix on the **State of AI in Business 2024** including the year-over-year adoption series back to 2017.
+- **Lead author, *[[2026-05-07-ransbotham-augmented-learners|Learning to Manage Uncertainty, With AI]]* (Nov 2024, with [[David Kiron]], Shervin Khodabandeh, Michael Chu, Leonid Zhukov)** — 3,467-respondent global survey + 9 executive interviews; introduces **Augmented Learners** (15% of orgs combining high organizational + high AI-specific learning); 1.6× uncertainty-management advantage; explicit appendix on the **State of AI in Business 2024** including the year-over-year adoption series back to 2017.
 
 ## Cross-source positioning
 
 The MIT SMR × BCG annual research instrument (8 years of comparable methodology) is one of the wiki's longest panels; the Augmented Learners report is the first ingest from this stream. Earlier reports (2017–2023) are cited indirectly — first-party ingestion of any prior edition would strengthen longitudinal analysis.
 
-Direct co-authorship with [[David Kiron]] connects this entity to the operational follow-up [[2026-05-07-kiron-schrage-compound-benefits|*How to Reap Compound Benefits From Generative AI* (2026)]] which extends the Ransbotham et al. 2024 framework with the verification → evaluation → learning capture flywheel.
+Direct co-authorship with [[David Kiron]] connects this entity to the operational follow-up [[2026-05-07-kiron-schrage-compound-benefits|How to Reap Compound Benefits From Generative AI (2026)]] which extends the Ransbotham et al. 2024 framework with the verification → evaluation → learning capture flywheel.
 
 ## Mentioned in
 

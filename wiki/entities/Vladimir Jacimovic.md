@@ -15,7 +15,7 @@ relationships:
 
 Researcher at [[Continuum Laboratory]] (ContinuumLab.AI) and Harvard Business School.
 
-Co-author of [[2026-04-29-boussioux-crowdless-future|*The Crowdless Future? Generative AI and Creative Problem-Solving*]] (Organization Science, 2024).
+Co-author of *[[2026-04-29-boussioux-crowdless-future|The Crowdless Future? Generative AI and Creative Problem-Solving]]* (Organization Science, 2024).
 
 ## Mentioned in
 

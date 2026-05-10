@@ -12,7 +12,7 @@ source_count: 1
 
 Faculty at the Michael G. Foster School of Business, University of Washington, Seattle. Affiliated with Harvard Business School / Laboratory for Innovation Science at Harvard (LISH).
 
-Lead author of [[2026-04-29-boussioux-crowdless-future|*The Crowdless Future? Generative AI and Creative Problem-Solving*]] (Organization Science, 2024).
+Lead author of *[[2026-04-29-boussioux-crowdless-future|The Crowdless Future? Generative AI and Creative Problem-Solving]]* (Organization Science, 2024).
 
 ## Mentioned in
 

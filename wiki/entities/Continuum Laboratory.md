@@ -15,7 +15,7 @@ relationships:
 
 # Continuum Laboratory
 
-San Francisco–based AI firm (ContinuumLab.AI) that partnered with researchers from Harvard Business School and the University of Washington (Foster School of Business) on the [[2026-04-29-boussioux-crowdless-future|*Crowdless Future?*]] study (Boussioux et al., Organization Science, 2024).
+San Francisco–based AI firm (ContinuumLab.AI) that partnered with researchers from Harvard Business School and the University of Washington (Foster School of Business) on the *[[2026-04-29-boussioux-crowdless-future|Crowdless Future?]]* study (Boussioux et al., Organization Science, 2024).
 
 The crowdsourcing challenge — focused on circular-economy business ideas — was launched on Freelancer.com with Continuum Laboratory as the initiating organization.
 

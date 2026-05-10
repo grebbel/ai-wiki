@@ -18,7 +18,7 @@ last_confirmed: "2026-05-07"
 
 A **provocation-style practitioner article** in *Level Up Coding* (Medium publication, 326K followers), 10 April 2026, by **Akshay Kokane** (Enterprise AI Architect, ex-Microsoft, ex-AWS). 4-min read. Argues that the term "agent harness" is mostly a **rebranding of systems design that engineers have been doing for decades**, with a small but genuine ~10% kernel of novelty. Anchored in observations from the (then-recent) **Claude Code source-code leak** that surfaced Anthropic's internal harness patterns.
 
-The article is part of a small wave of "agent harness" essays appearing across the practitioner blogosphere in April–May 2026 — alongside [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee's *The Anatomy of an Agent Harness*]] (Medium, 4 days before this ingest) and pieces from LangChain, Salesforce, and DistributedApps.ai. This source is the *most sceptical* of the three — useful as the rhetorical counterweight to the "harness is the moat" framing.
+The article is part of a small wave of "agent harness" essays appearing across the practitioner blogosphere in April–May 2026 — alongside [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee's The Anatomy of an Agent Harness]] (Medium, 4 days before this ingest) and pieces from LangChain, Salesforce, and DistributedApps.ai. This source is the *most sceptical* of the three — useful as the rhetorical counterweight to the "harness is the moat" framing.
 
 ## TL;DR
 

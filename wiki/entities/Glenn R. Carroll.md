@@ -12,7 +12,7 @@ source_count: 1
 
 Professor at Stanford Graduate School of Business. Organization theorist; long-running collaborator with [[Jesper B. Sørensen]] on theory-based view of strategy and analogical reasoning.
 
-Co-author of [[2026-04-28-carroll-sorensen-strategy-analogy|*Strategy Theory Using Analogy: Rationale, Tools and Examples*]] (*Strategy Science* 9, 2024).
+Co-author of *[[2026-04-28-carroll-sorensen-strategy-analogy|Strategy Theory Using Analogy: Rationale, Tools and Examples]]* (*Strategy Science* 9, 2024).
 
 ## Mentioned in
 

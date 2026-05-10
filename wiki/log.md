@@ -803,7 +803,7 @@ Models are not mutually exclusive; most firms will use a combination. Choice is 
 This is the **7th named framework** in the wiki's "adoption breadth ≠ transformation depth" cluster — and it operates at a **decision layer not previously surfaced** by [[syntheses/organizational-frameworks-for-ai-adoption|the synthesis page filed earlier today]]. The synthesis maps 6 frameworks onto seven layers (org-design / readiness / capability progression / transformation playbook / trap escape / task deployment / diagnostic). Nishar-Nohria adds an 8th layer — the **firm-boundary / make-or-buy layer**. Per the framework-promotion rules (single source for a 4-model framework), no standalone concept page yet; defer to a 2nd corroborating source. The synthesis itself is left as-is — synthesis pages should be durable, not amended each time a new framework is ingested. The new framework lives as a lens in `enterprise-ai-adoption` for now; the synthesis's "Open questions" section already anticipates this evolution.
 
 **Contradictions checked:** none. The article reinforces existing wiki claims:
-- Process redesign / data architecture as load-bearing — matches [[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation|Bain/OpenAI]] and [[2026-05-03-rewired-second-edition-sample|McKinsey *Rewired*]].
+- Process redesign / data architecture as load-bearing — matches [[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation|Bain/OpenAI]] and [[2026-05-03-rewired-second-edition-sample|McKinsey Rewired]].
 - Senior-leader ownership non-negotiable — matches the same two sources.
 - Most enterprise tasks today are augmentative, not automative — matches [[2026-04-30-ai-index-report-2026|AI Index 2026]] (agent deployment in single digits per function).
 
@@ -1455,3 +1455,24 @@ Plus: added `.env` and `.env.*` to `.gitignore` as a tiny separate task this ses
 **Untouched:** existing key-claims sections retained verbatim where the transcript adds context (anecdotes, narrative connective tissue) the slides don't carry. The two layers complement: slide canon gives the speaker's chosen wording; key-claims gives the transcript's connective tissue and cross-source positioning. A short note at the top of "Key claims" tells readers slides win on canonical wording.
 
 **No changes** to other wiki pages — this is a single-source enrichment, no cross-cutting concept/entity touches needed.
+
+## [2026-05-10] refactor | Wiki-wide wikilink-italics sweep + schema rule (Quartz compatibility)
+
+**Trigger:** the `agentic-engineering` link on [[2026-05-08-running-an-ai-native-engineering-org]] failed to render on the published Quartz site (commit `129913a` fixed that single instance). Investigation found the same `[[target|*alias*]]` and `[[target|… *partial italics* …]]` pattern in **21 other places** across the wiki — a systemic Quartz-compatibility issue invisible in Obsidian.
+
+**Root cause:** Quartz's default forward-link parser expects a literal string between `|` and `]]`. Markdown emphasis inside the alias either leaks the asterisks into rendered text or silently breaks the link. Obsidian masks this by processing the alias as full markdown.
+
+**Sweep applied:**
+
+- **Pattern A — full-alias italics** (`[[target|*alias*]]` → `*[[target|alias]]*`): 14 mechanical replacements via a Python-regex pass. Touched: 1 concept page, 11 entity pages, 1 source page (Kokane). Italic emphasis preserved by moving the `*` markers outside the wikilink.
+- **Pattern B — partial italics inside the alias** (e.g. *"Ransbotham et al. 2024 — \*Learning to Manage Uncertainty, With AI\* (MIT SMR × BCG)"*): 7 replacements. Uniform rule: drop the inner asterisks. Visual loss is minor (the `[[…]]` already signals "this is a clickable thing"). Touched: [[durable-skills]] (×2), [[David Kiron]], [[Sam Ransbotham]], [[wiki/log.md|wiki/log.md]] (an earlier entry's *McKinsey Rewired* reference), [[2026-05-07-kokane-agent-harness-vs-systems-design]], [[syntheses/organizational-frameworks-for-ai-adoption|the synthesis page]].
+
+**Schema rule added** (CLAUDE.md §"Wikilink-rendering rule (Quartz compatibility)"): codified the two safe patterns so future ingests don't reintroduce the issue. The rule sits next to the existing "Body-wikilink rule (load-bearing)" since both are about wikilink hygiene under Quartz's parsing constraints.
+
+**Verification:**
+
+- `graph-export.mjs` after the sweep: 133 nodes / 120 edges — no regression.
+- `lint-page.mjs` on a sampled changed page: silent.
+- `grep -rnE '\[\[[^]]*\|[^]]*\*[^]]*\]\]' wiki/`: 0 remaining matches across the corpus.
+
+**Stats:** 17 files changed, 21 insertions / 21 deletions (perfect 1-for-1 line swaps; no body-content drift). Plus 1 CLAUDE.md schema addition (this rule). Plus this log entry.

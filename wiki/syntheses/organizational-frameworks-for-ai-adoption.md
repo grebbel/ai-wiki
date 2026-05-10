@@ -20,7 +20,7 @@ relationships:
 
 # Synthesis: Organizational frameworks for AI adoption
 
-Closes [[threads/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]]. Originally filed 2026-05-05 with **6 frameworks** ([[2026-04-28-mit-sloan-ai-maturity|MIT CISR]], [[2026-04-28-anand-wu-genai-playbook|Anand-Wu]], [[2026-04-28-mittri-cisco-ai-enabled-enterprise|MITTRI/Cisco]], [[2026-04-28-werner-lebrun-octopus-organization|Werner-Le-Brun]], [[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation|Bain/OpenAI]], [[2026-05-03-rewired-second-edition-sample|McKinsey *Rewired* 2nd ed]]).
+Closes [[threads/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]]. Originally filed 2026-05-05 with **6 frameworks** ([[2026-04-28-mit-sloan-ai-maturity|MIT CISR]], [[2026-04-28-anand-wu-genai-playbook|Anand-Wu]], [[2026-04-28-mittri-cisco-ai-enabled-enterprise|MITTRI/Cisco]], [[2026-04-28-werner-lebrun-octopus-organization|Werner-Le-Brun]], [[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation|Bain/OpenAI]], [[2026-05-03-rewired-second-edition-sample|McKinsey Rewired 2nd ed]]).
 
 **Refreshed 2026-05-08**: four additional framework-vantages have been ingested in the intervening three days, expanding the cluster from 6 frameworks to **10 frameworks across 12 sources**:
 

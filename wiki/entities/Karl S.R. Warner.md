@@ -12,7 +12,7 @@ source_count: 1
 
 Researcher at Edinburgh Napier University, The Business School, Edinburgh, Scotland.
 
-Co-author with [[Maximilian Wäger]] of [[2026-04-28-warner-wager-dynamic-capabilities-digital-transformation|*Building Dynamic Capabilities for Digital Transformation*]] (*Long Range Planning* 52, 2019).
+Co-author with [[Maximilian Wäger]] of *[[2026-04-28-warner-wager-dynamic-capabilities-digital-transformation|Building Dynamic Capabilities for Digital Transformation]]* (*Long Range Planning* 52, 2019).
 
 ## Mentioned in
 

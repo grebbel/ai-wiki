@@ -19,7 +19,7 @@ relationships:
 
 # David Kiron
 
-Editorial director, research, of [[MIT Sloan Management Review]] and program lead for its **Big Ideas research initiatives**. Recurring senior author across the wiki's MIT SMR-anchored AI research stream — including the **8th annual MIT SMR × BCG global AI study** ([[2026-05-07-ransbotham-augmented-learners|Ransbotham et al. 2024]]) and the operational follow-up [[2026-05-07-kiron-schrage-compound-benefits|*How to Reap Compound Benefits From Generative AI* (2026)]].
+Editorial director, research, of [[MIT Sloan Management Review]] and program lead for its **Big Ideas research initiatives**. Recurring senior author across the wiki's MIT SMR-anchored AI research stream — including the **8th annual MIT SMR × BCG global AI study** ([[2026-05-07-ransbotham-augmented-learners|Ransbotham et al. 2024]]) and the operational follow-up [[2026-05-07-kiron-schrage-compound-benefits|How to Reap Compound Benefits From Generative AI (2026)]].
 
 ## Role and remit
 
@@ -27,8 +27,8 @@ The Big Ideas program at MIT SMR runs **global surveys and in-depth interviews**
 
 ## Wiki contributions
 
-- **Co-author, [[2026-05-07-ransbotham-augmented-learners|*Learning to Manage Uncertainty, With AI*]] (Nov 2024)** — established the Augmented Learners 2×2 framework: combining high organizational learning + high AI-specific learning identifies the 15% of orgs that compound learning gains.
-- **Co-author, [[2026-05-07-kiron-schrage-compound-benefits|*How to Reap Compound Benefits From Generative AI*]] (Apr 2026)** — the verification → evaluation → learning capture flywheel; reframes ROI as **return on iteration**.
+- **Co-author, *[[2026-05-07-ransbotham-augmented-learners|Learning to Manage Uncertainty, With AI]]* (Nov 2024)** — established the Augmented Learners 2×2 framework: combining high organizational learning + high AI-specific learning identifies the 15% of orgs that compound learning gains.
+- **Co-author, *[[2026-05-07-kiron-schrage-compound-benefits|How to Reap Compound Benefits From Generative AI]]* (Apr 2026)** — the verification → evaluation → learning capture flywheel; reframes ROI as **return on iteration**.
 
 ## Cross-source positioning
 

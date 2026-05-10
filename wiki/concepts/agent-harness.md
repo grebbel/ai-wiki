@@ -171,7 +171,7 @@ Operationally identical to [[2026-05-07-kiron-schrage-compound-benefits|Kiron-Sc
 
 ### The empirical anchor: same-model 6× variance, transferable harness, and the subtraction principle ([[2026-05-04-rethinking-agents-harness-is-all-you-need|Prompt Engineering YouTube, May 2026]])
 
-Until early May 2026 the wiki carried *rhetorical* arguments for the model-rented / harness-owned framing — practitioner essays and vendor announcements that *asserted* harness importance without measuring it. The first **empirical anchor** is a YouTube synthesis ([[2026-05-04-rethinking-agents-harness-is-all-you-need|*Rethinking Agents — Harness is All you Need*]]) of two recent academic papers:
+Until early May 2026 the wiki carried *rhetorical* arguments for the model-rented / harness-owned framing — practitioner essays and vendor announcements that *asserted* harness importance without measuring it. The first **empirical anchor** is a YouTube synthesis (*[[2026-05-04-rethinking-agents-harness-is-all-you-need|Rethinking Agents — Harness is All you Need]]*) of two recent academic papers:
 
 - **Pan et al. (Tsinghua, March 2026) — natural-language harness representation.** A 3-layer split (back-end / runtime charter / NL agent harness) tested on **SWE-bench verified** with GPT-5 max-reasoning. Module-by-module ablation results:
   - **Self-evolution** = the only module *consistently helpful* when added.

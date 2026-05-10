@@ -16,7 +16,7 @@ relationships:
 
 Canada Research Chair in Business Sustainability at the [[Ivey Business School]], Western University. Founder of [[Innovation North]], a research-practice initiative on systems-level innovation.
 
-Co-author of [[2026-04-28-bansal-birkinshaw-systems-thinking|*Why You Need Systems Thinking Now*]] (HBR Sept–Oct 2025).
+Co-author of *[[2026-04-28-bansal-birkinshaw-systems-thinking|Why You Need Systems Thinking Now]]* (HBR Sept–Oct 2025).
 
 ## Mentioned in
 
