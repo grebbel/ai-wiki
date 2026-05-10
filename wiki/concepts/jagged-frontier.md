@@ -2,9 +2,9 @@
 type: concept
 aliases: ["jagged frontier", "jagged-frontier", "jagged technological frontier", "AI capability frontier", "jagged intelligence", "jagged skills", "jagged-intelligence", "animals vs ghosts", "ghosts not animals"]
 tags: [jagged-frontier, jagged-intelligence, AI-capabilities, knowledge-work, productivity, automation, augmentation, verifiability, animals-vs-ghosts]
-confidence: 0.90
-last_confirmed: "2026-05-08"
-source_count: 6
+confidence: 0.91
+last_confirmed: "2026-05-10"
+source_count: 7
 relationships:
   - type: supports
     target: automation-vs-augmentation
@@ -123,6 +123,7 @@ The animals-vs-ghosts framing is held in the wiki as a **mindset convention**, n
 - **Don't generalize AI capability across tasks** that "feel similar."
 - **Centaur/Cyborg strategies are post-hoc descriptions of effective use**, not prescriptions; both can fail when applied indiscriminately.
 - **Familiarity training can backfire**: in the Dell'Acqua experiment, the GPT + overview condition performed *worse than GPT-only* on outside-the-frontier correctness — more familiarity led to more over-reliance.
+- **The practitioner-operational form: probability × impact × detectability**. [[2026-05-06-bockeler-engineering-of-ai-agents-context-harnessing-autonomy|Böckeler 2026]] (Thoughtworks at QCon London) offers a risk-assessment trio for *how much human supervision a given task warrants*: probability of AI error in *this* context (assessed by knowledge of the context given to the agent + experience using the tool for similar tasks + requirement clarity), impact if it errs (proof-of-concept vs critical-path), and detectability of the error (quality of feedback loops). Of the three, only the first is genuinely new — the other two are pre-existing engineering judgement applied to a new tool. Böckeler's framing: *"you have to be this tall to ride the roller coaster — you have to be this tall to reduce supervision"*. The trio is the practitioner's operational expression of the jagged-frontier insight: don't assume capability, *assess* it per-task.
 
 ## Related concepts
 

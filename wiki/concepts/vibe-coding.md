@@ -2,9 +2,9 @@
 type: concept
 aliases: ["vibe coding", "Vibe coding", "vibe-coding", "vibe-code", "v-coding"]
 tags: [vibe-coding, agentic-engineering, software-3.0, ai-agents, accessibility, hobbyist-coding, karpathy, pm-tooling, prototype-as-influence-tool, december-2025-phase-change]
-confidence: 0.82
+confidence: 0.84
 last_confirmed: "2026-05-10"
-source_count: 3
+source_count: 4
 relationships:
   - type: instance-of
     target: software-3.0
@@ -89,6 +89,7 @@ The danger in conflating them: vibe-coded artifacts shipped to production *as if
 | [[2026-04-28-dellacqua-jagged-technological-frontier\|Dell'Acqua et al. 2026]] | The empirical underbelly: vibe-coded output *inside* the [[jagged-frontier]] is genuinely good; *outside* it can degrade performance even relative to the un-AI-assisted baseline |
 | [[2026-05-07-anthropic-economic-index-5-learning-curves\|AEI 5]] | Capacity-ceiling caveat: vibe coding works at single-task scale; once tasks compose (multi-step, long-horizon) the ceiling becomes load-bearing, and you need [[agentic-engineering]] |
 | [[2025-12-01-marily-nika-pms-who-use-ai-will-replace-those-who-dont\|Nika 2025 (How I AI)]] | The **PM-side worked example** + the **earliest contemporary primary source** for the December 2025 phase change. A Google AI Product Lead, on camera in late November / early December 2025, doing the workflow live (Perplexity → custom GPT → v0 → Veo/Sora → NotebookLM) and treating the tool stack as already-trustworthy. Substantiates *floor-raising* with a non-engineer professional (PM) audience: vibe coding's clickable-prototype pattern as **stakeholder influence engineering**, not just hobbyist iteration. *"PMs that use AI are the ones that are going to take over the role of people that don't use AI."* |
+| [[2026-05-06-bockeler-engineering-of-ai-agents-context-harnessing-autonomy\|Böckeler 2026 (Thoughtworks at QCon London)]] | **Conference-circuit timeline anchor**. Böckeler's year-on-year QCon retrospective dates *"the term vibe coding was about 2 months old"* at QCon London 2025, anchoring the term's coinage to early 2025 from an independent observer (consultancy practitioner). Frames vibe coding as one end of an autonomy spectrum the broader [[agent-harness]] discipline now attempts to widen *safely* — directly compatible with Karpathy's floor-vs-ceiling split |
 
 ## Debates and supersession
 

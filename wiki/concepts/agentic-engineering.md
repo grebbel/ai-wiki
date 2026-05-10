@@ -2,9 +2,9 @@
 type: concept
 aliases: ["agentic engineering", "Agentic Engineering", "agentic-engineering", "agent engineering"]
 tags: [agentic-engineering, vibe-coding, software-3.0, ai-agents, agent-harness, software-engineering, hiring, karpathy, codex-case-study]
-confidence: 0.85
+confidence: 0.87
 last_confirmed: "2026-05-10"
-source_count: 3
+source_count: 4
 relationships:
   - type: depends-on
     target: agent-harness
@@ -139,6 +139,7 @@ The distinction is not about *how much* AI is used — it's about *who owns what
 | [[2026-05-07-ransbotham-augmented-learners\|Ransbotham et al. 2024]] | Augmented Learners 2×2 | The *empirical correlate*: agentic engineers are individual-level Augmented Learners — high org-learning capacity + high AI-specific learning |
 | [[2026-05-08-running-an-ai-native-engineering-org\|Fung 2026]] | What running an AI-native engineering org *looks like operationally* — JIT planning, code-wins-over-whiteboard debate, three-signal dashboard, manager-starts-as-IC dogfooding, "Claudify everything", "explicit permission to kill processes" | The **inside-engineering vantage**: Karpathy named the discipline; Fung shows the team-norms rewrite that ships the 10×-plus product (Claude Code itself). First wiki source on the *org-shape* of agentic engineering at scale |
 | [[2026-02-11-lopopolo-codex-harness-engineering\|Lopopolo / OpenAI Codex 2026]] | *0 manually-written lines, ~1M LOC in 5 months, 7 engineers, 3.5 PRs/engineer/day with throughput **increasing** as the team grew* — repository-as-system-of-record + AGENTS.md table-of-contents + layered-domain Providers + custom linters + golden-principles GC + doc-gardening agent | The **vendor-side production case study** at scale. Karpathy named the discipline; Fung described the org-shape; Lopopolo shows the artifact-shape inside one repo. Substantiates *"the discipline shows up more in the scaffolding rather than the code"* with five months of operational data |
+| [[2026-05-06-bockeler-engineering-of-ai-agents-context-harnessing-autonomy\|Böckeler / Thoughtworks at QCon London 2026]] | Year-on-year practitioner review across many client engagements; explicit propagation of *harness engineering* as the discipline name (crediting the OpenAI Codex team); feed-forward × feedback × CPU-vs-GPU decomposition of the harness; *Goldilocks speed* counter-framing to speed-at-all-costs | The **practitioner-observer-from-consultancy vantage**. Karpathy named the discipline (paradigm); Fung described the org-shape (vendor team norms); Lopopolo showed the artifact-shape (one repo); Böckeler shows what the discipline looks like when *observed across many client codebases* — and confirms the discipline's name-form is settling on *harness engineering* in operator circles |
 
 ## Operational invariants from the Codex case study
 

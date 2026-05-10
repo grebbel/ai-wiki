@@ -21,7 +21,7 @@ relationships:
 
 # McKinsey & Company
 
-Global management consulting firm; runs **QuantumBlack** as its AI arm. A recurring data partner of the [[AI Index]] (the McKinsey Global AI Survey is the underlying instrument behind many AI Index adoption numbers — see methodological notes on the [[AI Index]] entity page). The wiki holds two complementary first-party McKinsey sources as of May 2026: [[2026-05-03-rewired-second-edition-sample|*Rewired* 2nd ed]] (the practitioner playbook for clients) and [[2026-02-09-sternfels-mckinsey-survive-ai-and-reinvent-consulting|Sternfels 2026 (HBR IdeaCast)]] (the firm-as-vendor self-narrative — McKinsey's own AI strategy, hiring overhaul, post-controversy governance, and business-model migration to outcome-underwriting).
+Global management consulting firm; runs **QuantumBlack** as its AI arm. A recurring data partner of the [[AI Index]] (the McKinsey Global AI Survey is the underlying instrument behind many AI Index adoption numbers — see methodological notes on the [[AI Index]] entity page). The wiki holds two complementary first-party McKinsey sources as of May 2026: *[[2026-05-03-rewired-second-edition-sample|Rewired 2nd ed]]* (the practitioner playbook for clients) and [[2026-02-09-sternfels-mckinsey-survive-ai-and-reinvent-consulting|Sternfels 2026 (HBR IdeaCast)]] (the firm-as-vendor self-narrative — McKinsey's own AI strategy, hiring overhaul, post-controversy governance, and business-model migration to outcome-underwriting).
 
 ## Appears in this wiki via
 
