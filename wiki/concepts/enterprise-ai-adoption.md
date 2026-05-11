@@ -3,8 +3,8 @@ type: concept
 aliases: ["AI adoption", "enterprise AI use", "business AI adoption", "organizational AI adoption", "AI maturity"]
 tags: [ai-adoption, enterprise-ai, ai-strategy, ai-maturity]
 confidence: 0.95
-last_confirmed: "2026-05-09"
-source_count: 24
+last_confirmed: "2026-05-11"
+source_count: 25
 relationships:
   - type: uses
     target: automation-vs-augmentation
