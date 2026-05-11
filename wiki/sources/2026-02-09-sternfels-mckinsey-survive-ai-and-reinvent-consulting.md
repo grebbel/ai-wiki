@@ -156,7 +156,7 @@ Sternfels names what he wants McKinsey to remain known for in 10 years:
 ## Linked entities and concepts
 
 - **Channel (1st mention by name as a video-source author, but already an entity)**: [[Harvard Business Review]] — already in the wiki. Add this source to its inbound set.
-- **Host (1st mention by name; Dangling per [author-entity-promotion rule](../../CLAUDE.md#author-entity-promotion))**: **Adi Ignatius** — editor-in-chief of HBR; long-time *IdeaCast* host. Body-prose mention only; not promoted on a single source.
+- **Host**: **[[Adi Ignatius]]** — editor-in-chief of HBR; long-time *IdeaCast* host. Originally Dangling on this source's first ingest (per [author-entity-promotion rule](../../CLAUDE.md#author-entity-promotion)); **promoted to entity page on 11 May 2026** following his second wiki-source appearance as interviewer on [[2025-05-06-jassy-amazon-agility-ai-strategy-changing-role-of-managers|Jassy 2025]].
 - **Guest (1st mention by name; Dangling)**: **Bob Sternfels** — Global Managing Partner of [[McKinsey & Company]] since 2021. With the firm for 32+ years. Body-prose mention only; not promoted on a single source.
 - **Organizations**:
   - [[McKinsey & Company]] — already in the wiki; substantively extended by this source. The wiki's first-party Sternfels source. Add this source to McKinsey's inbound set.

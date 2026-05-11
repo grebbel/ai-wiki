@@ -2,9 +2,9 @@
 type: concept
 aliases: ["vibe coding", "Vibe coding", "vibe-coding", "vibe-code", "v-coding"]
 tags: [vibe-coding, agentic-engineering, software-3.0, ai-agents, accessibility, hobbyist-coding, karpathy, pm-tooling, prototype-as-influence-tool, december-2025-phase-change]
-confidence: 0.86
-last_confirmed: "2026-05-10"
-source_count: 5
+confidence: 0.88
+last_confirmed: "2026-05-11"
+source_count: 6
 relationships:
   - type: instance-of
     target: software-3.0
@@ -91,6 +91,7 @@ The danger in conflating them: vibe-coded artifacts shipped to production *as if
 | [[2025-12-01-marily-nika-pms-who-use-ai-will-replace-those-who-dont\|Nika 2025 (How I AI)]] | The **PM-side worked example** + the **earliest contemporary primary source** for the December 2025 phase change. A Google AI Product Lead, on camera in late November / early December 2025, doing the workflow live (Perplexity → custom GPT → v0 → Veo/Sora → NotebookLM) and treating the tool stack as already-trustworthy. Substantiates *floor-raising* with a non-engineer professional (PM) audience: vibe coding's clickable-prototype pattern as **stakeholder influence engineering**, not just hobbyist iteration. *"PMs that use AI are the ones that are going to take over the role of people that don't use AI."* |
 | [[2026-05-06-bockeler-engineering-of-ai-agents-context-harnessing-autonomy\|Böckeler 2026 (Thoughtworks at QCon London)]] | **Conference-circuit timeline anchor**. Böckeler's year-on-year QCon retrospective dates *"the term vibe coding was about 2 months old"* at QCon London 2025, anchoring the term's coinage to early 2025 from an independent observer (consultancy practitioner). Frames vibe coding as one end of an autonomy spectrum the broader [[agent-harness]] discipline now attempts to widen *safely* — directly compatible with Karpathy's floor-vs-ceiling split |
 | [[2026-04-14-thompson-the-daily-workers-letting-ai-do-their-jobs\|Thompson 2026 (NYT / The Daily)]] | **75-developer field-report anchor**. The wiki's first cross-industry survey of working software developers — Thompson reports *"a majority outsourcing day-to-day programming to AI"*, with **small startups at ~100% AI-written code** (full-day features now ~30 min, ~20x faster) and **Google at ~40-50%** AI-written code with ~10% overall speedup. Dates the developer-side phase change to *"last 6 months, accelerating in the last 3"* — i.e. November 2025 → February 2026, ~4 months behind Nika's PM-side December-2025 phase change. Vibe coding observed in production at the small-startup floor; the consultant-observer + journalist-observer + vendor-engineer + practitioner vantages now all align on the same transition |
+| [[2025-05-06-jassy-amazon-agility-ai-strategy-changing-role-of-managers\|Jassy 2025 (Amazon CEO on HBR IdeaCast)]] | **Pre-coinage CEO anchor for the floor-raising thesis** — the wiki's earliest vendor-CEO statement of the natural-language-coding democratisation prediction. Jassy in May 2025: *"the number of people who are going to be able to be software developers is going to go up exponentially. Because you're going to have these coding apps that allow you to use natural language to describe what you want to go build. And it's going to be very empowering."* Predates [[Andrej Karpathy]]'s vibe-coding coinage by ~12 months and Nika's December-2025 PM-side worked example by ~7 months. The qualifying *"but"* clause (US-education-quality concern: *"30 out of 35 developed countries in efficacy of education"*) anticipates the wiki's [[ai-deskilling]] / [[durable-skills]] concern that floor-raising democratisation depends on a baseline of human capability that may itself be eroding |
 
 ## Debates and supersession
 

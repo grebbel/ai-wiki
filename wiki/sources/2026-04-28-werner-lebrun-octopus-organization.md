@@ -113,7 +113,7 @@ For the wiki, this article opens a [[threads/organizational-frameworks-for-ai-ad
 
 ## Linked entities and concepts
 
-**Entities (this wiki):** [[Harvard Business Review]], [[Amazon Web Services]]. **Dangling:** [[Jana Werner]], [[Phil Le-Brun]] (deferred for now — single-source coverage; will be promoted when their forthcoming book *The Octopus Organization* (HBR Press) is ingested), [[Reed Hastings]], [[Howard Behar]], [[Miriam McLemore]], [[Stephen Brozovich]], [[Jessica Hall]] (Just Eat Takeaway), [[Aaron Dignan]], [[Donella Meadows]], [[U.S. Army]], [[Netflix]], [[Google]], [[Starbucks]], [[Coca-Cola]], [[Amazon]], [[Just Eat Takeaway]].
+**Entities (this wiki):** [[Harvard Business Review]], [[Amazon Web Services]], [[Amazon]] (promoted on 11 May 2026 following the [[2025-05-06-jassy-amazon-agility-ai-strategy-changing-role-of-managers|Jassy 2025 HBR IdeaCast]] ingest — second source mentioning the parent firm). **Dangling:** [[Jana Werner]], [[Phil Le-Brun]] (deferred for now — single-source coverage; will be promoted when their forthcoming book *The Octopus Organization* (HBR Press) is ingested), [[Reed Hastings]], [[Howard Behar]], [[Miriam McLemore]], [[Stephen Brozovich]], [[Jessica Hall]] (Just Eat Takeaway), [[Aaron Dignan]], [[Donella Meadows]], [[U.S. Army]], [[Netflix]], [[Google]], [[Starbucks]], [[Coca-Cola]], [[Just Eat Takeaway]].
 
 **Concepts:** [[enterprise-ai-adoption]] (light enrichment — Tin Man / Octopus as org-readiness lens; 12% transformation-success baseline).
 

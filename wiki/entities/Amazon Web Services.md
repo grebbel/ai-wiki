@@ -6,9 +6,9 @@ tags: [tech-vendor, cloud, ai-infrastructure, hyperscaler]
 parent: "[[Amazon]]"
 ticker: "AMZN (Amazon)"
 website: "https://aws.amazon.com"
-confidence: 0.80
-last_confirmed: "2026-04-28"
-source_count: 2
+confidence: 0.83
+last_confirmed: "2026-05-11"
+source_count: 3
 ---
 
 # Amazon Web Services
@@ -28,6 +28,19 @@ Two distinct angles on AWS surface across the ingested sources:
 AWS runs an "Executives in Residence" program advising Fortune 500 leadership teams. [[Jana Werner]] and [[Phil Le-Brun]] (authors of [[2026-04-28-werner-lebrun-octopus-organization|"Become an Octopus Organization"]] in HBR Nov–Dec 2025) hold these positions. The Octopus framework is implicitly AWS-aligned: customer-centricity, distributed systems, microservices, decoupling — all align with AWS's core selling points (cloud microservices, serverless, decoupled architectures).
 
 Discount the Octopus framing slightly for AWS's commercial interest, but the underlying argument is well-supported by examples external to AWS (Netflix, Google, Coca-Cola, U.S. Army).
+
+### 3. As an AI-stack vendor — Jassy's three-layer framing ([[2025-05-06-jassy-amazon-agility-ai-strategy-changing-role-of-managers|Jassy 2025]])
+
+[[Andy Jassy]] (Amazon CEO, AWS founder) named the wiki's earliest first-party three-layer AI-stack framing in May 2025:
+
+| Layer | AWS product | Purpose |
+|---|---|---|
+| Bottom (infrastructure) | **Trainium** | Custom AI training chip — *"going to help people save a lot of money relative to what the cost has been to date"* |
+| Bottom (infrastructure) | **SageMaker** | *"The standard way for people building their own models — to get the data in, build a model, experiment, deploy into production"* |
+| Middle (orchestration) | **Bedrock** | Frontier-model marketplace + guardrails / RAG / **agentic capabilities** features — *"take a bunch of automated actions in succession"* |
+| Top (applications) | **Q** | Amazon's AI coding assistant — *"the best AI-powered coding assistant"* (Jassy's framing) |
+
+Jassy's complaint in this section: *"there was a lot of attention early on on ChatGPT … I think people have slept a little bit on the other layers of the stack"* — direct marketing message positioning AWS as the stack-vendor versus OpenAI / Anthropic as application-vendors. The structural decomposition is compatible with [[2026-05-09-chase-agent-development-lifecycle|Chase's]] later (April 2026) four-sub-layer Build split (Frameworks / Runtimes / Harnesses / No-code) at a coarser granularity. **Bedrock's agentic-capabilities feature** is the wiki's earliest first-party-CEO mention of a productised harness primitive — eight months before [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic's]] Managed Agents announcement.
 
 ## Notable people (mentioned in this wiki)
 

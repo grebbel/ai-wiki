@@ -5,9 +5,9 @@ aliases: ["Harvard Business Review", "HBR"]
 tags: [publisher, business-magazine, management-research, harvard, hbr-ideacast, podcast]
 parent: "[[Harvard Business School]]"
 website: "https://hbr.org"
-confidence: 0.88
-last_confirmed: "2026-05-10"
-source_count: 9
+confidence: 0.90
+last_confirmed: "2026-05-11"
+source_count: 10
 ---
 
 # Harvard Business Review
