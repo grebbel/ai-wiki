@@ -2,9 +2,9 @@
 type: concept
 aliases: ["knowledge graph", "KG", "knowledge graphs", "knowledge-graph", "kg"]
 tags: [knowledge-graphs, kg, graph-rag, ai-grounding, ontology, relational-data, agent-harness, agentic-memory, etl, entity-extraction, relationship-extraction]
-confidence: 0.85
+confidence: 0.87
 last_confirmed: "2026-05-12"
-source_count: 4
+source_count: 5
 relationships:
   - type: part-of
     target: agent-harness

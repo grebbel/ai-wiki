@@ -2087,3 +2087,87 @@ This three-article batch is **meta-recursive**: the wiki documents secondary com
 3. **The cross-cutting-touch property (10-15 pages per ingest) is convergent** between Liu's explainer and this repo's CLAUDE.md framing.
 4. **The convergence prediction** (Liu + Raju): hybrid RAG + Wiki + Skills. Direct implication for this repo's roadmap: when the source count outgrows context-window scale, the wiki should add a vector retrieval substrate (per the v0.5+ plan in `llm-wiki-v2-plan.md`).
 5. **The hallucination-baking risk** (Raju): organised, persistent mistakes are harder to spot than individual errors. Design implication for the wiki's lint operation: scan for *plausible-but-wrong* claims specifically, not just orphans and contradictions.
+
+## [2026-05-12] ingest-batch | Two videos — Huber (Chroma) on RAG-is-dead-the-term + Singhal (Skip / Stanford CS153) on PM in the AI era
+
+A two-video batch the user grouped in the same request. Topically divergent: video 1 extends the wiki's LLM-Wiki / knowledge-graphs cluster from the vendor-of-the-substrate vantage; video 2 extends the wiki's vibe-coding / ai-employment-effects / durable-skills cluster from the PM-leadership / Stanford-CS-course-content vantage.
+
+### [2026-05-12] ingest | Jeff Huber (Chroma) — RAG is Dead: Building Agentic Search (Mastra YouTube, 11 May 2026; 13:45)
+
+The wiki's **first-party-Chroma-CEO source**. Source page: [[2026-05-11-huber-chroma-rag-is-dead-agentic-search]].
+
+**Substantive findings:**
+
+- **"RAG is dead — the term, not the technique"**. Convergent with Raju/Liu/OceanBase explainers from the *vendor-of-the-substrate* vantage. Huber proposes banning *RAG* and *vector database* as terms. Reframe: **context engineering**.
+- **The Context Rot empirical anchor**: Chroma's **45-page 2025 research report**. Demonstrates LM performance *not invariant* to context length. Dumb zone starts **20K-120K tokens** depending on use case. *"I've not found anybody who really trusts a million tokens to do anything that's any kind of good."* The wiki's first empirical-numbers anchor for the scale-ceiling caveat Raju named on the LLM Wiki pattern.
+- **Three-axis context-failure taxonomy**: too much / too little / confusing. Strict superset of SurrealDB's *context clash / context confusion / dense neighbourhood* (which only address the *too-much* axis).
+- **"File systems are bad databases"** structural critique: four named limitations of the file-system-plus-bash pattern (currently dominant in Codex / Claude Code defaults) — poor concurrency / corruption risk / no indexing / grep-only search / sandbox heavyweight. Cites **[[Swyx]]**'s *"Oops, You Wrote a Database"* article. Names **Mintlify's virtualized-bash-on-Chroma** as the cleaner alternative.
+- **Embrace the bitter lesson for context engineering**: Huber's prediction that context engineering will be folded back into models. *"Chroma just released a model trained to edit its own context."* Convergent with Karpathy's Software 3.0 prediction direction.
+- **Chroma Context One** — open-source specialised search sub-agent (auto-regressive LM that outputs documents, not text). **10× faster, 25× cheaper, on par or better at searching** vs gigabrain models (Opus 4.5/4.6, GPT-5 4). 50-page research report. *"We find the task of search actually does not lend itself particularly well to being gigabrained, and maybe you're paying too much, you're waiting too long, and you're actually getting worse search results."*
+- **Chroma Sync** — automatic-indexing-as-a-service (drop files in bucket → Chroma auto-handles indexing).
+- **Memory ≈ context compaction ≈ distillation** — Huber's structural collapse. *"If you have a million tokens of memory and you need to inject a couple hundred tokens into this new generation, that is in some sense still a search process of 'what should I remember in this moment?' So memory, context compaction, distillation — they're all the same thing once you unpack it."*
+- **Boris Cherny disagreement (first substantive vendor disagreement in the wiki)**: an audience-Q references Cherny's design talks for Claude Code on agentic-search-beats-RAG. Huber pushes back: *"Question their incentives — who wants you to spend more money on tokens?"* Distinguishes small-corpus (30-50 files; grep works eventually) from larger-corpus (grep breaks; semantic expansion needed). Promises empirical data *"next week"* (mid-May 2026 publication).
+
+**Touched pages:**
+
+- [[concepts/llm-wiki|llm-wiki]] — `source_count` 4 → 5; `confidence` 0.90 → 0.91. Added Huber as the *vendor-of-the-substrate* vantage. Context Rot empirically substantiates the scale-ceiling caveat.
+- [[knowledge-graphs]] — `source_count` 4 → 5; `confidence` 0.85 → 0.87. Added Huber as the third-vendor convergence anchor (Chroma + SurrealDB + seekdb) on multi-modal-database-as-substrate with the *file-systems-are-bad-databases* anti-pattern call-out.
+- [[agent-harness]] — `source_count` 18 → 19; `confidence` 0.95 (cap). Added the *file-systems-are-bad-databases* structural critique of the Codex/Claude-Code default pattern. Prose lead "eighteen" → "nineteen".
+- [[Boris Cherny]] entity — `source_count` 3 → 4; `confidence` 0.80 → 0.82; `last_confirmed` updated to 2026-05-12. Two-source-on-Cherny strengthens the entity.
+
+**People listed as Dangling first-mention**: **Jeff Huber** (Chroma co-founder & CEO); **Swyx** (tech influencer; *"Oops, You Wrote a Database"* article); **Mintlify** (documentation-assistant vendor using Chroma as backing).
+
+**Products / orgs listed as Dangling first-mention**: **Chroma** (vector / retrieval database — multi-mention candidate, also referenced in Liu 2026 briefly); **Mastra** (channel); **Chroma Context One** (open-source search-specialised LM); **Chroma Sync** (auto-indexing product); **Context Rot** (Chroma's 45-page 2025 research report).
+
+**Concept candidates noted**: *Context Rot* (empirical 45-page report; likely promotion-candidate on second-source mention); *Embrace the bitter lesson for context engineering*; *File systems are bad databases*; *Search-specialised LM vs gigabrain LM*; *Memory ≈ context compaction ≈ distillation* (all single-source).
+
+### [2026-05-12] ingest | Nikhyl Singhal at Stanford CS153 — Product Management in the AI Era (Stanford Online YouTube, 7 May 2026; 63:14)
+
+A 63:14 guest lecture in **Stanford CS153 Frontier Systems** (Prof. **Mike Abbott**) with **Nikhyl Singhal** (Skip founder; ex-Google/Meta/Credit Karma VP-of-Product). **The wiki's second Stanford-CS-course-lecture source** (after Leskovec CS224W 2023) and **third Stanford Online ingest**. Source page: [[2026-05-07-singhal-stanford-cs153-product-management-in-ai-era]].
+
+**Substantive findings:**
+
+- **Four-company-phases framework**: pre-PMF (no PM; founder drives) → post-PMF process (PM emerges as quieter process function) → hypergrowth scaling+expanding (Chief Product Officer + large PM teams; Meta feed→Reels worked example) → big-tech late-stage zero-to-one (combat innovator's dilemma).
+- **AI-era role inversion — *product builder*, not *movement of information***: bureaucratic PM role dying; designers/engineers/PMs converging into a *product builder* role. *"All the parts of my job that I dislike and hate, I can essentially obsolete myself, engineer myself out of. And then the parts that I love — judgment, decisioning, being courageous, testing things in the wild, talking to customers — those are the parts of my job that exist."*
+- **Concrete operator-class employment numbers**: 30-70% big-tech layoffs this calendar year (Salesforce/Block/Snap named); top-1% PM salaries more-than-doubled in 18 months; **4 product-leader contracts personally negotiated crossing eight-figures annual**; more open PM roles than ever in history; **mid-30s middle-managers (8-15 years tenure)** named as the at-risk cohort.
+- **"Brand at all-time low" hiring shift**: *"Top quality employers like the Anthropics, the OpenAIs and others don't actually care what brand of company you've been at. They want to know how modern you are in how you think and how you use your tools."* A person at Google 6 years may be *"dramatically less relevant"* than current Stanford-CS-students with max-Claude-Code accounts.
+- **Career-as-chapters / 15-18-jobs-in-50-years**: 50-year career × 2-3 year average tenure → 15-18 jobs total. *"Your career is not like periods in a hockey game. It's like chapters in a book."* The origin of **Skip** as a name: *"think about the chapter after the one you're thinking about now."*
+- **Skip** the company: talent-agency-for-product-people; 125-head-of-product community (Anthropic / OpenAI / Meta and others); Singhal-funded; no scale / no monetize; 30-year plan (Singhal aged 52, planning to work to 82).
+- **The two-question audience test**: 100% of CS153 students anxious + 100% having fun building with AI. Two years ago: 20-30% anxiety, low fun. Demonstrates the *anxiety-up + fun-up + bifurcation* of the AI-era job market.
+- **Iteration-speed-as-moat**: Chrome (6 weeks) beat Firefox (quarterly) and IE (annual); Android (quarterly) beat iOS (annual). Singhal: *"It doesn't matter how you start, it's how fast you improve it."* Two-source-on-iteration-speed-as-moat threshold met (Hu 2026 *thousand-times-faster-than-incumbents* + Singhal); promotion candidate.
+- **Hangouts as anti-pattern**: solved an inside-the-building problem (consolidate 7 communication codebases) not a customer problem; WhatsApp won by focusing on text-only-in-India and iterating fast.
+- **Three durable skills for CS students**: (1) modernity-of-toolchain, (2) networking-passive-relationships, (3) systems-programming-mindset (engineering-abstraction *"is this the right thing to build? Is it working? Does it fit into our system design?"*).
+- **Stanford-CS-faculty-quality knock**: *"The teaching was not particularly great. The assignments were incredibly difficult... My computer science teachers were world class — I think worse than Foothill is my suspicion."* The durable skill: **unstructured-problem-solving with peers** — *"that turned out to be the most important skill."*
+- **Meta-and-the-metaverse diagnosis**: Mark believed Meta needed to *be the innovator* of the next platform (mobile/cloud both leveraged not invented). Spent 5+ years; not seeing it; now pivoting to AI as the next platform. *"To do big innovation you can't do it by consensus."* Apple-like operating model; not Google-like.
+
+**Touched pages:**
+
+- [[vibe-coding]] — `source_count` 8 → 9; `confidence` 0.90 → 0.91. PM-leader-vantage usage of the *vibe-coding* term; Stanford-CS-faculty-level mainstream-adoption signal in <13 months from Karpathy's coinage.
+- [[ai-employment-effects]] — `source_count` 15 → 16; `confidence` 0.95 (cap). Concrete operator-class numbers (30-70% layoffs / top-1% salaries doubled / 4 contracts >$10M annual). Direct evidence for the *bimodal compensation distribution* at the senior-knowledge-worker class level.
+- [[ai-deskilling]] — `source_count` 4 → 5; `confidence` 0.80 → 0.82. Mid-30s middle-managers as named at-risk cohort — the PM-leadership-cohort analog of Thompson's *Pia Torian* and *senior-vs-junior code-sense* worry.
+- [[durable-skills]] — `source_count` 7 → 8; `confidence` 0.90 → 0.91. PM-vantage durable-skills cluster (judgment / decisioning / courage / customer-conversation / system-design-mindset).
+- [[micro-productivity-trap]] — `source_count` 12 → 13; `confidence` 0.95 (cap). The *bureaucratic-PM-role* as instantiation of the trap — *"being a bureaucrat sucks if you're a builder."*
+- [[agentic-engineering]] — `source_count` 8 → 9; `confidence` 0.91 → 0.92. *Product builder* role-convergence at the design/engineering/PM-collapse level.
+- [[index.md]] — added both source entries; bumped [[agent-harness]] one-liner (18 → 19 sources).
+
+**People listed as Dangling first-mention**: **Nikhyl Singhal** (Skip founder; ex-Google/Meta/Credit Karma VP-of-Product); **Mike Abbott** (Stanford CS153 professor; Sequoia partner; ex-Twitter eng VP); **Mark Zuckerberg** (referenced in Meta-metaverse diagnosis).
+
+**Products / orgs listed as Dangling first-mention**: **Skip** (talent agency); **skip.show** (Substack); **CS153 Frontier Systems** (Stanford course); **Credit Karma**; **Block**, **Salesforce**, **Snap** (layoff context); **Horizon Worlds** (Meta).
+
+**Concept candidates noted**:
+- *Four company phases framework* (pre-PMF / post-PMF process / hypergrowth / big-tech-late-stage) — strong promotion candidate.
+- *Product builder* (vs PM/designer/engineer-as-silos) — role-collapse construct; promotion candidate.
+- *Career-as-chapters / 15-18-jobs-in-50-years* — single-source.
+- *Brand-at-all-time-low / modernity-of-toolchain-as-hiring-signal* — promotion candidate on second-source mention.
+- *Iteration-speed-as-moat* — **two-source threshold met** (Hu + Singhal); strong promotion candidate.
+
+### Cross-batch synthesis
+
+The two videos are topically divergent but both extend recent wiki concept clusters:
+
+1. **Huber extends the LLM Wiki / knowledge-graphs cluster** with the vendor-of-the-substrate vantage. Closes empirically what Raju named caveat-wise (the scale ceiling). The wiki now holds **three independent sources rejecting RAG-as-a-useful-term** (Raju + Liu + Huber) — strong convergence on the term-vs-technique distinction.
+2. **Singhal extends the vibe-coding / ai-employment-effects / durable-skills cluster** from the PM-leadership / Stanford-CS-course-content vantage. The *brand-at-all-time-low* + *bimodal-compensation* + *middle-managers-as-at-risk-cohort* triad is direct operator-class numerical evidence for the bifurcation the wiki has been tracking in qualitative terms across Thompson / Jassy / Hu.
+3. **The wiki's first substantive vendor disagreement**: Huber pushes back on Cherny / Anthropic's *agentic search beats RAG* framing. Worth tracking — Huber promises empirical data *"next week"*.
+4. **Iteration-speed-as-moat** now hits a two-source threshold (Hu + Singhal). Strong concept-promotion candidate.
+
+Both videos are post-2026-04 (recent ingests). No new concept page created in this batch — but five strong promotion candidates surfaced (iteration-speed-as-moat / four-company-phases / product-builder / brand-at-all-time-low / Context Rot) for future ingests.

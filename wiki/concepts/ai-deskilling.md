@@ -2,9 +2,9 @@
 type: concept
 aliases: ["AI deskilling", "ai-deskilling", "task composition shift", "deskilling"]
 tags: [deskilling, task-composition, ai-employment-effects, occupations]
-confidence: 0.80
-last_confirmed: "2026-05-11"
-source_count: 4
+confidence: 0.82
+last_confirmed: "2026-05-12"
+source_count: 5
 relationships:
   - type: instance-of
     target: ai-employment-effects

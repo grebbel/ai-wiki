@@ -2,9 +2,9 @@
 type: concept
 aliases: ["LLM Wiki", "LLM-Wiki", "llm wiki", "Karpathy's LLM Wiki", "LLM-maintained wiki", "compounding wiki"]
 tags: [llm-wiki, knowledge-compilation, three-layer-architecture, ingest-query-lint, agent-memory, claude-md, knowledge-compounding, agentic-knowledge-base]
-confidence: 0.90
+confidence: 0.91
 last_confirmed: "2026-05-12"
-source_count: 4
+source_count: 5
 relationships:
   - type: part-of
     target: agent-harness

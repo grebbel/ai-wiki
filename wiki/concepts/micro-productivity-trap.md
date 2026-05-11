@@ -3,8 +3,8 @@ type: concept
 aliases: ["micro-productivity trap", "micro-productivity-trap", "offering lock-in", "process lock-in"]
 tags: [micro-productivity-trap, AI-transformation, EBITDA, process-redesign, workflow-redesign, enterprise-ai, organizational-change-vs-tech-implementation]
 confidence: 0.95
-last_confirmed: "2026-05-11"
-source_count: 12
+last_confirmed: "2026-05-12"
+source_count: 13
 relationships:
   - type: instance-of
     target: enterprise-ai-adoption

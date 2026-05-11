@@ -2,9 +2,9 @@
 type: concept
 aliases: ["agentic engineering", "Agentic Engineering", "agentic-engineering", "agent engineering"]
 tags: [agentic-engineering, vibe-coding, software-3.0, ai-agents, agent-harness, software-engineering, hiring, karpathy, codex-case-study]
-confidence: 0.91
+confidence: 0.92
 last_confirmed: "2026-05-12"
-source_count: 8
+source_count: 9
 relationships:
   - type: depends-on
     target: agent-harness
