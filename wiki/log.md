@@ -2006,3 +2006,84 @@ This three-source batch closes one significant wiki gap and tightens another:
 - *KG-construct as universal-substrate-across-agentic-stack-layers* — four-vantage convergence is unusually strong; the construct demonstrates **maximal polymorphism** (same data structure, four distinct uses across the agentic stack).
 - *Agent-driven question-narrowing / Socratic-dialogue spec elicitation* — four-source convergence now met (Rufus / Thompson / Böckeler / Tan-Office-Hours). Strong promotion candidate.
 - *Founder-as-AI-founder-type archetype operationalised* — two-source threshold met (Hu prescribes / Tan demonstrates at YC-president scale).
+
+## [2026-05-12] ingest-batch | Three articles on Karpathy's LLM Wiki — OceanBase ex-brain, Raju explainer, Liu comparative-architecture
+
+A meta-recursive ingest batch: three Medium articles published within 23 days of Karpathy's 4 April 2026 LLM Wiki gist, all explaining the very pattern this repository implements. The batch closes a long-flagged concept-promotion candidate ([[concepts/llm-wiki|llm-wiki]]) and triggers two entity promotions ([[Garry Tan]] from Dangling; [[Andrej Karpathy]] source_count 1→4).
+
+### [2026-05-12] ingest | OceanBase Database — I Built a Knowledge Base That Thinks (Medium, 9 April 2026; ~6-min read)
+
+The wiki's **earliest-vendor implementation** of the LLM Wiki pattern, published 5 days after Karpathy's gist. Source page: [[2026-04-09-oceanbase-ex-brain-knowledge-base-that-thinks]].
+
+**Substantive findings:**
+
+- **ex-brain CLI** built by OceanBase team using **seekdb** (their AI-native database, github.com/oceanbase/seekdb). Four mechanisms: smart compilation (status / fact / event detection drives update strategy); automatic timeline extraction; entity linking with auto-stub-page creation; hybrid search via seekdb.
+- **Compiled-truth principle named explicitly**: *"knowledge should update itself when new information arrives, not just accumulate."* Worked example: company Series A in March, new CEO in June, Series B in August — Notion/Obsidian accumulate three notes the user must reconcile; ex-brain compiles them so the page always reflects current truth.
+- **MCP server integration as the harness/substrate boundary** — `ebrain serve` exposes `brain_get` / `brain_put` / `brain_search` / `brain_compile` / `brain_link` tools to Claude Code. **First wiki demonstration of where the harness ends (Claude Code) and the substrate begins (seekdb as compiled-knowledge storage).**
+- **seekdb properties** — embedded mode single-file (1 CPU + 2 GB RAM); native hybrid search (HNSW/IVF/quantised + BM25 + scalar filtering); built-in AI functions (`AI_EMBED`, `AI_COMPLETE`, `AI_RERANK`) usable in SQL; MySQL-compatible ACID; multi-model (vector + text + scalar + JSON + GIS).
+- **Names Garry Tan's GBrain** as parallel concept — *"Garry Tan's GBrain ran with the same concept. Both projects prove that LLM + local storage is a surprisingly powerful combination."*
+
+### [2026-05-12] ingest | Sathish Raju — RAG Isn't Dead. But Something Is. Karpathy's LLM Wiki Explained (Medium, 16 April 2026; ~10-min read)
+
+The wiki's **clearest single-article explainer** of Karpathy's LLM Wiki gist. Source page: [[2026-04-16-raju-rag-isnt-dead-karpathys-llm-wiki-explained]].
+
+**Substantive findings:**
+
+- **Karpathy gist statistics anchor**: posted 4 April 2026; **17 million views, 5,000 stars, 4,282 forks within days**. Framed as *"an idea file — a markdown document designed to be copy-pasted into an LLM agent"* — not a paper, not a product.
+- **Three-layer architecture named with explicit ownership semantics**: raw sources (immutable, human source-of-truth) / wiki (LLM-owned entirely) / schema=CLAUDE.md (co-evolved by human and LLM).
+- **Three core operations**: **ingest** (compile new knowledge, single article touches 10-15 wiki pages) / **query** (read index → drill into relevant pages → synthesise with citations; *"good answers get filed back into the wiki as new pages"*) / **lint** (scan for contradictions / stale claims / orphan pages / concepts mentioned but lacking own page).
+- **Honest comparison table**: ten dimensions, RAG vs LLM Wiki, the wiki's first systematic feature-by-feature contrast.
+- **Three limitations Karpathy glossed over**: **scale ceiling** (works at 100 articles / 400K words; fails at 10K without retrieval substrate); **hallucination baking** (*"in RAG, that's a wrong answer; in the wiki, that's a wrong page that every future query trusts"*); **ingest cost** (multiple LLM passes per source; expensive at high re-ingest velocity).
+- **Working Python implementation** — three functions span the entire pattern (`ingest_source` / `query_wiki` / `lint_wiki`) in <200 lines.
+- **The verdict**: *"Karpathy hasn't killed RAG. He's articulated something more important: that knowledge should compound, not evaporate."* Complement, not replace; hybrid architecture for serious knowledge systems.
+
+### [2026-05-12] ingest | Yanli Liu — RAG, LLM Wiki, or GBrain? How Your Agent Remembers Changes Everything (AI Advances / Medium, 27 April 2026; ~15-min read)
+
+The wiki's **most-substantive comparative-architecture article**. Source page: [[2026-04-27-liu-rag-llm-wiki-or-gbrain-how-your-agent-remembers]].
+
+**Substantive findings:**
+
+- **Three-architecture decision framework** with a unified comparison matrix (core verb / scale / compounds? / proactive? / context / setup cost / best for): **RAG** (Retrieve, 200K+ docs, no compounding, low setup, search at scale) / **LLM Wiki** (Compile, ~1K sources, compounds, medium setup, deep expertise) / **Fat Skills / GBrain** (Act, 17K+ pages, proactive via 21 crons, high setup months, autonomous ops).
+- **RAG's three critical failure points** (cites a 2024 academic paper with 7 total): **chunking problem** (30-page spec fragmented; relationships destroyed); **re-derivation problem** (*"Karpathy put it sharply: 'RAG rereads the same books for every exam, never actually learning the material'"*); **passivity problem** (RAG waits for queries; never notices contradictions).
+- **GBrain detailed architecture** — the wiki's deepest first-party-class description: 24 autonomous skills + 21 cron jobs + 17,888-page brain on Postgres + pgvector; **"thin harness, fat skills"** (~200 lines harness; intelligence in skill files); CLAUDE.md + RESOLVER.md as routing (*"skill descriptions themselves function as the resolver"*); always-on signal-detector skill (*"an unlinked mention is a broken brain"*); deterministic-vs-latent work split; Tan's iteration toward *"fewer fatter skills"*.
+- **Convergence prediction**: 2023 RAG era → 2025 Wiki + Skills emerge → 2026+ convergence. *"The three-way split won't last."*
+- **Claude Code as partial-convergence-example** — CLAUDE.md = mini-wiki + auto-memory = compounding + skills = action. *"It's not a deliberate implementation of all three patterns — but the same pressures produced the same solutions."* Meta-relevant: this repository runs inside this exact runtime.
+
+### Concept and entity promotions on this batch
+
+- **[[concepts/llm-wiki|llm-wiki]]** — **NEW CONCEPT PAGE created** — anchored by 4 sources (Karpathy's Sequoia interview + 3 new explainer articles). Closes the long-flagged promotion candidate. The wiki now anchors at the concept layer the foundational pattern it implements at the schema layer.
+- **[[Garry Tan]]** — **PROMOTED from Dangling to entity page** — 3-source threshold met (Tan/GStack + ex-brain mention + Liu deep treatment). Documents both GStack (Claude Code skill toolkit) and GBrain (autonomous knowledge base with 24 skills + 21 crons + 17.8K-page brain). The wiki's first canonical AI-founder-type-archetype operationalised.
+- **[[Andrej Karpathy]]** entity — `source_count` 1 → 4; `confidence` 0.85 → 0.92; `last_confirmed` updated to 2026-05-12. Expanded the *LLM-wiki / LLM-knowledge-base pattern* paragraph to reference the gist statistics (17M views, 5K stars) and the three new explainer articles.
+
+**Touched pages:**
+
+- [[concepts/llm-wiki|llm-wiki]] — created (4 sources / confidence 0.85).
+- [[Garry Tan]] — entity page created (3 sources / confidence 0.85).
+- [[Andrej Karpathy]] — `source_count` 1 → 4; `confidence` 0.85 → 0.92.
+- [[index.md]] — added 3 source entries; added [[concepts/llm-wiki|llm-wiki]] to Concepts section.
+
+**Body-wikilink-rule disambiguation note**: The new [[concepts/llm-wiki|llm-wiki]] concept page shares its basename with the root-level [`llm-wiki.md`](../../llm-wiki.md) (Karpathy's original conceptual spec — predates this repo's wiki layer). VSCode's wiki-link extension flags this as an ambiguous identifier; Quartz / graph-export / lint resolve cleanly. Defensive choice: body wikilinks use the folder-qualified `[[concepts/llm-wiki|...]]` form. Lint-page.mjs matches by basename, so `relationships.target: llm-wiki` still satisfies the body-wikilink-rule against `[[concepts/llm-wiki|...]]` references.
+
+**People listed as Dangling first-mention**: **Yanli Liu** (finance practitioner, Luxembourg; AI Advances Medium contributor; 4.5K followers); **Sathish Raju** (Senior AI Architect at Lenovo; ex-co-founder/CTO of kloud.io acquired by Alation); **OceanBase Database** (publication — the engineering team behind ex-brain + seekdb); **Ali Partovi**, **Sarah Chen** (example-data entities in ex-brain CLI samples).
+
+**Organisations / products listed as Dangling first-mention**: **AI Advances** (Medium publication, 78K followers); **OceanBase** (parent company of OceanBase Database); **ex-brain** (Tan-adjacent personal-KB CLI); **seekdb** (OceanBase's AI-native database; github.com/oceanbase/seekdb); **GBrain** (Tan's open-source autonomous-knowledge-base — *now load-bearing across 3 wiki sources*); **OpenClaw**, **Hermes** (personal AI agents Liu names alongside Claude Code as GBrain's intended runtime); **kloud.io** (Raju's pre-Lenovo startup, acquired by Alation); **Alation** (Raju's pre-Lenovo employer); **Lenovo** (Raju's current employer); **Pinecone**, **Chroma**, **LlamaIndex** (RAG/vector-DB ecosystem); **Mem**, **Granola** (AI-powered note-taking criticised in ex-brain article); **DashScope** (embedding/AI provider seekdb supports).
+
+**Candidate concepts noted**:
+- *Compiled-truth principle / knowledge-compounding-not-evaporation* — central thesis of the LLM Wiki concept; now folded into the [[concepts/llm-wiki|llm-wiki]] page.
+- *Three-architecture decision framework (RAG / Wiki / Skills)* — Liu's framework; single-source as a *named-framework*.
+- *Thin harness, fat skills* — Liu's framing of GBrain's architecture; convergent-but-distinct from Böckeler's harness vocabulary. Single-source.
+- *Hallucination baking / persistent-mistake-amplification* — Raju's named risk; single-source as a named-risk.
+- *Scale ceiling at ~100 pages without retrieval substrate* — Raju's named limitation; single-source.
+- *MCP-server-as-LLM-Wiki-interface* — ex-brain's `ebrain serve` pattern; single-source as a named-interface-pattern.
+
+**Pre-flight notes**: All three sources verified per the [§Verifying sources before ingest] contract — title, author, publication date, scope all match. PDF page counts: OceanBase 11 pages (~6-min read; pages 10-11 are footer); Raju 15 pages (~10-min read; pages 13-15 are footer); Liu 22 pages (~15-min read; pages 18-22 are footer). All three published within 23 days of Karpathy's 4 April 2026 gist — they are responses to the same upstream event. Articles converge on the three-layer architecture, the three operations, and the three-limitations triad, with substantial cross-citation between them (Raju cites Karpathy directly; Liu cites both Karpathy and GBrain; OceanBase cites both Karpathy and GBrain). Strong cross-source evidence that the LLM Wiki pattern has stabilised at the architectural-vocabulary level.
+
+### Cross-batch synthesis
+
+This three-article batch is **meta-recursive**: the wiki documents secondary commentary on the wiki's own foundational pattern. Specifically:
+
+1. **The LLM Wiki pattern is now anchored at the concept layer** — previously scattered across `llm-wiki.md`, `llm-wiki-v2.md`, `CLAUDE.md`, and the Karpathy entity's mention. The new [[concepts/llm-wiki|llm-wiki]] concept page consolidates the construct.
+2. **The three operations Raju names (ingest / query / lint) match this repo's CLAUDE.md §"The four operations"** exactly minus the v0.3 *synthesize* addition. Strong external validation of the operation vocabulary.
+3. **The cross-cutting-touch property (10-15 pages per ingest) is convergent** between Liu's explainer and this repo's CLAUDE.md framing.
+4. **The convergence prediction** (Liu + Raju): hybrid RAG + Wiki + Skills. Direct implication for this repo's roadmap: when the source count outgrows context-window scale, the wiki should add a vector retrieval substrate (per the v0.5+ plan in `llm-wiki-v2-plan.md`).
+5. **The hallucination-baking risk** (Raju): organised, persistent mistakes are harder to spot than individual errors. Design implication for the wiki's lint operation: scan for *plausible-but-wrong* claims specifically, not just orphans and contradictions.

@@ -3,9 +3,9 @@ type: entity
 kind: person
 aliases: ["Karpathy", "Andrej Karpathy", "@karpathy"]
 tags: [andrej-karpathy, ai-researcher, openai, tesla, eureka-labs, software-3.0, vibe-coding, jagged-intelligence, llm-wiki]
-confidence: 0.85
-last_confirmed: "2026-05-08"
-source_count: 1
+confidence: 0.92
+last_confirmed: "2026-05-12"
+source_count: 4
 relationships:
   - type: authored-by
     target: 2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering
@@ -39,7 +39,7 @@ Karpathy is unusually prolific at **naming things that the field then adopts**. 
 - **The wiki's [[jagged-frontier]] explanatory layer** — Karpathy contributes the *cause* (verifiability + labs care + RL training mechanism) for the *task-level observation* described by Dell'Acqua et al. The "are LLMs jagged?" framing in the wiki sits across both pages.
 - **"Animals vs ghosts"** — Karpathy's mindset framing for what kind of intelligence LLMs are: *"We're not building animals; we are summoning ghosts."* He himself flags this as "a little bit of philosophising"; the wiki captures it as a sub-section inside [[jagged-frontier]].
 - **[[agentic-engineering|Agentic engineering]] as a discipline** — Karpathy positions this as the "preserve quality bar at agent speed" complement to *vibe coding's* "raise the floor". Names it explicitly as an *engineering discipline*.
-- **The LLM-wiki / LLM-knowledge-base pattern itself** — the [`llm-wiki.md`](../../llm-wiki.md) conceptual spec at the root of this repo is Karpathy's articulation of the workflow. As of [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering|29 April 2026]] he confirms continued use of the pattern: *"I really enjoy whenever I read an article I have my wiki that's being built up from these articles… anytime I see a different projection onto information, I always feel like I gain insight."*
+- **The LLM-wiki / LLM-knowledge-base pattern itself** — the [`llm-wiki.md`](../../llm-wiki.md) conceptual spec at the root of this repo is Karpathy's articulation of the workflow. As of [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering|29 April 2026]] he confirms continued use of the pattern: *"I really enjoy whenever I read an article I have my wiki that's being built up from these articles… anytime I see a different projection onto information, I always feel like I gain insight."* On **4 April 2026** Karpathy posted a GitHub Gist that crystallised the pattern as an *"idea file"* — a markdown document designed to be copy-pasted into an LLM agent. The gist hit **17 million views, 5,000 stars, and 4,282 forks within days** (per [[2026-04-16-raju-rag-isnt-dead-karpathys-llm-wiki-explained|Raju 2026]]). Three explainer articles ingested in this batch ([[2026-04-09-oceanbase-ex-brain-knowledge-base-that-thinks|OceanBase / ex-brain]], [[2026-04-16-raju-rag-isnt-dead-karpathys-llm-wiki-explained|Raju]], [[2026-04-27-liu-rag-llm-wiki-or-gbrain-how-your-agent-remembers|Liu]]) collectively describe the pattern, build a reference implementation, and place it in the RAG / Wiki / Skills hybrid landscape. The wiki now anchors the construct as a dedicated concept page: [[concepts/llm-wiki|llm-wiki]].
 
 ## Key claims attributable to Karpathy (in this wiki)
 
