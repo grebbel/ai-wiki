@@ -38,7 +38,7 @@ A new source has been added to the raw collection.
 3. Write a summary page in the wiki.
 4. Update **every** affected entity, concept, and topic page across the wiki — a single ingest may touch 10–15 files. On every touched concept/entity page, bump `last_confirmed` to today's date and recompute `source_count` and `confidence` per [§Lifecycle](#lifecycle).
 5. Update `index.md` (catalog of pages, one-line summaries, organized by category).
-6. Append an entry to `log.md` using the agreed prefix format.
+6. Prepend an entry to `log.md` using the agreed prefix format — new entries go directly under the `---` separator at the top of the file (reverse-chronological convention since 2026-05-12, GH #3), so the most recent entry is the first one in the file.
 7. When new data contradicts an older claim, flag it explicitly in the page's `## Debates and supersession` section. If the new source supersedes an older one wholesale, set `supersedes:` on the new source page and `status: stale` + `superseded_by:` on the retired page — never delete the retired page.
 
 ### Query
@@ -242,7 +242,7 @@ When new data fully replaces an older claim (not just adds nuance):
 2. The retired page gains `status: stale` and `superseded_by: [[new-page]]` in frontmatter.
 3. The replacing page (a new source, or a rewritten concept/entity) gains `supersedes: [[retired-page]]` in frontmatter (use list syntax for multiple).
 4. The `inject-stale-banner.ts` Quartz extension renders a warning blockquote at the top of stale pages on the published site. In Obsidian the frontmatter is visible; the banner is not.
-5. Append a `log.md` entry under `op: refactor` describing what was superseded and why.
+5. Prepend a `log.md` entry under `op: refactor` describing what was superseded and why (reverse-chronological convention since 2026-05-12, GH #3).
 
 When new data only adds nuance or contradiction without retiring the old claim, do **not** mark the old page stale. Add a bullet to its `## Debates and supersession` section instead.
 
@@ -376,7 +376,7 @@ When a thread is ready to close:
 2. Draft the synthesis page in `wiki/syntheses/` per the contract above.
 3. Update the thread page: `status: closed` in frontmatter; add a "Closed" note pointing to the synthesis.
 4. Update `index.md`: drop the thread from the open-threads list; add the synthesis to the (no-longer-empty) Syntheses section.
-5. Append a `log.md` entry under `op: synthesize` describing the question and the headline finding.
+5. Prepend a `log.md` entry under `op: synthesize` describing the question and the headline finding (reverse-chronological convention since 2026-05-12, GH #3).
 
 ## Hooks
 
@@ -392,7 +392,7 @@ This protects the v1 trust contract ("Claude owns the wiki layer, user owns dire
 
 | Event | Script | Purpose |
 | ----- | ------ | ------- |
-| `SessionStart` | [`scripts/session-start.mjs`](scripts/session-start.mjs) | Outputs a short wiki snapshot (catalog counts, last 5 log entries, `status: stale` and `confidence < 0.5` flags) to stdout — Claude Code feeds it back as session context. Read-only. |
+| `SessionStart` | [`scripts/session-start.mjs`](scripts/session-start.mjs) | Outputs a short wiki snapshot (catalog counts, 5 most recent log entries — the *first* 5 since the 2026-05-12 reverse-chronological flip, `status: stale` and `confidence < 0.5` flags) to stdout — Claude Code feeds it back as session context. Read-only. |
 | `PostToolUse` (Edit, Write) | [`scripts/lint-page.mjs`](scripts/lint-page.mjs) | If the just-edited file is under `wiki/**/*.md`, validates the v0.2 lifecycle contract (`confidence`, `last_confirmed`, `source_count`), the v0.3 closed relationship vocabulary, and the v0.3 body-wikilink rule (every `relationships.target` must appear as a body `[[wikilink]]`). Warnings to stderr. Always exits 0 — never blocks the tool call. |
 | `Stop` | [`scripts/session-end.mjs`](scripts/session-end.mjs) | Per-turn check: if any `wiki/**/*.md` is modified or untracked, re-runs [`scripts/graph-export.mjs`](scripts/graph-export.mjs) so `wiki/.graph.json` stays fresh; otherwise exits silently. No log writes. |
 
@@ -404,7 +404,7 @@ When/if a hook ever does write to `log.md` in a future version, the entry's op m
 
 - **No on-query hook** — the "file good answers back" decision is human-judgment, not a hook target.
 - **No scheduled retention decay** — deferred to v0.5 alongside hybrid search.
-- **`session-end.mjs` does not append a log entry** — `Stop` fires per-turn, not per-session, so per-turn entries would be too noisy. Manual log writing remains the convention until a real `SessionEnd` event is wired (or a session-end slash command is built).
+- **`session-end.mjs` does not write a log entry** — `Stop` fires per-turn, not per-session, so per-turn entries would be too noisy. Manual log writing (now prepending) remains the convention until a real `SessionEnd` event is wired (or a session-end slash command is built).
 - **No auto-fix on lint warnings** — `lint-page.mjs` only reports; the human or Claude decides what to do.
 
 ## Reference

@@ -66,24 +66,34 @@ for (const sub of TARGET_DIRS) {
 
 const counts = await countByDir()
 
-// Last N log.md entries (heading lines only, not full bodies)
+// N most recent log.md entries (heading lines only, not full bodies).
+// log.md is reverse-chronological since 2026-05-12 (GH #3): newest entry first,
+// so the most recent N are the FIRST N — take from the head, not the tail.
 let recentLogHeadings = []
 try {
   const logRaw = await readFile(join(WIKI_DIR, "log.md"), "utf8")
   const headings = logRaw
     .split("\n")
     .filter((line) => /^## \[\d{4}-\d{2}-\d{2}\] /.test(line))
-  recentLogHeadings = headings.slice(-RECENT_LOG_ENTRIES)
+  recentLogHeadings = headings.slice(0, RECENT_LOG_ENTRIES)
 } catch {}
 
-// Find the most recent v0.X release marker in log.md (informational)
+// Find the HIGHEST wiki schema marker (v0.x[.y]) mentioned anywhere in log.md.
+// Restricted to the v0.* range so external product versions (e.g. "Microsoft
+// Agent Framework v1.0") don't pollute the result. Independent of file
+// ordering, so the reverse-chronological flip (GH #3) doesn't change what
+// gets reported as the latest schema version.
 let latestVersion = null
 try {
   const logRaw = await readFile(join(WIKI_DIR, "log.md"), "utf8")
-  const versionMatches = [...logRaw.matchAll(/\bv0\.\d+(?:\.\d+)?\b/g)]
-  if (versionMatches.length > 0) {
-    latestVersion = versionMatches[versionMatches.length - 1][0]
+  const versionMatches = [...logRaw.matchAll(/\bv0\.(\d+)(?:\.(\d+))?\b/g)]
+  let best = null
+  for (const m of versionMatches) {
+    const score = parseInt(m[1], 10) * 1_000
+                + (m[2] ? parseInt(m[2], 10) : 0)
+    if (!best || score > best.score) best = { score, str: m[0] }
   }
+  if (best) latestVersion = best.str
 } catch {}
 
 const lines = []
@@ -96,7 +106,7 @@ if (latestVersion) {
   lines.push(`**Latest schema version mentioned in log:** ${latestVersion}.`)
 }
 lines.push("")
-lines.push("**Recent activity** (most recent at the bottom):")
+lines.push("**Recent activity** (most recent at the top):")
 lines.push("")
 if (recentLogHeadings.length === 0) {
   lines.push("- _(log.md missing or empty)_")
