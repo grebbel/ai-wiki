@@ -307,11 +307,52 @@ async def _extract_segments(page: Page) -> list[dict]:
 async def fetch(video_id: str, *, headless: bool = True, timeout_ms: int = 30000) -> dict:
     url = f"https://www.youtube.com/watch?v={video_id}"
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=headless)
+        browser = await pw.chromium.launch(
+            headless=headless,
+            # Suppress the Chromium-level automation flag that lets sites detect
+            # WebDriver via Blink's runtime signals. Pair with the navigator
+            # spoofing in the init script below — YouTube's /youtubei/v1/get_transcript
+            # endpoint started rejecting WEBDRIVER-flagged sessions (HTTP 400
+            # "Precondition check failed") around 2026-05-13.
+            args=["--disable-blink-features=AutomationControlled"],
+        )
         ctx = await browser.new_context(
             locale="en-US",
             viewport={"width": 1280, "height": 900},
             bypass_csp=True,
+            # The default Playwright UA contains "HeadlessChrome", which is a
+            # secondary anti-bot signal. Pinning to a stable non-headless string
+            # avoids that without needing the Chromium version to stay in lockstep.
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/139.0.7258.66 Safari/537.36"
+            ),
+        )
+        # Init scripts run before any YouTube JS, so the spoofs are in place
+        # when get_transcript's preflight runs. See GH #2 / 2026-05-13 incident.
+        await ctx.add_init_script(
+            """
+            // Mask navigator.webdriver — the primary automation signal YouTube
+            // checks before issuing /youtubei/v1/get_transcript.
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined, configurable: true });
+            // Make navigator.plugins look populated (headless reports 0).
+            Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+            // Realistic languages array (headless Chrome ships with just one).
+            Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
+            // chrome.runtime stub: headless Chromium omits window.chrome.
+            window.chrome = window.chrome || { runtime: {} };
+            // Notifications permission: headless reports 'denied', real Chrome 'default'.
+            const origPerm = navigator.permissions && navigator.permissions.query
+                ? navigator.permissions.query.bind(navigator.permissions)
+                : null;
+            if (origPerm) {
+                navigator.permissions.query = (p) =>
+                    p && p.name === 'notifications'
+                        ? Promise.resolve({ state: Notification.permission })
+                        : origPerm(p);
+            }
+            """
         )
         page = await ctx.new_page()
         # Defense-in-depth: register a default Trusted Types policy so string-form
