@@ -539,6 +539,7 @@ const KG_NODES = [
   { id: "n4",  x: 120, y: 160, r:  8, label: "misselijkheid", kind: "metric" },
   { id: "n5",  x: 210, y: 160, r:  9, label: "hoofdpijn",   kind: "metric" },
   { id: "n6",  x: 210, y: 220, r:  9, label: "Medicijn B",  kind: "entity" },
+  { id: "n7",  x: 140, y: 220, r:  8, label: "vermoeidheid", kind: "metric" },
   { id: "ans", x: 120, y: 265, r: 11, label: "Antwoord",    kind: "output" },
 ]
 const KG_EDGES = [
@@ -548,10 +549,11 @@ const KG_EDGES = [
   { from: "n2",  to: "n4", type: "causes"     },
   { from: "n2",  to: "n5", type: "causes"     },
   { from: "n6",  to: "n5", type: "causes"     },
-  { from: "n6",  to: "n4", type: "causes"     },
+  { from: "n6",  to: "n7", type: "causes"     },
   { from: "n3",  to: "ans",type: "informs"    },
   { from: "n5",  to: "ans",type: "informs"    },
   { from: "n4",  to: "ans",type: "informs"    },
+  { from: "n7",  to: "ans",type: "informs"    },
 ]
 const KIND_RING = {
   input:  "var(--ink)",
