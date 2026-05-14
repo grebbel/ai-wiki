@@ -10,6 +10,58 @@ Ordering flipped on 2026-05-12 (GH [#3](https://github.com/businessdatasolutions
 
 ---
 
+## [2026-05-14] ingest | Three-video evals + Replit-CEO batch — Husain on Peter Yang (Sept 2025) + HF Agentic Evals Workshop (March 2026) + Masad / Replit on YC Founder Firesides (April 2026)
+
+Three YouTube ingests in a single supervised batch (user request: ingest all three in sequence). Two thematic clusters formed: an **evals pair** (V1 + V2) bracketing the practitioner-trainer ↔ research-frontier span on AI evaluation, and a **YC-channel triple completion** (V3 lands one day after Hu, two days after Tan — three consecutive YC-channel sources on the AI-native-company thesis across 23-25 April 2026).
+
+**Raw + source pages.**
+
+- [`raw/videos/husain-peter-yang-ai-evaluations-clearly-explained-50-min.md`](../raw/videos/husain-peter-yang-ai-evaluations-clearly-explained-50-min.md) — ~52:30, 1008 ASR segments; channel = Peter Yang. ASR-cleaned (`Hamel`/`Braintrust`/`Arize`/`LangSmith`/`Maven` + systematic `email`↔`eval` homophone fix). Source page [[2025-09-28-husain-ai-evaluations-clearly-explained-50-min]] — `dynamic_capabilities: digital-seizing/rapid-prototyping + digital-transforming/improving-digital-maturity`. Five typed `relationships:` (supports agent-development-lifecycle, agent-harness, agentic-engineering, Guthrie 2025).
+- [`raw/videos/huggingface-agentic-evaluations-workshop.md`](../raw/videos/huggingface-agentic-evaluations-workshop.md) — ~108:46, 1023 ASR segments; channel = Hugging Face livestream. ASR-cleaned (`Hugging Face`/`Avijit Ghosh`/`Arvind Narayanan`/`Mahesh Sathiamoorthy`/`Nathan Habib`/`GAIA`/`lighteval`/`Open LLM Leaderboard`). Source page [[2026-03-20-huggingface-agentic-evaluations-workshop]] — `dynamic_capabilities: digital-sensing/digital-scouting + digital-seizing/balancing-digital-portfolios + digital-transforming/navigating-innovation-ecosystems + contextual/external-triggers`. Seven typed `relationships:` (supports ai-benchmarks, automation-vs-augmentation, agent-development-lifecycle, agent-harness, Husain, Guthrie; contradicts ai-benchmarks via the scar-fragmentation diagnosis). J.J. Allaire is in the channel description but absent from the transcript — treated as `inspect_ai` tool-anchor, not substantive speaker.
+- [`raw/videos/masad-replit-ceo-only-two-jobs-left.md`](../raw/videos/masad-replit-ceo-only-two-jobs-left.md) — ~39:08, 382 ASR segments; channel = Y Combinator (Founder Firesides). ASR-cleaned (`Replit`/`Amjad Masad`/`vibe coding`/`Marc Andreessen`/`Paul Graham and Sam Altman`/`a16z`/`Zendesk`). Source page [[2026-04-25-masad-replit-ceo-only-two-jobs-left]] — `dynamic_capabilities: strategic-renewal/business-model + strategic-renewal/organizational-culture + digital-transforming/redesigning-internal-structures + digital-transforming/improving-digital-maturity + digital-seizing/rapid-prototyping + contextual/external-triggers`. Six typed `relationships:` (supports vibe-coding, ai-employment-effects, enterprise-ai-adoption, agentic-engineering, durable-skills, Hu, Tan).
+
+**Pages touched (8 total: 4 concepts + 1 entity + 1 catalog + 1 prior source backlinked + 1 log).**
+
+- [[concepts/ai-benchmarks]] — 4→6, conf 0.85→0.88, last_confirmed 2026-05-07→2026-05-14. New ~25-line section on the **agentic-evals frontier**: Narayanan's capability-reliability gap (12 sub-dimensions of reliability, augmentation-vs-automation as a reliability decision, public Reliability Index); Habib's **scar fragmentation** diagnosis + community-eval response; Andrews' GAIA-2 / ARE architecture (apps / universes / scenarios; five capability splits incl. ambiguity and agent-to-agent; explicit sim-to-real gap); Ghosh's first-party-vs-third-party reporting collapse + `every-eval-ever` schema. Roster gains **GAIA-2** and **Reliability Index** entries. New typed `contradicts` relationship pointing inward (self-reference acknowledging Habib's scar-fragmentation undercuts naive benchmark-as-ranking). Two new entries in the Debates section.
+- [[concepts/automation-vs-augmentation]] — 14→15, last_confirmed 2026-05-07→2026-05-14. New §10 with Narayanan's release-decision frame: *"reliability really matters in automation tasks as opposed to augmentation tasks"*; capability and reliability are orthogonal; augmentation-to-automation transition follows **reliability** improvements per task class, not raw capability. New convergence-table row. New typed `supports → ai-benchmarks` relationship.
+- [[concepts/vibe-coding]] — 9→10, conf 0.91→0.93, last_confirmed 2026-05-12→2026-05-14. New tag-set entries (`replit`, `ai-native-builders`, `post-prompting`). New convergence-table row for Masad 2026: the **vendor-CEO platform-launch anchor** (September 2024 — predates Karpathy's December-2025 phase-change framing by ~3 months on the platform side); **anti-developer-bias** audience refinement (the audience is *tech-adjacent non-developers* + domain experts, not the developer cohort itself); **post-prompting product direction**; **vibe-coding-resident team** as worked organisational pattern. New typed `supports` relationship.
+- [[concepts/agent-development-lifecycle]] — 4→6, conf 0.85→0.88, last_confirmed 2026-05-12→2026-05-14. Two new sub-sections under the Test phase: **practitioner-trainer anchor (Husain 2025)** with the six-step spreadsheet workflow + binary-pass-fail + agreement-metric trap + TPR/TNR; **research-frontier anchor (HF Agentic Evals Workshop 2026)** with Sathiamoorthy's levels-of-verifiability + deploy-and-evaluate anti-pattern + reward hacking as level-zero concern. Two new typed `supports` relationships.
+- [[wiki/entities/Y Combinator]] — 2→3, conf 0.80→0.85, last_confirmed 2026-05-12→2026-05-14. Bumped to a **YC-batch-context anchor triple** with the Masad entry (the day after Hu, two days after Tan). New §3 (Masad / Founder Firesides) + revised batch-context table from pair to triple with vantage column (President / Partner / Portfolio-founder). Andrew Miklas added to the dangling-people roster.
+- [[2025-06-27-guthrie-braintrust-evals-101-ai-engineer-worlds-fair]] — two new typed `supports` relationships (→ Husain 2025 + → HF Agentic Evals Workshop 2026), reverse-linking the new evals-discipline cluster. No body changes.
+- [[wiki/index.md]] — three new entries at the top of the Sources section.
+- [[wiki/log.md]] — this entry.
+
+**Author-promotion 2nd-source rule.**
+
+- No new entity-page promotions triggered. Every named author on this batch (Hamel Husain, Peter Yang [channel], Avijit Ghosh, Arvind Narayanan, Stefan Robons, Pierre Andrews, Mahesh Sathiamoorthy, Nathan Habib, J.J. Allaire [absent from transcript], Hugging Face [channel], Amjad Masad, Andrew Miklas) is single-source after this ingest. The 2nd-source clock starts on these names; promote on next mention.
+- **Eligible-but-deferred**: Braintrust is now cited in two sources ([[2025-06-27-guthrie-braintrust-evals-101-ai-engineer-worlds-fair|Guthrie 2025]] + [[2025-09-28-husain-ai-evaluations-clearly-explained-50-min|Husain 2025]]); the 2nd-source rule applies to `author:` mentions only, but the Husain source page notes Braintrust as entity-promotion-eligible for the next ingest cycle.
+
+**Reversibility.** Six new files (3 raw + 3 source pages); five edited concept/entity pages; two edited catalog files (index + log); one edited prior source page. All edits structurally additive (no content deleted; no relationships removed). Reverse with `git checkout` on listed paths.
+
+**Pre-flight log.** All three videos passed the YAML-frontmatter contract check. V1 + V2 transcripts fetched cleanly at default timeout; V3 required `--timeout 90000` (the panel-render fix discussed in [`youtube-transcript-skill/SKILL.md`](../.claude/skills/youtube-transcript-skill/SKILL.md#failure-modes)).
+
+## [2026-05-14] refactor | Implement GH #4 — Warner & Wäger process-model tagging for source pages
+
+Wires a new optional `dynamic_capabilities:` frontmatter field on source pages, declaring which W&W microfoundation(s) / strategic-renewal outcome(s) / contextual factor(s) a source touches. Closed vocabulary, body-twin rule, and a `roles:` override mechanism for cell-default role-relevance — all parallel to v0.3's typed `relationships:` but specialised to the digital-transformation lens.
+
+**Schema and vocabulary.**
+
+- New concept page **[[concepts/warner-wager-process-model|warner-wager-process-model]]** is the single source of truth: 15-cell vocabulary across `digital-sensing/*`, `digital-seizing/*`, `digital-transforming/*`, `strategic-renewal/*`, `contextual/*`; 15-slug roles vocabulary across nine C-suite (`ceo`, `coo`, `cfo`, `cso`, `cdo`, `cto`, `cio`, `chro`, `cmo`) and six functional roles (`product-manager`, `tech-lead`, `rd-director`, `innovation-lab-lead`, `transformation-lead`, `strategy-consultant`); `role_defaults:` matrix mapping each cell to 2–4 roles. Confidence 0.75 (one peer-reviewed source — the W&W paper itself).
+- **CLAUDE.md** gains a new `## Dynamic-capabilities tagging` section between §Graph and §Synthesis, plus a new step 4 in the Ingest operation pointing to it. Steps 5–8 renumbered.
+
+**Lint.**
+
+- [`scripts/lint-page.mjs`](../scripts/lint-page.mjs) gains rules 8 and 9. Rule 8 validates `dynamic_capabilities:` against the 15-cell vocabulary and enforces the body-twin rule (every tagged cell must appear in body prose by slug or trailing element, word-boundary match so `business-model` does not falsely satisfy `business-modeling`). Rule 9 validates `roles:` against the 15-slug vocabulary, but **only on `type: source` pages** — entity pages retain `roles:` as a free-text job-title field. Both rules warn to stderr and never block (exit 0 preserved). Smoke-tested on three fixtures (good / bad-vocab / no-body-twin) — all three cases produce the expected output.
+
+**Scope cuts.**
+
+- **No backfill.** ~62 existing source pages remain untagged; convention is forward-only as recommended by GH #4. Optional supervised backfill is a future issue.
+- **Per-tag `confidence:` not added** — the tag is a binary "touches / doesn't touch" classification, not a graded claim.
+- **No Quartz view layer yet** — per-element index pages (`/dynamic-capabilities/balancing-digital-portfolios/`) and per-role pages (`/roles/chro/`) are explicitly optional in the issue's definition-of-done; deferred until first programmatic-access need.
+- **Three sample tagged ingests** (one of GH #4's checkboxes) deferred — implementation lands first; tagging gets applied to the next batch of fresh ingests rather than retro-attached to this commit.
+
+**Reversibility.** Pure additions: one new concept page, one new section in CLAUDE.md, two new lint rules. No existing source pages modified. Revert = delete the concept page, drop the CLAUDE.md section, remove rules 8–9 from `lint-page.mjs`, revert index/log.
+
 ## [2026-05-14] ingest | Paired ingest — Chamath at Stanford AI Club (5 May 2026) + Spiegel on Lenny's Podcast (26 April 2026)
 
 Two complementary operator-narrated video sources ingested together as a paired batch (user-requested batch mode):

@@ -1,10 +1,10 @@
 ---
 type: concept
 aliases: ["automation vs augmentation", "automation-vs-augmentation", "automate vs augment", "AI substitution vs complementarity", "AI labor substitution", "AI labor complementarity"]
-tags: [automation, augmentation, generative-ai, ai-deployment, ai-task-design]
+tags: [automation, augmentation, generative-ai, ai-deployment, ai-task-design, capability-reliability-gap]
 confidence: 0.95
-last_confirmed: "2026-05-07"
-source_count: 14
+last_confirmed: "2026-05-14"
+source_count: 15
 relationships:
   - type: supports
     target: ai-employment-effects
@@ -12,6 +12,9 @@ relationships:
   - type: supports
     target: enterprise-ai-adoption
     via: "per-task deployment lens used by Anand-Wu, MITTRI/Cisco, MIT CISR"
+  - type: supports
+    target: ai-benchmarks
+    via: "Narayanan's release-decision frame — reliability threshold required for automation deployment exceeds that for augmentation deployment; reliability is the gating dimension benchmarks have under-measured"
 ---
 
 # Automation vs. Augmentation
@@ -143,6 +146,21 @@ This refines the wiki's task-level cut into a complementary firm-boundary cut: *
 
 Caveat: Nishar-Nohria explicitly warn that the choice of model is **not primarily a cost or feasibility decision** anymore — it is a strategic decision about where differentiation matters. This is the firm-boundary analogue of Anand-Wu's task-level "where to deploy GenAI today" question.
 
+### 10. Reliability is the gating dimension for the automation/augmentation cut ([[2026-03-20-huggingface-agentic-evaluations-workshop|Narayanan / Princeton, HF Agentic Evals Workshop 2026]])
+
+[[Arvind Narayanan|Narayanan]]'s release-decision frame **operationalises** the automation-vs-augmentation cut at the deployment-readiness layer:
+
+> *"In a coding agent, many of these errors are maybe not too bad because the programmer is still in the loop and they're reviewing the code. But in a customer service agent, you want the agent to autonomously handle customers. These are much worse errors. Reliability really matters in automation tasks as opposed to augmentation tasks."*
+
+The structural claim:
+
+- **Augmentation deployments** can tolerate substantial unreliability because a human is in the loop validating each step — the coding agent at 70% reliability is still net-positive because the programmer reviews and corrects the 30%.
+- **Automation deployments** require a high reliability threshold by construction — the autonomous customer-service agent at 90% reliability is dead-on-arrival because the 10% failures interact with the world (wrong order placed, wrong information given, customer trust burned) before any human can intervene.
+
+The release-decision corollary: *"For release decisions, it's not just capability that matters. It's also some reliability threshold that needs to be met before you decide to deploy an agent."* Capability and reliability are orthogonal — Narayanan's team decomposes reliability into 12 sub-dimensions, most of which are unsolved (see [[ai-benchmarks]]). This means the automation-vs-augmentation cut is not just about *whether the AI does the work* but about *whether the AI is reliable enough to do the work autonomously* — a much higher bar than capability benchmarks currently measure.
+
+This complements [[2026-04-28-brynjolfsson-canaries-coal-mine|Brynjolfsson's Fact 3]] (automation displaces, augmentation doesn't) with the **upstream gating mechanism**: a deployment that *could* be automation often *should* be augmentation today because reliability hasn't crossed threshold yet, and the augmentation-to-automation transition will follow reliability improvements per task class — not raw capability improvements.
+
 ## The four-source convergence on the distinction
 
 Four wiki sources, with distinct vocabularies and methodologies, all draw essentially the same conceptual cut:
@@ -161,6 +179,7 @@ Four wiki sources, with distinct vocabularies and methodologies, all draw essent
 | [[2026-04-29-boussioux-crowdless-future\|Boussioux et al. 2024 (Crowdless Future)]] | Augmentation pattern is fine-grained: *independent* search (multi-instance) vs *differentiated* search (single-instance with iterative diversification prompts); per-dimension trade-off (HC higher novelty; HAI higher value/quality) | "Independent search" vs. "differentiated search"; "AI-in-the-loop" |
 | [[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation\|Dutt et al. 2026 (Bain/OpenAI HBR)]] | Two failure modes when augmentation is shallow: *offering lock-in* (AI optimizes existing offerings) and *process lock-in* (AI automates current processes without redesigning them). Successful firms "reinvent the business" instead, with 10–25% EBITDA gains | "Offering lock-in" vs. "process lock-in"; "improve the task" vs. "reinvent the business"; [[micro-productivity-trap]] |
 | [[2026-05-05-nishar-nohria-end-of-one-size-fits-all\|Nishar & Nohria 2026 (HBR)]] | Firm-boundary 4-model decision: **Build** (deep augmentation of distinctive workflows) ↔ **Compose** ↔ **Collaborate** ↔ **Buy Outcomes** (firm-level automation: vendor takes responsibility for the whole job, e.g. Adobe's outcome-based pricing). Choice is no longer cost-driven; it's a strategic decision about where differentiation lives. | "Build / Compose / Collaborate / Buy Outcomes"; "the boundary of the firm becomes a variable rather than a given" |
+| [[2026-03-20-huggingface-agentic-evaluations-workshop\|Narayanan / Princeton @ HF Agentic Evals 2026]] | **Reliability as the gating dimension**. Automation deployments require a higher reliability threshold (10% failure rate on autonomous customer service = dead-on-arrival) than augmentation deployments (10% failure rate on coding-agent suggestions = still net-positive with human review). Capability and reliability are orthogonal; 12-sub-dimension reliability decomposition, most unsolved. | "Capability-reliability gap"; "release-decision threshold"; "automation tasks vs augmentation tasks" |
 
 When four independent sources arrive at the same cut from different angles (theory, strategy, vendor framing, and large-scale payroll data), the distinction is robust enough to be a load-bearing concept in the wiki.
 

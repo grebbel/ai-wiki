@@ -1,14 +1,17 @@
 ---
 type: concept
 aliases: ["AI benchmark", "AI benchmarks", "AI evaluation", "AI evals"]
-tags: [ai-benchmarks, ai-evaluation, foundation-models]
-confidence: 0.85
-last_confirmed: "2026-05-07"
-source_count: 4
+tags: [ai-benchmarks, ai-evaluation, foundation-models, capability-reliability-gap, scar-fragmentation]
+confidence: 0.88
+last_confirmed: "2026-05-14"
+source_count: 6
 relationships:
   - type: uses
     target: foundation-models
     via: "benchmarks evaluate foundation-model capability"
+  - type: contradicts
+    target: ai-benchmarks
+    via: "self-reference acknowledging Habib's scar-fragmentation diagnosis: every release reports different scores on the 'same' benchmark because scaffold/prompt/harness varies — naive benchmark-as-ranking interpretation is undercut"
 ---
 
 # AI Benchmarks
@@ -78,6 +81,18 @@ For [[Claude Sonnet 4.5]], the duration at which 50% success is achieved varies 
 
 Per the Anthropic report, the Claude.ai number is much higher because of selection bias (users bring tasks they expect Claude to succeed on) and task decomposition with feedback loops. The methodology gap is itself diagnostic — fixed-benchmark horizons and platform-observed effective horizons measure different things.
 
+### Agentic-evals frontier — capability-reliability gap, scaffolds, living benchmarks ([[2026-03-20-huggingface-agentic-evaluations-workshop|HF Agentic Evals Workshop, March 2026]])
+
+A 108-minute multi-speaker workshop (Hugging Face) that reframes the benchmark conversation for agentic systems. Four orthogonal moves to track:
+
+1. **The capability-reliability gap** ([[Arvind Narayanan|Narayanan]] / Princeton). *"AI agents have been crushing capability benchmarks. If you believe this hype, companies should be replacing people with agents left and right. That doesn't seem to be happening."* The gap, Narayanan argues, is **reliability** — not whether the agent *can* do the task on its best run but whether it does it consistently. His team decomposes reliability into **12 sub-dimensions**, most of which are unsolved. Two of the twelve are roughly solved; the others remain barriers. Examples named in the talk: **calibration on messy vs clean processes** (models infer answer-correctness from trajectory noise), **behaviour under ambiguous questions** (deliberately included in GAIA-2 because real deployments hit ambiguity all the time), **hallucination under data-unavailability injection**. A public **Reliability Index** will track the 12 metrics across releases. The wiki should track this alongside [[automation-vs-augmentation]] — Narayanan's release-decision claim is that **automation deployments require a higher reliability threshold than augmentation deployments**.
+
+2. **Scar fragmentation** ([[Nathan Habib|Habib]] / Hugging Face). Different sources report different scores on the *same* benchmark — because the scaffold, prompt, harness and runner vary. *"Every time there's a new model coming out, you look at the evaluation page and you see they evaluated a bunch of models, but it does not match previous reported scores on those models — and probably the next release is not going to match it either."* The diagnosis undercuts naive benchmark-as-ranking interpretation. Habib's response is **community-eval** — a Hugging Face Hub-native mechanism for publishing benchmarks as *living* versioned artefacts with the eval framework bundled (`uvx inspect_ai`), community-maintained via PRs. The hub becomes an **eval-environment store**, paralleling its model store role.
+
+3. **GAIA-2 and the ARE simulated environment** ([[Pierre Andrews|Andrews]] / Meta). The architecture for evaluating multi-app, multi-turn, state-mutating agent tasks reproducibly: **apps** (in-environment services with API surfaces over Python/MCP/CLI), **universes** (initial states of bundles of apps with synthetic personas, past emails, calendar events), **scenarios** (tasks layered on universes, including injected events during the task). GAIA-2 ships 1,000 scenarios across 10 universes using ~11 apps; five capability splits — **execution**, **search**, **adaptability**, **ambiguity**, **agent-to-agent collaboration**. The **sim-to-real gap** is explicit: simulation buys reproducibility/observability/safety/cost; it costs realism.
+
+4. **The eval-reporting metadata layer** ([[Avijit Ghosh|Ghosh]] / Hugging Face). A 171-release study of model-developer transparency: **first-party social-impact and environmental-cost reporting has collapsed since 2022–23** (<15% of releases now mention labour and environmental effects; Google and Meta both pulled back). Third-party evals (METR, Apollo Research, Mor) have risen in both quantity and quality. HF's response is **`every-eval-ever`** — a unified open schema + a public dataset of every first- and third-party evaluation across heterogeneous source formats. Independent third-party evaluation is *paramount* given declining first-party transparency.
+
 ### Benchmark roster (mentioned in this wiki, awaiting standalone pages)
 
 | Benchmark | Domain | Status as of [[2026-04-28-ai-index-report-2025|AI Index 2025]] |
@@ -105,6 +120,8 @@ Per the Anthropic report, the Claude.ai number is much higher because of selecti
 | **PlanBench** | Logical planning | AI consistently fails |
 | **RE-Bench** | Agent / time-budget | New 2024; 4× humans @ 2hr, humans win 2:1 @ 32hr |
 | **Vantage** ([[durable-skills]]) | Human skill assessment via LLM scaffolding | New 2026 (Globerson et al., Google Research); LLM autoraters match human raters; Pearson 0.88 vs experts on creativity tasks |
+| **GAIA-2** (on ARE) | Agentic multi-app multi-turn evaluation | New 2026 (Andrews et al., Meta); 1,000 scenarios / 10 universes / 11 apps; five capability splits incl. ambiguity and agent-to-agent |
+| **Reliability Index** | Cross-release reliability tracking | New 2026 (Narayanan/Robons, Princeton); 12 sub-dimensions of reliability; living tracker |
 
 ## Debates / contradictions
 
@@ -112,6 +129,8 @@ Per the Anthropic report, the Claude.ai number is much higher because of selecti
 - **Agent benchmarks vs. static benchmarks.** RE-Bench's two-time-budget result suggests static benchmarks can mislead on real workflows. Future evaluations will likely emphasize trajectories, not single-shot scores. But agent evaluations are themselves harder to standardize — open question whether the field can converge.
 - **Reasoning benchmarks.** The IMO/PlanBench split suggests current models are good at *patterns of math* but bad at *symbolic reasoning where verifiable solutions exist*. Open question for the [[generative-ai]] roadmap, and load-bearing for safety in high-stakes deployments.
 - **Methodology stability.** Many of the highest-impact 2024 benchmarks (MMMU, GPQA, SWE-bench) are <2 years old. Year-over-year claims about "AI improvement" depend on stable benchmark methodology — worth flagging when sources cite trend lines without examining benchmark drift.
+- **Capability vs reliability — released 2026 by [[2026-03-20-huggingface-agentic-evaluations-workshop|Narayanan / Princeton]].** Capability benchmarks measure best-run performance; reliability measures consistency. The two are orthogonal. The wiki's existing roster is heavily capability-skewed; the **Reliability Index** + **12 reliability sub-dimensions** is the proposed corrective. Open question whether the field adopts the orthogonality framing in 2026.
+- **Scar fragmentation — released 2026 by [[2026-03-20-huggingface-agentic-evaluations-workshop|Habib / Hugging Face]].** Naive cross-release benchmark comparisons are unreliable because scaffold/prompt/harness varies. **Community-eval** (versioned, hub-native, framework-bundled, PR-maintained) is the proposed corrective. Open whether community-eval scales — empirical adoption signal needed 6–12 months out.
 
 ## Related concepts
 

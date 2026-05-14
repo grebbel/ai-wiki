@@ -18,6 +18,12 @@ relationships:
   - type: supports
     target: agentic-engineering
     via: "specs+tests-and-iterate is exactly the agentic engineer's primary artefact pattern; Hu's software factories and Karpathy's spec-driven discipline both require an eval layer Braintrust represents commercially"
+  - type: supports
+    target: 2025-09-28-husain-ai-evaluations-clearly-explained-50-min
+    via: "Husain (3 months later) describes the same offline→online→learning flywheel from the practitioner-trainer vantage with vendor-neutral tooling (Google Sheets, pivot tables, binary LLM-as-judge with TPR/TNR); Guthrie is the vendor-engineer 'what', Husain is the human-process 'who and how'"
+  - type: supports
+    target: 2026-03-20-huggingface-agentic-evaluations-workshop
+    via: "HF Agentic Evals Workshop (9 months later) is the research-frontier conversation about what makes the benchmarks Guthrie's flywheel runs *against* trustworthy in the first place (Narayanan's capability-reliability gap, Habib's scar-fragmentation, Sathiamoorthy's level-0-vs-level-1 verifiability)"
 ---
 
 # Evals 101 — Doug Guthrie, Braintrust

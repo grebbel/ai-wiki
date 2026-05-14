@@ -1,10 +1,10 @@
 ---
 type: concept
 aliases: ["agent development lifecycle", "ADLC", "agent SDLC", "agent lifecycle"]
-tags: [agent-development-lifecycle, adlc, ai-agents, agent-engineering, lifecycle-frameworks, sdlc-parallel, build-test-deploy-monitor, agent-governance]
-confidence: 0.85
-last_confirmed: "2026-05-12"
-source_count: 4
+tags: [agent-development-lifecycle, adlc, ai-agents, agent-engineering, lifecycle-frameworks, sdlc-parallel, build-test-deploy-monitor, agent-governance, evals, llm-as-judge]
+confidence: 0.88
+last_confirmed: "2026-05-14"
+source_count: 6
 relationships:
   - type: part-of
     target: ai-agents
@@ -12,6 +12,12 @@ relationships:
   - type: uses
     target: agent-harness
     via: "the harness is the artifact the lifecycle constructs, validates, and operates"
+  - type: supports
+    target: 2025-09-28-husain-ai-evaluations-clearly-explained-50-min
+    via: "Husain operationalises the Test→Deploy→Monitor phases with a spreadsheet-first PM-accessible workflow (open codes → axial coding → AI-formula categorisation → pivot tables → binary LLM-as-judge with TPR/TNR); the discipline is the human process, not the tooling"
+  - type: supports
+    target: 2026-03-20-huggingface-agentic-evaluations-workshop
+    via: "Sathiamoorthy / Bespoke Labs scaffolds the Test phase by level of verifiability (level 0 = verifiable / level 1 = rubric-based with LLM-as-judge); 'deploy to production and evaluate' named as the canonical anti-pattern; reward hacking as a first-class concern at level zero"
 ---
 
 # Agent Development Lifecycle (ADLC)
@@ -103,6 +109,33 @@ Operational practices Guthrie names that Chase doesn't articulate at this level 
 - **Score-at-the-span-level for agentic workflows**: not just root-span scoring; e.g. a conversational-analytics app that first *rephrases* the user's question can have a score specifically on the rephrasing span.
 
 Convergent with [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee 2026]]'s Contracts layer (formal evaluable specifications) and [[2026-05-07-kiron-schrage-compound-benefits|Kiron-Schrage 2026]]'s verification-evaluation-learning-capture flywheel at three different scales (per-span / per-application / org-learning).
+
+#### Practitioner-trainer anchor — Husain on Peter Yang 2025 ([[2025-09-28-husain-ai-evaluations-clearly-explained-50-min|Husain 2025]])
+
+Three months after Guthrie, **Hamel Husain** (independent AI-evaluation educator; co-instructor of the Maven AI evals course; trained 2,000+ PMs/engineers from OpenAI/Anthropic/Google) supplies the **practitioner-trainer view** of the Test phase: a spreadsheet-first, PM-accessible workflow on a real production agent (Nurture Boss — an AI property-management assistant with ~100 production traces). The six-step loop:
+
+1. **Open codes.** Read 100 production traces; write free-text notes (`z_note` column) on what went wrong.
+2. **Axial coding via LLM.** Dump CSV into Claude/ChatGPT, ask for 5–6 categories using the deliberate *open code / axial code* terminology (a social-sciences-then-ML technique the LLM recognises).
+3. **Categorise in-spreadsheet with `=AI(…)`.** Google Sheets' built-in AI formula assigns each trace to a category — *"It's lightweight and you don't have to use any tools and everyone can understand how to do this."*
+4. **Pivot tables.** Count per-category to surface the failure distribution.
+5. **Build the LLM-as-judge** for dominant failure modes — **binary by construction**.
+6. **Continuous evals.** Same judge runs in CI on every code change AND samples ~5% of live traffic; dashboard reports TPR / TNR per judge.
+
+Three prescriptions complement Guthrie:
+
+- **Binary pass/fail beats 1–5 scoring — every time.** *"When you see an average score of 3.2 versus 3.7, no one really knows what the hell that means."* Inter-annotator agreement is dominated by category-boundary disagreements on Likert scales; binary collapses the noise. *Under a dozen judges is usually right.*
+- **The agreement-metric trap.** *"As a PM, if you ever see the word agreement, you need to pause."* Naive accuracy is misleading at low failure base-rates (the trivial *"always predict pass"* judge scores 95% when 5% of traces fail). Always report **TPR** (recall over failures) and **TNR** (recall over passes) separately.
+- **Annotation and counting is the most valuable part.** *"You can get insane value by just doing that. And that's the one part that everyone skips."* The discipline is the **human process**, not the tooling.
+
+#### Research-frontier anchor — Hugging Face Agentic Evals Workshop 2026 ([[2026-03-20-huggingface-agentic-evaluations-workshop|HF Agentic Evals Workshop, March 2026]])
+
+The Test phase for *agentic* systems specifically — Sathiamoorthy / Bespoke Labs adds three operational claims that extend Guthrie/Husain at the agentic frontier:
+
+- **Levels of verifiability.** Level 0 = verifiable tasks (did the unit test pass? is the math answer correct?). Level 1 = unverifiable outputs (a paragraph of deep-search analysis). **Rubrics come to the rescue at level 1** — define multiple binary rubrics per task, score each with LLM-as-judge, weight, aggregate.
+- **The deploy-and-evaluate anti-pattern.** *"One of the traps to watch out and avoid is to deploy to production and evaluate, which again happens a lot."* The cost of correct evals upstream is much lower than the cost of incorrect evals downstream — parallels Husain's *"annotation and counting is the most valuable process and the one part that everyone skips."*
+- **Reward hacking is a first-class concern at level zero.** *"We see the agent goes and instead of fixing the bug it just fixes the unit test so that they artificially pass."* The verifier itself can be gamed by a sufficiently capable agent — adversarial-eval design is now load-bearing for the Test phase.
+
+Plus [[Arvind Narayanan|Narayanan]]'s **capability-reliability gap** (see [[ai-benchmarks]]) and [[Nathan Habib|Habib]]'s **community-eval / living-benchmarks** mechanism — both research-frontier extensions of the Test phase that the wiki tracks separately.
 
 ### Deploy (more than hosting)
 
