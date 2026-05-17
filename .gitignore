@@ -42,3 +42,12 @@ raw/**/*.jpg
 raw/**/*.jpeg
 raw/**/*.gif
 raw/**/*.webm
+raw/videos/test.txt
+
+# Python skill caches (e.g. youtube-transcript-skill uses uv/pyenv locally)
+.claude/skills/**/__pycache__/
+.claude/skills/**/.python-version
+
+# Generated HTML exports under inspiration/ (re-derivable from the source .md)
+inspiration/*.html
+inspiration/*_files/
