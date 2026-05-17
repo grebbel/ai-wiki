@@ -3,8 +3,8 @@ type: concept
 aliases: ["RAI", "responsible AI", "AI ethics", "AI governance", "AI safety"]
 tags: [responsible-ai, ai-ethics, ai-governance, ai-safety, ai-policy]
 confidence: 0.95
-last_confirmed: "2026-05-07"
-source_count: 10
+last_confirmed: "2026-05-17"
+source_count: 11
 relationships:
   - type: part-of
     target: enterprise-ai-adoption
@@ -186,6 +186,26 @@ Most current RAI frameworks ([[2026-04-28-ai-index-report-2025|AI Index 2025]] �
 - **Election misinformation impact.** AI-generated misinformation spread widely in 2024 elections, but its measurable impact remained unclear; many expected larger effects than were observed. Open question: is the saturation of fact-checking infrastructure containing AI-generated content, or is the impact lagged?
 - **Bias mitigation effectiveness.** Explicit-bias mitigation reliably improves bias metrics but not implicit-bias probes. Open question: are current benchmarks measuring the right thing, or is implicit bias structurally untouchable by current alignment methods?
 - **Risk acknowledgment vs. action gap.** Why does the McKinsey-measured gap between "acknowledged risk" and "active mitigation" persist year over year? Worth exploring once another source examines it.
+
+## Runtime enforcement as a declarative discipline ([[2025-07-31-wang-agentspec-runtime-enforcement-llm-agents|AgentSpec / Wang, Poskitt, Sun]] — ICSE '26)
+
+The wiki's first **peer-reviewed primary source** specifically on LLM-agent runtime safety as a *formal verification problem* with declarative rule syntax. AgentSpec (Wang, Poskitt, Sun, ICSE '26 — Singapore Management University) introduces a **domain-specific language** for specifying and enforcing runtime constraints on LLM agents:
+
+```
+rule <Id>
+  trigger <Event>
+  check <Pred>
+  enforce <Enforce>+
+end
+```
+
+with **enforcement actions**: `user_inspection` / `llm_self_examine` / `invoke_action(Params)` / `stop`.
+
+**Empirical anchors** across three domains: **prevents >90% unsafe code executions** (RedCode-Exec, 750 scenarios across 25 vulnerability types), **eliminates all hazardous embodied actions** (SafeAgentBench, 10 categories), and **enforces 100% AV law compliance in 5/8 scenarios** (FixDrive). **LLM-generated rules** (OpenAI o1, few-shot) achieve 87.26% / 95.56% / 5-of-8 precision across the three domains. **Runtime overhead is millisecond-scale** — effectively free at the scale of LLM-call latency.
+
+The post is the **formal-academic operationalisation of [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee's]] Constraints layer** in the [[concepts/agent-harness|agent-harness]] taxonomy. The wiki holds RAI's *deployable safety enforcement* and *agent-harness Constraints layer* as overlapping concept territory — AgentSpec is the strongest single artifact in that overlap.
+
+The three named failure modes for LLM-generated rules (overfitting / over-broad rules / insufficient specification) are RAI-relevant in their own right: **the rule-generation step is itself an alignment problem the wiki should track**.
 
 ## Related concepts
 

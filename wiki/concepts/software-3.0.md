@@ -2,9 +2,9 @@
 type: concept
 aliases: ["software 3.0", "Software 3.0", "software-3.0", "LLM as computer", "LLMs as a new computer", "context window as program", "prompting as programming"]
 tags: [software-3.0, software-2.0, software-1.0, llm-paradigm, prompting, context-window, ai-engineering, karpathy]
-confidence: 0.80
-last_confirmed: "2026-05-09"
-source_count: 2
+confidence: 0.82
+last_confirmed: "2026-05-17"
+source_count: 3
 relationships:
   - type: instance-of
     target: generative-ai
@@ -111,6 +111,14 @@ Karpathy's [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering|
 His historical reference: in the 50s and 60s, people were unsure whether computers would look like *calculators* or *neural nets*. The calculator path won; neural nets now run *virtualised* on top of classical computers. Karpathy's hypothesis: **this might flip**. The neural net becomes the **host process**; the CPU becomes the **co-processor** — used for tool-use over deterministic tasks as a "historical appendage."
 
 He explicitly holds this as *TBD*: *"That progression is TBD, I would say."* The wiki tracks it as an open question, not a settled forecast.
+
+## The Harness-as-Policy limit ([[2026-03-05-lou-deepmind-autoharness-code-harness-synthesis|AutoHarness / Lou et al.]], DeepMind, March 2026)
+
+The wiki's **strongest single empirical anchor** for Software 3.0 taken to its limit. AutoHarness's *harness-as-policy* condition has the LLM compile the entire game policy as Python code that runs at inference time **without any LLM calls**. Empirical result across 16 TextArena 1P games: **Harness-as-Policy 0.870 average reward**, beating Gemini-2.5-Flash (0.635), Gemini-2.5-Pro (0.707), GPT-5.2 (0.635), and **GPT-5.2-High (0.844)** — *at near-zero inference cost* (vs ~$640 for the GPT-5.2 experiments).
+
+The architectural implication: when the policy is verifiable (legal-move predicates exist), the LLM functions purely as a **compiler from natural-language task spec to executable code policy** — exactly the upper-bound Karpathy named in the Sequoia interview. **The model is no longer in the loop at runtime; the program is.** This is the strongest evidence in the wiki to date that the Software 3.0 thesis is not just a vocabulary move — there are concrete cases where the LLM-as-compiler interpretation is operationally complete.
+
+This complements the [[2026-03-30-lee-meta-harness-end-to-end-optimization|Meta-Harness]] result on TerminalBench-2 in an interesting way: Meta-Harness keeps the LLM in the loop at runtime (its discovered harness still calls the model at each step); AutoHarness's harness-as-policy dispenses with the LLM at runtime entirely. The Software 3.0 limit is therefore **task-structure-dependent**: well-defined policy spaces (games with legal-move predicates) admit the compiler interpretation; open-ended task families (TerminalBench-2) keep the model in the loop.
 
 ## Debates and supersession
 

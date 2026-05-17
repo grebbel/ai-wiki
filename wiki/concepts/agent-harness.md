@@ -2,9 +2,9 @@
 type: concept
 aliases: ["agent harness", "harness", "AI agent harness", "agent runtime", "agent runtime layer"]
 tags: [agent-harness, ai-agents, ai-engineering, harness-frameworks, context-management, constraints, contracts, telemetry, llm-non-determinism, hooks, repository-as-system-of-record]
-confidence: 0.95
+confidence: 0.98
 last_confirmed: "2026-05-17"
-source_count: 24
+source_count: 31
 relationships:
   - type: part-of
     target: ai-agents
@@ -364,6 +364,48 @@ The subtraction direction is the wiki's strongest single corrective to *"infinit
 ### New primary-source ingest targets surfaced (not yet ingested)
 
 The PY description names two harness-engineering arxiv papers not previously in the wiki: **AutoHarness** (arXiv:2603.03329, Feb 2026 — *"improving LLM agents by automatically synthesizing a code harness"*) and **AgentSpec** (arXiv:2503.18666 — *"Customizable Runtime Enforcement for Safe and Reliable LLM Agents"*). Also: **Anthropic's *Effective Harnesses for Long-Running Agents*** (Nov 2025) — predating the [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Managed Agents]] post by ~5 months on the same architecture argument — is a vendor-side primary-source the wiki should ingest before the cluster expands further.
+
+## The March 2026 academic-anchor triple — and the December 2024 foundational vendor anchor
+
+The wiki's **2026-05-17 ingest batch** (later in the day, after the morning's Karten / Nodus Labs / PY ingests) added **seven** primary sources that close nearly every open empirical-anchor question on this concept page:
+
+| Source | Date | Vantage | Load-bearing contribution |
+|---|---|---|---|
+| [[2024-12-19-anthropic-building-effective-agents\|Anthropic *Building Effective Agents*]] (Schluntz & Zhang) | **Dec 2024** | **The foundational vendor primary** | Workflows-vs-agents architectural distinction; 5 composable patterns (chaining / routing / parallelization / orchestrator-workers / evaluator-optimizer); 3 core principles (simplicity / transparency / careful ACI); MCP first introduced as part of the agentic systems architecture. **Predates the *naming* of "harness engineering" by 14-17 months while articulating the construct in mature form** |
+| [[2025-11-26-anthropic-effective-harnesses-long-running-agents\|Anthropic *Effective Harnesses for Long-Running Agents*]] (Young) | **Nov 2025** | Vendor-engineering pattern for multi-context-window work | **Initializer agent + coding agent + feature_list.json + claude-progress.txt + git** as the canonical pattern. ***"Compaction isn't sufficient"*** at frontier-model scale. JSON over Markdown for agent-edited persistent state. 4 named failure modes + structured solutions. The production-engineering origin of what [[2026-03-26-pan-natural-language-agent-harnesses\|Pan]] later formalises as path-addressable, compaction-stable file-backed state |
+| [[2026-02-17-langchain-improving-deep-agents-harness-engineering\|LangChain *Improving deep agents with harness engineering*]] | **Feb 2026** | Framework-vendor primary | Names "harness engineering" as a discipline alongside [[2026-02-11-lopopolo-codex-harness-engineering\|OpenAI Codex / Lopopolo]] (Feb 2026); likely source of the *"Top 30 → Top 5 on TerminalBench 2.0"* claim circulating in secondary summaries (PY video, Osmani). **Metadata-only at this ingest** — substantive body not captured |
+| [[2026-03-05-lou-deepmind-autoharness-code-harness-synthesis\|AutoHarness (Lou, Lázaro-Gredilla, Dedieu, Wendelken, Lehrach, Murphy)]] | **March 2026** | **Google DeepMind academic primary; harness-synthesis-via-search vantage** | **78% of Gemini-2.5-Flash chess losses are illegal moves** (motivating empirical anchor for "agent failures are usually harness failures"). Three harness types: action-filter / action-verifier / **harness-as-policy** (the LLM generates pure code policy; zero inference-time LLM calls). Thompson-sampling tree search over code refinements. **Gemini-2.5-Flash + AutoHarness wins 9/16 2P games vs Gemini-2.5-Pro** at significantly lower cost. Harness-as-Policy 0.870 reward beats GPT-5.2-High 0.844 at near-zero inference cost. **The earliest of the four academic primaries** |
+| [[2026-03-26-pan-natural-language-agent-harnesses\|Pan, Zou, Guo, Ni, Zheng — *Natural-Language Agent Harnesses*]] (Tsinghua + HITSZ) | **March 2026** | **Academic primary; harness-representation vantage** | NLAH (Natural-Language Agent Harnesses) + IHR (Intelligent Harness Runtime). 5 NLAH ingredients: contracts / roles / stage structure / adapters / state semantics + failure taxonomy. Three RQs answered. **The "Verifier hurts OSWorld -8.4" claim** (Δ from Basic baseline 41.7) **closed and verified**. **The "OS-Symphony NL migration 30.4% → 47.2%" closed and verified**. **The "14× compute reduction at equivalent SWE-bench pass rate" closed and verified** (Table 1: TRAE w/o HS vs Full IHR). |
+| [[2026-03-30-lee-meta-harness-end-to-end-optimization\|Lee, Nair, Zhang, Lee, Khattab, Finn — *Meta-Harness*]] (Stanford + KRAFTON + MIT) | **March 2026** | **Academic primary; harness-search vantage** | **The 6× single-benchmark performance gap headline claim** (the wiki's strongest single-sentence anchor for *"harness > model"*). Outer-loop search with **Claude Code (Opus-4.6) as proposer reading full filesystem of all prior candidates** (median 82 files / iteration). **Raw traces > summaries empirically anchored** (Table 3: Scores-only 34.6 / Scores+Summary 34.9 / Full filesystem 50.0). **Meta-Harness #2 on Opus 4.6 (76.4%) and #1 on Haiku 4.5 (37.6%) on TerminalBench-2** (the substantive *"small model + great harness > large model + bad harness"* anchor). **Transferability across 5 held-out models** on math reasoning (+4.7 pts avg). **Closes the wiki's 2-week-old "Meta-Harness paper" identification open question** primary-source. |
+| [[2025-07-31-wang-agentspec-runtime-enforcement-llm-agents\|Wang, Poskitt, Sun — *AgentSpec*]] (Singapore Management University; **ICSE '26 accepted**) | **July 2025** | **Peer-reviewed academic primary; harness-safety vantage** | **First peer-reviewed paper in the wiki's harness cluster.** Domain-specific language with `rule / trigger / check / enforce / end` syntax for runtime enforcement. Built on LangChain 0.13.13; framework-agnostic. **Prevents >90% unsafe code executions; eliminates all hazardous embodied actions; 100% AV compliance in 5/8 law scenarios**. LLM-generated rules (OpenAI o1, few-shot): 87.26% / 95.56% / 5-of-8 enforcement precision. **Operationalises [[2026-05-07-chatterjee-anatomy-of-agent-harness\|Chatterjee's]] Constraints layer as a formal DSL**. Millisecond-scale overhead. |
+
+### The construct's history is older than its name
+
+This batch makes one structural point explicit: **the *construct* of harness engineering predates its *naming* by 14-17 months**. Anthropic's *Building Effective Agents* (December 19, 2024) articulates the construct in essentially mature form (workflows-vs-agents distinction + 5 patterns + 3 principles + ACI framing) before any practitioner had named it as a discipline. The *naming* happened in **February 2026**, when [[2026-02-11-lopopolo-codex-harness-engineering|OpenAI Codex / Lopopolo]] and [[2026-02-17-langchain-improving-deep-agents-harness-engineering|LangChain]] independently published posts using *"harness engineering"* as the noun phrase within ~one week of each other. The 14 intervening months were spent rediscovering, formalising, and operationalising what was already in Anthropic Engineering's December 2024 post.
+
+This sharpens [[2026-05-15-osmani-agent-harness-engineering|Osmani's]] *"the harness is older than its discipline"* observation: by the time the practitioner-essay literature named harness engineering (Feb-May 2026), the architecture was already shipping in production at multiple frontier vendors and being formalised academically at three independent research groups (Tsinghua + Stanford/MIT + Google DeepMind) within 25 days of each other (March 5 → March 30, 2026).
+
+### Closed open questions (all closed in this batch)
+
+| Open question | Status |
+|---|---|
+| ~~Pan et al. (Tsinghua) primary-source identification~~ | **Closed** — arXiv:2603.25723. Closed twice (PY video + this paper ingest). |
+| ~~Pan et al. primary-source ingest~~ | **Closed** — full paper read; key results verified. |
+| ~~Lee/Khattab Meta-Harness identification~~ | **Closed** — arXiv:2603.28052. Closed twice (Karten reference [10] + PY description). |
+| ~~Lee/Khattab Meta-Harness primary-source ingest~~ | **Closed** — full paper read; all three empirical anchors (TerminalBench-2 / text classification / math reasoning + transferability) verified. |
+| ~~Why do verifiers hurt? (OSWorld -8.4)~~ | **Verified empirically**; mechanism partially named (Pan: *"verifier-level acceptance can still diverge from benchmark-level acceptance"*). Causal mechanism still partially open. |
+| ~~Raw traces > summaries~~ | **Closed — verified by ablation** (Lee Table 3). |
+| ~~Transferability of harnesses across models~~ | **Closed — verified empirically**: Lee's math retrieval harness transfers across 5 held-out models (+4.7 avg). |
+| ~~Trivedy / Chatterjee author-attribution flag~~ | **Partially clarified but not closed** — Pan et al. reference 16 reveals a *third* "Anatomy of an Agent Harness" post (LangChain, March 10, 2026) that the wiki has not yet ingested. The Trivedy / Chatterjee / LangChain "Anatomy" thicket may be **three separate posts**, not one. New ingest target: the LangChain March 10, 2026 post. |
+| ~~"Top 30 → Top 5 on TerminalBench 2.0" attribution to Pan et al.~~ | **Re-attributed**. **Not in Pan's paper.** Likely from [[2026-02-17-langchain-improving-deep-agents-harness-engineering|LangChain blog]] or the as-yet-unfetched March 10 LangChain *Anatomy of an Agent Harness* post. Lee et al.'s TerminalBench-2 results (#2 on Opus 4.6 at 76.4%, #1 on Haiku 4.5 at 37.6%) are precise but don't use the "Top 30 → Top 5" framing. |
+
+### Adjusted attribution map (post-batch)
+
+The wiki's prior attributions need three updates:
+
+- **The "78% of Gemini-2.5-Flash chess losses are illegal moves" claim** — primary source is now [[2026-03-05-lou-deepmind-autoharness-code-harness-synthesis|AutoHarness / Lou et al. (DeepMind)]], not generic practitioner literature.
+- **The "Top 30 → Top 5 on TerminalBench 2.0 by changing only harness infrastructure" claim** — primary source is **most likely [[2026-02-17-langchain-improving-deep-agents-harness-engineering|LangChain's]] *Improving deep agents with harness engineering* (Feb 17, 2026) or the sister LangChain post *The anatomy of an agent harness* (March 10, 2026)** — NOT Pan et al. or Lee et al.
+- **The "6× performance gap on the same benchmark" framing** — primary source is now [[2026-03-30-lee-meta-harness-end-to-end-optimization|Lee et al.]] (opening sentence of Meta-Harness paper, citing Bui as reference [47]).
 
 ### Reset-free is structurally important (not just convenient)
 
