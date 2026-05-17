@@ -35,7 +35,8 @@ Two synthesis takeaways feed the rest of this document: (a) the **Plan operation
 | v0.7    | Output formats + scoping | `scope: shared\|private`, `sensitive: true`, bulk-ops governance | `exclude-private.ts`, `/compare`, `/timeline`, `/marp-deck`, `/export-csv`, `ingest-filter.mjs` | None unless private flagged |
 | v0.8    | **Plan operation** (5th op, gap-driven todos) — InfraNodus contribution | `§Plan` operation, `todos/` folder contract, `op: plan` log prefix | `/plan` slash command, `scripts/detect-gaps.mjs`, `scripts/seed-todos.mjs` | Generate first `todos/` from current wiki state |
 | v0.9    | **Acquire/Process refactor** — make ingest's two phases explicit (InfraNodus contribution) | §Ingest split into §Acquire + §Process; typed `raw/` subfolder enum; skill-as-acquire-step pattern formalised | None new — youtube-transcript-skill already fits the pattern; document the contract | None (schema-only) |
-| v0.10+  | Deferred (mesh sync, external graph DB, on-query hook, consolidation infra, retention auto-deletion) | — | — | only if forced |
+| v0.10   | **Search-quality empirical depth** — quantitative anchors + own-corpus eval-set | §Search gains §Sizing decision; `reciprocal-rank-fusion` concept page (optional); `wiki/evals/` folder contract | `scripts/seed-search-evalset.mjs`, `scripts/eval-qmd.mjs`; new thread `wiki-search-evals` | New empirical anchors on `is-rag-dead`; seed first eval-set |
+| v0.11+  | Deferred (mesh sync, external graph DB, on-query hook, consolidation infra, retention auto-deletion) | — | — | only if forced |
 
 Three principles run through every version:
 1. **Schema-first.** CLAUDE.md sections + frontmatter contracts land before any tooling that depends on them.
@@ -360,7 +361,61 @@ Three principles run through every version:
 
 ---
 
-## v0.10+ — Deferred
+## v0.10 — Search-quality empirical depth: anchors + own-corpus evals
+
+**Goal.** v0.5 landed §Search architecturally — qmd with BM25 + vector + LLM rerank, the [[syntheses/is-rag-dead]] synthesis closing on *hybrid is the answer*. What v0.5 did **not** land: (a) any concrete numbers under the hybrid claim, (b) an explicit sizing rule for *when* the wiki actually needs a dedicated vector database, (c) an instrument to measure whether qmd's retrieval quality on this wiki's own corpus stays acceptable as the wiki grows. v0.10 closes those three gaps using a 2026-05-14 practitioner tutorial ([Ebbelaar](raw/videos/the-complete-guide-to-hybrid-search-in-rag-bm25-embeddings-reranker.md), Acquire-only at time of writing) as the seed source for the prompt template, NDCG numbers, and sizing rule.
+
+**Lands.** Four discrete items, each shippable independently — no big-bang. Sourced from the Ebbelaar tutorial; the architectural conclusion (*hybrid is right*) is already settled, so this version only harvests the operational details the wiki was thin on.
+
+1. **Empirical anchors on [[syntheses/is-rag-dead]].** Add a new `## Empirical anchors` subsection with at least one cited NDCG@10 gradient on a public benchmark. The Ebbelaar tutorial's BEIR FinanceQA numbers (56k docs): **BM25 alone = 28; Dense alone substantially higher; RRF-fused in-between; Hybrid + reranker = 47.** The synthesis closed 2026-05-12 with five vendor/theory vantages — Ebbelaar's tutorial vantage adds the first *quantitative* anchor under the hybrid claim. Bumps `is-rag-dead` `source_count` by 1; recomputes `confidence` per [§Lifecycle](CLAUDE.md#lifecycle).
+
+2. **Sizing decision in `CLAUDE.md` §Search.** Add an explicit `### §Sizing decision` subsection: *"Under ~1M chunks, store vectors as `.npy` on disk + in-memory BM25 index; skip the dedicated vector database. qmd already operates this way; this rule makes the implicit choice explicit."* Calibration anchor: Ebbelaar's 56k-doc FinanceQA = 30 MB BM25 index + 350 MB dense `.npy`, both in-memory on a single VPS. The wiki at ~205 docs is 3-4 orders of magnitude under that ceiling. Names the threshold where the rule flips, so future readers know when to revisit.
+
+3. **New thread [[threads/wiki-search-evals]] + first eval-set.** Open a thread to instrument qmd retrieval quality on this wiki's own corpus. Seed question: *"At what corpus size does qmd's default hybrid + rerank stack stop being the optimal config for this wiki?"* Body embeds the Ebbelaar synthetic-query-generation prompt as the recipe: *"You are a user with a question. The following document contains the answer. Generate a single realistic question that a user would ask in their own words. Rules: question must be answerable by the document."* Looped with a cheap model over `wiki/sources/`, this generates `{doc_id, query}` pairs in the BEIR shape. New artifact `wiki/evals/search-evalset.json` lands with the first ≥50 synthetic query/doc pairs. **Note:** the eval-set is not a wiki page — it is a structured JSON artifact, committed alongside the wiki, with its own versioning. New `wiki/evals/` folder is sibling to `wiki/sources/`, etc.
+
+4. **(Optional) New concept page [[concepts/reciprocal-rank-fusion]].** RRF formula `score(d) = Σ_r 1/(k + rank_r(d))` with `k=60` (Cormack et al. 2009 default), explanation of why rank-only fusion works where score-fusion doesn't (BM25 vs cosine-similarity are on incomparable scales — only ranks are fusable). Adds the **bi-encoder vs cross-encoder** distinction: dense embeddings = bi-encoder (query + corpus separately vectorised, fast); reranker = cross-encoder (query + doc encoded together, slow but more accurate, only viable on a shortlist). Single-source for now; promote to second-source on next ingest that references RRF. Linked from `[[agent-harness]]` (Context layer reads from RRF-fused substrate) and `[[is-rag-dead]]` (one of the substrate primitives that persists post-RAG-the-term).
+
+**Schema changes — `CLAUDE.md` updates §Search.**
+- Add subsection `### §Sizing decision` inline (item 2 above).
+- Add a one-paragraph pointer to `[[reciprocal-rank-fusion]]` from §Search if item 4 lands; otherwise inline a one-paragraph definition.
+- Add `### §Search-quality evaluation` subsection: pointer to [[threads/wiki-search-evals]] and to `scripts/eval-qmd.mjs` as the canonical measurement tool. The thread tracks the *judgement*; the script computes the *number*; both are required for "we measured it."
+
+**Tooling.**
+- `scripts/seed-search-evalset.mjs` — walks `wiki/sources/`, loops the Ebbelaar template through a cheap LLM (Claude Haiku or equivalent) via the Anthropic SDK, writes `wiki/evals/search-evalset.json` with `[{doc_id, query, relevance: "high"}]` triples. Read-only against the wiki; the operator approves before any commit. Idempotent — re-running skips docs already covered.
+- `scripts/eval-qmd.mjs` — loads `wiki/evals/search-evalset.json`, runs each query through `qmd query --json -n 10`, computes NDCG@10 + per-query breakdown, prints a markdown report. Pure measurement; no auto-fixes; no frontmatter writes anywhere. Output mirrors the structure of `scripts/quality-score.mjs`'s dry-run table.
+
+**Migration.**
+- One thread page created: `wiki/threads/wiki-search-evals.md`.
+- One synthesis page edited: `wiki/syntheses/is-rag-dead.md` — new `## Empirical anchors` subsection; bump `source_count` and recompute `confidence`.
+- One concept page possibly created: `wiki/concepts/reciprocal-rank-fusion.md`.
+- One `CLAUDE.md` edit: §Search gains two subsections (Sizing decision + Search-quality evaluation).
+- One new folder + artifact: `wiki/evals/search-evalset.json` (first ≥50 pairs).
+- The Ebbelaar raw file (already landed under §Acquire) does **not** need a wiki/sources/ source page — it is a tutorial-vantage seed, harvested-not-cited, per the *cherry-pick-not-full-ingest* decision in the v0.10 follow-up note (see [§Sequencing recommendation](#sequencing-recommendation)).
+
+**Prereqs.** v0.5 (qmd index exists, §Search section lives, accessed_at + quality_score in place). v0.9 nominally — the cherry-pick-not-ingest pattern is more legible once Acquire is named as a re-runnable phase distinct from Process, since the Ebbelaar file is acquired-but-not-processed by design.
+
+**Cuts vs. Ebbelaar tutorial.**
+- **No re-implementation of the BEIR FinanceQA pipeline.** The architecture is already qmd's; only the empirical-anchor numbers cross over. No `bm25s`-the-library, no Cohere reranker, no separate dense-embedding pipeline added — qmd subsumes all three.
+- **No Cohere-specific reranker recommendation.** qmd's bundled rerank stays canonical; Ebbelaar's Cohere `rerank-fast` reference is captured in the raw file's notes, not promoted.
+- **No 1M+ chunk scaling story.** If/when the wiki crosses 100k docs, revisit. At 205 docs the rule is "skip the vector DB"; the exit-threshold question is for v0.11+ deferred.
+- **No re-derivation of the synthetic-query prompt from first principles.** Use Ebbelaar's verbatim with attribution in the thread body. The prompt is not a wiki claim, it is a recipe.
+
+**Verification.**
+- `[[syntheses/is-rag-dead]]` has a populated `## Empirical anchors` subsection citing at least one benchmark gradient; `source_count` reflects the new anchor; `confidence` recomputed per the lifecycle rules.
+- `CLAUDE.md` §Search reads with the explicit *"under ~1M chunks, skip the vector database"* rule and the calibration numbers (30 MB BM25 + 350 MB dense `.npy` at 56k docs).
+- `wiki/threads/wiki-search-evals.md` exists, `status: open`, with the seed question + the synthetic-query-generation prompt embedded verbatim in body.
+- `wiki/evals/search-evalset.json` exists with ≥50 synthetic query/doc pairs covering ≥30% of `wiki/sources/`.
+- `node scripts/eval-qmd.mjs` runs end-to-end and outputs an NDCG@10 score for the current qmd index on the current eval-set. The number itself is the baseline; it doesn't have to be high — it has to be *measured*.
+- A `log.md` entry records the version as `refactor | v0.10 search-quality empirical depth`.
+
+**Why this is its own version, not absorbed into v0.5 or v0.6.**
+- v0.5 was tooling-and-schema for *running* hybrid search; v0.10 is *measuring* its quality. Different operational concerns; different decision when broken (v0.5: install something; v0.10: change the config).
+- v0.6 is crystallization + LLM-as-judge for *content* quality on concepts/syntheses. v0.10's `scripts/eval-qmd.mjs` is judge-of-retrieval, not judge-of-content. Conflating them would make `quality_score` ambiguous about what's being scored.
+- The first eval-set is itself a small bulk-refactor (one new top-level folder + JSON artifact) and merits its own version slot for traceability in `log.md`.
+
+---
+
+## v0.11+ — Deferred
 
 Revisit only if forced.
 - **Mesh sync** (cluster 6 remainder): if a coauthor or second machine appears.
@@ -370,6 +425,8 @@ Revisit only if forced.
 - **Retention auto-deletion** (v2 forgetting curve, harder form): v0.5 lands decay-as-lint-signal; auto-deletion or auto-archiving is deferred indefinitely. Knowledge that has decayed off the homepage and is invisible to lint is already "in the bottom drawer" in v2's framing.
 - **InfraNodus MCP integration for richer gap analysis**: v0.8 names a stub hook; promote only if the user is running InfraNodus alongside Obsidian anyway and the local detector misses obvious gaps.
 - **Telegram / external reminder integration for `todos/`**: InfraNodus's `/actionize` companion. Defer; git + markdown todos with deadlines is sufficient at single-user scale.
+- **>1M chunk scaling story for §Search** (v0.10 exit-threshold): when the wiki crosses ~100k docs (3 orders of magnitude beyond current state), revisit the "skip the vector DB" rule and benchmark Quadrant / LanceDB / Weaviate / pgvector against the in-memory baseline.
+- **LLM-as-judge for retrieval quality** (cross-version blend of v0.6 and v0.10): rather than NDCG@10 against a synthetic eval-set, use a Claude API call to rate each retrieved set for *answerability*. Deferred because the mechanical baseline from v0.10 has to exist first to measure against.
 
 ---
 
@@ -396,6 +453,7 @@ Per-version migration targets:
 - v0.6: new `wiki/lessons/` directory.
 - v0.8: new top-level `todos/` directory (sibling of `wiki/`, not inside it); 3–5 seeded workstreams.
 - v0.9: schema-only refactor of `CLAUDE.md` §Ingest → §Acquire + §Process; zero content pages touched.
+- v0.10: new `wiki/evals/` directory + first `search-evalset.json` artifact (≥50 query/doc pairs); 1 synthesis page edited (`is-rag-dead`); 1 new thread (`wiki-search-evals`); 0–1 new concept page (`reciprocal-rank-fusion` if item 4 lands).
 
 ## Verification strategy across versions
 
@@ -408,6 +466,8 @@ After each version lands:
 
 ## Sequencing recommendation
 
-Treat each version as one or two focused sessions, not one big push. Suggested cadence: v0.2 over 2-3 sessions (because of the bulk migration), v0.3 over 2 sessions, v0.4 in 1 session, v0.5 in 2 sessions (qmd install + retention), v0.6 in 2 sessions, v0.7 in 1 session, v0.8 in 1-2 sessions (gap-detector + first todos seeding), v0.9 in 1 session (CLAUDE.md refactor only). Each version is independently shippable — pause between any two and the wiki keeps working.
+Treat each version as one or two focused sessions, not one big push. Suggested cadence: v0.2 over 2-3 sessions (because of the bulk migration), v0.3 over 2 sessions, v0.4 in 1 session, v0.5 in 2 sessions (qmd install + retention), v0.6 in 2 sessions, v0.7 in 1 session, v0.8 in 1-2 sessions (gap-detector + first todos seeding), v0.9 in 1 session (CLAUDE.md refactor only), v0.10 in 2 sessions (cherry-pick edits + eval-set seeding). Each version is independently shippable — pause between any two and the wiki keeps working.
 
 Note on v0.8 vs v0.9 ordering. v0.9 is paper-only and could land at any point — it has zero prerequisites. Put it after v0.8 because the Plan operation is a natural place to flush out which raw sources are *acquired but not processed* (a gap type v0.8's detector should surface), and that gap is more legible once §Acquire is named as a distinct step. If a future skill is being authored that needs the contract before v0.8 ships, swap them — no other version cares about the order.
+
+Note on v0.10 (cherry-pick-not-ingest pattern). v0.10 is the first version sourced from a single external piece harvested *as raw* without producing a `wiki/sources/` page. The seed file ([raw/videos/the-complete-guide-to-hybrid-search-in-rag-bm25-embeddings-reranker.md](raw/videos/the-complete-guide-to-hybrid-search-in-rag-bm25-embeddings-reranker.md)) is acquired (§Acquire complete) but never processed into a source page because the architectural claim is already settled in [[syntheses/is-rag-dead]] — a sixth source-page would dilute, not strengthen, the synthesis. Instead, **four operational details from the raw file are harvested into the wiki at the right points** (empirical anchor on the synthesis; sizing rule on CLAUDE.md; thread on retrieval evals; optional concept page on RRF). This is a valid Acquire-only completion path and the §Acquire / §Process split in v0.9 is what makes it legible. Treat v0.10 as the first worked example of *harvesting* as distinct from *citing*. If a future practitioner-tutorial lands with similarly-narrow novelty, the same pattern applies.
