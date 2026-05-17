@@ -5,6 +5,7 @@ aliases: ["O'Reilly Media", "O'Reilly", "O'Reilly Radar"]
 tags: [oreilly, publisher, oreilly-radar, learning-platform, tech-publishing, conferences]
 confidence: 0.85
 last_confirmed: "2026-05-16"
+accessed_at: "2026-05-16"
 source_count: 8
 relationships:
   - type: employs

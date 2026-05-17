@@ -7,6 +7,7 @@ ticker: "AMZN"
 website: "https://www.amazon.com"
 confidence: 0.78
 last_confirmed: "2026-05-11"
+accessed_at: "2026-05-11"
 source_count: 2
 ---
 

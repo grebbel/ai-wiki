@@ -4,11 +4,14 @@ aliases: ["dynamic capabilities", "dynamic-capabilities", "Teece dynamic capabil
 tags: [dynamic-capabilities, teece, strategic-renewal, digital-transformation, microfoundations]
 confidence: 0.90
 last_confirmed: "2026-04-28"
+accessed_at: "2026-05-17"
 source_count: 4
 relationships:
   - type: supports
     target: enterprise-ai-adoption
     via: "AI adoption requires dynamic-capability microfoundations to scale"
+quality_score: 0.79
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)']
 ---
 
 # Dynamic Capabilities

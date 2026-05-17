@@ -7,6 +7,7 @@ affiliation: "[[Harvard Business Review]]"
 role: "Editor-in-Chief, Harvard Business Review; host, HBR IdeaCast"
 confidence: 0.78
 last_confirmed: "2026-05-11"
+accessed_at: "2026-05-11"
 source_count: 2
 relationships:
   - type: part-of

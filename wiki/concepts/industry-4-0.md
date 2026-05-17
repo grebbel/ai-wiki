@@ -4,6 +4,7 @@ aliases: ["Industry 4.0", "I4.0", "industry-4-0", "Fourth Industrial Revolution"
 tags: [industry-4-0, smart-manufacturing, iot, cyber-physical-systems, digital-transformation]
 confidence: 0.85
 last_confirmed: "2026-04-28"
+accessed_at: "2026-04-28"
 source_count: 4
 relationships:
   - type: caused
@@ -12,6 +13,8 @@ relationships:
   - type: uses
     target: ai-agents
     via: "autonomous monitoring (Jidoka + AI-powered) is an Industry 4.0 deployment of agents"
+quality_score: 0.75
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '2 broken body wikilink(s)']
 ---
 
 # Industry 4.0

@@ -5,6 +5,7 @@ aliases: ["Google Research", "Google AI Research", "Google DeepMind Research"]
 tags: [google-research, google, ai-research, foundation-models, gemini, durable-skills]
 confidence: 0.75
 last_confirmed: "2026-05-07"
+accessed_at: "2026-05-07"
 source_count: 2
 ---
 

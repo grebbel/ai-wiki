@@ -5,6 +5,7 @@ aliases: ["Maximilian Wäger", "Maximilian Wager"]
 tags: [wager, nunatak-group, digital-transformation]
 confidence: 0.75
 last_confirmed: "2026-04-28"
+accessed_at: "2026-04-28"
 source_count: 1
 ---
 

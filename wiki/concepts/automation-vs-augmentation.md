@@ -4,6 +4,7 @@ aliases: ["automation vs augmentation", "automation-vs-augmentation", "automate 
 tags: [automation, augmentation, generative-ai, ai-deployment, ai-task-design, capability-reliability-gap]
 confidence: 0.95
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-14"
 source_count: 15
 relationships:
   - type: supports
@@ -15,6 +16,8 @@ relationships:
   - type: supports
     target: ai-benchmarks
     via: "Narayanan's release-decision frame — reliability threshold required for automation deployment exceeds that for augmentation deployment; reliability is the gating dimension benchmarks have under-measured"
+quality_score: 0.75
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '2 broken body wikilink(s)']
 ---
 
 # Automation vs. Augmentation

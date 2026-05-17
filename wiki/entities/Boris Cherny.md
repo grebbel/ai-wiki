@@ -5,6 +5,7 @@ aliases: ["Boris Cherny", "Cherny"]
 tags: [boris-cherny, anthropic, claude-code, agentic-engineering, agent-harness]
 confidence: 0.82
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 4
 relationships:
   - type: part-of

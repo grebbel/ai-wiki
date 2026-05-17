@@ -5,6 +5,7 @@ aliases: ["Raymond Perrault", "Ray Perrault", "C. Raymond Perrault"]
 tags: [perrault, sri-international, ai-index, calo-project, natural-language-processing, speech-act-theory]
 confidence: 0.85
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 2
 relationships:
   - type: part-of

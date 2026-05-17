@@ -5,6 +5,7 @@ aliases: ["Ron Carucci"]
 tags: [carucci, navalent, leadership, change-management, hbr-author]
 confidence: 0.70
 last_confirmed: "2026-05-07"
+accessed_at: "2026-05-07"
 source_count: 1
 ---
 

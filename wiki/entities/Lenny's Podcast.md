@@ -6,6 +6,7 @@ tags: [lenny-podcast, podcast, product-management, consumer-tech, ai-era-strateg
 since: 2022
 confidence: 0.75
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-14"
 source_count: 2
 relationships:
   - type: published-by

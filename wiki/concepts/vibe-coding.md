@@ -4,6 +4,7 @@ aliases: ["vibe coding", "Vibe coding", "vibe-coding", "vibe-code", "v-coding"]
 tags: [vibe-coding, agentic-engineering, software-3.0, ai-agents, accessibility, hobbyist-coding, karpathy, pm-tooling, prototype-as-influence-tool, december-2025-phase-change, replit, ai-native-builders, post-prompting]
 confidence: 0.93
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-14"
 source_count: 10
 relationships:
   - type: instance-of
@@ -15,6 +16,8 @@ relationships:
   - type: supports
     target: 2026-04-25-masad-replit-ceo-only-two-jobs-left
     via: "Replit was the first commercial vibe-coding product (September 2024) — predates Karpathy's December-2025 phase-change framing by ~3 months on the platform side; Masad refines the audience claim from PMs to all tech-adjacent non-developers and domain experts"
+quality_score: 0.99
+quality_notes: ['1 near-empty section(s)']
 ---
 
 # Vibe Coding

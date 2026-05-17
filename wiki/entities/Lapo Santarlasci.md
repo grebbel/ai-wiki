@@ -5,6 +5,7 @@ aliases: ["Lapo Santarlasci"]
 tags: [santarlasci, imt-lucca, applied-economics, ai-patents, ai-index]
 confidence: 0.75
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 2
 relationships:
   - type: part-of

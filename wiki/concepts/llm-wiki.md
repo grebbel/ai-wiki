@@ -4,6 +4,7 @@ aliases: ["LLM Wiki", "LLM-Wiki", "llm wiki", "Karpathy's LLM Wiki", "LLM-mainta
 tags: [llm-wiki, knowledge-compilation, three-layer-architecture, ingest-query-lint, agent-memory, claude-md, knowledge-compounding, agentic-knowledge-base]
 confidence: 0.91
 last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
 source_count: 7
 relationships:
   - type: part-of
@@ -15,6 +16,7 @@ relationships:
   - type: authored-by
     target: Andrej Karpathy
     via: "Karpathy is the upstream-spec author — the LLM Wiki gist (April 4, 2026) is the foundational artifact; 17 million views, 5,000 stars, 4,282 forks within days"
+quality_score: 1
 ---
 
 # LLM Wiki

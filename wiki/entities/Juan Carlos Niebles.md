@@ -5,6 +5,7 @@ aliases: ["Juan Carlos Niebles"]
 tags: [niebles, salesforce, stanford, computer-vision, multimodal-ai, autonomous-agents, ai-index]
 confidence: 0.80
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 2
 relationships:
   - type: part-of

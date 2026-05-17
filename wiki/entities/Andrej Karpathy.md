@@ -5,6 +5,7 @@ aliases: ["Karpathy", "Andrej Karpathy", "@karpathy"]
 tags: [andrej-karpathy, ai-researcher, openai, tesla, eureka-labs, software-3.0, vibe-coding, jagged-intelligence, llm-wiki]
 confidence: 0.92
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 4
 relationships:
   - type: authored-by

@@ -6,6 +6,7 @@ tags: [mit-smr, mit, publisher, ai-research, big-ideas-research, organizational-
 since: 1959
 confidence: 0.85
 last_confirmed: "2026-05-07"
+accessed_at: "2026-05-07"
 source_count: 4
 relationships:
   - type: published-by

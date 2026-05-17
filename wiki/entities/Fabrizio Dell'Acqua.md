@@ -5,6 +5,7 @@ aliases: ["Fabrizio Dell'Acqua", "Fabrizio Dell Acqua"]
 tags: [dellacqua, harvard-business-school, digital-data-design-institute]
 confidence: 0.75
 last_confirmed: "2026-04-28"
+accessed_at: "2026-04-28"
 source_count: 1
 ---
 

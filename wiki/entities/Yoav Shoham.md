@@ -5,6 +5,7 @@ aliases: ["Yoav Shoham"]
 tags: [shoham, stanford, ai21-labs, multi-agent-systems, game-theory, ai-index]
 confidence: 0.85
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 2
 relationships:
   - type: part-of

@@ -6,6 +6,7 @@ tags: [anthropic, ai-lab, foundation-models, claude, public-benefit-corporation,
 since: 2021
 confidence: 0.92
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-14"
 source_count: 10
 ---
 

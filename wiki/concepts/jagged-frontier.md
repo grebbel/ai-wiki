@@ -4,6 +4,7 @@ aliases: ["jagged frontier", "jagged-frontier", "jagged technological frontier",
 tags: [jagged-frontier, jagged-intelligence, AI-capabilities, knowledge-work, productivity, automation, augmentation, verifiability, animals-vs-ghosts]
 confidence: 0.92
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 9
 relationships:
   - type: supports
@@ -12,6 +13,8 @@ relationships:
   - type: instance-of
     target: generative-ai
     via: "characterizes the capability profile of GPT-class models specifically"
+quality_score: 0.79
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)']
 ---
 
 # Jagged Frontier

@@ -4,6 +4,7 @@ aliases: ["agent harness", "harness", "AI agent harness", "agent runtime", "agen
 tags: [agent-harness, ai-agents, ai-engineering, harness-frameworks, context-management, constraints, contracts, telemetry, llm-non-determinism, hooks, repository-as-system-of-record]
 confidence: 0.98
 last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
 source_count: 32
 relationships:
   - type: part-of
@@ -12,6 +13,8 @@ relationships:
   - type: uses
     target: foundation-models
     via: "the harness wraps a (rented, swappable) foundation model in a runtime that adds context/constraints/contracts/compounding"
+quality_score: 0.77
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '1 broken body wikilink(s)']
 ---
 
 # Agent Harness

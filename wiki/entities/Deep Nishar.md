@@ -5,6 +5,7 @@ aliases: ["Deep Nishar"]
 tags: [nishar, technologist, investor, google, linkedin, enterprise-software]
 confidence: 0.70
 last_confirmed: "2026-05-05"
+accessed_at: "2026-05-05"
 source_count: 1
 ---
 

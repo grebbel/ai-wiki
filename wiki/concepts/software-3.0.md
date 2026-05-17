@@ -4,6 +4,7 @@ aliases: ["software 3.0", "Software 3.0", "software-3.0", "LLM as computer", "LL
 tags: [software-3.0, software-2.0, software-1.0, llm-paradigm, prompting, context-window, ai-engineering, karpathy]
 confidence: 0.82
 last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
 source_count: 3
 relationships:
   - type: instance-of
@@ -15,6 +16,8 @@ relationships:
   - type: depends-on
     target: agent-harness
     via: "a Software 3.0 program needs a runtime; that runtime is the agent harness"
+quality_score: 0.98
+quality_notes: ['2 near-empty section(s)']
 ---
 
 # Software 3.0

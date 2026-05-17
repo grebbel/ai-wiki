@@ -5,6 +5,7 @@ aliases: ["Jack Clark"]
 tags: [clark, anthropic, anthropic-institute, openai, ai-index, oecd, naiac, ai-policy, ai-governance, import-ai]
 confidence: 0.75
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 2
 relationships:
   - type: part-of

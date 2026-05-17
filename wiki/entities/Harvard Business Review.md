@@ -7,6 +7,7 @@ parent: "[[Harvard Business School]]"
 website: "https://hbr.org"
 confidence: 0.90
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 11
 ---
 

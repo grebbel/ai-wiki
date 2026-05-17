@@ -7,6 +7,7 @@ affiliation: "[[Harvard Business School]] / [[Mack Institute for Innovation Mana
 role: "Arjun and Minoo Melwani Family Associate Professor of Business Administration; Senior Fellow"
 confidence: 0.70
 last_confirmed: "2026-04-28"
+accessed_at: "2026-04-28"
 source_count: 1
 ---
 

@@ -8,6 +8,7 @@ closed: 2026-05-05
 last_refreshed: "2026-05-08"
 confidence: 0.90
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 12
 relationships:
   - type: instance-of
@@ -16,6 +17,8 @@ relationships:
   - type: supports
     target: micro-productivity-trap
     via: "the layered framing makes the trap legible — most failures are layer mismatches"
+quality_score: 0.99
+quality_notes: ['1 near-empty section(s)']
 ---
 
 # Synthesis: Organizational frameworks for AI adoption

@@ -5,6 +5,7 @@ aliases: ["Karim Lakhani", "Karim R. Lakhani"]
 tags: [lakhani, harvard-business-school, AI-research, digital-data-design-institute]
 confidence: 0.75
 last_confirmed: "2026-04-28"
+accessed_at: "2026-04-28"
 source_count: 1
 ---
 

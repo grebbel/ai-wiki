@@ -4,6 +4,7 @@ aliases: ["AI deskilling", "ai-deskilling", "task composition shift", "deskillin
 tags: [deskilling, task-composition, ai-employment-effects, occupations]
 confidence: 0.82
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 5
 relationships:
   - type: instance-of
@@ -12,6 +13,8 @@ relationships:
   - type: contradicts
     target: durable-skills
     via: "deskilling = which skills get hollowed out by AI; durable-skills = which skills resist substitution. Inverse measurement frames of the same labour-economics question"
+quality_score: 0.77
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '1 broken body wikilink(s)']
 ---
 
 # AI Deskilling

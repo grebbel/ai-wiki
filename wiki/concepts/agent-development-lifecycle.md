@@ -4,6 +4,7 @@ aliases: ["agent development lifecycle", "ADLC", "agent SDLC", "agent lifecycle"
 tags: [agent-development-lifecycle, adlc, ai-agents, agent-engineering, lifecycle-frameworks, sdlc-parallel, build-test-deploy-monitor, agent-governance, evals, llm-as-judge]
 confidence: 0.88
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-14"
 source_count: 6
 relationships:
   - type: part-of
@@ -18,6 +19,8 @@ relationships:
   - type: supports
     target: 2026-03-20-huggingface-agentic-evaluations-workshop
     via: "Sathiamoorthy / Bespoke Labs scaffolds the Test phase by level of verifiability (level 0 = verifiable / level 1 = rubric-based with LLM-as-judge); 'deploy to production and evaluate' named as the canonical anti-pattern; reward hacking as a first-class concern at level zero"
+quality_score: 0.96
+quality_notes: ['2 broken body wikilink(s)']
 ---
 
 # Agent Development Lifecycle (ADLC)

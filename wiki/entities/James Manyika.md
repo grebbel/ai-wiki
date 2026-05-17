@@ -5,6 +5,7 @@ aliases: ["James Manyika", "James M. Manyika", "James M Manyika"]
 tags: [manyika, google, mckinsey-global-institute, ai-index, un-advisory-body, ai-policy, ai-society]
 confidence: 0.80
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 2
 relationships:
   - type: part-of

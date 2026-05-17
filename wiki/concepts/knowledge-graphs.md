@@ -4,6 +4,7 @@ aliases: ["knowledge graph", "KG", "knowledge graphs", "knowledge-graph", "kg"]
 tags: [knowledge-graphs, kg, graph-rag, ai-grounding, ontology, relational-data, agent-harness, agentic-memory, etl, entity-extraction, relationship-extraction]
 confidence: 0.88
 last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
 source_count: 6
 relationships:
   - type: part-of
@@ -12,6 +13,7 @@ relationships:
   - type: uses
     target: foundation-models
     via: "LLM-driven entity-extraction and relationship-extraction populate the KG; LLMs read graph-traversal results as part of grounded-RAG generation"
+quality_score: 1
 ---
 
 # Knowledge Graphs

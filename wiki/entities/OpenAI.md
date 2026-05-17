@@ -6,6 +6,7 @@ tags: [openai, ai-lab, foundation-models, chatgpt, gpt-4, gpt-5, codex, agentic-
 since: 2015
 confidence: 0.95
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-14"
 source_count: 11
 relationships:
   - type: employs

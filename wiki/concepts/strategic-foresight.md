@@ -4,6 +4,7 @@ aliases: ["strategic foresight", "strategic-foresight", "corporate foresight", "
 tags: [strategic-foresight, scenarios, futures, signal-detection, FTSG, webb, arena-creation-potion, arenas-radar, MGI]
 confidence: 0.85
 last_confirmed: "2026-05-16"
+accessed_at: "2026-05-16"
 source_count: 5
 relationships:
   - type: part-of
@@ -15,6 +16,8 @@ relationships:
   - type: supports
     target: 2026-03-25-russell-bradley-mgi-race-takes-off-next-big-arenas
     via: "MGI's three-ingredient arena-creation potion (tech/business-model step change + escalatory investment pattern + large/expanding addressable market) is a reusable foresight heuristic; the arenas-radar diagnostic operationalises foresight as proximity + production/revenue impact mapping"
+quality_score: 0.77
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '1 broken body wikilink(s)']
 ---
 
 # Strategic Foresight

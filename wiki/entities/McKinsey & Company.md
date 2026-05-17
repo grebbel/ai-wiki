@@ -5,6 +5,7 @@ aliases: ["McKinsey", "McKinsey & Company", "McKinsey and Company", "QuantumBlac
 tags: [mckinsey, mgi, management-consulting, quantumblack, ai-research, tech-ai-transformation, agent-augmented-workforce, outcome-underwriting, post-controversy-governance, future-arenas, omniscalers]
 confidence: 0.92
 last_confirmed: "2026-05-15"
+accessed_at: "2026-05-15"
 source_count: 7
 relationships:
   - type: employs

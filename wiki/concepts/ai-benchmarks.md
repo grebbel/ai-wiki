@@ -4,6 +4,7 @@ aliases: ["AI benchmark", "AI benchmarks", "AI evaluation", "AI evals"]
 tags: [ai-benchmarks, ai-evaluation, foundation-models, capability-reliability-gap, scar-fragmentation]
 confidence: 0.88
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-14"
 source_count: 6
 relationships:
   - type: uses
@@ -12,6 +13,8 @@ relationships:
   - type: contradicts
     target: ai-benchmarks
     via: "self-reference acknowledging Habib's scar-fragmentation diagnosis: every release reports different scores on the 'same' benchmark because scaffold/prompt/harness varies — naive benchmark-as-ranking interpretation is undercut"
+quality_score: 0.64
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '1 relationship(s) missing body wikilink (v0.3 rule)', '5 broken body wikilink(s)']
 ---
 
 # AI Benchmarks

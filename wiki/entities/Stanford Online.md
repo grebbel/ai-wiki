@@ -7,6 +7,7 @@ parent: "[[Stanford University]]"
 website: "https://online.stanford.edu"
 confidence: 0.75
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 2
 ---
 

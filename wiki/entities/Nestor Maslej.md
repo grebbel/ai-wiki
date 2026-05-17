@@ -8,6 +8,7 @@ role: "Research Manager and Editor-in-Chief, [[AI Index]]"
 contact: "nmaslej@stanford.edu"
 confidence: 0.75
 last_confirmed: "2026-04-30"
+accessed_at: "2026-04-30"
 source_count: 2
 relationships:
   - type: part-of

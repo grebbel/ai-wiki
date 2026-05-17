@@ -5,6 +5,7 @@ aliases: ["Yolanda Gil"]
 tags: [gil, USC, information-sciences-institute, ai-index, steering-committee]
 confidence: 0.80
 last_confirmed: "2026-04-30"
+accessed_at: "2026-04-30"
 source_count: 2
 relationships:
   - type: part-of

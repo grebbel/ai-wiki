@@ -4,6 +4,7 @@ aliases: ["agentic engineering", "Agentic Engineering", "agentic-engineering", "
 tags: [agentic-engineering, vibe-coding, software-3.0, ai-agents, agent-harness, software-engineering, hiring, karpathy, codex-case-study]
 confidence: 0.97
 last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
 source_count: 17
 relationships:
   - type: depends-on
@@ -15,6 +16,8 @@ relationships:
   - type: contradicts
     target: vibe-coding
     via: "vibe coding raises the floor; agentic engineering preserves the ceiling — same artifact, opposite goal"
+quality_score: 0.98
+quality_notes: ['2 near-empty section(s)']
 ---
 
 # Agentic Engineering

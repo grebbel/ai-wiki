@@ -7,6 +7,7 @@ ticker: "CSCO"
 website: "https://www.cisco.com"
 confidence: 0.70
 last_confirmed: "2026-04-28"
+accessed_at: "2026-04-28"
 source_count: 1
 ---
 

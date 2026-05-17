@@ -7,6 +7,7 @@ affiliation: "[[MIT Sloan]] / [[MIT CISR]]"
 role: "Principal research scientist; Director of [[MIT CISR]]"
 confidence: 0.75
 last_confirmed: "2026-05-03"
+accessed_at: "2026-05-03"
 source_count: 2
 relationships:
   - type: part-of

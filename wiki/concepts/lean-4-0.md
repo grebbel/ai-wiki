@@ -4,11 +4,14 @@ aliases: ["Lean 4.0", "lean-4-0", "Lean Manufacturing 4.0"]
 tags: [lean-4-0, lean-manufacturing, industry-4-0, smart-manufacturing, ai-in-manufacturing]
 confidence: 0.70
 last_confirmed: "2026-04-28"
+accessed_at: "2026-04-28"
 source_count: 3
 relationships:
   - type: part-of
     target: industry-4-0
     via: "Lean 4.0 is the synergy of Lean Manufacturing with Industry 4.0 technologies"
+quality_score: 0.76
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '2 broken body wikilink(s)']
 ---
 
 # Lean 4.0

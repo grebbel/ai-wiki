@@ -7,6 +7,7 @@ affiliation: "[[Y Combinator]]"
 role: "President & CEO, Y Combinator (since 2023); founder/engineer; ex-Palantir #10; Posterous co-founder"
 confidence: 0.85
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 3
 ---
 

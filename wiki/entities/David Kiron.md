@@ -6,6 +6,7 @@ tags: [mit-smr, kiron, ai-research, organizational-learning, big-ideas-research]
 since: 2024
 confidence: 0.80
 last_confirmed: "2026-05-07"
+accessed_at: "2026-05-07"
 source_count: 2
 relationships:
   - type: part-of

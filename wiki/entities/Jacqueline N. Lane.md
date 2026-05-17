@@ -5,6 +5,7 @@ aliases: ["Jacqueline N. Lane", "Jacqueline Lane"]
 tags: [lane, harvard-business-school, AI-research, crowdsourcing]
 confidence: 0.75
 last_confirmed: "2026-04-29"
+accessed_at: "2026-04-29"
 source_count: 1
 ---
 

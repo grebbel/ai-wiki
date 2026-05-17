@@ -4,6 +4,7 @@ aliases: ["Warner-Wäger process model", "Warner & Wager process model", "W&W pr
 tags: [dynamic-capabilities, digital-transformation, microfoundations, warner-wager, wiki-vocabulary]
 confidence: 0.75
 last_confirmed: "2026-05-14"
+accessed_at: "2026-05-17"
 source_count: 1
 relationships:
   - type: instance-of
@@ -11,6 +12,8 @@ relationships:
     via: "the process-model elaboration of Teece's three-cluster framework, specialised for digital transformation"
   - type: authored-by
     target: 2026-04-28-warner-wager-dynamic-capabilities-digital-transformation
+quality_score: 0.84
+quality_notes: ['citation density 1.5/1000 words (2 source links in 1344 words; target ≥3.0)']
 ---
 
 # Warner & Wäger Process Model

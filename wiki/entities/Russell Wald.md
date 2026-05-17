@@ -5,6 +5,7 @@ aliases: ["Russell Wald"]
 tags: [wald, stanford-hai, ai-index, ai-policy, ai-governance]
 confidence: 0.80
 last_confirmed: "2026-05-08"
+accessed_at: "2026-05-08"
 source_count: 2
 relationships:
   - type: part-of

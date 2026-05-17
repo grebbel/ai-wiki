@@ -8,6 +8,7 @@ role: "Director, Stanford Digital Economy Lab; AI Index Steering Committee membe
 contact: "erikb@stanford.edu"
 confidence: 0.87
 last_confirmed: "2026-05-10"
+accessed_at: "2026-05-10"
 source_count: 4
 relationships:
   - type: part-of

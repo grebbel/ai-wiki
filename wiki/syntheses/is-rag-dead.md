@@ -7,6 +7,7 @@ opened: 2026-04-09
 closed: 2026-05-12
 confidence: 0.90
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 5
 relationships:
   - type: supports
@@ -18,6 +19,7 @@ relationships:
   - type: supports
     target: agent-harness
     via: "the harness's Context layer reads from a hybrid substrate (vector + graph + structured + filesystem) rather than from a single source-of-truth retrieval type; the *file-systems-are-bad-databases* critique is harness-design guidance"
+quality_score: 1
 ---
 
 # Synthesis: Is RAG dead?

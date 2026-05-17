@@ -4,6 +4,7 @@ aliases: ["RAI", "responsible AI", "AI ethics", "AI governance", "AI safety"]
 tags: [responsible-ai, ai-ethics, ai-governance, ai-safety, ai-policy]
 confidence: 0.95
 last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
 source_count: 11
 relationships:
   - type: part-of
@@ -12,6 +13,8 @@ relationships:
   - type: supports
     target: ai-employment-effects
     via: "labor-market disruption is an under-attended RAI concern"
+quality_score: 0.69
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '5 broken body wikilink(s)']
 ---
 
 # Responsible AI

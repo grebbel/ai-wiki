@@ -4,6 +4,7 @@ aliases: ["GenAI", "generative AI", "generative artificial intelligence"]
 tags: [generative-ai, foundation-models, ai-adoption, ai-foundation, future-arenas]
 confidence: 0.95
 last_confirmed: "2026-05-15"
+accessed_at: "2026-05-15"
 source_count: 21
 relationships:
   - type: uses
@@ -15,6 +16,8 @@ relationships:
   - type: supports
     target: 2026-03-25-russell-bradley-mgi-race-takes-off-next-big-arenas
     via: "MGI names AI foundation as a three-arena cluster (semiconductors + cloud + AI software & services) and projects AI software & services revenue of $1.5T–$4.6T by 2040 from $85B baseline (17–25% CAGR); first wiki source decomposing GenAI's macro footprint into a three-arena bundle"
+quality_score: 0.79
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)']
 ---
 
 # Generative AI

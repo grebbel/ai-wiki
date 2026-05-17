@@ -7,6 +7,7 @@ opened: 2026-04-27
 closed: 2026-05-12
 confidence: 0.90
 last_confirmed: "2026-05-12"
+accessed_at: "2026-05-12"
 source_count: 7
 relationships:
   - type: supports
@@ -21,6 +22,7 @@ relationships:
   - type: instance-of
     target: agent-development-lifecycle
     via: "Liu's three-architecture decision framework is the Build-phase choice over which storage/retrieval pattern fits the agent's job"
+quality_score: 1
 ---
 
 # Synthesis: Knowledge architectures for LLM agents — RAG / LLM Wiki / Fat Skills
