@@ -10,6 +10,35 @@ Ordering flipped on 2026-05-12 (GH [#3](https://github.com/businessdatasolutions
 
 ---
 
+## [2026-05-17] ingest | [[2026-05-11-ognibeni-ai-agents-cool-demos-vs-real-revenue-china]] + [[2026-05-14-price-dfi-retail-asia-reinventing-how-it-sells]] — paired buyer/seller framing of the agentic-commerce disintermediation thesis
+
+User-initiated double ingest of two YouTube videos in one session: Björn Ognibeni's E-commerce Berlin Expo keynote (~28 min, 11 May) and Christine Tan's CNBC *Managing Asia* interview with DFI Retail Group CEO Scott Price (~15 min, 14 May). **Both videos hold the same agentic-commerce-disintermediation thesis from opposite sides of the buyer/seller table** — Ognibeni from the buyer-side outside-in (*"nobody will show up in your store when you only do search-driven e-commerce"*); Price from the seller-side incumbent-CEO (*"with [agentic AI] goes loyalty, with that goes access to data"*). The wiki's clearest paired articulation of the thesis to date.
+
+**Acquire-phase notes.** Video 1 acquired via the [`youtube-transcript-skill`](../.claude/skills/youtube-transcript-skill/SKILL.md) at default timeout (664 ASR segments). Video 2 hit the *transcript panel did not render* symptom at both `--timeout 60000` and `--timeout 90000` (known long-format issue per skill failure-modes); since manual English captions exist, fell back to `yt-dlp` (`PYENV_VERSION=.myenv yt-dlp --write-sub --sub-lang en --skip-download --sub-format vtt`) and collapsed the VTT to wiki-canonical `[mm:ss]` timestamped lines (~191 segments after dedup). Both raw files written at `raw/videos/<slug>.md` with the canonical YAML frontmatter contract.
+
+**Process-phase contributions.**
+
+- **First wiki source with concrete RMB revenue lines for deployed Chinese agentic commerce** (Ognibeni): ByteDance 50T tokens/day + $670B GMV; Alibaba's Qen one-sentence-purchase agent at 100M+ users with tokenized mandates; JD.com's Joy Streamer virtual digital-twin live-stream hosts at ~$250M sales in one Double 11 season (more successful than 80% of human hosts); Alibaba's AQ (Accio) supply-chain-building agent with the translation-accuracy liability guarantee as the trust-scaling pattern; Xiaomi SU7 dark factory at 40 cars/hr autonomous production. **The wiki previously held agentic commerce as "early enterprise / mostly aspirational at consumer scale";** the evidence shifts that to "already deployed at 100M+ DAU outside the Anglophone press's habitual reading view."
+- **First named CEO-level public-record articulation of agentic AI as strategic threat to the incumbent customer relationship** (Price). Plus DFI's three-axis AI investment framework (personalization / cost management / running a better business) and the **2,000-store competitive-scale floor in China** as a reusable W&W *balancing-digital-portfolios* anchor at mid-tier regional incumbent scale.
+- **New *China-as-time-machine* digital-scouting frame** added to [[strategic-foresight]] (Ognibeni's geographic-asymmetry-as-foresight-instrument framing complements Webb/FTSG signal-detection methodologies that default to a US-centric vantage).
+
+**Neighbour-source scan (Ingest step 5).** Five typed edges added on each source page. Video 1 → MGI PDF + MGI virtual event + Spiegel/Snapchat + Ries/Lenny's + `enterprise-ai-adoption` concept. Video 2 → Ognibeni video 1 + Jassy/Amazon + Spiegel/Snapchat + MGI PDF + `enterprise-ai-adoption` concept. Both pages cross-link to each other as the *buyer-side / seller-side mirror* of the thesis.
+
+**Files touched (8 wiki + 2 raw + 1 index + 1 log):**
+
+- `raw/videos/ognibeni-ai-agents-cool-demos-vs-real-revenue-china.md` (new)
+- `raw/videos/cnbc-dfi-retail-asia-reinventing-how-it-sells.md` (new)
+- `wiki/sources/2026-05-11-ognibeni-ai-agents-cool-demos-vs-real-revenue-china.md` (new)
+- `wiki/sources/2026-05-14-price-dfi-retail-asia-reinventing-how-it-sells.md` (new)
+- [[enterprise-ai-adoption]] — added Ognibeni + Price bullets under §"Sharper formulations from May 2026"; bumped `source_count: 30 → 32`, `last_confirmed: 2026-05-17`.
+- [[ai-agents]] — added §"Agentic commerce at consumer scale (China, May 2026)" + §"Agents as strategic threat to incumbent customer relationships (May 2026)"; bumped `source_count: 10 → 12`, `last_confirmed/accessed_at: 2026-05-08 → 2026-05-17`.
+- [[strategic-foresight]] — added §"China as time machine: a geographic vantage for digital scouting"; bumped `source_count: 5 → 6`, dates → `2026-05-17`.
+- [[dynamic-capabilities]] — added §"Operator-narrated cases at mid-tier regional incumbent scale" with DFI case table covering five microfoundations; bumped `source_count: 4 → 5`, `last_confirmed: 2026-04-28 → 2026-05-17`.
+- `wiki/index.md` — two new entries prepended.
+- `wiki/log.md` — this entry.
+
+Reversibility: clean — all eight wiki files are additive, two raw files are new, two source pages are new. No supersessions; no `status: stale` flips; no deletions.
+
 ## [2026-05-17] refactor | quality-score gap-fix on [[enterprise-ai-adoption]] (0.60 → 1.00) + `/wq` accessed_at bumps
 
 Follow-up to a `/wq` query about AI-native organization design. The query landed on the wiki's central concept page [[enterprise-ai-adoption]] (then `quality_score: 0.60`); the user asked me to "close the gaps." Three of four gaps surfaced in the answer require new-source ingestion (academic change-management bridge to Carucci, empirical compounding-cycle measurement, post-GenAI MIT CISR survey wave) and were flagged for deferral. The fourth — internal schema discipline on [[enterprise-ai-adoption]] — was closable in-session.

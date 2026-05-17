@@ -3,9 +3,9 @@ type: concept
 aliases: ["dynamic capabilities", "dynamic-capabilities", "Teece dynamic capabilities", "sense seize transform"]
 tags: [dynamic-capabilities, teece, strategic-renewal, digital-transformation, microfoundations]
 confidence: 0.90
-last_confirmed: "2026-04-28"
+last_confirmed: "2026-05-17"
 accessed_at: "2026-05-17"
-source_count: 4
+source_count: 5
 relationships:
   - type: supports
     target: enterprise-ai-adoption
@@ -71,6 +71,20 @@ Empirically identified across 7 incumbent German MNCs and 18 strategy-consultant
 - New digital technologies (AI, cloud, IoT, blockchain) change the *nature and purpose* of dynamic capabilities — not merely their content.
 - Organizations can now scale up/down at speed, ease, and cost not previously possible.
 - The convergence and generativity of digital technologies forces incumbents to behave entrepreneurially even when entering competitively *established* markets.
+
+### Operator-narrated cases at mid-tier regional incumbent scale ([[2026-05-14-price-dfi-retail-asia-reinventing-how-it-sells|Price/DFI 2026]])
+
+[[2026-05-14-price-dfi-retail-asia-reinventing-how-it-sells|Scott Price's CNBC *Managing Asia* interview]] (May 2026) supplies a compact case set of seizing- and transforming-cluster microfoundations operating at **multi-brand multi-country retail-incumbent scale** (DFI Retail Group: ~thousands of supermarket / 7-Eleven / Guardian / Mannings / IKEA-Asia / Maxim's outlets across HK / SE Asia / mainland China). All cases are first-person CEO-narrated and have explicit named-numbers anchors:
+
+| Microfoundation | DFI case |
+| --- | --- |
+| **Balancing digital portfolios** (seizing) | Sold the Singapore supermarket business for **S$125M (~US$93M)**; closed all ~100 Mannings stores in mainland China after concluding **2,000 stores would be needed to win at scale**, retaining only online presence via Chinese e-commerce platforms; redirected capital to Southeast Asia health & beauty (now the strongest segment, **1,500+ stores**). |
+| **Strategic agility** (seizing) | *"We source from more than 50 countries around the world. We always have to have the ability to pivot very quickly to protect that pricing to customers."* — supply-chain pivot capability named explicitly. |
+| **Navigating innovation ecosystems** (transforming) | The **Yuu loyalty platform** as a data-monetization flywheel linking millions of shoppers across DFI's brand portfolio — *"the way you protect the bottom line for shareholders is you create your own digital revenue that has a higher margin. Data is the core to that."* Vendor-insight sales + cross-segment promotion-permissioning already monetised. |
+| **Business model renewal** (strategic renewal) | The **Chinese Wellness Hub at Mannings HK** — TCM-practitioner consultation + in-store health pod with basic-vitals measurement; pivot from commodity shampoo retail to functional-wellness platform. Plus the **low-water rice programme in Thailand** as a scope-3-emissions / value-pricing renewal (sold in stores at the same price — *"our customers won't pay a penny more"*). |
+| **External-triggers sensing** (contextual) | Named the **agentic-AI personal-assistant disintermediation thesis** as *"what keeps me up at night"* — the seller-side mirror of [[2026-05-11-ognibeni-ai-agents-cool-demos-vs-real-revenue-china|Ognibeni's buyer-side warning]] that search-driven e-commerce will be the first format agents kill. |
+
+The **2,000-store competitive-scale floor** is particularly reusable as a Western/regional-incumbent-anchored data point for the *balancing-digital-portfolios* microfoundation — a public CEO articulation of *what scale is required to win against established Chinese platform incumbents in their home market*, a quantification the W&W literature treats only abstractly.
 
 ## Related concepts
 

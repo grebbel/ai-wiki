@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI agent", "AI agents", "agentic AI", "autonomous agents", "agent", "agents"]
 tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
-last_confirmed: "2026-05-08"
-accessed_at: "2026-05-08"
-source_count: 10
+last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
+source_count: 12
 relationships:
   - type: instance-of
     target: generative-ai
@@ -105,6 +105,24 @@ Source: [[Capgemini]] 2025 via [[2026-04-28-mittri-cisco-ai-enabled-enterprise|M
 Customer experience (CX) is the most-cited near-term agent application. Per [[2026-04-28-mittri-cisco-ai-enabled-enterprise|MITTRI/Cisco]]:
 - Customers are **3.8× more likely to purchase again** following a successful service experience.
 - "It's not about replacing roles. It's about where we can give agency, with some human oversight and governance, to improve tasks within a workflow." — [[Liz Centoni]], EVP & Chief CX Officer, [[Cisco]].
+
+### Agentic commerce at consumer scale (China, May 2026)
+
+The MITTRI/Cisco / Anand-Wu *agents-as-strategic-aspiration* framing assumes agents are still inching past the demo phase in production environments. [[2026-05-11-ognibeni-ai-agents-cool-demos-vs-real-revenue-china|Ognibeni's E-commerce Berlin Expo keynote]] supplies the **first wiki source naming agentic-commerce systems deployed at consumer scale today with revenue lines attached**:
+
+- **Alibaba's Qen one-sentence-purchase agent** — *"Book me a cool hotel in Hangzhou and the train to get there, and buy me an umbrella or a hat depending on the weather."* Served via Alibaba's integrated ecosystem (Fliggy travel + map + weather + e-commerce + payment) with **tokenized mandates** as guard rails. **More than 100 million users today** — *"not a test, something live and getting actually used."*
+- **JD.com's Joy Streamer** — virtual digital-twin live-stream hosts replacing human KOLs (key-opinion-leaders) on JD's e-commerce platform. **2.3 billion RMB (~$250M) in sales during the last Double 11 (11 November) season; more successful than 80% of human hosts.** A deployed agentic system at material revenue scale.
+- **Alibaba's AQ (Accio)** — an agent that builds physical supply chains end-to-end: market research → design suggestions → supplier match → cross-language chat (German↔Mandarin with Alibaba's translation-quality guarantee as the liability anchor) → executed contract. The Christmas-slippers worked example.
+
+The wiki's prior position on agents was *"early enterprise deployment / mostly aspirational at consumer scale."* Ognibeni's evidence shifts that to: **at consumer scale, agentic commerce already runs at 100M+ DAU with named revenue lines — outside the Western/Anglophone press's habitual reading view.** The mechanism that made this deployable: not better models, but **trust-scaling mechanisms** (Alibaba's liability-shift on translation accuracy; tokenized mandates as guard rails) that make consumers comfortable letting agents execute irrevocable transactions.
+
+### Agents as strategic threat to incumbent customer relationships (May 2026)
+
+[[2026-05-14-price-dfi-retail-asia-reinventing-how-it-sells|Scott Price (DFI Retail Group, May 2026)]] supplies the **first wiki source naming a CEO-level public-record articulation of agentic AI as a strategic threat** — not from the *will-it-take-my-team's-jobs* angle but from the *will-it-take-our-customer-relationship-and-the-data-and-loyalty-that-come-with-it* angle:
+
+> *"The one thing that probably keeps me up at night a little bit on this AI is disrupting the traditional approach to digital. So, agentic AI and creating a personal assistant — the idea that an individual will have a relationship with an agentic personal assistant that says, 'Look, I need eggs. I want an appointment with the dentist and can you make sure there's a car ready to pick up the kids at 9 a.m.' And the reality is that basically disrupts the relationship that each one of those service providers has with customers today. With that goes loyalty, with that goes access to data. So there is going to be this arms race for retailers to understand in that agentic world, how do you ensure you maintain that relationship with the customer."*
+
+This is the **seller-side mirror** of Ognibeni's buyer-side warning that *"nobody will show up in your store when you only do search-driven e-commerce."* The same disintermediation thesis, from opposite sides of the buyer/seller table — and the wiki's clearest paired articulation of the *agents-as-disintermediator-of-existing-channels* claim. Track which retailers, banks, and service providers actually publish concrete *agentic-AI-integration playbooks* (vs press-release-only AI investments) within 12–18 months.
 
 ## Debates / contradictions
 

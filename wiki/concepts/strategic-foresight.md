@@ -3,9 +3,9 @@ type: concept
 aliases: ["strategic foresight", "strategic-foresight", "corporate foresight", "futures thinking"]
 tags: [strategic-foresight, scenarios, futures, signal-detection, FTSG, webb, arena-creation-potion, arenas-radar, MGI]
 confidence: 0.85
-last_confirmed: "2026-05-16"
-accessed_at: "2026-05-16"
-source_count: 5
+last_confirmed: "2026-05-17"
+accessed_at: "2026-05-17"
+source_count: 6
 relationships:
   - type: part-of
     target: dynamic-capabilities
@@ -150,6 +150,16 @@ Two operator-narrated forecasts from May 2026 belong here as **first-person fore
 - **Next-form-factor as the next consumer wave** (Spiegel 2026): glasses (and adjacent next-gen hardware form factors) as the platform shift that creates the next generation of consumer companies — analogous to mobile's role in producing Uber, Snapchat, and the 2010s consumer cohort. Spiegel pairs this with a worry: *"it's going to be very hard for a startup to get any attention with existing incumbents"* — so the form-factor shift is a *necessary but not sufficient* condition.
 
 A complementary forecast at the enterprise-software layer comes from [[2026-05-05-stanford-ai-club-chamath-on-how-to-win-in-the-ai-era|Chamath 2026]]: the **trough of disillusionment is structurally guaranteed** unless long-horizon and complex AI tasks become reliable — a foresight claim that frames the trillion-dollar AI capex trajectory as **conditionally bounded** rather than smoothly extrapolating.
+
+### China as time machine: a geographic vantage for digital scouting ([[2026-05-11-ognibeni-ai-agents-cool-demos-vs-real-revenue-china|Ognibeni 2026]])
+
+[[2026-05-11-ognibeni-ai-agents-cool-demos-vs-real-revenue-china|Björn Ognibeni's E-commerce Berlin Expo keynote]] supplies a named **geographic vantage** for the *digital-scouting* microfoundation of [[dynamic-capabilities|dynamic capabilities]] — and a concrete explanation for why incumbent Western firms keep getting blindsided by waves of Chinese platform innovation (DeepSeek, Shein, Temu, BYD, ByteDance, agentic commerce):
+
+> *"China is the only place worldwide that's not influenced by Silicon Valley. Because of the digital firewall, it's an ecosystem that doesn't get much influence from Silicon Valley in the direct way like everybody else on the globe does. And if you're in a different ecosystem, if you have different experiences, that's the place where you actually find different ideas. … China is a kind of time machine where we can actually look into our own digital future."*
+
+The framing complements [[2026-04-28-ftsg-convergence-outlook-2026|FTSG]]'s convergence-as-unit-of-analysis stance and [[2026-03-25-russell-bradley-mgi-race-takes-off-next-big-arenas|MGI]]'s arena-creation potion with a **specific scouting strategy**: track the one major ecosystem developing outside the Silicon-Valley-influence sphere because that's where genuinely different combinatorial paths produce the surprises that the Anglophone foresight literature systematically under-weights. The wiki's first named *geographic-asymmetry-as-foresight-instrument* claim — and a corrective to the implicit US-centric default in Webb / FTSG signal-detection methodologies.
+
+Ognibeni also names the **operational corollary** for scouting practitioners: *"Learn to learn. Be willing to understand something fully before you know that it doesn't work."* A pointed critique of the dismiss-on-first-encounter pattern that Webb identifies as one of the three reasons corporate foresight fails — *"it's especially in Germany, we are very quick in knowing why stuff doesn't work, but without fully understanding it."*
 
 ## Related concepts
 
