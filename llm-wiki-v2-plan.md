@@ -6,7 +6,22 @@
 
 The current `ai-wiki/` repo is the v1 instantiation: 93 pages (54 entities, 17 concepts, 20 sources, 2 open threads, 0 syntheses), strict log conventions, alias-aware Quartz publishing, and a CLAUDE.md that already encodes ingest/query/lint operations and source-verification preflight. Several v2 ideas are *partly* present in disguise: `kind:` is proto-entity-typing, `log.md` is proto-audit-trail, "Debates / contradictions" prose sections are proto-supersession, the open `wiki/threads/` are proto-crystallization-targets.
 
-The user has chosen "all v2 features, full build, staged release plan." The work below stages the spec into six small versions (v0.2 → v0.7) plus an optional v0.8+. Each version is small enough to absorb in days-to-weeks of single-user evolution, lands schema before tooling, and either ends with a clean migration of existing pages or doesn't touch them at all. The scale-down from "all features" comes from two honest cuts: (a) multi-agent / mesh-sync infrastructure is YAGNI for a single user — only the `scope: shared|private` flag is kept; (b) the four consolidation tiers from v2 are reduced to *naming the tiers in CLAUDE.md prose* rather than building separate storage layers, because raw → source → concept/entity → CLAUDE.md already maps onto them.
+The user has chosen "all v2 features, full build, staged release plan." The work below originally staged the spec into six small versions (v0.2 → v0.7) plus an optional v0.8+; the 2026-05-17 update (see below) added v0.8 and v0.9 from a third upstream, with deferred work renumbered to v0.10+. Each version is small enough to absorb in days-to-weeks of single-user evolution, lands schema before tooling, and either ends with a clean migration of existing pages or doesn't touch them at all. The scale-down from "all features" comes from two honest cuts: (a) multi-agent / mesh-sync infrastructure is YAGNI for a single user — only the `scope: shared|private` flag is kept; (b) the four consolidation tiers from v2 are reduced to *naming the tiers in CLAUDE.md prose* rather than building separate storage layers, because raw → source → concept/entity → CLAUDE.md already maps onto them.
+
+### Update 2026-05-17 — third upstream + repo contributions beyond v2
+
+The plan was originally drafted against two upstreams (Karpathy's `llm-wiki.md` + agentmemory's `llm-wiki-v2.md`). On 2026-05-17 a comparative synthesis added a **third upstream**: the InfraNodus `skill-llm-wiki/SKILL.md` (10-phase scaffolding skill). InfraNodus contributes two ideas neither Karpathy nor v2 has:
+
+1. **Acquire ≠ Process.** The skill splits ingest into two re-runnable operations: *acquire* (touch `raw/`, convert PDF → markdown, place into typed subfolders) and *process* (read `raw/`, write `wiki/`). They fail differently, run on different cadences, and skipping either is common. This repo half-does it already — the `youtube-transcript-skill` is an acquire-time tool — but the schema never names the split. Lands as **v0.9** below.
+2. **Plan as a fifth operation.** Gap-driven todo generation: read the wiki + the graph + (optionally) InfraNodus's gap-analysis output, produce a prioritised `todos/` folder of next-research workstreams. No analogue in v1 or v2. Lands as **v0.8** below.
+
+The synthesis also surfaced **this repo's own contributions** that the upstream specs don't have, worth naming so they don't get lost:
+- **Body-wikilink rule** (v0.3) — every typed `relationships:` entry in frontmatter must appear as a body `[[wikilink]]` with a sentence of context. Lint-enforced. Closes a v2 hole where typed-graph edges and Quartz's wikilink crawler can diverge silently.
+- **Dynamic-capabilities tagging** (v0.5 schema, GH #4) — the Warner & Wäger process-model overlay on source pages, with role-relevance inheritance. A domain-specific tagging layer that v2 doesn't anticipate but its closed-vocabulary frontmatter pattern naturally accommodates.
+- **Neighbour-source scan** (v0.5 ingest checklist) — step 5 of ingest asks "what existing sources share a `dynamic_capabilities:` cell, or cite the same concept pages I'm about to update?" Produces typed source-to-source `relationships:` (`supports` / `contradicts` / `supersedes`). This is an applied lint built into the ingest path itself — no upstream describes it.
+- **YAML frontmatter contract for raw video sources** (v0.5) — the `youtube-transcript-skill`'s output is the canonical pre-flight format. Names the four load-bearing identity fields and the legacy-format compatibility rule.
+
+Two synthesis takeaways feed the rest of this document: (a) the **Plan operation** is genuinely new and merits its own version, not a v0.8+ footnote; (b) the **acquire-vs-process split** is a schema clarification, not a tooling effort — it slots cleanly between v0.7 and v0.10+.
 
 ## Approach at a glance
 
@@ -18,7 +33,9 @@ The user has chosen "all v2 features, full build, staged release plan." The work
 | v0.5    | Hybrid search + retention | `accessed_at`, `quality_score`, `§Retention` curve | qmd install + index, scheduled lint hook, `quality-score.mjs` | Seed accessed_at; score concepts |
 | v0.6    | Crystallization + LLM-as-judge | `crystallize` operation, `type: lesson` pages, `§Quality review` | `/crystallize` slash command, `judge-quality.mjs`, thread-aging hook | Crystallize 2 existing threads |
 | v0.7    | Output formats + scoping | `scope: shared\|private`, `sensitive: true`, bulk-ops governance | `exclude-private.ts`, `/compare`, `/timeline`, `/marp-deck`, `/export-csv`, `ingest-filter.mjs` | None unless private flagged |
-| v0.8+   | Deferred (mesh sync, external graph DB, on-query hook, consolidation infra) | — | — | only if forced |
+| v0.8    | **Plan operation** (5th op, gap-driven todos) — InfraNodus contribution | `§Plan` operation, `todos/` folder contract, `op: plan` log prefix | `/plan` slash command, `scripts/detect-gaps.mjs`, `scripts/seed-todos.mjs` | Generate first `todos/` from current wiki state |
+| v0.9    | **Acquire/Process refactor** — make ingest's two phases explicit (InfraNodus contribution) | §Ingest split into §Acquire + §Process; typed `raw/` subfolder enum; skill-as-acquire-step pattern formalised | None new — youtube-transcript-skill already fits the pattern; document the contract | None (schema-only) |
+| v0.10+  | Deferred (mesh sync, external graph DB, on-query hook, consolidation infra, retention auto-deletion) | — | — | only if forced |
 
 Three principles run through every version:
 1. **Schema-first.** CLAUDE.md sections + frontmatter contracts land before any tooling that depends on them.
@@ -256,13 +273,103 @@ Three principles run through every version:
 
 ---
 
-## v0.8+ — Deferred
+## v0.8 — Plan operation: gap-driven research direction
+
+**Goal.** Promote *what to research next* from an ad-hoc human question to a first-class operation alongside ingest / query / lint / synthesize. Reads the wiki + the graph and produces a prioritised `todos/` folder of next-research workstreams. Sourced from the InfraNodus skill (Phase 10 PLAN), which is the only upstream that has it; closes a real gap none of v1 / v2 address.
+
+**Lands.** The fifth operation. Nothing from the original v2 cluster list — this is the synthesis-driven addition.
+
+**Schema changes — `CLAUDE.md` adds §Plan and updates §Operations.**
+- New named operation **plan**: read `wiki/index.md`, `wiki/.graph.json`, the most recent N log entries, optionally any InfraNodus gap-analysis exports under `output/`; produce a prioritised todo list.
+- `wiki/log.md` permitted-ops enum gains `plan` (alongside existing `ingest | query | lint | synthesize | refactor | bulk-refactor`).
+- New top-level folder `todos/` (sibling of `wiki/`, `raw/`, `extensions/`). One markdown file per workstream. Schema:
+  ```yaml
+  ---
+  title: <workstream title>
+  status: open | in-progress | done | abandoned
+  priority_type: content-gap | weak-coverage | empty-section | naming-gap | source-to-find | synthesis-needed
+  created: YYYY-MM-DD
+  deadline: YYYY-MM-DD     # optional
+  derived_from: lint | gap-analysis | thread-aging | manual
+  ---
+  # <title>
+  ## Why this matters
+  <one paragraph; cite the gap or analysis output that flagged it>
+  ## Tasks
+  - [ ] <task>
+    - <sub-detail; reference wiki pages via [[wikilinks]]>
+  ```
+- §Plan prose names six priority types, taken from InfraNodus's Phase 10 matrix (content-gap, weak-coverage, empty-section, naming-gap, source-to-find, synthesis-needed). Closed vocabulary so lint can validate it.
+- Each completed todo file gets `status: done` and a body-bottom "Outcome" note linking to the wiki page(s) that closed it. Don't delete — `todos/` is a record of intent, not a kanban.
+
+**Tooling.**
+- New slash command `/plan` in `.claude/commands/`: invokes the plan operation, asks the user which gaps to convert into todos (multi-select), writes the files.
+- New script `scripts/detect-gaps.mjs` — walks `wiki/.graph.json` for disconnected clusters (modularity-based heuristic), low-`source_count` concepts, empty subfolders, threads that have been open >30 days. Outputs a ranked candidate list to stdout. Read-only.
+- Optional integration: if InfraNodus MCP server is configured, plug its `generate_knowledge_graph` output into `detect-gaps.mjs` as an additional stream (RRF over local + InfraNodus signals).
+- `scripts/seed-todos.mjs` — supervised migration helper: take the candidate list from `detect-gaps.mjs`, prompt for keep/discard per candidate, scaffold one todo file per kept item. Never auto-writes.
+
+**Migration.** One-time: generate the first `todos/` set from current wiki state. Expected output at 93 pages: 5–10 candidate workstreams, of which 3–5 survive triage.
+
+**Prereqs.** v0.3 (the graph exists), v0.5 (low-confidence and decay candidates are surfaceable), v0.6 (lessons exist as targets for synthesis-needed gaps).
+
+**Cuts vs. InfraNodus skill.**
+- No `.plan/` reminder/Telegram tracking layer — keep todos in markdown, lean on git for tracking. The InfraNodus skill suggests `/actionize` for Telegram; defer indefinitely.
+- No InfraNodus `ontology-creator` integration. This repo's typed `relationships:` + `.graph.json` already serve the role InfraNodus's append-only ontology files do; adding a second source of truth would introduce drift.
+- Deadlines are optional, not enforced.
+
+**Verification.**
+- `/plan` runs end-to-end on the current wiki, producing ≥3 todo files in `todos/`.
+- One todo file is closed (`status: done` + Outcome note linking to the page that addressed it) and the closure is logged in `log.md` as `plan | closed <todo-slug>`.
+- A new `op: plan` entry in `log.md` records the planning session itself.
+
+---
+
+## v0.9 — Acquire/Process refactor: name the two phases of ingest
+
+**Goal.** Make explicit what the repo already half-does: ingest is two operations, not one. *Acquire* touches `raw/` only (fetch / convert / place into typed subfolders); *Process* reads `raw/` and writes `wiki/`. Schema-only refactor — no new tooling beyond formalising the contract that the `youtube-transcript-skill` already satisfies.
+
+**Lands.** A schema clarification sourced from the InfraNodus skill (Phases 8 + 9). Lets future skills (PDF→markdown, web-clipper integration, podcast transcription) slot into a named pattern instead of inventing a new convention each time.
+
+**Schema changes — `CLAUDE.md` splits §Ingest into §Acquire and §Process.**
+- §Acquire codifies:
+  - Typed `raw/` subfolders (already de-facto in this repo): `articles/`, `assets/`, `books/`, `images/`, `lectures/`, `papers/`, `reports/`, `videos/`. The contract: organise by source **type**, not topic — different formats have different ingest rules.
+  - Convert-before-land: PDFs → markdown before landing in `raw/papers/` (originals preserved in `raw/assets/`).
+  - The acquire-time skill contract: a skill emits a raw file with a canonical YAML frontmatter at `raw/<type>/<slug>.md`. The `youtube-transcript-skill` is the reference implementation; the existing §"Source-page conventions specific to videos" already specifies the field-mapping table.
+  - Acquire is **re-runnable** — re-acquiring the same source from a better channel (e.g. higher-quality transcript) replaces the raw file; the wiki source page is not touched until §Process re-runs.
+- §Process is the existing §Ingest steps 1–9, unchanged in substance — just renamed and now starting "After §Acquire has landed a raw file…". The four pre-flight checks (scope, identity, honest scoping) remain at the head of §Process.
+- §Ingest becomes a one-liner pointer: "Ingest = Acquire + Process. See §Acquire and §Process."
+- `log.md` permitted-ops gains `acquire` as an op (distinct from `ingest`, which stays as the umbrella for sessions that do both). Most sessions stay `ingest`; `acquire` is used only when the session lands raw files but defers processing.
+
+**Tooling.** None new. This is a documentation refactor — every existing tool and skill already fits one side of the split.
+
+**Migration.**
+- One pass over `CLAUDE.md`: split §Ingest, move the four pre-flight checks under §Process, lift the video-frontmatter contract under §Acquire as the canonical "what an acquire-time skill produces."
+- Log entry: `refactor | v0.9 — split §Ingest into §Acquire + §Process`.
+- No wiki content changes.
+
+**Prereqs.** None — this is paper-only.
+
+**Cuts vs. InfraNodus skill.**
+- No 10-phase guided scaffolding (Discover / Scope / Structure / Schema / Workflows / Tooling / Scaffold). That's an onboarding skill for *new* wikis. This repo is already instantiated.
+- No `infranodus/` folder of append-only ontology files. Typed `relationships:` + `.graph.json` cover the same job from a single source of truth.
+
+**Verification.**
+- `CLAUDE.md` reads cleanly with §Acquire + §Process replacing §Ingest.
+- The `youtube-transcript-skill` documentation (`.claude/skills/youtube-transcript-skill/SKILL.md`) references §Acquire as the contract it satisfies.
+- A new acquire-only session (e.g. land a paper as `raw/papers/<slug>.md` without processing) leaves the wiki untouched and logs as `acquire | <slug>`.
+
+---
+
+## v0.10+ — Deferred
 
 Revisit only if forced.
 - **Mesh sync** (cluster 6 remainder): if a coauthor or second machine appears.
 - **Consolidation tier infrastructure** (cluster 1 deferred piece): if the wiki crosses ~500 pages and the four-tier model starts paying its weight.
 - **External graph DB**: if `.graph.json` exceeds a few MB and traversal queries get slow.
 - **On-query hook** (cluster 4 remainder): if the user finds they're forgetting to file good answers back.
+- **Retention auto-deletion** (v2 forgetting curve, harder form): v0.5 lands decay-as-lint-signal; auto-deletion or auto-archiving is deferred indefinitely. Knowledge that has decayed off the homepage and is invisible to lint is already "in the bottom drawer" in v2's framing.
+- **InfraNodus MCP integration for richer gap analysis**: v0.8 names a stub hook; promote only if the user is running InfraNodus alongside Obsidian anyway and the local detector misses obvious gaps.
+- **Telegram / external reminder integration for `todos/`**: InfraNodus's `/actionize` companion. Defer; git + markdown todos with deadlines is sufficient at single-user scale.
 
 ---
 
@@ -287,6 +394,8 @@ Per-version migration targets:
 - v0.2: 17 concepts under `wiki/concepts/` + 54 entities under `wiki/entities/` (71 pages).
 - v0.3: same 71 pages gain relationships; both threads in `wiki/threads/` close into new files in `wiki/syntheses/`.
 - v0.6: new `wiki/lessons/` directory.
+- v0.8: new top-level `todos/` directory (sibling of `wiki/`, not inside it); 3–5 seeded workstreams.
+- v0.9: schema-only refactor of `CLAUDE.md` §Ingest → §Acquire + §Process; zero content pages touched.
 
 ## Verification strategy across versions
 
@@ -299,4 +408,6 @@ After each version lands:
 
 ## Sequencing recommendation
 
-Treat each version as one or two focused sessions, not one big push. Suggested cadence: v0.2 over 2-3 sessions (because of the bulk migration), v0.3 over 2 sessions, v0.4 in 1 session, v0.5 in 2 sessions (qmd install + retention), v0.6 in 2 sessions, v0.7 in 1 session. Each version is independently shippable — pause between any two and the wiki keeps working.
+Treat each version as one or two focused sessions, not one big push. Suggested cadence: v0.2 over 2-3 sessions (because of the bulk migration), v0.3 over 2 sessions, v0.4 in 1 session, v0.5 in 2 sessions (qmd install + retention), v0.6 in 2 sessions, v0.7 in 1 session, v0.8 in 1-2 sessions (gap-detector + first todos seeding), v0.9 in 1 session (CLAUDE.md refactor only). Each version is independently shippable — pause between any two and the wiki keeps working.
+
+Note on v0.8 vs v0.9 ordering. v0.9 is paper-only and could land at any point — it has zero prerequisites. Put it after v0.8 because the Plan operation is a natural place to flush out which raw sources are *acquired but not processed* (a gap type v0.8's detector should surface), and that gap is more legible once §Acquire is named as a distinct step. If a future skill is being authored that needs the contract before v0.8 ships, swap them — no other version cares about the order.

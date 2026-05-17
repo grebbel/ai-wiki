@@ -15,10 +15,11 @@ The wiki is instantiated. As of v0.2 the repo contains:
 - `raw/` — source material under `articles/`, `assets/`, `books/`, `images/`, `lectures/`, `papers/`, `reports/`, `videos/`. Immutable.
 - `wiki/` — `sources/`, `entities/`, `concepts/`, `threads/`, `syntheses/` plus the catalogues `index.md` and `log.md`. Wikilinks-only cross-refs.
 - Page-type frontmatter: `type: source | entity | concept | thread | synthesis`; `kind:` discriminator on entities and sources.
-- Log entries: `## [YYYY-MM-DD] <op> | <title>` where `<op>` ∈ `ingest | query | lint | synthesize | refactor | bulk-refactor`.
+- Log entries: `## [YYYY-MM-DD] <op> | <title>` where `<op>` ∈ `ingest | acquire | query | lint | synthesize | refactor | bulk-refactor`. (`acquire` is the v0.9 addition — used only when raw files land without same-session processing; the umbrella op for the typical case remains `ingest`.)
 - Quartz publishing via `npm run build` / `npm run serve`; custom extensions in `extensions/`.
+- **v0.5 is fully landed (2026-05-17).** All three slices: **retention** (`accessed_at` on concepts + entities + syntheses; §Retention decay curve as lint signal), **search** ([qmd](https://github.com/tobi/qmd) / `@tobilu/qmd` registered as collection `ai-wiki`; 205 docs / 1466 chunks; BM25 + vector + query-expansion local models in `~/.cache/qmd/`), **quality** (`quality_score` + `quality_notes` on concepts and syntheses via [`scripts/quality-score.mjs`](scripts/quality-score.mjs); mechanical rubric across structure / citations / cross-consistency). Manual `accessed_at` bumps via [`scripts/bump-accessed.mjs`](scripts/bump-accessed.mjs) pending MCP integration. See [§Lifecycle](#lifecycle), [§Retention](#retention), [§Quality](#quality), [§Search](#search). LLM-as-judge quality scoring deferred to v0.6.
 
-The implementation roadmap for v2 features lives in [`llm-wiki-v2-plan.md`](llm-wiki-v2-plan.md): six staged versions (v0.2 → v0.7). Each version lands schema before tooling, and bulk migrations are supervised batches.
+The implementation roadmap for v2 features lives in [`llm-wiki-v2-plan.md`](llm-wiki-v2-plan.md): eight staged versions (v0.2 → v0.9). Each version lands schema before tooling, and bulk migrations are supervised batches.
 
 ## The three layers (architecture)
 
@@ -28,11 +29,28 @@ The implementation roadmap for v2 features lives in [`llm-wiki-v2-plan.md`](llm-
 
 ## The four operations
 
-These replace "build / lint / test" for this repo. Apply them whenever the user invokes the corresponding intent. **Synthesize** is the v0.3 addition — see [§Synthesis](#synthesis) for the full operation.
+These replace "build / lint / test" for this repo. Apply them whenever the user invokes the corresponding intent. **Synthesize** is the v0.3 addition — see [§Synthesis](#synthesis) for the full operation. **Ingest** was split into two re-runnable phases — Acquire and Process — in v0.9; the operation count stays at four (Ingest / Query / Lint / Synthesize), but Ingest now has explicit named sub-phases. See §Acquire and §Process below.
 
-### Ingest
-A new source has been added to the raw collection.
-0. **Verify the source's identity and completeness before reading further.** See [Verifying sources before ingest](#verifying-sources-before-ingest).
+### Ingest = Acquire + Process
+
+A new source enters the wiki in two phases. **Acquire** lands a raw file (fetch / convert / place into a typed `raw/` subfolder) and stops. **Process** reads `raw/` and writes `wiki/`. They fail differently and run on different cadences — often in the same session, but skipping either is common (e.g. landing several PDFs today, processing over the week). See §Acquire and §Process below.
+
+### Acquire
+
+A new raw file lands in `raw/`. Acquire **only touches `raw/`** — the wiki source page is not written until §Process runs.
+
+1. **Determine source type → typed `raw/` subfolder.** Organise by source *type*, not topic — different formats have different processing rules. Current typed subfolders: `articles/`, `assets/`, `books/`, `images/`, `lectures/`, `papers/`, `reports/`, `videos/`. Create new typed subfolders on the fly when a genuinely new source category appears (e.g. `raw/patents/`, `raw/interviews/`); don't ask permission for every new type.
+2. **Convert before landing.** Source formats that the LLM cannot read in one pass must be converted to markdown *before* landing in `raw/`:
+   - PDFs → markdown (`marker`, `pdftotext`, MarkItDown, or a Zotero markdown export) → `raw/papers/<slug>.md`. Keep the original PDF in `raw/assets/` for reference.
+   - YouTube / podcast URLs → transcript markdown → `raw/videos/<slug>.md`. The [`youtube-transcript-skill`](.claude/skills/youtube-transcript-skill/SKILL.md) is the canonical acquire-time skill — auto-triggered by any YouTube URL request that mentions transcript / captions / subtitles, or invoked explicitly with `-o raw/videos/<slug>.md`.
+   - `.docx` / `.epub` / `.html` → markdown (`pandoc`, `readability`).
+3. **Acquire-time skill contract.** A skill that lands a raw file emits the file at `raw/<type>/<slug>.md` with a canonical YAML frontmatter as its first block. The frontmatter is the *contract* between Acquire and Process — Process reads it during pre-flight checks. The video-format contract is specified in detail at [§Pre-flight check (videos): the YAML frontmatter contract](#pre-flight-check-videos-the-yaml-frontmatter-contract); new acquire-time skills (PDF→markdown, web clipper integration, podcast transcription) follow the same pattern: produce a raw file at the canonical path with the canonical frontmatter for its type.
+4. **Re-runnable.** Re-acquiring the same source from a better channel (higher-quality transcript, full text replacing a sample) **replaces the raw file**. The wiki source page is not touched until §Process re-runs. This is why Acquire is named as a distinct phase — re-acquisition without re-processing is common and benign.
+5. **Log entry.** When Acquire runs without Process in the same session, log as `acquire | <slug or batch description>` (reverse-chronological, top of [`log.md`](wiki/log.md)). When Acquire and Process run together (the typical case), use `ingest | ...` as the umbrella op — no separate `acquire` entry needed.
+
+### Process
+A source in `raw/` has not yet been turned into a wiki page. (When invoked under the §Ingest umbrella, Acquire produced this file moments ago; when invoked standalone, the file has been sitting in `raw/` since an earlier session.)
+0. **Verify the source's identity and completeness before reading further.** See [§Verifying sources before ingest](#verifying-sources-before-ingest).
 1. Read the source.
 2. Discuss key takeaways with the user before writing (default to one source at a time, supervised — unless the user says batch).
 3. Write a summary page in the wiki.
@@ -40,7 +58,7 @@ A new source has been added to the raw collection.
 5. **Run a neighbour-source scan.** Query `wiki/sources/` for sources that share at least one `dynamic_capabilities:` cell with the new source, **or** that already cite any of the concept pages you intend to update in step 6 (the fallback path catches pre-GH #4 sources that don't carry W&W tags yet). For each candidate, decide on a typed `relationships:` edge — typically `supports` if both sources address the same phenomenon from compatible angles, `contradicts` if findings or framings conflict (pair with `via:`), or `supersedes` if the new source replaces a prior claim wholesale (per [§Supersession protocol](#supersession-protocol)). Add the edge to the **new source's** frontmatter `relationships:` block. Reverse-linking from the neighbour is encouraged but not required — the graph export computes inverses, and the body-wikilink rule applies in both directions. Skip neighbours where no defensible edge type fits — *not every co-occurrence is a relationship*. **At ≥3 candidate neighbours, surface the list in your response so the user can spot omissions before commit.** See [§Source-to-source relationships](#source-to-source-relationships) for vocabulary guidance.
 6. Update **every** affected entity, concept, and topic page across the wiki — a single ingest may touch 10–15 files. On every touched concept/entity page, bump `last_confirmed` to today's date and recompute `source_count` and `confidence` per [§Lifecycle](#lifecycle).
 7. Update `index.md` (catalog of pages, one-line summaries, organized by category).
-8. Prepend an entry to `log.md` using the agreed prefix format — new entries go directly under the `---` separator at the top of the file (reverse-chronological convention since 2026-05-12, GH #3), so the most recent entry is the first one in the file.
+8. Prepend an entry to `log.md` using the agreed prefix format — new entries go directly under the `---` separator at the top of the file (reverse-chronological convention since 2026-05-12, GH #3), so the most recent entry is the first one in the file. Use `ingest | ...` as the umbrella op regardless of whether Acquire ran in this session or a previous one — only the standalone-Acquire case (no Process) gets the separate `acquire | ...` op (see §Acquire step 5).
 9. When new data contradicts an older claim, flag it explicitly in the page's `## Debates and supersession` section. If the new source supersedes an older one wholesale, set `supersedes:` on the new source page and `status: stale` + `superseded_by:` on the retired page — never delete the retired page.
 
 ### Query
@@ -221,6 +239,12 @@ Every concept and entity page carries:
 - `confidence: 0.0–1.0` — how strongly the claim on this page is supported by sources currently in the wiki.
 - `last_confirmed: YYYY-MM-DD` — the date of the most recent ingest that reinforced this page.
 - `source_count: N` — count of source pages that cite or substantiate this page (matches the page's inbound source links from `wiki/sources/`).
+- `accessed_at: YYYY-MM-DD` — the date the page was last *read into context* (as opposed to written to). Added in v0.5 as the reinforcement signal for the [§Retention](#retention) curve. Seeded at v0.5 migration time to equal `last_confirmed`; bumped manually via `node scripts/bump-accessed.mjs <slugs>` after a query-time read, or procedurally during ingest (Process step 6 bumps `accessed_at` alongside `last_confirmed`). **Syntheses also carry `accessed_at`** (added after the v0.5 quality scorer flagged the omission — syntheses are claim-bearing pages, not evidence, so they decay like concepts). Sources do not carry `accessed_at` — sources don't decay; their reliability is governed by what cites them.
+
+**Concepts and syntheses additionally carry** (added v0.5 quality slice):
+
+- `quality_score: 0.0–1.0` — a mechanical health score combining structure, citation density, and cross-consistency. Computed by `node scripts/quality-score.mjs`; lives in frontmatter as a *derived* field (the only frontmatter value written by tooling rather than by hand). See [§Quality](#quality) for the rubric. Not on entities (which are catalogue pages, not knowledge claims) or sources (which are evidence).
+- `quality_notes:` — optional list of specific issues the scorer flagged. Empty when score is at ceiling. Read by humans to know what to fix.
 
 Sources do **not** carry `confidence`. Sources are evidence, not claims. Their reliability is captured implicitly by what cites them.
 
@@ -277,6 +301,207 @@ node scripts/lint-dangling-authors.mjs
 ```
 
 The script walks `wiki/sources/` and `wiki/entities/`, reports any name in `author:` on ≥2 source pages without a matching entity (canonical filename or alias), and exits non-zero when dangling authors are found. Run after every ingest that adds source pages, or periodically as a corpus health check. The convention only governs **`author:` frontmatter**; people referenced incidentally in source bodies are out of scope.
+
+## Retention
+
+Knowledge has a half-life. A concept reinforced last week sits at full strength; a concept that hasn't been read or cited in 18 months has likely drifted from the rest of the wiki around it. v2's "forgetting" idea (the Ebbinghaus-style retention curve) is captured here as a **lint signal, never an auto-edit** — decay only changes what surfaces in lint output and what the SessionStart hook highlights; it never deletes, archives, or rewrites a page.
+
+### The decay curve
+
+For concept and entity pages, an *effective* confidence is derived at lint time:
+
+```
+effective_confidence = stored_confidence × exp(-days_since_access / tau)
+```
+
+Where:
+
+- `stored_confidence` is the `confidence:` value written by the most recent ingest that touched the page.
+- `days_since_access` is `(today − accessed_at)`.
+- `tau` is the decay time-constant: **90 days for concepts and syntheses, 365 days for entities, ∞ for sources** (sources don't decay; they are immutable evidence). Concepts and syntheses decay roughly four times faster than entities because conceptual framings and durable conclusions shift faster than the people, organisations, and products they describe — a 2024 framing of "agent harness" is less recognisable today than the 2024 identity of OpenAI.
+
+This is read-only — the stored `confidence:` is never overwritten by decay math. `effective_confidence` is computed each time lint runs (and, from v0.5's search slice, each time the search ranker assembles a result list).
+
+### What decay does and does not do
+
+**Does:**
+
+- Surface decay candidates in lint output: any page where `effective_confidence < 0.5` gets listed under "decay candidates" with the suggestion to either re-confirm (bump `accessed_at` via a normal ingest/query touch) or, if the page is genuinely stale, run the [§Supersession protocol](#supersession-protocol).
+- Influence search rank from v0.5's search slice onward: low-effective-confidence pages drop in result lists.
+- Influence the SessionStart hook's surfacing of "needs attention" pages.
+
+**Does not:**
+
+- Delete pages. Ever.
+- Auto-write to `status: stale`. Stale-marking is always a human-approved supersession decision per [§Supersession protocol](#supersession-protocol).
+- Overwrite `confidence:`. `confidence:` is the value the last *active* ingest wrote; `effective_confidence` is a derived view, computed on demand.
+- Decay sources. Source pages have no `accessed_at:` and no decay; they are the evidence layer.
+
+### The reinforcement signal
+
+`accessed_at:` is bumped to today's date whenever:
+
+1. A new ingest touches the page (this is the same trigger as `last_confirmed`, so for ingest-time touches the two fields move together).
+2. A query operation reads the page into context (lands with v0.5's search slice — a scheduled hook bumps `accessed_at` on pages the search ranker returned).
+3. A user manually re-confirms the page during a lint pass ("yes, this is still current" → `accessed_at` bumps).
+
+Pages whose `accessed_at:` falls behind `last_confirmed:` are *read-aged*: they're still factually current but haven't been actively engaged with. The decay curve uses `accessed_at`, so read-engagement matters as much as ingest-time freshness.
+
+### Cuts vs. `llm-wiki-v2.md`
+
+- **No auto-deletion.** v2's "moved to a bottom drawer" is implemented here as "drops off the homepage and into lint output." Nothing is ever silently archived.
+- **No per-page tau override.** Tau is fixed by page type (concept / entity). Personalised decay (e.g. "this concept decays slower because it's foundational") is deferred — if a concept genuinely should resist decay, set its `confidence:` to a higher value, don't introduce a per-page knob.
+- **No scheduled retention sweep that auto-marks pages stale.** v2 suggests automation; this repo's hook contract ([§Hooks](#hooks)) forbids content edits from automation. Lint reports are the only output of the daily retention check.
+
+## Quality
+
+Not every wiki page is equally well-written. A concept with three sources but no `## Debates and supersession` section, no inbound wikilinks, and a 50-word body is structurally weak even if its `confidence:` is high. **v0.5 adds a mechanical quality score** that flags those structural weaknesses without trying to judge content correctness (LLM-as-judge is deferred to v0.6).
+
+### What gets scored
+
+- **Concepts** (`wiki/concepts/*.md`) — they make knowledge claims; their structural shape predicts readability and re-use.
+- **Syntheses** (`wiki/syntheses/*.md`) — they are durable conclusions and bear the strictest schema (Question / Findings / Sources consulted / Lessons / Open questions).
+- **Not entities** — entity pages are catalogue cards (who/what/where); the quality model doesn't fit. Their health is governed by `confidence`, `source_count`, and `relationships` only.
+- **Not sources** — sources are evidence, immutable, never scored.
+- **Not threads** — threads are provisional by design; quality scoring would be premature.
+
+### The rubric
+
+`quality_score` is a weighted sum on `[0.0, 1.0]`. Three dimensions:
+
+| Dimension | Weight | What's checked |
+| --- | ---: | --- |
+| **Structure** | 0.40 | H1 present; required sections present per page type (`## Debates and supersession` for concepts with `source_count > 1`; the five mandatory sections for syntheses per [§Synthesis](#synthesis)); frontmatter contract complete (`confidence`, `last_confirmed`, `source_count`, `accessed_at`); body length ≥200 words (i.e. not a stub). |
+| **Citation density** | 0.30 | Number of wikilinks to source pages (`[[2026-…-…]]`) per 1000 body words. Target: ≥3.0 source links per 1000 words. Scored linearly up to that ceiling. The wiki's central convention is *citations beat assertions* — this dimension enforces it numerically. |
+| **Cross-consistency** | 0.30 | Every `relationships:` target slug exists as a real page; every typed relationship has a body wikilink (the v0.3 body-wikilink rule) at least mentioning the target; no broken `[[wikilink]]`s; concepts with `source_count > 1` have a `## Debates and supersession` section (overlaps Structure but counted again because it's the load-bearing claim about epistemic honesty). |
+
+The 0.40 / 0.30 / 0.30 weighting reflects the schema's priorities: structure is the most-tractable lever the wiki controls; citation density and cross-consistency together encode the *citation discipline + relationship discipline* that the v0.2 and v0.3 layers established.
+
+### Thresholds
+
+- **`quality_score ≥ 0.85`** — page is at or near ceiling. No action needed.
+- **`0.65 ≤ quality_score < 0.85`** — workable; specific issues listed in `quality_notes`. Address opportunistically.
+- **`quality_score < 0.65`** — needs work. Surfaced by lint and SessionStart hook; address before adding new sources to the page.
+
+### How and when it runs
+
+- **Manual batch** — `node scripts/quality-score.mjs` walks `wiki/concepts/` and `wiki/syntheses/`, recomputes scores, writes `quality_score` and `quality_notes` back to frontmatter. Idempotent — if the score and notes haven't changed, no write happens (git stays clean).
+- **Dry-run** — `node scripts/quality-score.mjs --dry-run` prints the score table without writing.
+- **Single page** — `node scripts/quality-score.mjs --page <slug>` scores one page (e.g. just after editing a concept).
+- **Not hook-fired** — quality scoring runs cross-page consistency checks; running it on every PostToolUse would walk the entire wiki on every keystroke. Run it manually after each ingest batch, or weekly as a corpus health check.
+
+### The auto-write exception
+
+`quality_score` and `quality_notes` are **the only frontmatter fields the schema permits tooling to write to.** The hooks contract ([§Hooks](#hooks)) forbids content-page edits from automation — but `quality_score` is a *derived* value, not editorial content, and the script is explicit + idempotent + user-invoked (not hook-fired). The exception is narrow on purpose: any future "auto-write" temptation must clear the same bar — derived, deterministic, user-triggered.
+
+### Cuts vs. `llm-wiki-v2.md`
+
+- **No LLM-as-judge yet.** v2 suggests "a second pass with a different prompt" for quality evaluation. That's the v0.6 quality slice — `scripts/judge-quality.mjs` will overlay an LLM rubric on top of the mechanical score for concepts and syntheses.
+- **No auto-rewrite of low-quality pages.** Even when a page scores below 0.65, the script never edits its content — it only writes the score and the notes. The notes tell a human (or Claude in a future session) what to fix; the fix is editorial.
+- **No quality score on entities or sources.** v2 implies scoring "everything" — this repo restricts the rubric to pages where structural shape predicts re-use value (concepts and syntheses). Extending to entities is plausible but adds noise more than signal at current scale.
+
+## Search
+
+At ~200 pages the wiki has outgrown `index.md` as a primary discovery surface. v2's "hybrid search past 100–200 pages" warning has cashed in. v0.5 adds **[qmd](https://github.com/tobi/qmd)** (`@tobilu/qmd` on npm) as the local search engine — BM25 keyword + vector semantic + LLM re-ranking, all on-device via `node-llama-cpp` with GGUF models. No external API; no embedding service.
+
+### What lives where
+
+- **qmd's index** (BM25 inverted index + 768-d embeddings per page) lives outside the repo, in qmd's own data directory (typically `~/.qmd/`). It is not committed.
+- **The collection mapping** is registered with qmd as the named collection `ai-wiki`, rooted at `./wiki` with the glob `**/*.md` (so the 205-page corpus of concepts, entities, sources, threads, syntheses, plus `index.md` and `log.md` is indexable).
+- **The collection context-string** (registered via `qmd context add qmd://ai-wiki "..."`) carries the schema summary so qmd's LLM re-ranker has framing when surfacing results.
+- The wiki's typed graph (`wiki/.graph.json` from v0.3) remains the third retrieval stream; it is **not** indexed by qmd. Graph traversal is invoked separately (see §Graph) and merged with qmd's hits via Reciprocal Rank Fusion at the query-answering layer.
+
+### When to use qmd vs `index.md`
+
+| Query shape | Strategy |
+| --- | --- |
+| Looking up a known page by exact title or alias | `index.md` — direct lookup, fastest |
+| Question that obviously hits ≤5 wiki pages by name | `index.md` — open them directly |
+| Question that touches >5 pages, or whose answer requires synthesis across several | **qmd first** to narrow to top 10, then read those |
+| Open-ended exploration ("what does the wiki say about X-ish topics") | **qmd `query`** (hybrid + rerank) — it surfaces semantic neighbours `index.md` won't catch |
+| Looking for *structural* context ("what is `agent-harness` `part-of`?") | Graph traversal via `wiki/.graph.json` — qmd doesn't know about typed edges |
+
+The 5-page threshold is a heuristic. The real test is whether the query would force you to scan >50% of `index.md` to find candidates — if yes, qmd is cheaper.
+
+### qmd command cheat-sheet
+
+Run via `npx @tobilu/qmd <command>` (no global install needed) or `qmd <command>` after `npm install -g @tobilu/qmd`.
+
+- **`qmd query "<question>"`** — **default for complex queries.** Hybrid retrieval (BM25 ∪ vector) followed by LLM re-ranking. Slower per call but most robust to phrasing variation.
+- **`qmd search "<terms>"`** — fast BM25 keyword search. Use when the terms are specific and you expect literal matches.
+- **`qmd vsearch "<question>"`** — pure vector semantic search. **Warning:** unreliable on lexically ambiguous paraphrases — without a BM25 leg, vector can resolve to the wrong semantic cluster on a single misleading word (the v0.5 acceptance test caught this: a Dutch paraphrase with the ambiguous *"in productie"* sent vsearch to the labor/employment cluster instead of harness/runtime; `query` got it right). Treat `vsearch` as a diagnostic tool, not a primary discovery surface.
+- **`qmd get "<path>"`** — fetch a specific document by path, or `qmd get "#<docid>"` by qmd's internal id (shown in search results).
+- **`qmd multi-get "<glob>"`** — fetch multiple documents by glob (e.g. `"sources/2026-05*.md"`).
+
+The **collection name** (`ai-wiki`) becomes a URI prefix in qmd's output: results are reported as `qmd://ai-wiki/<path>`. Treat that as the wiki source-of-truth path.
+
+### Re-embedding after writes
+
+qmd's index does not auto-refresh. After ingest sessions that add or substantially edit pages, refresh:
+
+```sh
+npx @tobilu/qmd embed
+```
+
+This computes embeddings only for pages whose content hash changed (qmd tracks hashes per document). On a typical post-ingest run (5–10 pages touched), this is seconds. A full rebuild is rare.
+
+### Re-ranking by `effective_confidence`
+
+When qmd returns its top-N, the query-answering layer should re-rank by §Retention's `effective_confidence`. A high-BM25 hit on a concept that has decayed (e.g. `effective_confidence < 0.5` because `accessed_at` is 18 months old) is downgraded relative to a fresher concept on the same topic. This is the integration point between §Search and §Retention — qmd returns relevance, the wiki's lifecycle math returns currency, and both matter. The re-ranking is computed at read-time; qmd's stored scores are not modified.
+
+### Bumping `accessed_at` after a query
+
+When a query consumes pages from qmd's results, **bump those pages' `accessed_at` to today** — that's the reinforcement signal §Retention's decay curve uses. There are three routes, from most integrated to most manual:
+
+**Route 1 — `/wq` slash command** (most ergonomic, the default for interactive use):
+
+```
+/wq wat zegt de wiki over dynamische capaciteiten van organisaties
+```
+
+The command dispatches to [`scripts/wiki-query.mjs`](scripts/wiki-query.mjs) which runs `qmd query --json`, prints the top-N results, **and automatically bumps `accessed_at`** on every concept / entity / synthesis page returned. Sources in the result list are skipped (they don't decay). Language-agnostic — the slash command answers in the query's language.
+
+**Route 2 — wiki-query wrapper directly** (for shell, scripts, other agents):
+
+```sh
+node scripts/wiki-query.mjs -n 8 "your question"          # 8 results + bump
+node scripts/wiki-query.mjs --no-bump -n 3 "quick lookup" # skip the bump
+node scripts/wiki-query.mjs --json "your question"        # raw qmd JSON
+```
+
+Same auto-bump semantics as `/wq`. The `--json` flag passes qmd's structured output through unchanged — useful for other agents or pipelines.
+
+**Route 3 — qmd MCP server** (for agents that want a direct tool):
+
+Register the qmd MCP server by adding a `.mcp.json` at the repo root (one-time, user-authorised):
+
+```json
+{
+  "mcpServers": {
+    "qmd": {
+      "command": "npx",
+      "args": ["--yes", "@tobilu/qmd", "mcp"]
+    }
+  }
+}
+```
+
+After reload, agents in this repo have direct `query`, `get`, `multi_get`, `status` tools from qmd's MCP server. **Important caveat:** qmd's MCP server does *not* know about the wiki's `accessed_at` reinforcement rule — it only retrieves. Agents using MCP directly should still call `node scripts/bump-accessed.mjs <slugs>` afterwards to honour §Retention. The `/wq` slash command and `wiki-query.mjs` wrapper are the only paths that bundle both operations.
+
+**Manual fallback** for ad-hoc bumps unrelated to a query:
+
+```sh
+node scripts/bump-accessed.mjs <slug> [<slug> ...]
+```
+
+Idempotent — a slug already at today's date is a no-op. Slugs resolve against `wiki/concepts/`, `wiki/entities/`, `wiki/syntheses/`. Sources are rejected (they don't decay).
+
+### Cuts vs. `llm-wiki-v2.md`
+
+- **No external API embeddings.** v2 mentions "vector search via embeddings"; qmd's local GGUF route honours that without OpenAI/Anthropic API exposure.
+- **No graph-aware retrieval inside qmd.** Graph traversal stays in `wiki/.graph.json` + `scripts/`; merging happens at the answer-synthesis layer, not inside the retrieval engine. v2 envisions a unified store; this split is pragmatic and revisable.
+- **No MCP integration yet.** qmd ships an MCP server; wiring it into Claude Code as a native tool is deferred to the v0.5 quality slice (or whenever it becomes friction). Until then the CLI route works.
+- **No auto-refresh hook on edit.** The PostToolUse lint hook ([§Hooks](#hooks)) deliberately does not call `qmd embed` after every wiki edit — re-embedding on every keystroke would thrash. Re-embed runs as part of the manual ingest-completion checklist, not as automation.
 
 ## Graph
 
