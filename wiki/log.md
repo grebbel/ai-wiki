@@ -10,6 +10,45 @@ Ordering flipped on 2026-05-12 (GH [#3](https://github.com/businessdatasolutions
 
 ---
 
+## [2026-05-17] ingest | Vivek Trivedy — *The Anatomy of an Agent Harness* (LangChain Engineering blog, 10 March 2026) — closes the Trivedy / Chatterjee / LangChain three-post thicket
+
+**Single-source ingest** triggered by user clarification: the user noted *"The post from Chatterjee only has a similar title. Here is the article from LangChain: https://www.langchain.com/blog/the-anatomy-of-an-agent-harness"* and pointed to the canonical URL the wiki had been carrying as an open ingest target since this morning. WebFetch returned full HTML body (no PDF version exists; LangChain blog renders dynamically). Author byline confirmed: **Vivek Trivedy** = the "Viv Trivedy" Osmani referenced in his May 15 essay.
+
+**Source page (1 new):**
+
+- [[2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness]] — Vivek Trivedy, LangChain Engineering blog, 10 March 2026. Full body archived at `raw/articles/2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness.md` (markdown reproduction of HTML). The post is the **canonical "Anatomy of an Agent Harness"** piece Osmani referenced and Pan et al. cited as reference 16. Confidence 0.82.
+
+**Concept page updated (1):**
+
+- [[concepts/agent-harness]] 31→32, conf 0.98 unchanged, last_confirmed 2026-05-17 (same-day **quadruple-bump** after morning's Karten/Nodus/PY ingests + afternoon's 7-paper batch + evening's Trivedy ingest — most active concept-page day in wiki history). New ~30-line section "**Trivedy is the source-of-vocabulary; Osmani is the popularisation**" with attribution table mapping load-bearing claims to first-person primary anchors. New "**The Feb 11 / Feb 17 vocabulary-coinage window**" sub-section naming Lopopolo (Feb 11) + Trivedy (Feb 17) as near-simultaneous co-coiners of "harness engineering" as a discipline noun.
+
+**Why this single ingest is disproportionately load-bearing.** Multiple wiki claims previously held under "the practitioner cluster" or "carried via Osmani" now have a **first-person primary anchor**:
+
+| Wiki claim (status before this ingest) | Status after |
+|---|---|
+| ***"Agent = Model + Harness"*** equation | **Closed — first-person primary.** Trivedy's coinage. |
+| ***"If you're not the model, you're the harness"*** | **Closed — first-person primary.** Trivedy's coinage. |
+| **Working-backward-from-behavior design pattern** | **Closed — first-person primary.** Trivedy's coinage. |
+| **Ralph Loops definition** | **Closed — first-person primary** (definitional). |
+| **6-primitive enumeration** (filesystem / bash+code / sandboxes / memory / context rot / long-horizon) | **Closed — first-person primary** (canonical ordering). |
+| **Three named open problems** (parallel-agents / trace-self-correction / dynamic assembly) | **Closed — first-person primary.** |
+| ***"Opus 4.6 in Claude Code scores far below Opus 4.6 in other harnesses"*** | **Closed — first-person primary observation.** |
+| **Top 30 → Top 5 on Terminal Bench 2.0** (re-attributed away from Pan et al. earlier today) | **Closed — first-person primary anchored as Trivedy's LangChain result** (attributed by Trivedy to a previous LangChain blog, likely the Feb 17 *Improving Deep Agents with Harness Engineering* post). |
+| **Trivedy / Chatterjee author-attribution flag** (open since 2026-05-15) | **Closed.** Vivek Trivedy = "Viv Trivedy" in Osmani; Chatterjee's Medium post is a *separate* artifact (similar title only — user confirmation). The existing [[2026-05-07-chatterjee-anatomy-of-agent-harness]] source page is correctly attributed and stays in place. |
+
+**Repositioning of Osmani's essay.** [[2026-05-15-osmani-agent-harness-engineering|Osmani's May 15 O'Reilly Radar essay]] is now confirmable as **a near-direct synthesis-with-expansion of Trivedy's post**, published 9 weeks later for the O'Reilly audience. Verbatim quotes match; same 6 primitives in same order; identical three-open-problems list. Osmani's contribution beyond Trivedy: explicit cross-author synthesis (Anthropic / HumanLayer / Bockeler / Khan / Willison) + the *ratchet* framing + the HaaS substrate-shift framing. **Trivedy is the source-of-technical-content; Osmani is the cross-author-synthesis popularisation.**
+
+**Index + log updates.** New entry at the top of [[wiki/index.md|index.md]]'s Sources section. This log entry.
+
+**Pages touched: 4 total** (1 new source + 1 updated concept + index + log).
+
+**Operational note on IDE diagnostics.** Four IDE warnings during the edits flagged the new slug `2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness` as *"ambiguous-identifier"* relative to the existing [[2026-05-07-chatterjee-anatomy-of-agent-harness]] slug — false positives from the IDE plugin's substring-matching resolver. Both slugs are unique by exact filename; Obsidian/Quartz resolve by full filename match. No corrective action needed.
+
+**Cluster status after today.** With Trivedy ingested, the **harness-engineering cluster on [[concepts/agent-harness]] reaches 32 sources** — the largest single concept-page cluster in the wiki. Today's three batches (Karten + Nodus Labs + PY + Osmani prior; the 7-paper academic / vendor primary batch; this Trivedy ingest) closed nearly every standing primary-source ingest target and most attribution flags. **Remaining open**: WebFetch the Feb 17 LangChain *Improving Deep Agents with Harness Engineering* post for its substantive methodology body (currently metadata-only ingest with empty PDF capture).
+
+**Reversibility.** All edits structurally additive. 4 files touched. Reverse with `git checkout`.
+
+
 ## [2026-05-17] ingest | Harness-engineering primary-source septet — 4 academic papers (Pan / Lee Meta-Harness / Lou AutoHarness / Wang AgentSpec) + 3 vendor primaries (Anthropic Dec 2024 + Nov 2025 + LangChain Feb 2026)
 
 **Seven-source batch ingest** — the largest single-day primary-source landing in the wiki's harness-engineering cluster. The user delivered exactly the open-targets list from yesterday's two ingest batches (Continual Harness + PY video): the **Pan et al.** and **Lee/Khattab Meta-Harness** papers whose identifications were closed yesterday, the **AutoHarness** and **AgentSpec** papers surfaced as new targets, and the three vendor primaries (Anthropic Dec 2024 + Nov 2025 + LangChain Feb 2026) named in the PY video description. **Most second-hand wiki claims on [[concepts/agent-harness]] are now primary-source anchored.**

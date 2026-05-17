@@ -4,7 +4,7 @@ aliases: ["agent harness", "harness", "AI agent harness", "agent runtime", "agen
 tags: [agent-harness, ai-agents, ai-engineering, harness-frameworks, context-management, constraints, contracts, telemetry, llm-non-determinism, hooks, repository-as-system-of-record]
 confidence: 0.98
 last_confirmed: "2026-05-17"
-source_count: 31
+source_count: 32
 relationships:
   - type: part-of
     target: ai-agents
@@ -404,8 +404,39 @@ This sharpens [[2026-05-15-osmani-agent-harness-engineering|Osmani's]] *"the har
 The wiki's prior attributions need three updates:
 
 - **The "78% of Gemini-2.5-Flash chess losses are illegal moves" claim** — primary source is now [[2026-03-05-lou-deepmind-autoharness-code-harness-synthesis|AutoHarness / Lou et al. (DeepMind)]], not generic practitioner literature.
-- **The "Top 30 → Top 5 on TerminalBench 2.0 by changing only harness infrastructure" claim** — primary source is **most likely [[2026-02-17-langchain-improving-deep-agents-harness-engineering|LangChain's]] *Improving deep agents with harness engineering* (Feb 17, 2026) or the sister LangChain post *The anatomy of an agent harness* (March 10, 2026)** — NOT Pan et al. or Lee et al.
+- **The "Top 30 → Top 5 on TerminalBench 2.0 by changing only harness infrastructure" claim** — **CLOSED 2026-05-17 (evening): first-person primary source is [[2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness|Trivedy / LangChain — *The Anatomy of an Agent Harness*]] (March 10, 2026)**, who attributes the experimental setup to "a previous blog" (the Feb 17 LangChain *Improving Deep Agents with Harness Engineering* post). NOT Pan et al. or Lee et al.
 - **The "6× performance gap on the same benchmark" framing** — primary source is now [[2026-03-30-lee-meta-harness-end-to-end-optimization|Lee et al.]] (opening sentence of Meta-Harness paper, citing Bui as reference [47]).
+
+### Trivedy is the source-of-vocabulary; Osmani is the popularisation ([[2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness|Trivedy / LangChain, March 10, 2026]])
+
+The wiki ingested [[2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness|Vivek Trivedy's *The Anatomy of an Agent Harness*]] on **2026-05-17 (evening)** after a user note resolved the prior Trivedy / Chatterjee / LangChain three-post thicket. **Vivek Trivedy = "Viv Trivedy"** in Osmani's reference; the LangChain post and Chatterjee's Medium piece are two distinct artifacts with similar titles. **The wiki's existing [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee source page]] stays correctly attributed.**
+
+The Trivedy ingest makes a sharper attribution available for several wiki claims previously held under "the practitioner cluster":
+
+| Claim previously attributed to "the practitioner cluster" | First-person primary anchor (now) |
+|---|---|
+| ***"Agent = Model + Harness"*** equation | **Trivedy / LangChain, March 10, 2026** (coinage) |
+| ***"If you're not the model, you're the harness"*** | **Trivedy / LangChain, March 10, 2026** (coinage) |
+| ***"Behavior we want (or want to fix) → Harness Design to help the model achieve this"*** (working-backward-from-behavior design pattern) | **Trivedy / LangChain, March 10, 2026** (coinage) |
+| **The 6-primitive enumeration** (filesystem / bash+code / sandboxes / memory+search / context rot / long-horizon) | **Trivedy / LangChain, March 10, 2026** (canonical ordering) |
+| **The three named open problems** (parallel-agents / trace-analysing-self-correction / dynamic-just-in-time-assembly) | **Trivedy / LangChain, March 10, 2026** |
+| **Ralph Loops definition** (*"intercepts the model's exit attempt via a hook and reinjects the original prompt in a clean context window"*) | **Trivedy / LangChain, March 10, 2026** (definitional) |
+| ***"Opus 4.6 in Claude Code scores far below Opus 4.6 in other harnesses"*** | **Trivedy / LangChain, March 10, 2026** (first-person observation) |
+
+[[2026-05-15-osmani-agent-harness-engineering|Osmani's]] May 15 essay is now confirmable as **a near-direct synthesis-with-expansion of Trivedy's post**, published 9 weeks later for the O'Reilly Radar audience. Osmani's contribution beyond Trivedy: **(a)** explicit cross-author synthesis citing Anthropic / HumanLayer / Bockeler / Fareed Khan / Simon Willison alongside Trivedy; **(b)** the *ratchet* discipline framing; **(c)** the HaaS substrate-shift framing. Trivedy is the **direct source of the technical framework**; Osmani is the **cross-author synthesis that landed it at a broader audience**.
+
+### The Feb 11 / Feb 17 vocabulary-coinage window
+
+With Trivedy ingested, the wiki can sharpen the vocabulary-history claim made earlier in the day:
+
+| Post | Date | Author | "Harness engineering" as discipline noun? |
+|---|---|---|---|
+| [[2024-12-19-anthropic-building-effective-agents\|Anthropic *Building Effective Agents*]] | Dec 19, 2024 | Schluntz & Zhang | No (uses *agentic systems* + *workflows* + *agents*) |
+| [[2026-02-11-lopopolo-codex-harness-engineering\|OpenAI Codex / Lopopolo]] | **Feb 11, 2026** | Lopopolo | ✓ (in title) |
+| [[2026-02-17-langchain-improving-deep-agents-harness-engineering\|LangChain *Improving Deep Agents*]] | **Feb 17, 2026** | (Trivedy, inferred) | ✓ (in title) |
+| [[2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness\|Trivedy / LangChain *Anatomy*]] | Mar 10, 2026 | Trivedy | ✓ (throughout) |
+
+**Lopopolo (OpenAI Codex, Feb 11) and Trivedy (LangChain, Feb 17) coined *"harness engineering"* as a noun phrase within ~6 days of each other.** Bockeler at QCon (May 2026) [[2026-05-06-bockeler-engineering-of-ai-agents-context-harnessing-autonomy|credits Lopopolo / OpenAI Codex with the name]]. The wiki holds Lopopolo + Trivedy as **near-simultaneous co-coiners**, with Trivedy's *Agent = Model + Harness* / *If you're not the model, you're the harness* as the load-bearing vocabulary primitives that propagated through Osmani.
 
 ### Reset-free is structurally important (not just convenient)
 
