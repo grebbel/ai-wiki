@@ -3,9 +3,9 @@ type: concept
 aliases: ["industrial AI agents", "industrial agentic AI", "OT AI agents", "manufacturing AI agents"]
 tags: [industrial-ai-agents, ai-agents, ot-it-convergence, manufacturing, ontology, semantic-data-layer, knowledge-graph, unified-namespace, mqtt, scada, mes, cmms, qms, erp]
 confidence: 0.75
-last_confirmed: "2026-05-12"
-accessed_at: "2026-05-12"
-source_count: 2
+last_confirmed: "2026-05-18"
+accessed_at: "2026-05-18"
+source_count: 3
 relationships:
   - type: instance-of
     target: ai-agents
@@ -70,6 +70,52 @@ Action types are the load-bearing innovation here for *governance*: an industria
 > *"Traditional databases store records; ontologies model operational reality. A database table for equipment contains rows of attributes. An ontology defines what 'equipment' means, how equipment relates to production, maintenance, and personnel, and what operations equipment can undergo. The ontology captures semantics, meaning, not just data. This distinction becomes critical for AI agents."* — [[2026-02-01-manditereza-ontology-driven-industrial-ai|Manditereza 2026]]
 
 The implementation form is typically a **knowledge graph** — entities as nodes, relationships as edges. The graph structure naturally represents interconnected industrial operations and enables efficient traversal queries.
+
+## The MIT system-dynamics articulation (Carrier 2026)
+
+[[2026-03-31-carrier-mit-industrial-ai-that-works-strategy-survival-success|Carrier 2026]] (Senior Lecturer in System Dynamics, MIT Sloan) supplies the **operations-leadership companion** to Manditereza's vendor-architecture framing. Where Manditereza answers *"what stack do industrial AI agents need?"*, Carrier answers *"how do leaders find the profitable adoption path?"* — anchored in the MIT Forrester / [[2026-05-15-sterman-systems-thinking-for-leaders-designing-solutions-that-work|Sterman]] [[systems-thinking|systems-thinking]] discipline.
+
+The load-bearing thesis: **adoption capacity, not technology, is the binding constraint** in industrial AI for the next 3-5 years. *"Today, you can get all the data you want. You can get all the compute power you want. These models have been built for you. So I think over the next three to five years, especially in existing industries, our ability to adopt and absorb the technology are going to be the limit."*
+
+### The Forrester-grounded design criterion for industrial AI agents
+
+Carrier's strongest methodological contribution:
+
+> *"A key insight from Jay Forrester, who created the system dynamics group here at MIT — there were some missing feedback loops here. And that AI agent was designed to build a shorter, faster corrective feedback loop. That's why the value was learned. So it's not simply about building AI agents. **It's about using them to replace long, slow feedback loops with very fast ones.**"*
+
+The diagnostic question for any candidate industrial-AI-agent deployment becomes: *which feedback loop in our system is currently slow and broken, and would a fast-feedback agent close it?*
+
+### Worked case — Heineken Mexico changeover (≈+1M cases/month)
+
+Carrier's signature case. His students built a relatively simple AI agent for **Mexico's largest brewery (Heineken)** that grabbed machine + cloud + maintenance data on demand. Diagnostic finding: a 6-hour changeover contained *"only fifteen minutes worth of information"*; the rest was data-collection waiting time. The agent compressed 6 hours → 15 minutes, yielding **a million extra cases of beer per month**. The methodological note: *"This is a relatively simple agent, but it actually changed the way the work is done, not simply improve the workflow"* — the [[2026-03-31-carrier-mit-industrial-ai-that-works-strategy-survival-success|Business Process Reengineering]] lesson (Michael Hammer, MIT CS, 1990s) recast for the AI-agent era.
+
+### Pick-the-right-agent-level heuristic
+
+> *"There's no reason to jump to a level five agent when a simple rule-based agent will do."*
+
+Carrier's framework-in-passing on agent-level selection. Maps to [[agent-harness|harness]] discipline at the application layer — match agent complexity to the missing-feedback-loop, not to vendor fashion.
+
+### Data-overload as the counter-failure mode
+
+The wiki's strongest counterweight to *"get-more-data-always"* tendency: Carrier's refinery alarm-fatigue cautionary tale (*"two fatalities; the system was completely overloaded with safety alarms so that the information flow actually ground to a halt"*). The diagnostic move: **leading indicators in a small set beat data-lakes-of-everything.** Mirrors Sterman's *"system in the room"* discipline at the data-architecture level.
+
+### Three diagnostic questions for industrial-AI ROI
+
+Carrier's *where to look for value* checklist:
+
+1. **Capital allocation**: where are people trying to spend money when they shouldn't be? (*"They love to spend money. In the Heineken example, they're going to buy two new bottling lines."* Buying capacity instead of fixing the system is the planning-trap from [[2022-06-29-martin-hbr-a-plan-is-not-a-strategy|Martin 2022]] in industrial-ops form.)
+2. **Poor information flows creating low utilization**: *"twenty percent extra capacity there if we had better information."*
+3. **Variation in task duration**: *"in most places there's a lot of variation in how long it takes to do the same task — that can result in a lot of value."*
+
+Plus a fourth: **start with safety cases.** *"If you take an unsafe process and you re-engineer it with some of these new technologies, you most likely will add an ROI because you just took a dangerous slow process and by using information instead of people to actually do that task, you've not only reduced risk but you've increased speed which is value."*
+
+### Brooks's *"unbig"* and Ng's *"unbig in AI"* — fit-for-purpose beats generality
+
+Carrier walks the audience through **Rodney Brooks**'s shift from Sawyer (~2012, complex flexible robot) to his 2024 company's simple specialised material-handlers — *"industry just needs something very simple robot that's designed to do one specific task over and over again; that's the one having the impact."* He pairs this with **Andrew Ng**'s *"we need to unbig in AI"* (named as a Stanford-professor quote). The course thesis: **scope down** from a big AI transformation into a sequenced set of steps each with measurable ROI.
+
+### Synthetic data for rare-event training
+
+Brief worked example: a syringe-defect-detection neural net trained on synthetic defect data because real defects are too rare (the process is too good). *"Believe it or not, that defect was created by synthetic data. […] That's what allows us to train these neural nets very quickly without having to get hundreds of thousands of defects."*
 
 ## Where this fits in the wider wiki
 

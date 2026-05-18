@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI agent", "AI agents", "agentic AI", "autonomous agents", "agent", "agents"]
 tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
-last_confirmed: "2026-05-17"
-accessed_at: "2026-05-17"
-source_count: 12
+last_confirmed: "2026-05-18"
+accessed_at: "2026-05-18"
+source_count: 13
 relationships:
   - type: instance-of
     target: generative-ai
@@ -123,6 +123,12 @@ The wiki's prior position on agents was *"early enterprise deployment / mostly a
 > *"The one thing that probably keeps me up at night a little bit on this AI is disrupting the traditional approach to digital. So, agentic AI and creating a personal assistant — the idea that an individual will have a relationship with an agentic personal assistant that says, 'Look, I need eggs. I want an appointment with the dentist and can you make sure there's a car ready to pick up the kids at 9 a.m.' And the reality is that basically disrupts the relationship that each one of those service providers has with customers today. With that goes loyalty, with that goes access to data. So there is going to be this arms race for retailers to understand in that agentic world, how do you ensure you maintain that relationship with the customer."*
 
 This is the **seller-side mirror** of Ognibeni's buyer-side warning that *"nobody will show up in your store when you only do search-driven e-commerce."* The same disintermediation thesis, from opposite sides of the buyer/seller table — and the wiki's clearest paired articulation of the *agents-as-disintermediator-of-existing-channels* claim. Track which retailers, banks, and service providers actually publish concrete *agentic-AI-integration playbooks* (vs press-release-only AI investments) within 12–18 months.
+
+### Agents in cybersecurity reconnaissance (May 2026)
+
+[[2026-05-12-techlatest-hacker-search-engines-osint-tools-2026|TechLatest 2026]] names **"AI-Augmented Offensive & Defensive Security"** as an emerging 2026 category in which LLMs and AI agents are integrated with [[osint|OSINT]] platforms to correlate sources, identify exposures automatically, generate attack graphs, and automate reconnaissance workflows. This is the wiki's first source citing agents in a **cybersecurity/[[attack-surface-management]]** application — distinct from the coding-agent, enterprise-workflow, and agentic-commerce clusters that dominate the wiki's existing agent corpus.
+
+The claim is currently at vendor-narrative depth (no benchmarks, no named systems, no failure modes). Worth tracking: does OSINT become the first defensive-security domain to operationalise autonomous-agent workflows at scale, ahead of more cautious internal-IT use cases? The article asserts yes; the wiki has no empirical anchor yet either way.
 
 ## Debates / contradictions
 
