@@ -5,7 +5,7 @@ tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
 last_confirmed: "2026-05-18"
 accessed_at: "2026-05-18"
-source_count: 13
+source_count: 14
 relationships:
   - type: instance-of
     target: generative-ai
@@ -33,6 +33,8 @@ The cleanest definition in this wiki comes from [[2026-04-28-mittri-cisco-ai-ena
 | **Multi-agent system** | Multiple AI agents collaborate to pursue complex goals autonomously in dynamic environments | (Emerging — fewer production examples as of 2025) |
 
 A useful complementary lens is the [[2026-04-28-anand-wu-genai-playbook|Anand-Wu]] 2×2: agents thrive in the **"no regrets zone"** (low cost of errors + explicit data) where AI does the work without humans in the loop — addressing bulk customer inquiries, summarizing documents, screening résumés. As error costs rise, agents become assistants rather than autonomous executors.
+
+The simplest one-sentence operational definition — adopted by the wiki from [[2026-05-18-wolfe-agent-evaluation-detailed-guide|Wolfe 2026]] (citing the Simon Willison formulation): ***"an agent is an LLM that autonomously uses tools in a loop."*** This is the *agentic loop* that wraps every agent system: an LLM at the centre reasons about the task, calls **tools** to read/write external state, observes results, and continues until an exit condition is reached. Three components are always present: (1) the underlying LLM or reasoning model, (2) tools the agent calls (APIs / CLIs / [[MCP]] servers / computer-use primitives), (3) instructions in the system prompt that specify the agent's expected behaviour. The [[agent-harness|harness]] is what assembles those three components into a runtime.
 
 ## Key claims
 

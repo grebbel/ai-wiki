@@ -4,12 +4,15 @@ aliases: ["analogical reasoning", "analogical-reasoning", "strategy by analogy",
 tags: [analogical-reasoning, strategy-theory, theory-based-view, carroll, sorensen]
 confidence: 0.75
 last_confirmed: "2026-04-28"
-accessed_at: "2026-04-28"
+accessed_at: "2026-05-18"
 source_count: 1
 relationships:
   - type: supports
     target: strategic-foresight
     via: "disciplined analogies are a sensing/scenario tool"
+  - type: supports
+    target: theory-based-view
+    via: "[[2026-04-28-carroll-sorensen-strategy-analogy|Carroll & Sørensen 2024]] position disciplined analogy as the practical methodology for [[theory-based-view]] (TBV) theory-discovery — analogies aid theory discovery, wider-team theory engagement, identifying unique aspects, and communication"
 quality_score: 0.99
 quality_notes: ['1 near-empty section(s)']
 ---
@@ -81,6 +84,7 @@ The paper's footnote-level example: a leaked Google memo (Patel & Ahmad 2023) ch
 
 ## Related concepts
 
+- [[theory-based-view]] — the framework analogical reasoning supports in [[2026-04-28-carroll-sorensen-strategy-analogy|Carroll & Sørensen 2024]]'s framing. Disciplined analogy is the practical methodology for TBV theory-discovery; TBV is the falsifiability layer that disciplines what counts as a *good* analogy.
 - [[strategic-foresight]] — analogies between historical convergence cycles and the current period are explicitly invoked in [[2026-04-28-ftsg-convergence-outlook-2026|FTSG 2026]] (industrial revolution, post-WWII, late-1990s).
 - [[dynamic-capabilities]] — sensing involves analogizing across industries, contexts, time periods.
 - [[2026-04-28-anand-wu-genai-playbook|Anand-Wu's 2×2]] — itself a kind of generative analogical structure for matching deployment context to AI use case.

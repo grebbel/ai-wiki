@@ -13,6 +13,12 @@ relationships:
   - type: supports
     target: dynamic-capabilities
     via: "strategy is what dynamic capabilities (sense / seize / transform) produce; the value-stick lens is the discriminator for which seize-and-transform moves are value-creating vs value-redistributing"
+  - type: supports
+    target: infinite-game
+    via: "Sinek's [[infinite-game]] frame operates one layer above the strategy lenses — it asks *which game you are in* before Martin's *theory of winning* asks how to win it; the wiki holds them as a layered difference, with the full cross-walk filed in [[strategy-finite-vs-infinite-game]]"
+  - type: supports
+    target: theory-based-view
+    via: "Felin & Zenger's [[theory-based-view]] (TBV) is the falsifiability discipline applied to Martin's *theory of winning* — same construct at greater logical hygiene; novel/simple/elegant/falsifiable/generative criteria sharpen what Martin names as *the theory must be coherent, doable, translatable into actions*"
 quality_score: 0.98
 quality_notes: ['2 near-empty section(s)']
 ---
@@ -127,7 +133,7 @@ This convergence is consistent with [[2026-05-15-sterman-systems-thinking-for-le
 
 ## Debates and supersession
 
-- **Martin's *Southwest beats hub-and-spoke* vs Sinek's *infinite game*.** Martin treats Southwest's win as a finite-game victory (segment-share moves; *"a smaller pie left over after Southwest takes whatever share it wants"*). [[2018-05-31-sinek-nyt-the-infinite-game|Sinek 2018]] would say Southwest's *durable* outperformance is an *infinite-game* property (improving the institution year-over-year against the previous version of itself). The two are compatible but emphasise different time horizons — *strategy lens* says *win the next round*, *infinite-game lens* says *stay in the game indefinitely*. The wiki holds both as productive tension rather than resolving.
+- **Martin's *Southwest beats hub-and-spoke* vs Sinek's [[infinite-game]].** The wiki's first multi-source productive tension on the [[strategy|strategy]] page. Resolution filed in [[strategy-finite-vs-infinite-game]] synthesis: Sinek operates *one layer above* the strategy lenses — he asks *which game you are in*; Martin asks *how to win the round you are in*. The two are answering different questions about the same case (Southwest), not competing definitions of strategy. **No supersession declared.**
 - **Value capture vs value creation.** Oberholzer-Gee insists value creation precedes value capture; the implication is that strategy starts with WTP/WTS analysis, not with profitability targeting. This contradicts a long line of strategic-planning practice that starts from financial targets and works backward. No supersession declared — the question of *which framing to start from* is operational, not theoretical.
 - **No supersession events.** Two sources in the same year (2022); they're complementary rather than competing. Future ingest of *Playing to Win* (Lafley & Martin 2013) and *Better, Simpler Strategy* (Oberholzer-Gee 2021) would deepen but not retire either framing.
 
@@ -136,6 +142,8 @@ This convergence is consistent with [[2026-05-15-sterman-systems-thinking-for-le
 - [[strategic-foresight]] — strategy and foresight together: *where to play / how to win / how the future might reshape both*. Martin's *what-would-have-to-be-true* logic-laying is the foresight discipline at the firm scale.
 - [[dynamic-capabilities]] — Teece's sense / seize / transform framework is the upstream *capability* that produces a viable strategy; the value-stick is the discriminator for which seize-and-transform moves are value-creating vs value-redistributing.
 - [[systems-thinking]] — Sterman's *strategy is a journey, world is feedback* converges on Martin's *tweak as you go*. Different literatures, same operational stance.
+- [[infinite-game]] — Sinek/Carse's frame recasting *which game you are in* before strategy lenses ask *how to win it*. Cross-walk filed in [[strategy-finite-vs-infinite-game]] synthesis.
+- [[theory-based-view]] — Felin & Zenger's TBV is the falsifiability discipline (novel/simple/elegant/falsifiable/generative) applied to Martin's *theory of winning* and Sinek's *Just Cause*.
 - [[micro-productivity-trap]] — task-level AI gains failing to translate to firm-level results is a *strategy failure*: the firm has a plan (deploy AI tools) but not a strategy (a theory of how the deployment creates competitive value).
 
 ## Mentioned in

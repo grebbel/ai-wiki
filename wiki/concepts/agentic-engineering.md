@@ -5,7 +5,7 @@ tags: [agentic-engineering, vibe-coding, software-3.0, ai-agents, agent-harness,
 confidence: 0.97
 last_confirmed: "2026-05-17"
 accessed_at: "2026-05-17"
-source_count: 17
+source_count: 18
 relationships:
   - type: depends-on
     target: agent-harness
@@ -167,6 +167,10 @@ The distinction is not about *how much* AI is used — it's about *who owns what
 - **Hire for taste in environment design, not coding-puzzle speed.** *"Building software still demands discipline, but the discipline shows up more in the scaffolding rather than the code."* Operationally consistent with [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering|Karpathy's]] hiring-refactor argument.
 
 These are not *additions* to Karpathy's discipline definition — they're the **operational instantiation** in one production environment. Other vendor case studies will likely vary specifics; the *invariants* (legibility, encoded taste, mechanically-enforced boundaries, GC-as-workload) are the candidates for cross-org generalization.
+
+## The eval-discipline counterpart ([[2026-05-18-wolfe-agent-evaluation-detailed-guide|Wolfe 2026]])
+
+[[2026-05-18-wolfe-agent-evaluation-detailed-guide|Wolfe's *Agent Evaluation: A Detailed Guide*]] (Deep (Learning) Focus, 18 May 2026) is the wiki's first source whose primary contribution is the **eval-side counterpart** to the engineering-side rule-set above. Where [[2026-05-15-osmani-agent-harness-engineering|Osmani 2026]] gives *how to build the harness carefully* and [[2026-02-11-lopopolo-codex-harness-engineering|Lopopolo 2026]] gives *what production looks like*, Wolfe gives *how to measure whether the engineering actually works*. The 7-step roadmap (define success → small task set → useful tasks → ground truth → graders → eval harness → inspect-iterate-maintain) is the eval-side ratchet — *eval suites are living artifacts that continually improve in difficulty, diversity, and reliability*. The corollary closes the discipline loop: **agentic engineering without measurement is unmeasurable; agentic engineering with measurement compounds.** Wolfe explicitly recommends using the production scaffold as the eval scaffold — the same artifact serves both disciplines, which is what makes them mutually reinforcing rather than two separate efforts.
 
 ## Debates and supersession
 

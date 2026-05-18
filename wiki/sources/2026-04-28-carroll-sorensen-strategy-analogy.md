@@ -14,6 +14,13 @@ date_ingested: 2026-04-28
 tags: [analogical-reasoning, strategy-theory, theory-based-view, carroll, sorensen, stanford-gsb, gavetti, predictive-analogy]
 length: "~16 pages"
 raw: "../../raw/papers/Strategy Theory Using Analogy Rationale, Tools and Examples.pdf"
+relationships:
+  - type: instance-of
+    target: theory-based-view
+    via: "this paper is the wiki's current anchor source for the [[theory-based-view]] (TBV) concept page; Felin & Zenger 2009/2017 primary sources are deferred-ingest targets (Phase B4 of the strategy-gap remediation plan)"
+  - type: supports
+    target: analogical-reasoning
+    via: "the paper supplies the wiki's canonical methodology for disciplined strategy analogies (decompose / add negative premises / horizontal vs vertical relations / test vertical transfer / build multiple in parallel)"
 ---
 
 # Carroll & Sørensen — Strategy Theory Using Analogy

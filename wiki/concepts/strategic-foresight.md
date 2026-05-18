@@ -4,7 +4,7 @@ aliases: ["strategic foresight", "strategic-foresight", "corporate foresight", "
 tags: [strategic-foresight, scenarios, futures, signal-detection, FTSG, webb, arena-creation-potion, arenas-radar, MGI]
 confidence: 0.85
 last_confirmed: "2026-05-17"
-accessed_at: "2026-05-17"
+accessed_at: "2026-05-18"
 source_count: 6
 relationships:
   - type: part-of
@@ -16,8 +16,7 @@ relationships:
   - type: supports
     target: 2026-03-25-russell-bradley-mgi-race-takes-off-next-big-arenas
     via: "MGI's three-ingredient arena-creation potion (tech/business-model step change + escalatory investment pattern + large/expanding addressable market) is a reusable foresight heuristic; the arenas-radar diagnostic operationalises foresight as proximity + production/revenue impact mapping"
-quality_score: 0.77
-quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '1 broken body wikilink(s)']
+quality_score: 1
 ---
 
 # Strategic Foresight
@@ -33,6 +32,8 @@ Per [[2026-04-28-webb-strategic-foresight|Amy Webb (2024)]]:
 Strategy and foresight are described as having been **a unified discipline** in the 1980s–90s and having drifted apart since. Webb argues they need to be reunited.
 
 ## Key claims
+
+The discipline rests on five load-bearing observations across the wiki's six anchoring sources: (a) strategy and foresight are complementary and ill-formed in isolation; (b) corporate foresight typically fails for three named-and-fixable reasons; (c) FTSG operationalises the discipline as a 10-step process; (d) MGI's arena-creation potion provides an empirically validated heuristic; (e) operator-grade forecasts and geographic-asymmetry scouting round out the corporate-foresight lens.
 
 ### Strategy ≠ foresight, but neither works alone
 
@@ -161,6 +162,14 @@ The framing complements [[2026-04-28-ftsg-convergence-outlook-2026|FTSG]]'s conv
 
 Ognibeni also names the **operational corollary** for scouting practitioners: *"Learn to learn. Be willing to understand something fully before you know that it doesn't work."* A pointed critique of the dismiss-on-first-encounter pattern that Webb identifies as one of the three reasons corporate foresight fails — *"it's especially in Germany, we are very quick in knowing why stuff doesn't work, but without fully understanding it."*
 
+## Debates and supersession
+
+The wiki holds three productive tensions within the foresight discipline. None are supersession events; each is named here so future ingest can resolve or sharpen the position rather than re-discover it.
+
+- **Scenarios as predictions vs scenarios as forecasts.** [[2026-04-28-webb-strategic-foresight|Webb 2024]] argues that the practitioner-default disclaimer *"scenarios are forecasts not predictions"* is one of the three reasons corporate foresight currently fails — it strips perceived executive relevance. Webb's stance: *a scenario is a form of prediction*. The dominant practitioner tradition (Schwartz, Ramirez) treats the prediction-vs-forecast distinction as load-bearing for legitimacy. The wiki holds Webb's framing as primary because of single-source dominance; the academic-futures comparison is flagged as an open question (below) for a future ingest.
+- **FTSG convergence-as-unit vs MGI arenas-as-unit.** The page's "Bridge 1–4" section establishes that [[2026-04-28-ftsg-convergence-outlook-2026|FTSG 2026]] and [[2026-03-25-russell-bradley-mgi-race-takes-off-next-big-arenas|MGI 2026]] describe the same phenomenon at different layers (process vs outcome). The unresolved methodological question: when running foresight inside an operating firm, which unit of analysis does work first — the convergence (FTSG) or the arena (MGI)? The bridges suggest pipeline (FTSG → MGI), but no source the wiki holds adjudicates the order under resource constraints. **No supersession declared** — the answer is likely *both, but at different governance scopes* (corporate-foresight team vs CFO/capital-allocation desk).
+- **Humanity-as-adoption-bottleneck vs complex-AI-reliability-as-bottleneck.** [[2026-04-26-how-to-win-when-software-is-not-a-moat-evan-spiegel-snapchat-ceo|Spiegel 2026]] names *humanity dictates how technology is adopted* — adoption is the binding constraint on the AI capex trajectory. [[2026-05-05-stanford-ai-club-chamath-on-how-to-win-in-the-ai-era|Chamath 2026]] names *the trough of disillusionment is structurally guaranteed unless long-horizon and complex AI tasks become reliable* — capability is the binding constraint. Two operator-grade foresight claims about *what gates the same trajectory*, each named-as-such, no resolution in the wiki yet. Both are compatible at multi-year horizons (adoption ceiling rises as reliability rises) but Spiegel and Chamath emphasise different short-horizon bottleneck shapes. Worth pairing with [[2026-03-31-carrier-mit-industrial-ai-that-works-strategy-survival-success|Carrier 2026]]'s *"our ability to adopt and absorb the technology are going to be the limit"* — Carrier sits closer to Spiegel.
+
 ## Related concepts
 
 - [[dynamic-capabilities]] — sensing-cluster microfoundations include scenario planning and digital scouting.
@@ -172,7 +181,7 @@ Ognibeni also names the **operational corollary** for scouting practitioners: *"
 
 The April 2026 *Radar Trends to Watch* digest carries an **explicit genre-shift** in O'Reilly Radar's monthly trend-curation channel: from chronicling toward signal-detection. [[Mike Loukides]] reframes the digest's purpose with [[Amy Webb|William Gibson]]'s line *"the future is here. It's just not evenly distributed yet"* and adopts the framing **"news from the future"** — items that *"confirm or challenge assumptions about the present."* This is the wiki's first **trade-press adoption signal** for Webb/FTSG-style strategic-foresight vocabulary at editorial scope.
 
-The implication for this concept page: the *signal-detection-over-prediction* stance (Webb's *"we don't predict the future, we identify signs of it"*) — quoted by [[Julie Baron]] in [[2026-01-09-baron-signals-for-2026|Signals for 2026]] directly to Loukides — is moving from foresight-practitioner literature into mainstream trade-press editorial framing. The strategic-foresight discipline is no longer adjacent to tech-trends curation; it is becoming the **editorial methodology** for tech-trends curation.
+The implication for this concept page: the *signal-detection-over-prediction* stance (Webb's *"we don't predict the future, we identify signs of it"*) — quoted by Julie Baron in [[2026-01-09-baron-signals-for-2026|Signals for 2026]] directly to Loukides — is moving from foresight-practitioner literature into mainstream trade-press editorial framing. The strategic-foresight discipline is no longer adjacent to tech-trends curation; it is becoming the **editorial methodology** for tech-trends curation.
 
 ## Mentioned in
 

@@ -3,9 +3,9 @@ type: concept
 aliases: ["agent harness", "harness", "AI agent harness", "agent runtime", "agent runtime layer"]
 tags: [agent-harness, ai-agents, ai-engineering, harness-frameworks, context-management, constraints, contracts, telemetry, llm-non-determinism, hooks, repository-as-system-of-record]
 confidence: 0.98
-last_confirmed: "2026-05-17"
-accessed_at: "2026-05-17"
-source_count: 32
+last_confirmed: "2026-05-18"
+accessed_at: "2026-05-18"
+source_count: 33
 relationships:
   - type: part-of
     target: ai-agents
@@ -328,6 +328,52 @@ Two observations from the essay belong on the concept page as **first-class wiki
 Osmani names the **HaaS substrate-shift** as the dominant 2026 build path: from building on **LLM APIs** (which give you a completion) to building on **harness APIs** (which give you a runtime). The Claude Agent SDK, Codex SDK, and OpenAI Agents SDK all point the same way. The four-pillar configuration surface (system prompt, tools, context, subagents) is what the harness framework hands you; domain-specific prompt and tool design is what you put on top.
 
 The HaaS claim has **direct news-side confirmation in [[2026-05-05-loukides-radar-trends-may-2026|the May 2026 Radar Trends digest]]** Loukides published ten days before Osmani: **OpenAI decoupled its agent harness and released it open-source via the Agents SDK**; Anthropic shipped **Claude Managed Agents** as a prebuilt harness; Amazon launched **agent registry within AWS Bedrock AgentCore**; **Cursor 3 repositioned as agent orchestrator, demoting the IDE to secondary role**. Four vendors converged on the HaaS productization within a single month — the editorial digest is the empirical anchor for Osmani's rhetorical claim.
+
+## The eval-discipline complement (Wolfe synthesis, May 2026)
+
+[[2026-05-18-wolfe-agent-evaluation-detailed-guide|Wolfe — *Agent Evaluation: A Detailed Guide* (Deep (Learning) Focus, 18 May 2026)]] is the wiki's first source whose primary contribution is the **eval-discipline framing** of the harness construct — complementary to (not competing with) the engineering-discipline framings of [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee]] / [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane]] / [[2026-05-15-osmani-agent-harness-engineering|Osmani]] / [[2026-02-11-lopopolo-codex-harness-engineering|Lopopolo]] above. Three contributions are load-bearing for this concept page:
+
+### Eval-side `scaffold = harness` equivalence (ratifying a vocabulary the wiki has held implicitly)
+
+Wolfe inherits and propagates the Anthropic *Demystifying Evals for AI Agents* equivalence: *"An agent harness (or scaffold) is the system that enables a model to act as an agent... When we evaluate an agent, we're evaluating the harness and the model working together."* The wiki has carried *scaffold* and *harness* as near-synonyms since the Bockeler / Karpathy ingests; Wolfe is the first source to ratify the equivalence directly from a load-bearing primary (Anthropic [1]) and use it as a foundation for an eval taxonomy. The corollary — *poor agent performance may stem from deficient model capabilities, poor scaffold design, or both* — is the eval-side restatement of [[2026-05-15-osmani-agent-harness-engineering|Osmani]]'s *category-error fix*: the model is one input; the rest is the harness; you cannot evaluate the agent without evaluating the pair together.
+
+### The eval-taxonomy: five components plus an evaluation harness
+
+Wolfe's most-portable contribution. Every agent eval shares the same components, which the wiki now adopts as canonical vocabulary alongside the existing engineering-side primitives (Context / Constraints / Contracts / Compounding):
+
+| Component | Definition |
+|---|---|
+| **Tasks** | Individual test cases with predefined input + success criteria. |
+| **Trials** | One execution attempt at a task; multiple trials per task handle non-determinism. |
+| **Transcript / trajectory** | Full record of one trial — outputs, tool calls, reasoning steps, intermediate outputs. |
+| **Outcome** | Final state of the external environment after a trial. *Distinct from outputs* — the agent may say *"booked!"* without actually achieving a confirmed reservation. |
+| **Graders** | Quality checks over transcript + outcome. Three families: human (gold standard, used for calibration) / code-based (fast, deterministic, brittle) / model-based (LLM-as-Judge: pairwise / direct / reference-guided). |
+| **Eval harness** | The infrastructure that wraps the above — runs the agent, collects transcripts + outcomes, starts each trial from a fresh environment. *Eval harness ≠ production harness*, but ideally they share *the same scaffold, tools, and environment*. |
+
+The eval-harness construct is the wiki's first treatment of *the runtime that runs the runtime* — a parallel layer to the production harness, with its own engineering surface. Pairs with [[2025-09-28-husain-ai-evaluations-clearly-explained-50-min|Husain 2025]]'s daily-workflow vantage and the [[2026-03-20-huggingface-agentic-evaluations-workshop|HuggingFace agentic-evaluations workshop]]'s capability-reliability gap to give the wiki its first three-vantage anchor on the eval-discipline question.
+
+### The 7-step eval-construction roadmap (the eval-side ratchet)
+
+Wolfe's roadmap reads as the eval-discipline counterpart to [[2026-05-15-osmani-agent-harness-engineering|Osmani]]'s engineering-discipline rule-set. The structural parallel:
+
+| Osmani (engineering side) | Wolfe (eval side) |
+|---|---|
+| AGENTS.md hygiene — *earn each line, ratchet, don't brainstorm* | Step 3 — Create useful tasks (unambiguous, repeatable, capturing prominent failure modes) |
+| Hooks-as-enforcement (*success is silent; failures are verbose*) | Step 5 — Configure graders (start code-based deterministic; escalate to model-based for subjective criteria) |
+| Subtraction principle (*harnesses don't shrink; they move*) | Step 7 — *Inspect, iterate, and maintain the benchmark* (eval suites are living artifacts) |
+| Working-backward-from-behavior (*name the behavior; design the harness piece*) | Step 1 — Define success (outcome goals + process goals) |
+| HaaS substrate-shift (configuration surface, not from-scratch wiring) | Step 6 — Build the evaluation harness (production-equivalent scaffold + tools + environment) |
+
+The combined Osmani + Wolfe synthesis gives the wiki its **two-discipline reading of the harness construct**: *build it carefully* (engineering side) + *measure it rigorously* (eval side). Neither alone is sufficient; eval without engineering produces unactionable scores, engineering without eval produces unmeasurable progress. **Wolfe's roadmap step 6 explicitly recommends using the production scaffold as the eval scaffold** — closing the loop between the two disciplines.
+
+### Eval-side empirical anchor: the Terminal-Bench 2.0 + τ-bench-family case studies
+
+Wolfe's two deep case studies anchor the wiki's existing harness-empirical-anchor cluster from the eval-construction vantage rather than the ablation vantage:
+
+- **τ-bench / τ²-bench / τ²-bench-verified / τ³-bench** (Sierra) — dual-control conversational agents across retail / airline / telecom / banking. Introduces **Pass^K** (probability *all* K trials succeed) as a stricter alternative to Pass@K, surfacing the *consistency* dimension the wiki's prior harness ablations did not isolate.
+- **Terminal-Bench 2.0** — 89 carefully-curated tasks; *3 reviewer-hours per task* in the 7-stage audit pipeline; software engineering dominant (29%). Establishes the wiki's first *scaffold-explicit leaderboard*: **GPT-5.2 (Codex CLI) 62.9%** → **Claude Opus 4.5 (Terminus 2) 58%** → **Gemini 3 Pro (Terminus 2) ~57%**. Confirms the [[2026-05-04-rethinking-agents-harness-is-all-you-need|Prompt Engineering YouTube]] *scaffold-matters* result with a fresh 2026 leaderboard. **Closed models consistently beat open models.**
+
+The new sources Wolfe surfaces (Sierra benchmark family arXiv [8] [9] [11], Cuadron SABER [10], Merrill Terminal-Bench arXiv [12], Anthropic Demystifying-Evals [1]) are the **strongest single-source bibliography expansion** the [[agent-harness]] cluster has received — six load-bearing primary refs queued as deferred-ingest candidates.
 
 ## The formal-academic anchor: *(p, G, K, M)* + meta-tools (Karten et al., May 2026)
 
