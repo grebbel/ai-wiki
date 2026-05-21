@@ -5,10 +5,10 @@ aliases: ["Garry Tan"]
 tags: [garry-tan, y-combinator, gstack, gbrain, ai-founder-type, startup-school, fat-skills, thin-harness, accelerator-president]
 affiliation: "[[Y Combinator]]"
 role: "President & CEO, Y Combinator (since 2023); founder/engineer; ex-Palantir #10; Posterous co-founder"
-confidence: 0.85
-last_confirmed: "2026-05-12"
-accessed_at: "2026-05-12"
-source_count: 3
+confidence: 0.9
+last_confirmed: "2026-05-21"
+accessed_at: "2026-05-21"
+source_count: 4
 ---
 
 # Garry Tan
@@ -20,6 +20,7 @@ Promoted from Dangling to an entity page on 12 May 2026 after three substantive 
 1. [[2026-04-23-tan-yc-how-to-make-claude-code-your-ai-engineering-team-gstack|Tan / GStack 2026]] — first-party demo of his open-source Claude-Code-toolkit.
 2. [[2026-04-09-oceanbase-ex-brain-knowledge-base-that-thinks|OceanBase / ex-brain 2026]] — names GBrain as a parallel concept to Karpathy's LLM Wiki.
 3. [[2026-04-27-liu-rag-llm-wiki-or-gbrain-how-your-agent-remembers|Liu 2026]] — deep first-party-class architectural treatment of Tan's **GBrain** (24 skills, 21 cron jobs, 17,888-page brain repo).
+4. [[2026-05-20-tan-hu-stanford-cs153-ai-native-company-1000x-engineer|Tan & Hu / Stanford CS153 2026]] — Tan's Stanford guest lecture (20 May 2026) with YC GP [[Diana Hu]]. **The bumped-and-promoted contribution** is the *agentic-primitives-map-to-company-structure* framing (skills as employees, resolvers as the org chart, skillify as the 10-step compliance protocol, check-resolvable as audit, trigger evals as performance reviews); the *5-day Posterous rebuild on a $200/month Claude Max plan* anchor (10 people / $4M / 2 years collapsed to one founder / 5 days / $200); the *cross-modal evals as a Skillify built-in* in-progress feature (Opus 4.6 + GPT-5.5 + Deepseek V4 cross-evaluating); the *typed-knowledge-graph + in-progress epistemology layer* GBrain extension.
 
 ## Role in the wiki
 
@@ -67,10 +68,13 @@ Direct operationalisation of [[2026-04-24-hu-yc-how-to-build-a-company-with-ai-f
 
 ## Notable framings Tan has contributed
 
-- **"ADHD CEO vs autistic CTO" model allocation** — *"Claude Opus 4.6 is sort of ADHD CEO. He's the guy you want to get a beer with and he's got a billion ideas, but when the going gets tough, you got to call in your autistic CTO and that's Codex."* First-party-CEO articulation of model-allocation-by-personality-fit-to-task as a working practice.
+- **"ADHD CEO vs autistic CTO" model allocation** — *"Claude Opus 4.6 is sort of ADHD CEO. He's the guy you want to get a beer with and he's got a billion ideas, but when the going gets tough, you got to call in your autistic CTO and that's Codex."* First-party-CEO articulation of model-allocation-by-personality-fit-to-task as a working practice. **Extended in Tan & Hu / CS153 2026** to a *cross-modal evals* workflow: Opus 4.6, GPT-5.5, and Deepseek V4 evaluate each other's inputs and outputs and feed structured ratings back to the original sub-agent for iterative improvement — *"you can metaprompt to get something that is 10 times better than the first version."*
 - **"Level 7 software factory"** (invoking Steve Yegge's *Gas Town* eight-stages-of-dev-evolution-to-AI) — *"There's this idea of trying to get to a level 8 software factory and GStack does not get you to level 8, but I do think it gets you to level seven."* Two-source-on-Yegge convergence with [[2026-05-06-bockeler-engineering-of-ai-agents-context-harnessing-autonomy|Böckeler 2026]].
 - **"Office hours as 10% strength YC partner review"** — codified 16 YC partners' adversarial-review approach as a single Claude Code skill.
 - **"Fewer fatter skills"** — Tan's latest iteration: *"Short resolvers are better than long ones."*
+- **Agentic primitives ARE company structure** ([[2026-05-20-tan-hu-stanford-cs153-ai-native-company-1000x-engineer|CS153 2026]]) — *"a skill is a squishy human being who's an employee who has a capability. A resolver is the org chart — who handles what, how does it happen, the filing rules. Where it goes in the brain is the internal process. Check-resolvable is audit and compliance. A trigger eval is performance reviews."* The wiki's first founder-CEO-altitude rhetorical claim that the agent-harness primitives are not merely metaphorically *like* a company — they are structurally identical to a company's employees / org chart / audit-and-compliance / performance-review systems.
+- **5-day Posterous rebuild on $200/month** ([[2026-05-20-tan-hu-stanford-cs153-ai-native-company-1000x-engineer|CS153 2026]]) — *"I was able to create like everything all the software we made over two years with 10 people and all that capital, but me with a $200 a month cloud code max plan and anyone in this room could do that and it didn't take like two years, it took about 5 days."* The single most concrete *1000x-engineer* anchor the wiki holds — operationalises Tan's earlier *"10× to 100× to 1000× as productive"* citation of Steve Yegge into a specific founder-self-reported time and cost collapse.
+- **Boil the ocean** ([[2026-05-20-tan-hu-stanford-cs153-ai-native-company-1000x-engineer|CS153 2026]]) — *"my response to that is, actually, let's boil the ocean — you can do the work of about 500 to a thousand people. And if that's true, then all of the expectations that we currently have in society around what a founder can do, what a company can do, what a small team can do... they're actually a thousandx wrong."* In productive tension with [[2026-03-07-vitucci-onshore-next-industry-ai-will-disrupt|Vitucci/Onshore 2026]]'s wedge-first counter-position (*"the idea of trying to boil the ocean all at once is very challenging — it has been an incredible benefit for our business to be great at one thing really early"*); the wiki carries both vantages.
 
 ## Career timeline
 

@@ -5,7 +5,7 @@ tags: [employment, labor-market, ai-displacement, automation, labor-economics, a
 confidence: 0.95
 last_confirmed: "2026-05-21"
 accessed_at: "2026-05-21"
-source_count: 20
+source_count: 23
 relationships:
   - type: supports
     target: automation-vs-augmentation

@@ -5,7 +5,7 @@ tags: [ai-adoption, enterprise-ai, ai-strategy, ai-maturity, ai-foundation, omni
 confidence: 0.95
 last_confirmed: "2026-05-21"
 accessed_at: "2026-05-21"
-source_count: 37
+source_count: 38
 relationships:
   - type: uses
     target: automation-vs-augmentation
@@ -24,7 +24,8 @@ relationships:
   - type: supports
     target: 2026-03-25-russell-bradley-mgi-race-takes-off-next-big-arenas
     via: "MGI quantifies the firm-side scale of the AI deployment race: AI foundation cluster (semiconductors + cloud + AI software) added $11T market cap + $500B revenue since 2022; nine omniscalers spent $800B on R&D + capex in 2025 alone"
-quality_score: 1
+quality_score: 0.96
+quality_notes: ['2 broken body wikilink(s)']
 ---
 
 # Enterprise AI Adoption

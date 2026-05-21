@@ -3,17 +3,17 @@ type: concept
 aliases: ["AI agent", "AI agents", "agentic AI", "autonomous agents", "agent", "agents"]
 tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
-last_confirmed: "2026-05-18"
-accessed_at: "2026-05-18"
-source_count: 14
+last_confirmed: "2026-05-21"
+accessed_at: "2026-05-21"
+source_count: 15
 relationships:
   - type: instance-of
     target: generative-ai
     via: "agents are the orchestrating tier on top of LLM-based GenAI"
   - type: uses
     target: foundation-models
-quality_score: 0.69
-quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '5 broken body wikilink(s)']
+quality_score: 0.67
+quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '6 broken body wikilink(s)']
 ---
 
 # AI Agents

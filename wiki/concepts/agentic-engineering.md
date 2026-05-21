@@ -5,7 +5,7 @@ tags: [agentic-engineering, vibe-coding, software-3.0, ai-agents, agent-harness,
 confidence: 0.97
 last_confirmed: "2026-05-21"
 accessed_at: "2026-05-21"
-source_count: 21
+source_count: 22
 relationships:
   - type: depends-on
     target: agent-harness

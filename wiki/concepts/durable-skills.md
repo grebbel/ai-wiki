@@ -5,7 +5,7 @@ tags: [durable-skills, 21st-century-skills, future-ready-skills, ai-deskilling, 
 confidence: 0.93
 last_confirmed: "2026-05-21"
 accessed_at: "2026-05-21"
-source_count: 10
+source_count: 11
 relationships:
   - type: contradicts
     target: ai-deskilling
