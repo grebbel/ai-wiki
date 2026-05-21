@@ -4,10 +4,10 @@ kind: organization
 aliases: ["LangChain", "LangChain Inc"]
 tags: [langchain, agent-frameworks, agent-runtime, agent-harness, langgraph, langsmith, deep-agents]
 since: 2022
-confidence: 0.80
-last_confirmed: "2026-05-10"
-accessed_at: "2026-05-10"
-source_count: 4
+confidence: 0.85
+last_confirmed: "2026-05-21"
+accessed_at: "2026-05-21"
+source_count: 5
 relationships:
   - type: published-by
     target: 2026-05-09-chase-agent-development-lifecycle
@@ -43,8 +43,14 @@ This makes LangChain a **vendor whose product taxonomy *is* the wiki's vocabular
   - **LangSmith Evaluation** — datasets, metrics, experiments.
   - **LangSmith Deployment** — durable agent runtime hosting.
   - **LangSmith Sandboxes** — isolated execution environments.
-  - **LangSmith Fleet** — no-code agent configuration.
+  - **LangSmith Fleet** — no-code agent configuration. **Operational metrics from LangChain's internal go-to-market agent** (per [[2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents|Interrupt 26 demo]]): 84% of go-to-market team uses weekly; lead-to-qualified conversion up 240%; 40 hours saved per rep per month. Originally built in code; rebuilt in Fleet so the GTM team could own it end-to-end without code. 200+ built-in tools; Arcade partnership for 7,500+ additional tools; MCP support; native Slack / Gmail / Outlook channel integration; cost tracking + usage controls; first-class human-in-the-loop; built on top of **deep agents**; downloadable agent files for code modification.
   - **LangChain Academy** — educational resources.
+- **LangChain Labs** — research group inside LangChain *"aimed in particular at continual learning"* — announced at [[2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents|Interrupt 26]] (Day 2 keynote, 21 May 2026). LangSmith's trace + feedback data substrate named as the foundation for the Labs continual-learning agenda.
+- **LangSmith Engine** — referenced in the Interrupt 26 description as a separate Interrupt-week announcement; not yet substantively ingested.
+
+## Conferences
+
+- **Interrupt 2026** — LangChain's first major industry conference. Day 2 keynote ([[2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents|Chase + Sproul + di Vittorio]]) anchored the wiki's articulation of the two-types-of-agents typology (long-horizon vs customer-experience) and the three-layer continual-learning model (model / harness / context).
 
 ## Concepts LangChain co-shapes in this wiki
 
@@ -55,7 +61,9 @@ This makes LangChain a **vendor whose product taxonomy *is* the wiki's vocabular
 
 ## People
 
-- **Harrison Chase** — co-founder/CEO of LangChain. **First wiki source mention by name** is [[2026-05-09-chase-agent-development-lifecycle|Chase 2026]]. Per the [author-entity-promotion rule](../../CLAUDE.md#author-entity-promotion), do not promote to entity page on a single source — listed as Dangling. Promote on second-source mention.
+- **[[Harrison Chase]]** — co-founder/CEO of LangChain. **Promoted from Dangling to entity page on 21 May 2026** after the second substantive source ([[2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents|Interrupt 26 keynote]]) followed [[2026-05-09-chase-agent-development-lifecycle|the ADLC essay (9 May)]] 12 days earlier. The canonical vendor-CEO voice on agent-engineering infrastructure; coined both the *frameworks / runtimes / harnesses / no-code* four-layer Build vocabulary and the *model / harness / context* three-layer continual-learning model. See [[Harrison Chase|the entity page]] for the full framings catalogue.
+- **Brace Sproul** — LangChain (product walkthrough at [[2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents|Interrupt 26]] ~17:23–17:46; *"LangSmith Fleet is built on top of deep agents"*). Currently Dangling; promote on second-source mention.
+- **Caroline di Vittorio** — LangChain (live Fleet demo at [[2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents|Interrupt 26]] ~17:46–19:30; quantified the internal GTM-agent metrics). Currently Dangling; promote on second-source mention.
 
 ## Mentioned in
 

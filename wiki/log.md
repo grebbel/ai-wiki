@@ -10,6 +10,55 @@ Ordering flipped on 2026-05-12 (GH [#3](https://github.com/businessdatasolutions
 
 ---
 
+## [2026-05-21] ingest | Chase, Sproul & di Vittorio / LangChain Interrupt 26 Day 2 keynote — *The Future of AI Agents: What Will Interrupt 2027 Look Like?* — Harrison Chase promoted from Dangling to entity page; three-layer continual-learning model + evals-as-gradient anchor
+
+User-initiated single-source ingest of **[[2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents|*The Future of AI Agents: What Will Interrupt 2027 Look Like? | Interrupt 26*]]** — a ~22:10 LangChain Interrupt 26 Day 2 keynote published 2026-05-21 on the [[LangChain]] YouTube channel. Three speakers: **[[Harrison Chase]]** (co-founder/CEO, segments 1–10 + closing), **Brace Sproul** (LangChain, product walkthrough), **Caroline di Vittorio** (LangChain, live Fleet demo). **Manual English captions used** — first ingest in the recent session-cluster where the [`youtube-transcript-skill`](.claude/skills/youtube-transcript-skill/SKILL.md) Playwright path succeeded on first attempt without yt-dlp fallback (a clear quality contrast with the YC Root Access cluster from yesterday, which consistently failed the panel-render path).
+
+**Why this matters in the corpus.** This is **Harrison Chase's second substantive wiki source** ([[2026-05-09-chase-agent-development-lifecycle|ADLC, 9 May]] was the first); triggers entity-page promotion per the [author-entity-promotion rule](../../CLAUDE.md#author-entity-promotion). [[LangChain]] entity bumps 4 → 5 sources. The keynote lands six substantive contributions to the wiki, of which **three are structural extensions** to vocabulary the wiki already carries from Chase and from the broader harness corpus:
+
+**1. Two-types-of-agents typology** (~1:22–2:42): **long-horizon agents** (minutes/hours/days; code execution, planning, sub-agents, multi-agent, skills; outcomes/goals as horizon-extension; knowledge work) vs **customer-experience agents** (latency-critical, voice modality, brand-sensitive, customer support / sales). Shared stack underneath but particular technology per type. **A new structural axis orthogonal to Chase's [[2026-05-09-chase-agent-development-lifecycle|earlier four-layer Build split]]** — the new axis is *what the agent runs against (the world / time horizon vs end-user-experience)*, not *where the agent lives in the build stack*.
+
+**2. The three-layer continual-learning model** (~7:26–10:42) — the conceptual centerpiece. Every agentic system has **three independently improvable layers**:
+
+| Layer | What it is | Examples |
+|---|---|---|
+| **Model** | Base foundation model | Sonnet, GLM4, GPT-4 |
+| **Harness** | *"The code surrounding the model that connects it to the environment"* | Deep Agents, Claude Code, pi |
+| **Context** | *"What we provide to the harness as ways to guide it on particular tasks"* | `agent.md`, skills |
+
+**Evals-as-gradient framing** (Chase's own articulation): *"In classical machine learning, you have the model, the training data, gradient descent, that updates the weights. When you're updating the agent in general — if you're at the harness or context layer — it's not exactly gradient descent, but the **evals that you write act as a forcing function**. Those evals are providing a similar type of this training gradient. So evals and traces are incredibly important for this learning."* The wiki's clearest single articulation of **evals-as-gradient** for non-model layers — ties [[concepts/agent-development-lifecycle|the ADLC eval phase]] to the continual-improvement substrate of every other phase.
+
+**3. Top 30 → Top 5 Terminal Bench 2 — third primary-source confirmation.** Chase's stage assertion *"we moved from top 30 on terminal bench two to top five just by changing the harness itself — no changes to the model, only changes to the harness, and we saw a big increase in performance"* is the **third independent primary-source citation** of the same numerical magnitude, following [[2026-03-10-trivedy-langchain-anatomy-of-an-agent-harness|Trivedy / LangChain Engineering blog (10 March 2026)]] and the broader pattern from [[2026-02-11-lopopolo-codex-harness-engineering|Lopopolo / OpenAI Codex (11 Feb 2026)]]. **Strongest single-claim convergence in the wiki's *harness > model* corpus** — research-blog (Trivedy) + academic-paper-adjacent (cohort: Karten & Zhang / Lee et al. MetaHarness / Pan et al. NLAH) + CEO-stage (Chase).
+
+**Three additional substantive contributions** the keynote adds:
+
+- **Voice agents — pipeline vs native** (~2:42–3:58): today's STT → agent → TTS sandwich vs emerging native speech-to-speech (*"OpenAI released V2 of theirs two weeks ago"* — i.e. ~7 May 2026); *"not quite steerable enough yet, we do expect that to change."*
+- **Every agent needs a sandbox** (~3:58–4:47): *"Coding is really good for a variety of tasks — data analysis, web browsing, image gen, deep research."* Sandboxes launched at Interrupt 26 Day 1.
+- **Agent identity & auth patterns** (~6:01–7:26): two emerging patterns — *act-on-behalf-of-user* (uses caller's credentials; different users see different things via the agent) vs *fixed-service-account* (GPTs-style; everyone interacting sees same responses). SaaS providers starting to make it easy for agents to create their own accounts. Wiki's first articulation of **agent-auth-pattern as a structural product-design choice**.
+
+**Product announcements + LangChain operational metrics.** **LangChain Labs** = new research group *"aimed in particular at continual learning"* — institutional commitment paired with the academic agenda of [[2026-05-11-karten-zhang-continual-harness-online-adaptation|Karten & Zhang's]] continual-harness-adaptation paper. **LangSmith Fleet** updates: 200+ built-in tools + **Arcade** partnership (7,500+ more) + MCP support + native Slack/Gmail/Outlook channels + sharing model like Google Docs + auth management + cost tracking/usage controls + first-class HITL + built on **deep agents** + downloadable agent files. **Internal-LangChain GTM-agent metrics** (Caroline di Vittorio live demo, ~13:40–19:05): **84% weekly use; lead-to-qualified conversion up 240%; 40 hours saved per rep per month** — wiki's first concrete *"engineer-built-it-in-code → rebuilt-in-no-code-so-the-domain-team-could-own-it"* migration with quantified outcomes (the GTM agent was originally built by an engineer in code, rebuilt in Fleet for the GTM team to own end-to-end without code). Free open-source model in Fleet powered by **[[LangChain|Fireworks AI]]** partnership.
+
+**Paired with [[2026-05-20-tan-hu-stanford-cs153-ai-native-company-1000x-engineer|Tan & Hu / Stanford CS153]] (one day earlier).** Both Chase and Tan articulate **layered-system decompositions of agent thinking**, landing within 24 hours:
+
+| Source | Axis | Decomposition |
+|---|---|---|
+| Tan / CS153 (20 May) | Agentic-primitives → company-structure | Skills = employees / Resolvers = org chart / GBrain = internal process / Check-resolvable = audit / Trigger evals = performance reviews |
+| Chase / Interrupt 26 (21 May) | Learning-systems → agentic-system-layers | Model / Harness / Context — each independently improvable, with evals-as-gradient |
+
+Both founders extend the *everyone-builds-agents* corollary (Hu's *AI founder / IC / DRI* org structure on 24 April + Chase's *domain experts will be building agents, not just giving feedback* on 21 May). The 2026 founder-CEO doctrine is converging on **decompose-the-agent-stack and let-domain-experts-own-each-layer** as the operating posture.
+
+**Cuts vs the December-2025 ingest cycle.** The Karten & Zhang continual-harness paper (11 May) and Chase's Interrupt 26 articulation (21 May) together close the **continual-improvement-of-the-agentic-system** thesis on academic and vendor-CEO altitudes within a 10-day window. The wiki now has paired anchor framings for *what continual learning actually means in agent engineering* — formal (Karten/Zhang's p/G/K/M decomposition) + vendor-product (Chase's model/harness/context layers + LangSmith trace+feedback as foundation + LangChain Labs as institutional commitment).
+
+**Entity changes**: **[[Harrison Chase]] promoted from Dangling to entity page** with the full framings catalogue (four-layer Build vocabulary from ADLC + two-types-of-agents typology + three-layer continual-learning model + Top 30 → Top 5 on-stage confirmation); [[LangChain]] entity 4 → 5 sources with new sections on LangChain Labs, Fleet operational metrics, and the Interrupt 2026 conference itself.
+
+**Concept bumps**: [[concepts/agent-harness|agent-harness]] 37 → 38; [[concepts/agent-development-lifecycle|agent-development-lifecycle]] 8 → 9 (Chase's same-speaker follow-up); [[concepts/ai-agents|ai-agents]] 15 → 16 (two-types-of-agents typology); [[concepts/enterprise-ai-adoption|enterprise-ai-adoption]] 38 → 39 (no-code domain-expert agent-building thesis); [[concepts/foundation-models|foundation-models]] 8 → 9 (open-source-models three-driver framing).
+
+**Dangling first-mentions**: Brace Sproul (LangChain), Caroline di Vittorio (LangChain), LangChain Labs, Fireworks AI, Arcade, Ramp, Prime Intellect.
+
+**Source-page count delta**: +1 (now 111). **Entity-page count delta**: +1 ([[Harrison Chase]] promoted) (now 85). **Concept-page count delta**: 0.
+
+---
+
 ## [2026-05-21] ingest | YC-channel six-video batch — Tan & Hu / Stanford CS153 anchor + 5 Founder Firesides / Breakdown / Startup-School companion testimonials across voice / grocery / quick-commerce / private-chef / accounting verticals
 
 User-initiated six-video batch ingest of YC-channel founder-vantage sources spanning four months (March → May 2026). One major Stanford-classroom anchor, four YC-Root-Access founder firesides / Breakdown episode, one Startup School India keynote-fireside. **Six raw videos acquired**; **four of six required `yt-dlp` VTT fallback** after the [`youtube-transcript-skill`](.claude/skills/youtube-transcript-skill/SKILL.md) Playwright path hit the panel-render failure documented in [GH #2](https://github.com/businessdatasolutions/ai-wiki/issues/2) — the failure rate on YC Root Access specifically is now consistent enough to expect VTT-fallback by default. The build script grew a smarter rolling-caption suffix-overlap dedupe pass to make the VTT-route raws human-readable.

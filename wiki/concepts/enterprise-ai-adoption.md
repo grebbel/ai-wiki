@@ -5,7 +5,7 @@ tags: [ai-adoption, enterprise-ai, ai-strategy, ai-maturity, ai-foundation, omni
 confidence: 0.95
 last_confirmed: "2026-05-21"
 accessed_at: "2026-05-21"
-source_count: 38
+source_count: 39
 relationships:
   - type: uses
     target: automation-vs-augmentation

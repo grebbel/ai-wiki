@@ -5,7 +5,7 @@ tags: [agent-development-lifecycle, adlc, ai-agents, agent-engineering, lifecycl
 confidence: 0.88
 last_confirmed: "2026-05-21"
 accessed_at: "2026-05-21"
-source_count: 8
+source_count: 9
 relationships:
   - type: part-of
     target: ai-agents

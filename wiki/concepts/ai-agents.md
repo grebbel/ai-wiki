@@ -5,7 +5,7 @@ tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
 last_confirmed: "2026-05-21"
 accessed_at: "2026-05-21"
-source_count: 15
+source_count: 16
 relationships:
   - type: instance-of
     target: generative-ai
