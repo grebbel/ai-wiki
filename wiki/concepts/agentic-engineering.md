@@ -5,7 +5,7 @@ tags: [agentic-engineering, vibe-coding, software-3.0, ai-agents, agent-harness,
 confidence: 0.97
 last_confirmed: "2026-05-22"
 accessed_at: "2026-05-22"
-source_count: 24
+source_count: 26
 relationships:
   - type: depends-on
     target: agent-harness
@@ -179,6 +179,7 @@ These are not *additions* to Karpathy's discipline definition — they're the **
 
 - **Is "engineering discipline" the right framing, or is it just "advanced tool-use"?** Karpathy's claim is that it's a discipline; [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane]] would push back that 90% of it is mature systems engineering rebranded. Both can be true — the *discipline* is real *and* its primitives are mature systems engineering applied to a new substrate.
 - **Does the 10× → "much more than 10×" ceiling claim hold under measurement?** The wiki has not yet ingested an empirical study of agentic-engineer productivity distributions. Worth tracking.
+- **Is the multiplier conditional on existing skill, or unconditional?** [[2026-03-23-wu-an-yc-momentic-qa-layer-ai-coding-era|Wu / Momentic 2026]] argues *"Codex only makes you a 10x engineer if you weren't a 10x engineer to begin with"* — a direct rhetorical inversion of [[2026-05-20-tan-hu-stanford-cs153-ai-native-company-1000x-engineer|Tan & Hu / CS153 2026]]'s unconditional *1,000× engineer* framing. Filed as productive contradiction: both founders may be right at different conditionalities — Tan & Hu describe what *the best* engineer can now do unconditionally (the 5-day Posterous rebuild as worked example); Wu describes what *Codex deployed on the average engineer* produces. The wiki carries both anchors without resolving — adaptability, ambiguity-navigation, curiosity, and passion as meta-skills (Wu's framing) are not in tension with the unconditional-headline figure (Tan & Hu's framing) when the latter is read as *what the top of the distribution becomes capable of*.
 - **Is the discipline transferable across domains?** Karpathy's worked examples are all coding (Menu Gen, Twitter-clone interview, micro-GPT). The discipline should generalise to non-code domains (research synthesis, data analysis, design) — but that hasn't been tested at scale yet in the wiki's source corpus.
 
 ## Related concepts

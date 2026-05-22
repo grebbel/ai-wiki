@@ -4,9 +4,9 @@ kind: person
 aliases: ["Karpathy", "Andrej Karpathy", "@karpathy"]
 tags: [andrej-karpathy, ai-researcher, openai, tesla, eureka-labs, software-3.0, vibe-coding, jagged-intelligence, llm-wiki]
 confidence: 0.92
-last_confirmed: "2026-05-12"
-accessed_at: "2026-05-12"
-source_count: 4
+last_confirmed: "2026-05-22"
+accessed_at: "2026-05-22"
+source_count: 5
 relationships:
   - type: authored-by
     target: 2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering
@@ -65,6 +65,7 @@ From [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering|the Se
 
 - [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering]] — substantive source: the Sequoia AI Ascent interview.
 - [[2026-05-04-rethinking-agents-harness-is-all-you-need]] — referenced indirectly via the Software 3.0 framing the video implicitly assumes (LLM-as-interpreter, harness-as-OS).
+- [[2026-04-09-dinakaran-yc-luminai-automating-americas-biggest-hospitals]] — **biographical-bridge mention** (5th source citation, added 22 May 2026): YC founder Kesava Kirupa Dinakaran names Karpathy on-stage as his Rubik's-cube YouTube tutor in his childhood — *"I learned Rubik's cubes from Andrej Karpathy on YouTube, who eventually ended up founding OpenAI."* Not analytically load-bearing; flagged as a small graph-traversal connection between the wiki's existing Karpathy entity and the YC Root Access founder-vantage cluster. Karpathy's pre-AI-research public output (Rubik's cube speedsolving tutorials in the late 2000s; he was the captain of the international Rubik's cube team at one point per public records) is a real biographical thread the wiki had not previously surfaced.
 - Repo-root specs: [`llm-wiki.md`](../../llm-wiki.md) (his original framing), [`llm-wiki-v2.md`](../../llm-wiki-v2.md), [`llm-wiki-v2-plan.md`](../../llm-wiki-v2-plan.md), [`CLAUDE.md`](../../CLAUDE.md) — the upstream specs that this entire repo implements.
 - Concept pages he originated or shaped: [[software-3.0]], [[vibe-coding]], [[agentic-engineering]], [[jagged-frontier]] (cause-side framing).
 

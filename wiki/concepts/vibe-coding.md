@@ -3,9 +3,9 @@ type: concept
 aliases: ["vibe coding", "Vibe coding", "vibe-coding", "vibe-code", "v-coding"]
 tags: [vibe-coding, agentic-engineering, software-3.0, ai-agents, accessibility, hobbyist-coding, karpathy, pm-tooling, prototype-as-influence-tool, december-2025-phase-change, replit, ai-native-builders, post-prompting]
 confidence: 0.95
-last_confirmed: "2026-05-21"
-accessed_at: "2026-05-21"
-source_count: 14
+last_confirmed: "2026-05-22"
+accessed_at: "2026-05-22"
+source_count: 15
 relationships:
   - type: instance-of
     target: software-3.0

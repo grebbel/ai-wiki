@@ -5,7 +5,7 @@ tags: [agent-harness, ai-agents, ai-engineering, harness-frameworks, context-man
 confidence: 0.98
 last_confirmed: "2026-05-22"
 accessed_at: "2026-05-22"
-source_count: 40
+source_count: 43
 relationships:
   - type: part-of
     target: ai-agents
