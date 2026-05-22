@@ -3,9 +3,10 @@ type: source
 kind: video
 title: "\"A.I. and Our Economic Future,\" Professor Chad Jones"
 author: ["Stanford Graduate School of Business"]
-publisher: "Stanford Graduate School of Business (GSB Spring Reunions, 1 May 2026; recorded talk by Professor Charles \"Chad\" Jones)"
+publisher: "Stanford Graduate School of Business (GSB Spring Reunions; recorded talk by Professor Charles \"Chad\" Jones — recorded 1 May 2026, published to YouTube 21 May 2026)"
 url: "https://www.youtube.com/watch?v=xBpGn3BDcOY"
-date_published: 2026-05-01
+date_recorded: 2026-05-01
+date_published: 2026-05-21
 date_ingested: 2026-05-22
 length: "~60:38 minutes (manual English captions, 518 segments)"
 raw: "../../raw/videos/ai-and-our-economic-future-professor-chad-jones.md"
