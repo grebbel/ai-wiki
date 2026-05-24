@@ -4,10 +4,10 @@ kind: venue
 aliases: ["Lenny's Podcast", "Lennys Podcast", "lennypodcast", "Lenny Rachitsky's podcast"]
 tags: [lenny-podcast, podcast, product-management, consumer-tech, ai-era-strategy, founder-interviews, lenny-rachitsky]
 since: 2022
-confidence: 0.75
+confidence: 0.8
 last_confirmed: "2026-05-22"
 accessed_at: "2026-05-22"
-source_count: 3
+source_count: 4
 relationships:
   - type: published-by
     target: 2026-05-10-ries-lennys-force-destroys-companies-within
@@ -15,20 +15,28 @@ relationships:
   - type: published-by
     target: 2026-04-26-how-to-win-when-software-is-not-a-moat-evan-spiegel-snapchat-ceo
     via: "Evan Spiegel (Snap CEO) on distribution as the new moat, software not being a moat, and Snap's design-led operating model (26 April 2026)"
+  - type: published-by
+    target: 2026-05-02-schoening-lennys-podcast-cultivating-agency-ai-era
+    via: "Max Schoening (Notion head of product) on agency as the durable AI-era skill, designers and PMs shipping code at Notion, malleable software (2 May 2026)"
+  - type: published-by
+    target: 2024-04-18-caldwell-lennys-podcast-lessons-1000-yc-startups-tarpit-ideas
+    via: "Dalton Caldwell (YC managing director / group partner) on tar pit ideas, pivots, founder resilience, customer-validation-first, and the 2024 request-for-startups (18 April 2024 — the wiki's first pre-AI-substrate-shift evergreen-YC-partner ingest)"
 ---
 
 # Lenny's Podcast
 
-Long-form interview podcast hosted by **Lenny Rachitsky** (ex-Airbnb PM; founder of *Lenny's Newsletter* and the *How I AI* companion show). The podcast publishes ~1–2 episodes per week, primarily interview-format with product leaders, founders, and operators in consumer-tech, B2B SaaS, and AI. The wiki has, as of May 2026, **two sources under this `author:` value** — the second of which triggered this entity page per the [author-entity promotion rule](../../CLAUDE.md#author-entity-promotion).
+Long-form interview podcast hosted by **Lenny Rachitsky** (ex-Airbnb PM; founder of *Lenny's Newsletter* and the *How I AI* companion show). The podcast publishes ~1–2 episodes per week, primarily interview-format with product leaders, founders, and operators in consumer-tech, B2B SaaS, and AI. The wiki has, as of 22 May 2026, **four sources under this `author:` value** — the channel now spans a two-year arc (April 2024 → May 2026) anchoring both pre-AI-substrate-shift evergreen practitioner wisdom (Caldwell) and post-phase-change AI-era operator and founder reflections (Schoening, Ries, Spiegel).
 
 Lenny Rachitsky himself is not (yet) given his own entity page because he does not appear as a *first author* in the wiki's `author:` frontmatter — he is the host of *Lenny's Podcast* (this entity) and of the *How I AI* companion show, which appears in the wiki via [[2025-12-01-marily-nika-pms-who-use-ai-will-replace-those-who-dont|Nika 2025]] under `author: ["How I AI"]`. The two channels are operationally distinct.
 
 ## Sources under this author
 
-| Source | Guest | Topic anchor |
-|---|---|---|
-| [[2026-04-26-how-to-win-when-software-is-not-a-moat-evan-spiegel-snapchat-ceo\|Spiegel 2026]] | **Evan Spiegel** (Snap CEO) | Software-is-not-a-moat learned over 15 years; distribution-as-new-moat; design-as-intentional-bottleneck; JTBD-as-AI-sequencing |
-| [[2026-05-10-ries-lennys-force-destroys-companies-within\|Ries 2026]] | **Eric Ries** (Lean Startup; *Incorruptible*) | Governance as the unit of mission protection; PBC + LTBT as defensive structure; Conway's law applied to AI alignment |
+| Source | Date | Guest | Topic anchor |
+|---|---|---|---|
+| [[2024-04-18-caldwell-lennys-podcast-lessons-1000-yc-startups-tarpit-ideas\|Caldwell 2024]] | 18 April 2024 | **[[Dalton Caldwell]]** (YC managing director / group partner) | Tar pit ideas + pivot template + struggle-is-universal + don't-optimise-for-TAM-at-seed + customer-validation-first + 2024 request-for-startups inventory |
+| [[2026-04-26-how-to-win-when-software-is-not-a-moat-evan-spiegel-snapchat-ceo\|Spiegel 2026]] | 26 April 2026 | **Evan Spiegel** (Snap CEO) | Software-is-not-a-moat learned over 15 years; distribution-as-new-moat; design-as-intentional-bottleneck; JTBD-as-AI-sequencing |
+| [[2026-05-02-schoening-lennys-podcast-cultivating-agency-ai-era\|Schoening 2026]] | 2 May 2026 | **Max Schoening** (Notion head of product) | Agency as the durable AI-era skill; designers and PMs shipping code at Notion; malleable software; prototype-vs-engineering physical metaphor |
+| [[2026-05-10-ries-lennys-force-destroys-companies-within\|Ries 2026]] | 10 May 2026 | **Eric Ries** (Lean Startup; *Incorruptible*) | Governance as the unit of mission protection; PBC + LTBT as defensive structure; Conway's law applied to AI alignment |
 
 Both episodes are operator-narrated and run ~70 minutes to ~100 minutes. Both lean into structural arguments about *durability under change* rather than tactical product advice. The pairing is mutually-reinforcing: Ries on the **legal-entity layer**, Spiegel on the **operating-model layer** — see the *Convergence and contradictions* sections of the respective source pages for the cross-link analysis.
 

@@ -8,7 +8,7 @@ website: "https://www.ycombinator.com"
 confidence: 0.92
 last_confirmed: "2026-05-22"
 accessed_at: "2026-05-22"
-source_count: 10
+source_count: 11
 ---
 
 # Y Combinator
@@ -86,6 +86,7 @@ The Garg and Glasgow ingests in the same week (19 + 20 May 2026) make **YC Root 
 - **Tom Blomfield** — likely YC managing director (ex-Monzo / GoCardless founder); referenced in [[2026-05-19-garg-yc-internal-ai-agent-evolves-itself|Garg 2026]] as a prior speaker in the same YC Root Access session covering the *thin harness* point. Currently Dangling; promote when his slot in the session is ingested or a second standalone source surfaces.
 - **Aaron Epstein** — YC General Partner; host of the YC Root Access *Founder Firesides* episode with Dinakaran ([[2026-04-09-dinakaran-yc-luminai-automating-americas-biggest-hospitals|Dinakaran 2026]]). Conducted Dinakaran's original 2020 YC interview (per the fireside dialogue). Currently Dangling; promote on second-source mention.
 - **Harj Taggar** — YC Managing Partner; host of the YC Root Access *Founder Firesides* episode with Wu & An / Momentic ([[2026-03-23-wu-an-yc-momentic-qa-layer-ai-coding-era|Wu & An 2026]]). Currently Dangling; promote on second-source mention.
+- **[[Dalton Caldwell]]** — Managing Director / Group Partner at YC for 10+ years (21 batches as of April 2024). The wiki's canonical voice on the **evergreen YC-partner-wisdom layer** — *tar pit ideas* + *pivot template* + *find-an-incumbent-with-low-NPS* + *customer-validation-first* + the 2024 request-for-startups inventory. **Promoted from Dangling to entity page on 22 May 2026** after the [[2024-04-18-caldwell-lennys-podcast-lessons-1000-yc-startups-tarpit-ideas|Caldwell / Lenny's Podcast (April 2024)]] solo-headlining ingest, his second substantive source mention (first was [[2026-05-20-glasgow-campfire-erp-for-ai-revolution|Glasgow / Campfire (May 2026)]] where he was named as Campfire's YC partner-of-record and the author of YC's *ERPs as a request-for-startups* prompt that Campfire emerged in response to).
 
 ## People at YC portfolio companies (referenced across the wiki)
 

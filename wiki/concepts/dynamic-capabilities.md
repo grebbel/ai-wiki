@@ -5,7 +5,7 @@ tags: [dynamic-capabilities, teece, strategic-renewal, digital-transformation, m
 confidence: 0.90
 last_confirmed: "2026-05-22"
 accessed_at: "2026-05-22"
-source_count: 6
+source_count: 7
 relationships:
   - type: supports
     target: enterprise-ai-adoption

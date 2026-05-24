@@ -3,9 +3,9 @@ type: concept
 aliases: ["software 3.0", "Software 3.0", "software-3.0", "LLM as computer", "LLMs as a new computer", "context window as program", "prompting as programming"]
 tags: [software-3.0, software-2.0, software-1.0, llm-paradigm, prompting, context-window, ai-engineering, karpathy]
 confidence: 0.82
-last_confirmed: "2026-05-17"
-accessed_at: "2026-05-17"
-source_count: 3
+last_confirmed: "2026-05-22"
+accessed_at: "2026-05-22"
+source_count: 4
 relationships:
   - type: instance-of
     target: generative-ai

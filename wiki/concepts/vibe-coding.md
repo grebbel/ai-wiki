@@ -5,7 +5,7 @@ tags: [vibe-coding, agentic-engineering, software-3.0, ai-agents, accessibility,
 confidence: 0.95
 last_confirmed: "2026-05-22"
 accessed_at: "2026-05-22"
-source_count: 15
+source_count: 16
 relationships:
   - type: instance-of
     target: software-3.0
