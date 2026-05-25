@@ -11,6 +11,11 @@ date_ingested: 2026-04-28
 tags: [leadership, attention, doing-mode, spacious-mode, advantage-blindness, reitz, higgins, leading-teams]
 length: "~6 pages"
 raw: "../../raw/articles/Reitz and Higgins - The Best Leaders Encourage \"Spacious Thinking\".pdf"
+relationships:
+  - type: supports
+    target: 2026-05-13-storoni-hbr-ideacast-redefining-efficiency-age-ai
+    via: "same phenomenon — protected unstructured-attention time as precondition for creative knowledge work. Reitz & Higgins frame as *spacious mode vs doing mode* from a leadership-practice vantage with mixed-methods survey + interview data; [[2026-05-13-storoni-hbr-ideacast-redefining-efficiency-age-ai|Storoni]] frames as gear-1/gear-2/gear-3 from a neuroscience vantage with the norepinephrine inverted-U mechanism. Spacious mode maps to Storoni's gear-1 + top-of-gear-2; doing mode at its extreme maps to her gear-3. Two-vantage convergence on the underlying organisational diagnosis."
+    confidence: 0.8
 ---
 
 # Reitz & Higgins — The Best Leaders Encourage "Spacious Thinking"
@@ -90,3 +95,4 @@ Spacious mode is not a replacement for doing mode — it is the *check on whethe
 - [[2026-04-28-bansal-birkinshaw-systems-thinking]] — also addresses how short-term, narrow-focus modes crowd out broader cognition needed for complex problems
 - [[2026-04-28-webb-strategic-foresight]] — also addresses how immediate operational pressure displaces longer-term thinking
 - [[2026-04-28-werner-lebrun-octopus-organization]] — adjacent argument about predictability-optimization at the cost of adaptive capacity
+- [[2026-05-13-storoni-hbr-ideacast-redefining-efficiency-age-ai]] — the **neuroscience-vantage twin** of this article's argument. Reitz & Higgins describe *spacious mode vs doing mode* at the leadership-practice layer; Storoni gives the brain-level mechanism (norepinephrine inverted-U / three-gear framework / prefrontal-cortex disengagement under gear-3 reactive work) and the chronobiology prescription (time-of-day-aware schedules). Same organisational diagnosis from two distinct vantages — strong cross-source convergence.
