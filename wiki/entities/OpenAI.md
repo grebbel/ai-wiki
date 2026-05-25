@@ -5,9 +5,9 @@ aliases: ["OpenAI"]
 tags: [openai, ai-lab, foundation-models, chatgpt, gpt-4, gpt-5, codex, agentic-engineering, sora, custom-gpts, public-benefit-corporation, nonprofit-foundation]
 since: 2015
 confidence: 0.95
-last_confirmed: "2026-05-24"
-accessed_at: "2026-05-24"
-source_count: 12
+last_confirmed: "2026-05-25"
+accessed_at: "2026-05-25"
+source_count: 13
 relationships:
   - type: employs
     target: Aaron-Chatterji
