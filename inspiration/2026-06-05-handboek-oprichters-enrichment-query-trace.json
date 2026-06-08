@@ -1,0 +1,1208 @@
+{
+  "question": {
+    "original": "See ideation/2026-05-22-handboek-voor-oprichters.html — What can be added from the Wiki to enrich this handbook?",
+    "restated": "Which wiki material added since the handbook was frozen (22 May 2026) can deepen the Dutch BDS edition of the AI-native-vertical-founder handbook?",
+    "facets": [
+      "new go-to-market / business-model material",
+      "new org-shape & future-of-firm material",
+      "new vertical worked examples",
+      "a native Dutch-market anchor",
+      "conceptual gaps in the handbook"
+    ],
+    "language": "en",
+    "enrichment_target": "/Users/witoldtenhove/Projects/brand-project/ideation/2026-05-22-handboek-voor-oprichters.html"
+  },
+  "method": {
+    "retrieval": "node scripts/wiki-retrieve.mjs --json -n 12 (×3 facet queries, unioned)",
+    "enrichment_filter": "candidate NOT in handbook Bronnenkaart AND (source dated >= 2026-05-22 OR concept/synthesis adding a missing dimension)"
+  },
+  "candidate_count": 103,
+  "use_count": 6,
+  "ignore_count": 97,
+  "candidates": [
+    {
+      "slug": "concepts/enterprise-ai-adoption",
+      "type": "concept",
+      "fused_score": 0.98,
+      "qmd_rank": 1,
+      "effective_confidence": 0.95,
+      "verdict": "ignore",
+      "reason": "already cited in the handbook Verder-lezen",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2025-11-25-yee-mgi-agents-robots-and-us-skill-partnerships",
+      "type": "source",
+      "fused_score": 0.94,
+      "qmd_rank": 1,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/micro-productivity-trap",
+      "type": "concept",
+      "fused_score": 0.937,
+      "qmd_rank": 3,
+      "effective_confidence": 0.919,
+      "verdict": "use",
+      "reason": "CONCEPT (28 sources, 0.95): the demand-side failure the handbook implicitly defends against but never names — task gains that fail to become firm value",
+      "reason_class": null,
+      "anchor": "W6"
+    },
+    {
+      "slug": "sources/2026-04-28-gomaa-lean-4-0",
+      "type": "source",
+      "fused_score": 0.925,
+      "qmd_rank": 2,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-27-scheffer-de-ondernemer-helloprint-ai-rebuild-from-day-zero",
+      "type": "source",
+      "fused_score": 0.91,
+      "qmd_rank": 3,
+      "effective_confidence": null,
+      "verdict": "use",
+      "reason": "NEW (27 May): the missing NATIVE DUTCH €80M founder-CEO anchor — day-zero rebuild, CS 100→18, CAIO-as-missing-MKB-role",
+      "reason_class": null,
+      "anchor": "W2"
+    },
+    {
+      "slug": "sources/2026-05-28-giles-wp-intelligence-new-human-machine-workforce-agentic-ai-jobs",
+      "type": "source",
+      "fused_score": 0.91,
+      "qmd_rank": 3,
+      "effective_confidence": null,
+      "verdict": "use",
+      "reason": "NEW (28 May): empirical employment data + chatbot-2-3% vs deeper-agent-30-60% split + Frey counter + IBM entry-level counter-trend",
+      "reason_class": null,
+      "anchor": "W4"
+    },
+    {
+      "slug": "concepts/ai-agents",
+      "type": "concept",
+      "fused_score": 0.907,
+      "qmd_rank": 2,
+      "effective_confidence": 0.804,
+      "verdict": "ignore",
+      "reason": "foundational concept; handbook is GTM/operating-doctrine, not agent internals",
+      "reason_class": "off-facet",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-16-bodewes-phonely-ai-callers-think-is-human",
+      "type": "source",
+      "fused_score": 0.896,
+      "qmd_rank": 4,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-03-07-vitucci-onshore-next-industry-ai-will-disrupt",
+      "type": "source",
+      "fused_score": 0.896,
+      "qmd_rank": 4,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-20-glasgow-campfire-erp-for-ai-revolution",
+      "type": "source",
+      "fused_score": 0.882,
+      "qmd_rank": 5,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-06-03-warren-yc-how-to-build-an-ai-native-services-company",
+      "type": "source",
+      "fused_score": 0.882,
+      "qmd_rank": 5,
+      "effective_confidence": null,
+      "verdict": "use",
+      "reason": "NEW (3 Jun): the vendor-side AI-native-services playbook — outcome-vs-co-pilot, 4 market traits, variance-is-existential, P&L math, pricing GO/AVOID",
+      "reason_class": null,
+      "anchor": "W1"
+    },
+    {
+      "slug": "sources/2026-05-28-moon-mckinsey-rewiring-software-delivery-for-the-agentic-era",
+      "type": "source",
+      "fused_score": 0.882,
+      "qmd_rank": 5,
+      "effective_confidence": null,
+      "verdict": "use",
+      "reason": "NEW (28 May): consulting-altitude team-shape quantification (100→60 FTE, 10-role→3-role pod) + policy-as-code + knowledge-graph memory layer",
+      "reason_class": null,
+      "anchor": "W3"
+    },
+    {
+      "slug": "concepts/ai-employment-effects",
+      "type": "concept",
+      "fused_score": 0.881,
+      "qmd_rank": 7,
+      "effective_confidence": 0.919,
+      "verdict": "ignore",
+      "reason": "already cited in the handbook Verder-lezen",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "entities/Y-Combinator",
+      "type": "entity",
+      "fused_score": 0.88,
+      "qmd_rank": 1,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-02-25-akhtar-forget-yc-letter-ai-powered-revenue",
+      "type": "source",
+      "fused_score": 0.869,
+      "qmd_rank": 6,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2025-06-09-krakowski-human-centered-ai-field-experiment",
+      "type": "source",
+      "fused_score": 0.869,
+      "qmd_rank": 6,
+      "effective_confidence": 0.85,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-19-palicha-zepto-stanford-or-startup-india-quick-commerce",
+      "type": "source",
+      "fused_score": 0.856,
+      "qmd_rank": 7,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-02-schoening-lennys-podcast-cultivating-agency-ai-era",
+      "type": "source",
+      "fused_score": 0.856,
+      "qmd_rank": 7,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/automation-vs-augmentation",
+      "type": "concept",
+      "fused_score": 0.855,
+      "qmd_rank": 9,
+      "effective_confidence": 0.919,
+      "verdict": "ignore",
+      "reason": "adjacent; the enrichment lands via micro-productivity-trap which links it",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-21-allen-aws-london-exec-forum-agentic-team-structures",
+      "type": "source",
+      "fused_score": 0.85,
+      "qmd_rank": 6,
+      "effective_confidence": 0.8,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-20-tan-hu-stanford-cs153-ai-native-company-1000x-engineer",
+      "type": "source",
+      "fused_score": 0.843,
+      "qmd_rank": 8,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-24-hu-yc-how-to-build-a-company-with-ai-from-the-ground-up",
+      "type": "source",
+      "fused_score": 0.831,
+      "qmd_rank": 9,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-20-ng-deeplearningai-ai-dev-26-sf-future-of-software-engineering",
+      "type": "source",
+      "fused_score": 0.831,
+      "qmd_rank": 9,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/dynamic-capabilities",
+      "type": "concept",
+      "fused_score": 0.819,
+      "qmd_rank": 10,
+      "effective_confidence": 0.85,
+      "verdict": "ignore",
+      "reason": "already cited in the handbook Verder-lezen",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-25-masad-replit-ceo-only-two-jobs-left",
+      "type": "source",
+      "fused_score": 0.808,
+      "qmd_rank": 11,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "entities/MIT-CISR",
+      "type": "entity",
+      "fused_score": 0.789,
+      "qmd_rank": 8,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/jagged-frontier",
+      "type": "concept",
+      "fused_score": 0.47,
+      "qmd_rank": null,
+      "effective_confidence": 0.89,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-02-09-sternfels-mckinsey-survive-ai-and-reinvent-consulting",
+      "type": "source",
+      "fused_score": 0.47,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-03-25-russell-bradley-mgi-race-takes-off-next-big-arenas",
+      "type": "source",
+      "fused_score": 0.462,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-28-brynjolfsson-canaries-coal-mine",
+      "type": "source",
+      "fused_score": 0.455,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-28-brynjolfsson-li-raymond-generative-ai-at-work",
+      "type": "source",
+      "fused_score": 0.448,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/responsible-ai",
+      "type": "concept",
+      "fused_score": 0.447,
+      "qmd_rank": null,
+      "effective_confidence": 0.919,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/generative-ai",
+      "type": "concept",
+      "fused_score": 0.445,
+      "qmd_rank": null,
+      "effective_confidence": 0.869,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-30-ai-index-report-2026",
+      "type": "source",
+      "fused_score": 0.441,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "entities/Pete-Koomen",
+      "type": "entity",
+      "fused_score": 0.44,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-02-dutt-chatterji-ai-experimentation-to-transformation",
+      "type": "source",
+      "fused_score": 0.434,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "entities/Sam-Altman",
+      "type": "entity",
+      "fused_score": 0.433,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-31-peron-mit-smr-me-myself-and-ai-philips-interoperability-health-care",
+      "type": "source",
+      "fused_score": 0.428,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "use",
+      "reason": "NEW (31 May): the missing HEALTHCARE vertical worked example (SmartArt 15min→30s, ~4x throughput) + structural-undersupply adoption driver",
+      "reason_class": null,
+      "anchor": "W5"
+    },
+    {
+      "slug": "sources/2026-04-28-warner-wager-dynamic-capabilities-digital-transformation",
+      "type": "source",
+      "fused_score": 0.416,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-06-mit-ocw-future-of-mit-open-education",
+      "type": "source",
+      "fused_score": 0.41,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-24-erginbilgic-bloomberg-leaders-rolls-royce-turnaround-playbook",
+      "type": "source",
+      "fused_score": 0.41,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "incumbent-turnaround playbook (FTSE-CEO), not a founder vantage; transform-from-strength already reaches the handbook via Scheffer",
+      "reason_class": "off-facet",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/strategic-foresight",
+      "type": "concept",
+      "fused_score": 0.406,
+      "qmd_rank": null,
+      "effective_confidence": 0.728,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-11-ognibeni-ai-agents-cool-demos-vs-real-revenue-china",
+      "type": "source",
+      "fused_score": 0.404,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-27-koomen-yc-lightcone-inside-yc-ai-playbook",
+      "type": "source",
+      "fused_score": 0.404,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "adjacent YC AI-playbook; its build-layer thesis already carried by Tan/Hu + Warren in the USE set",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-12-mgi-virtual-event-race-takes-off-next-big-arenas",
+      "type": "source",
+      "fused_score": 0.398,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/systems-thinking",
+      "type": "concept",
+      "fused_score": 0.395,
+      "qmd_rank": null,
+      "effective_confidence": 0.702,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/agent-harness",
+      "type": "concept",
+      "fused_score": 0.393,
+      "qmd_rank": null,
+      "effective_confidence": 0.98,
+      "verdict": "ignore",
+      "reason": "already cited in the handbook Verder-lezen; not new",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-14-price-dfi-retail-asia-reinventing-how-it-sells",
+      "type": "source",
+      "fused_score": 0.387,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-31-benedict-evans-rational-conversation-on-where-ai-is-actually-going",
+      "type": "source",
+      "fused_score": 0.382,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "macro analyst take; relevant only as the documented counter-voice to Giles on aggregate employment — noted in-answer, not separately read",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/agent-development-lifecycle",
+      "type": "concept",
+      "fused_score": 0.371,
+      "qmd_rank": null,
+      "effective_confidence": 0.814,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-13-jha-emergent-democratizing-app-building-with-claude",
+      "type": "source",
+      "fused_score": 0.368,
+      "qmd_rank": null,
+      "effective_confidence": 0.7,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-28-anand-wu-genai-playbook",
+      "type": "source",
+      "fused_score": 0.368,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "syntheses/organizational-frameworks-for-ai-adoption",
+      "type": "synthesis",
+      "fused_score": 0.365,
+      "qmd_rank": null,
+      "effective_confidence": 0.745,
+      "verdict": "ignore",
+      "reason": "useful as a Further-Reading pointer but not deep-read this run; the micro-productivity-trap concept already maps the cluster",
+      "reason_class": "off-facet",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-21-forsgren-macvean-build-core-skills-thrive-ai-era-developer",
+      "type": "source",
+      "fused_score": 0.364,
+      "qmd_rank": null,
+      "effective_confidence": 0.8,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2025-05-06-jassy-amazon-agility-ai-strategy-changing-role-of-managers",
+      "type": "source",
+      "fused_score": 0.363,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-28-dellacqua-jagged-technological-frontier",
+      "type": "source",
+      "fused_score": 0.363,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/foundation-models",
+      "type": "concept",
+      "fused_score": 0.362,
+      "qmd_rank": null,
+      "effective_confidence": 0.813,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-14-thompson-the-daily-workers-letting-ai-do-their-jobs",
+      "type": "source",
+      "fused_score": 0.358,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-06-kropp-bcg-hbr-dont-treat-ai-agents-like-employees",
+      "type": "source",
+      "fused_score": 0.358,
+      "qmd_rank": null,
+      "effective_confidence": 0.85,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-06-bockeler-engineering-of-ai-agents-context-harnessing-autonomy",
+      "type": "source",
+      "fused_score": 0.354,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-12-techlatest-hacker-search-engines-osint-tools-2026",
+      "type": "source",
+      "fused_score": 0.354,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-07-singhal-stanford-cs153-product-management-in-ai-era",
+      "type": "source",
+      "fused_score": 0.35,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2024-04-18-caldwell-lennys-podcast-lessons-1000-yc-startups-tarpit-ideas",
+      "type": "source",
+      "fused_score": 0.35,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-23-tan-yc-how-to-make-claude-code-your-ai-engineering-team-gstack",
+      "type": "source",
+      "fused_score": 0.345,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2025-12-01-marily-nika-pms-who-use-ai-will-replace-those-who-dont",
+      "type": "source",
+      "fused_score": 0.345,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-19-mittal-yhangry-private-chef-all-in-on-ai-agents",
+      "type": "source",
+      "fused_score": 0.341,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-11-hill-vori-grocery-os-paper-and-fax",
+      "type": "source",
+      "fused_score": 0.337,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-21-chase-langchain-interrupt-26-future-of-ai-agents",
+      "type": "source",
+      "fused_score": 0.333,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "entities/Lenny's-Podcast",
+      "type": "entity",
+      "fused_score": 0.331,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-13-storoni-hbr-ideacast-redefining-efficiency-age-ai",
+      "type": "source",
+      "fused_score": 0.33,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-19-garg-yc-internal-ai-agent-evolves-itself",
+      "type": "source",
+      "fused_score": 0.327,
+      "qmd_rank": null,
+      "effective_confidence": 0.75,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-09-dinakaran-yc-luminai-automating-americas-biggest-hospitals",
+      "type": "source",
+      "fused_score": 0.326,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-21-sinclair-ivers-benitez-sei-cmu-ai-native-software-engineering",
+      "type": "source",
+      "fused_score": 0.326,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/industrial-ai-agents",
+      "type": "concept",
+      "fused_score": 0.326,
+      "qmd_rank": null,
+      "effective_confidence": 0.614,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-05-nishar-nohria-end-of-one-size-fits-all",
+      "type": "source",
+      "fused_score": 0.322,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/industry-4-0",
+      "type": "concept",
+      "fused_score": 0.314,
+      "qmd_rank": null,
+      "effective_confidence": 0.557,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-03-23-wu-an-yc-momentic-qa-layer-ai-coding-era",
+      "type": "source",
+      "fused_score": 0.312,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/ai-benchmarks",
+      "type": "concept",
+      "fused_score": 0.306,
+      "qmd_rank": null,
+      "effective_confidence": 0.805,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "entities/Peter-Weill",
+      "type": "entity",
+      "fused_score": 0.302,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "entities/Stephanie-Woerner",
+      "type": "entity",
+      "fused_score": 0.298,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-28-anthropic-economic-index-q4-2025",
+      "type": "source",
+      "fused_score": 0.296,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-03-20-huggingface-agentic-evaluations-workshop",
+      "type": "source",
+      "fused_score": 0.296,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering",
+      "type": "source",
+      "fused_score": 0.295,
+      "qmd_rank": null,
+      "effective_confidence": 0.8,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-21-fernando-man-group-trading-signals-that-trade-themselves",
+      "type": "source",
+      "fused_score": 0.293,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-08-running-an-ai-native-engineering-org",
+      "type": "source",
+      "fused_score": 0.289,
+      "qmd_rank": null,
+      "effective_confidence": 0.8,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-22-anthropic-evals-for-taste-hill-climbing-slide-generation-agent",
+      "type": "source",
+      "fused_score": 0.287,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-22-khan-cline-deeplearningai-ai-dev-26-sf-evals-are-broken-use-them-anyway",
+      "type": "source",
+      "fused_score": 0.284,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/agentic-engineering",
+      "type": "concept",
+      "fused_score": 0.284,
+      "qmd_rank": null,
+      "effective_confidence": 0.897,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/durable-skills",
+      "type": "concept",
+      "fused_score": 0.284,
+      "qmd_rank": null,
+      "effective_confidence": 0.919,
+      "verdict": "ignore",
+      "reason": "already cited in the handbook Verder-lezen",
+      "reason_class": "redundant",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-04-rethinking-agents-harness-is-all-you-need",
+      "type": "source",
+      "fused_score": 0.28,
+      "qmd_rank": null,
+      "effective_confidence": 0.7,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/ai-deskilling",
+      "type": "concept",
+      "fused_score": 0.278,
+      "qmd_rank": null,
+      "effective_confidence": 0.85,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/vibe-coding",
+      "type": "concept",
+      "fused_score": 0.273,
+      "qmd_rank": null,
+      "effective_confidence": 0.831,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-02-09-hubspot-customer-success-with-claude",
+      "type": "source",
+      "fused_score": 0.27,
+      "qmd_rank": null,
+      "effective_confidence": 0.6,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-02-18-lyft-customer-support-with-claude",
+      "type": "source",
+      "fused_score": 0.267,
+      "qmd_rank": null,
+      "effective_confidence": 0.6,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "entities/DeepLearningAI",
+      "type": "entity",
+      "fused_score": 0.266,
+      "qmd_rank": null,
+      "effective_confidence": 0.832,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-19-elangovan-amd-deeplearningai-ai-dev-26-sf-impact-of-ai-on-software",
+      "type": "source",
+      "fused_score": 0.265,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-21-bender-google-io-software-engineering-tipping-point",
+      "type": "source",
+      "fused_score": 0.256,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-21-jones-stanford-gsb-ai-and-our-economic-future",
+      "type": "source",
+      "fused_score": 0.254,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-05-22-everitt-jetbrains-deeplearningai-ai-dev-26-sf-shift-to-agentic-engineering",
+      "type": "source",
+      "fused_score": 0.249,
+      "qmd_rank": null,
+      "effective_confidence": null,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/strategy",
+      "type": "concept",
+      "fused_score": 0.234,
+      "qmd_rank": null,
+      "effective_confidence": 0.761,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/warner-wager-process-model",
+      "type": "concept",
+      "fused_score": 0.232,
+      "qmd_rank": null,
+      "effective_confidence": 0.759,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "concepts/infinite-game",
+      "type": "concept",
+      "fused_score": 0.212,
+      "qmd_rank": null,
+      "effective_confidence": 0.532,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    },
+    {
+      "slug": "sources/2026-02-06-figma-make-prompts-to-prototypes-with-claude",
+      "type": "source",
+      "fused_score": 0.207,
+      "qmd_rank": null,
+      "effective_confidence": 0.55,
+      "verdict": "ignore",
+      "reason": "long-tail candidate; no enrichment facet needs it",
+      "reason_class": "below-threshold",
+      "anchor": null
+    }
+  ],
+  "answer_map": [
+    {
+      "anchor": "W1",
+      "claim": "AI-native services playbook: sell outcomes not co-pilots/seats; 4 market traits; variance-is-existential; 30%→50%+ margin trajectory on 2-3x-bigger TAM; per-unit/outcome pricing GO, cost-plus/undercutting AVOID; don't-buy-your-way-in",
+      "pages": [
+        "sources/2026-06-03-warren-yc-how-to-build-an-ai-native-services-company"
+      ],
+      "span": "## TL;DR (1-11)"
+    },
+    {
+      "anchor": "W2",
+      "claim": "Native Dutch €80M founder-CEO anchor: day-zero rebuild, customer-service 100→18 via natural attrition, technology-leading/people-directing reversal, CAIO as missing MKB role, conscious revenue sacrifice",
+      "pages": [
+        "sources/2026-05-27-scheffer-de-ondernemer-helloprint-ai-rebuild-from-day-zero"
+      ],
+      "span": "## TL;DR (1-6)"
+    },
+    {
+      "anchor": "W3",
+      "claim": "McKinsey team-shape quantification: 100→60 FTE, 10-role→3-role pod, ~60% team-size cut, 3-5x productivity; outer-loop roles + policy-as-code; knowledge-graph-as-memory-layer / librarian agent",
+      "pages": [
+        "sources/2026-05-28-moon-mckinsey-rewiring-software-delivery-for-the-agentic-era"
+      ],
+      "span": "## TL;DR (1,4,5,6)"
+    },
+    {
+      "anchor": "W4",
+      "claim": "Employment empirics: AI #1 cited layoff reason Mar+Apr 2026; chatbot 2-3% vs deeper-agent 30-60% productivity split; Frey no-automobile-industry counter; IBM tripling entry-level; if-you-work-like-a-robot",
+      "pages": [
+        "sources/2026-05-28-giles-wp-intelligence-new-human-machine-workforce-agentic-ai-jobs"
+      ],
+      "span": "## TL;DR (1,5,6,7)"
+    },
+    {
+      "anchor": "W5",
+      "claim": "Healthcare vertical worked example: Philips SmartArt cardiac-MRI 15min→30s, ~4x throughput; AI-augmentation in a structurally-undersupplied vertical; AI-as-clinical-bias-auditor; interoperability/reimbursement/regulation barriers",
+      "pages": [
+        "sources/2026-05-31-peron-mit-smr-me-myself-and-ai-philips-interoperability-health-care"
+      ],
+      "span": "## TL;DR (1,2,6)"
+    },
+    {
+      "anchor": "W6",
+      "claim": "The micro-productivity-trap: task-level gains that fail to become firm-level value (offering/process/anthropomorphizing lock-in); escape = workflow redesign + verify→evaluate→capture flywheel; 10-25% EBITDA for transformation mindset",
+      "pages": [
+        "concepts/micro-productivity-trap"
+      ],
+      "span": "## Working definition / Key claims"
+    }
+  ],
+  "generated_at": "2026-06-05T10:51:53.352Z"
+}
