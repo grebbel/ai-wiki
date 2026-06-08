@@ -6,7 +6,7 @@ tags: [grady-booch, uml-creator, gang-of-four-design-patterns, third-golden-age-
 role: "Chief Scientist for Software Engineering at IBM (Fellow); co-author of *Design Patterns: Elements of Reusable Object-Oriented Software* (the Gang of Four book, 1994); creator of the Unified Modeling Language (UML)"
 confidence: 0.75
 last_confirmed: "2026-05-28"
-accessed_at: "2026-05-28"
+accessed_at: "2026-06-05"
 source_count: 1
 ---
 

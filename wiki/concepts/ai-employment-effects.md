@@ -4,7 +4,7 @@ aliases: ["AI employment effects", "AI labor effects", "AI job displacement", "A
 tags: [employment, labor-market, ai-displacement, automation, labor-economics, age-effects]
 confidence: 0.95
 last_confirmed: "2026-06-02"
-accessed_at: "2026-06-02"
+accessed_at: "2026-06-05"
 source_count: 38
 relationships:
   - type: supports

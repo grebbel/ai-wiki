@@ -4,7 +4,7 @@ aliases: ["micro-productivity trap", "micro-productivity-trap", "offering lock-i
 tags: [micro-productivity-trap, AI-transformation, EBITDA, process-redesign, workflow-redesign, enterprise-ai, organizational-change-vs-tech-implementation]
 confidence: 0.95
 last_confirmed: "2026-06-02"
-accessed_at: "2026-06-02"
+accessed_at: "2026-06-05"
 source_count: 28
 relationships:
   - type: instance-of

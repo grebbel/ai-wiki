@@ -4,7 +4,7 @@ aliases: ["LLM Wiki", "LLM-Wiki", "llm wiki", "Karpathy's LLM Wiki", "LLM-mainta
 tags: [llm-wiki, knowledge-compilation, three-layer-architecture, ingest-query-lint, agent-memory, claude-md, knowledge-compounding, agentic-knowledge-base]
 confidence: 0.91
 last_confirmed: "2026-05-17"
-accessed_at: "2026-05-17"
+accessed_at: "2026-06-05"
 source_count: 7
 relationships:
   - type: part-of

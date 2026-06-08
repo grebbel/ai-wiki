@@ -7,7 +7,7 @@ opened: 2026-04-09
 closed: 2026-05-12
 confidence: 0.90
 last_confirmed: "2026-05-29"
-accessed_at: "2026-05-29"
+accessed_at: "2026-06-05"
 source_count: 8
 relationships:
   - type: supports

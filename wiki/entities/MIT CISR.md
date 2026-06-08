@@ -7,7 +7,7 @@ parent: "[[MIT Sloan]]"
 website: "https://cisr.mit.edu"
 confidence: 0.75
 last_confirmed: "2026-04-28"
-accessed_at: "2026-04-28"
+accessed_at: "2026-06-05"
 source_count: 1
 relationships:
   - type: employs
