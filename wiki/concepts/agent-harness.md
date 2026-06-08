@@ -3,9 +3,9 @@ type: concept
 aliases: ["agent harness", "harness", "AI agent harness", "agent runtime", "agent runtime layer"]
 tags: [agent-harness, ai-agents, ai-engineering, harness-frameworks, context-management, constraints, contracts, telemetry, llm-non-determinism, hooks, repository-as-system-of-record]
 confidence: 0.98
-last_confirmed: "2026-06-02"
-accessed_at: "2026-06-02"
-source_count: 54
+last_confirmed: "2026-06-08"
+accessed_at: "2026-06-08"
+source_count: 55
 relationships:
   - type: part-of
     target: ai-agents
@@ -280,6 +280,16 @@ Until February 2026 the wiki carried *practitioner essays* and *vendor announcem
 > *"Our most difficult challenges now center on designing environments, feedback loops, and control systems that help agents accomplish our goal: build and maintain complex, reliable software at scale."*
 
 This **substantiates** the rhetorical claims of [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee]] and [[2026-05-07-kokane-agent-harness-vs-systems-design|Kokane]] with a concrete operational case at vendor scale. It is also the strongest worked example yet of [[2026-04-29-andrej-karpathy-from-vibe-coding-to-agentic-engineering|Karpathy's]] *agentic engineering* discipline: humans steer, agents execute, the discipline shows up in *the scaffolding* — not the code.
+
+### Headroom: a shipping Context-layer implementation ([[2026-06-03-chopra-headroom-context-optimization-layer-for-llm-applications|Chopra / Netflix, Linux Foundation June 2026]])
+
+Most wiki harness sources *name* the Context layer; [[2026-06-03-chopra-headroom-context-optimization-layer-for-llm-applications|Chopra (2026)]] ships it. **Headroom** is an open-source (Python; Rust port underway) local proxy between an agent and its LLM provider — 1,900 GitHub stars and 30+ contributors in four months — and it is the wiki's first **code-that-ships** treatment of [[2026-05-07-chatterjee-anatomy-of-agent-harness|Chatterjee's]] Context layer and the [[2026-05-04-rethinking-agents-harness-is-all-you-need|context-window-as-RAM]] analogy. Its three stages are the operating detail of "managing the RAM":
+
+- **Cache aligner** — automates the *stable/dynamic partition* the harness definition names abstractly: it pulls dynamic fields (dates, per-session UUIDs) out of the cacheable prefix and pushes them to the end, so a single change doesn't bust the whole prefix cache. Encodes provider-specific economics: Anthropic 90% (`cache_control` tags, set automatically), OpenAI 50%, Google 75% (flaky); Claude's default **5-minute** prefix-cache TTL (a forked sub-agent silently burns it) vs a hidden **1-hour** TTL costing 2× on writes for 90% read savings.
+- **Content router** — different compressors per data type (AST-based for code, JSON "smart crusher" at 83–95% best-case, DOM for web), because one-size-fits-all compression "did not work." Includes **compress-base**, an *encoder-only* token-weigher (keep/remove per token, not summarisation) trained on **agentic traces** rather than Microsoft LLMLingua's meeting-summary corpus — a concrete claim that *domain-of-training matters for context compression*.
+- **CCR (Compress-Cache-Retrieve)** — **reversible compression**: evict aggressively, keep the original in local Redis/SQLite (5-min TTL), and register an MCP `retrieve` tool with an embedded ID so the model can fetch the original on demand ("99% of the time the LLM doesn't call because it doesn't need it"). This grafts a RAG-style retrieve-when-needed pattern onto the agent's *own evicted context* — a data point that retrieval doesn't vanish under long context, it **moves inside the harness's context manager** (see [[syntheses/is-rag-dead|is-rag-dead]]).
+
+Headroom also instantiates two other harness primitives: **11 hooks** as portable interception points ("good interception points if you want to build a harness") and **cross-agent memory** (a SQLite memory graph synced to `agent.md`/`memory.md` so Claude Code → Codex inherit it) — a lighter local analogue of [[2026-05-08-bratanic-unified-agentic-memory-hooks|Bratanic's]] Neo4j cross-harness memory. And it sharpens the **why beyond cost**: compression cuts *latency* (a voice-agent user targeting the ~200ms human-perceptible floor) and *improves accuracy* by countering **context rot** (accuracy degrades as the window grows) — the quality-side argument for the Context layer, independent of token spend. Headroom's explicit framing of provider-native compaction as "extremely lossy … a flat wall of text" positions reversible compression as the less-lossy counter to the [[2025-11-26-anthropic-effective-harnesses-long-running-agents|compaction approach for long-running agents]]. Author-reported impact: 200B tokens saved (~$700K) via opt-in tokens-only telemetry; 20–30% typical savings; a forthcoming sibling project, **Headlight**, extends this toward **context provenance + agent-consumable telemetry** ("a year out, agents will consume telemetry data") — an emerging adjacency to the Compounding layer.
 
 ## Convergence with prior wiki claims
 
