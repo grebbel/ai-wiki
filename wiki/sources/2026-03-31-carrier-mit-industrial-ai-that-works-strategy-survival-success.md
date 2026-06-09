@@ -157,6 +157,7 @@ Digital twins are no longer just operational monitoring; they're parallel-design
 
 - Existing concepts directly anchored: [[industrial-ai-agents]] (3rd source — bumps from 2 to 3), [[systems-thinking]] (3rd source — bumps from 2 to 3), [[strategy]] (3rd source — adds an industrial-ops case to the new concept), [[ai-agents]] (4th-tier touchpoint via the *"pick the right agent level"* framing), [[enterprise-ai-adoption]] (the adoption-capacity-is-the-binding-constraint thesis), [[micro-productivity-trap]] (the 20% value claim and *"buy two bottling lines"* trap).
 - Pre-existing entity reinforced: [[Jay Forrester]] (Carrier's anchor for the missing-feedback-loops diagnostic — directly continuous with [[2026-05-15-sterman-systems-thinking-for-leaders-designing-solutions-that-work|Sterman 2026]] who holds the Forrester-named chair).
+- Channel-entity: [[MIT Sloan Executive Education]] — the publisher/channel, **promoted to an entity on 9 June 2026** once the [[2026-05-15-sterman-systems-thinking-for-leaders-designing-solutions-that-work|Sterman webinar]] became the second source under this `author:` value (this Carrier webinar was the first).
 - **Dangling** (single-source mention, deferred per author-entity rule):
   - **John Carrier** (Senior Lecturer in System Dynamics, MIT Sloan; teaches *Implementing Industrial AI* exec course)
   - **Diane Abbott** (Associate Director, MIT Sloan Executive Education) — webinar host.

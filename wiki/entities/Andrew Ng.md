@@ -6,9 +6,9 @@ tags: [andrew-ng, ai-researcher, ai-educator, stanford, deeplearning-ai, courser
 affiliation: "[[DeepLearningAI]] (founder); Stanford University (adjunct professor); AI Fund (managing general partner); Landing AI (founder/CEO); Coursera (co-founder); ex-Google Brain (founder); ex-Baidu (chief scientist)"
 role: "Founder of DeepLearning.AI; adjunct professor at Stanford; managing general partner at AI Fund; founder/CEO of Landing AI; co-founder of Coursera; founding lead of the Google Brain team; ex-chief scientist at Baidu"
 confidence: 0.9
-last_confirmed: "2026-05-28"
-accessed_at: "2026-05-28"
-source_count: 4
+last_confirmed: "2026-06-09"
+accessed_at: "2026-06-09"
+source_count: 5
 ---
 
 # Andrew Ng
@@ -103,3 +103,4 @@ Ng's prior wiki-relevant rhetorical contribution: *"we need to unbig in AI"* —
 
 - [[2026-05-20-ng-deeplearningai-ai-dev-26-sf-future-of-software-engineering]] — substantive solo-headlining source: the AI Dev 26 x SF *future-of-software-engineering* keynote.
 - [[2026-03-31-carrier-mit-industrial-ai-that-works-strategy-survival-success]] — substantive cross-reference: the *"unbig in AI"* anchor for the industrial-AI altitude.
+- [[2026-05-26-landingai-touchpoint-to-outcome-front-office-processes]] — the wiki's first source *from* [[LandingAI]], the company Ng founded; he is named as founder/CEO but is not a presenter (a document-AI vendor webinar).

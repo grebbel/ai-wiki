@@ -134,9 +134,9 @@ The defensive value of having this on the record: when intuition rebels against 
 
 - Existing concept page directly anchored: [[systems-thinking]] — Sterman is the wiki's second source on this concept; updates the page from confidence 0.75 / 1 source → 0.80 / 2 sources; closes one of the open questions ("deeper Senge and Forrester texts").
 - Pre-existing entity referenced and now reinforced: [[Jay Forrester]] — the discipline's founder; Sterman holds the chair named for him.
+- Channel-entity: [[MIT Sloan Executive Education]] — the publisher/channel, **promoted to an entity on 9 June 2026** on the second source under this `author:` value (the Carrier *Industrial AI That Works* webinar being the first).
 - **Dangling** (single-source mention, deferred per author-entity rule):
   - **John D. Sterman** (speaker; Jay W. Forrester Professor of Management, MIT Sloan; director of MIT Sloan Sustainability Initiative; co-founder of MIT's Institute for Data Systems and Society faculty)
-  - **MIT Sloan Executive Education** (publisher / channel) — first wiki source from this channel.
   - **Climate Interactive** (collaborator on the Enroads climate-policy simulator)
   - **Sully Sullenberger** (named in passing as a simulator-pedagogy anchor)
   - **George Box** (statistician, quoted for *"all models are wrong"*)
