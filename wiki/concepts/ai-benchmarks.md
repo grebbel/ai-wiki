@@ -2,10 +2,10 @@
 type: concept
 aliases: ["AI benchmark", "AI benchmarks", "AI evaluation", "AI evals"]
 tags: [ai-benchmarks, ai-evaluation, foundation-models, capability-reliability-gap, scar-fragmentation]
-confidence: 0.88
-last_confirmed: "2026-05-28"
-accessed_at: "2026-05-28"
-source_count: 8
+confidence: 0.90
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 9
 relationships:
   - type: uses
     target: foundation-models
@@ -84,6 +84,14 @@ For [[Claude Sonnet 4.5]], the duration at which 50% success is achieved varies 
 
 Per the Anthropic report, the Claude.ai number is much higher because of selection bias (users bring tasks they expect Claude to succeed on) and task decomposition with feedback loops. The methodology gap is itself diagnostic — fixed-benchmark horizons and platform-observed effective horizons measure different things.
 
+### GDPval — economically-valuable tasks, win-rate vs human experts ([[2025-10-05-patwardhan-et-al-openai-gdpval|GDPval, OpenAI, Oct 2025]])
+
+A **structurally distinct** benchmark that breaks the saturation cycle this page opens with. GDPval evaluates frontier models on **real deliverables drawn from real expert work** — 1,320 tasks across 44 occupations in the top-9 US-GDP sectors (~$3T wages), each built by an industry expert (avg 14 yrs) and tied to the actual time/cost to complete (avg 7 hours, up to weeks).
+
+- **The metric is a non-saturating win rate.** Rather than an accuracy score that tops out, GDPval grades model deliverables **head-to-head against human-expert deliverables** via blind expert pairwise comparison. Because the human baseline can be swapped for a stronger one over time, the benchmark "has no upper limit" — directly addressing this page's *"are we measuring what's measurable?"* debate by anchoring to economically meaningful output instead of test difficulty.
+- **Result (Oct 2025):** of GPT-4o / o4-mini / o3 / GPT-5 / Claude Opus 4.1 / Gemini 2.5 Pro / Grok 4, **Claude Opus 4.1 was best — 47.6% of its deliverables graded wins-or-ties** vs experts on the gold subset; performance improving **roughly linearly** over time; frontier models *approaching* expert deliverable quality. Model personalities: Claude strong on aesthetics/file-formatting (`.pdf`/`.xlsx`/`.ppt`), GPT-5 strong on accuracy/instruction-following.
+- **Capability is steerable** — more reasoning effort, more task context, and better **scaffolding** all lift scores (a general self-check prompt cut PowerPoint formatting errors 86%→64%, drove multimodal self-inspection 15%→97%, +5pp win rate). An empirical echo of the [[agent-harness]] thesis. This is the wiki's first benchmark whose *primary contribution is economic realism* rather than reasoning difficulty — complementary to the capability-reliability framing below ([[2026-03-20-huggingface-agentic-evaluations-workshop|Narayanan]]'s point that *capability ≠ deployment* is exactly why GDPval grades real deliverables, and why a 47.6% capability figure is not a 47.6% labor outcome).
+
 ### Agentic-evals frontier — capability-reliability gap, scaffolds, living benchmarks ([[2026-03-20-huggingface-agentic-evaluations-workshop|HF Agentic Evals Workshop, March 2026]])
 
 A 108-minute multi-speaker workshop (Hugging Face) that reframes the benchmark conversation for agentic systems. Four orthogonal moves to track:
@@ -125,6 +133,7 @@ A 108-minute multi-speaker workshop (Hugging Face) that reframes the benchmark c
 | **Vantage** ([[durable-skills]]) | Human skill assessment via LLM scaffolding | New 2026 (Globerson et al., Google Research); LLM autoraters match human raters; Pearson 0.88 vs experts on creativity tasks |
 | **GAIA-2** (on ARE) | Agentic multi-app multi-turn evaluation | New 2026 (Andrews et al., Meta); 1,000 scenarios / 10 universes / 11 apps; five capability splits incl. ambiguity and agent-to-agent |
 | **Reliability Index** | Cross-release reliability tracking | New 2026 (Narayanan/Robons, Princeton); 12 sub-dimensions of reliability; living tracker |
+| **GDPval** ([[2025-10-05-patwardhan-et-al-openai-gdpval\|GDPval]]) | Economically-valuable real-world tasks | New 2025 (OpenAI); 1,320 tasks / 44 occupations / 9 GDP sectors; non-saturating win-rate vs human experts; Claude Opus 4.1 best at 47.6% wins-or-ties; gold subset + grader open-sourced |
 
 ## Debates / contradictions
 

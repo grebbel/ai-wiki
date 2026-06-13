@@ -3,9 +3,9 @@ type: concept
 aliases: ["durable skills", "future-ready skills", "21st century skills", "21st-century skills", "transferable skills", "human skills"]
 tags: [durable-skills, 21st-century-skills, future-ready-skills, ai-deskilling, scalable-assessment, psychometrics, ai-evaluation, hiring-criteria, leadership-skills]
 confidence: 0.95
-last_confirmed: "2026-06-08"
-accessed_at: "2026-06-08"
-source_count: 25
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 26
 relationships:
   - type: contradicts
     target: ai-deskilling
@@ -191,6 +191,14 @@ The two 2026 [[The Linux Foundation|Linux Foundation]] *State of Tech Talent* re
 - **The pipeline-investment corollary** ([[2026-06-01-lf-state-of-tech-talent-europe-2026|Europe report]]): with entry-level technical roles contracting (−3% in Europe), upskilling becomes not only gap-closing for current staff but a **pipeline investment** for the mid-to-senior talent organisations will need — tying durable-skills development directly to the [[ai-employment-effects]] entry-level-decline finding.
 
 This sits alongside the page's *measurement* spine ([[2026-05-07-globerson-et-al-scalable-measurement-durable-skills|Globerson et al.]]) and the MGI Skill Change Index: measure which durable skills matter, then **develop them in-house** as the dominant organisational strategy.
+
+## The mindset-not-skillset inversion ([[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti / HBR June 2026]])
+
+[[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Marco Argenti]] (CIO, [[Goldman Sachs]]) supplies the wiki's sharpest **counter-framing** to the skills-inventory approach this page otherwise documents. The standard durable-skills move is to *identify and retain* the skills AI can't substitute. Argenti argues the framing of preservation is itself the trap: when a banker asks "what's the 10% of my job AI will never do?", his answer is **"let go of that 10%."**
+
+- **The horse-rider→car-driver analogy.** None of the specific *skills* transfer from riding to driving; what transfers is the **reflexes and instincts** — and the durable human residue Argenti names is **instincts, judgement, and values**, not any task-skill. This aligns with the wiki's measured durable skills (critical thinking, collaboration, judgement) but reframes them as a *substrate that survives role-metamorphosis* rather than a list to defend.
+- **From skillset to mindset.** "Don't just reskill, reimagine skills and build new habits." The durable capability is the *capacity to let trusted habits die and adopt a new professional identity* — a meta-skill above any catalogued competency. The hardest part, Argenti notes, is personal and cultural, not technical.
+- **Convergence with the wiki's judgement spine.** This restates, from a first-party CIO vantage, the [[2026-02-09-sternfels-mckinsey-survive-ai-and-reinvent-consulting|Sternfels/McKinsey]] claim that judgement and human-to-human skill are what models lack — and operationalises it as a *posture* (operator → supervisor/mentor) rather than a training curriculum.
 
 ## Related concepts
 

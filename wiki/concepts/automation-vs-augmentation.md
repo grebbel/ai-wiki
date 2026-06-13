@@ -3,9 +3,9 @@ type: concept
 aliases: ["automation vs augmentation", "automation-vs-augmentation", "automate vs augment", "AI substitution vs complementarity", "AI labor substitution", "AI labor complementarity"]
 tags: [automation, augmentation, generative-ai, ai-deployment, ai-task-design, capability-reliability-gap]
 confidence: 0.95
-last_confirmed: "2026-06-06"
-accessed_at: "2026-06-06"
-source_count: 38
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 40
 relationships:
   - type: supports
     target: ai-employment-effects
@@ -283,6 +283,15 @@ The **agent-centric quadrant** (30% of workforce, $70k avg pay) is the *wage-pre
 **(d) The 72% shared-skills finding** — even when occupations are clearly automatable or not, **72% of the underlying skills are required for both automatable and non-automatable work activities**. Only 11% of skills are required for people-led work only; only 17% for AI-led work only. This is the **skill-level decoupling** from the occupation-level archetype distribution: an accountant (agent-centric occupation) and a nurse (people-centric occupation) share most of the same skills — communication, problem-solving, detail orientation — they just apply them in different mixes of automatable / non-automatable activities. The implication: **automation reshapes how skills are applied, not which skills are valuable.**
 
 The MGI framework joins the wiki's existing automation-vs-augmentation anchors — [[2026-04-28-anand-wu-genai-playbook|Anand-Wu]] (strategic deployment), [[2026-04-28-mittri-cisco-ai-enabled-enterprise|MITTRI/Cisco]] (task design), [[2026-04-28-brynjolfsson-canaries-coal-mine|Brynjolfsson]] (labor consequences), [[2026-04-28-anthropic-economic-index-q4-2025|Anthropic Economic Index]] (Claude.ai usage data) — as the **structural-modeling** layer that the others triangulate empirically. MGI alone gives the wiki the *occupation-level prospective distribution* of where people, agents, and robots will be by 2030.
+
+### 20. The augmentation case, measured and prescribed: GDPval + Argenti (Oct 2025 / June 2026)
+
+Two sources land the augmentation thesis from opposite ends — one empirical, one prescriptive:
+
+- **Measured** — [[2025-10-05-patwardhan-et-al-openai-gdpval|GDPval (OpenAI)]] shows that **pairing frontier models with expert human oversight is cheaper and faster than unaided experts**. Under a "try the model, fix it yourself if unsatisfactory" workflow, model assistance saved the expert both time and money — even though the best model alone reached only 47.6% wins-or-ties. This is the cleanest empirical statement in the wiki that the *augmentation* configuration (human + model) dominates either the pure-human or pure-model configuration on real economic deliverables.
+- **Prescribed** — [[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti (Goldman Sachs CIO, HBR)]] names the human-side adaptation augmentation demands: the shift from **operator to supervisor/mentor** ("the new 100%"). The value-add moves from producing every deliverable to giving clear instructions, applying judgement, and ensuring systemic controls so agents execute safely. *"An agentic future requires everyone to turn into a manager of sorts."* This is the role-redesign correlate of the [[2026-05-28-giles-wp-intelligence-new-human-machine-workforce-agentic-ai-jobs|Giles/WP]] operator→orchestrator finding, here from a first-party CIO vantage.
+
+Together they bracket the augmentation deployment model: GDPval shows it *works economically*; Argenti specifies the *mindset and role redesign* that lets an organization capture it.
 
 ## The four-source convergence on the distinction
 

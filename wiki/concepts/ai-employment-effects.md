@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI employment effects", "AI labor effects", "AI job displacement", "AI labor market", "AI employment impact"]
 tags: [employment, labor-market, ai-displacement, automation, labor-economics, age-effects]
 confidence: 0.95
-last_confirmed: "2026-06-09"
-accessed_at: "2026-06-09"
-source_count: 41
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 42
 relationships:
   - type: supports
     target: automation-vs-augmentation
@@ -103,6 +103,12 @@ Pooled across all reports through Nov 2025: 49% of jobs have Claude used for at 
 ### Task-content shift and deskilling ([[2026-04-28-anthropic-economic-index-q4-2025|Anthropic Economic Index, 4th report]])
 
 A finding distinct from displacement and from wage effects: AI-covered tasks skew toward higher-education content (Claude-covered: 14.4 years average; economy-wide: 13.2 years). As a first-order effect, removing AI-covered tasks from a job *deskills* the remaining task mix on average — shifting it toward lower-education content while the job itself persists. Most-affected named occupations: technical writers, travel agents, teachers. See [[ai-deskilling]] for the dedicated concept page.
+
+### Capability as a *leading* indicator: GDPval ([[2025-10-05-patwardhan-et-al-openai-gdpval|GDPval, OpenAI, Oct 2025]])
+
+A measurement-stance distinct from everything above. Adoption, usage, and GDP-attribution metrics are **lagging** indicators — the invention-to-permeation lag for electricity, computers, etc. runs years to decades. [[2025-10-05-patwardhan-et-al-openai-gdpval|GDPval]] proposes the alternative: **directly measure model capability on real expert deliverables** as a *leading* indicator of economic relevance, visible *before* adoption shows up in employment data. Across 44 occupations in the top-9 US-GDP sectors, the best model (Claude Opus 4.1) produced deliverables graded **wins-or-ties vs human experts on 47.6%** of gold-subset tasks (Oct 2025), improving roughly linearly.
+
+The load-bearing caveat for *this* page: **capability is not displacement.** A 47.6% win rate is a ceiling on what a model *can* produce one-shot under ideal context, not a measured labor-market outcome — GDPval tasks are precisely-specified, one-shot, and non-interactive (the paper's own limitation). This is the supply-of-capability mirror of [[2026-03-20-huggingface-agentic-evaluations-workshop|Narayanan's]] capability-reliability gap and of the [[micro-productivity-trap]]: high task-level capability has repeatedly failed to convert directly into firm-level or labor-market change. GDPval also names the *most-exposed* occupations its design surfaces (knowledge work with digital deliverables — developers, lawyers, and similar), echoed by [[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti (HBR)]], who cites GDPval and extrapolates the trend to ~80% by mid-2026.
 
 ### The supply-side answer: durable skills ([[2026-05-07-globerson-et-al-scalable-measurement-durable-skills|Globerson et al. 2026]])
 

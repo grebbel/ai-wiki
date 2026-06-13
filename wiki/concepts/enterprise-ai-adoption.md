@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI adoption", "enterprise AI use", "business AI adoption", "organizational AI adoption", "AI maturity"]
 tags: [ai-adoption, enterprise-ai, ai-strategy, ai-maturity, ai-foundation, omniscalers, future-arenas]
 confidence: 0.95
-last_confirmed: "2026-06-09"
-accessed_at: "2026-06-09"
-source_count: 66
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 67
 relationships:
   - type: uses
     target: automation-vs-augmentation
@@ -468,6 +468,16 @@ The two 2026 [[The Linux Foundation|Linux Foundation]] *State of Tech Talent* re
 ## The 30/60/90-day rollout playbook + the trust gap ([[2025-12-22-randell-gousset-microsoft-agentic-devops-in-real-life|Randell & Gousset / Microsoft Dec 2025]])
 
 The [[GitHub]]/[[Microsoft]] *Agentic DevOps* keynote contributes a **vendor-practitioner adoption playbook** for agentic coding: a **30/60/90-day** ramp (first 30 = pilot, 31–60 = level-up, 61–90 = optimisation), with the explicit discipline of *progressive ROI, don't boil the ocean,* and **"break the work down for the agent like you would for a human"** (giving an agent too much at once is named as the common failure). Adoption is framed as role-by-role **upskilling** — developers (prompt-writing, code review, security awareness), DevOps/security teams, *and the C-suite* — echoing the [[durable-skills]] / workforce-readiness constraint above. The keynote's load-bearing adoption caution is the **trust gap**: *"AI is powerful but not magic… you're really going to have to invest in how you bring it onto your team just like you would invest in bringing another human onto your team,"* plus the anti-FOMO rule **don't chase every new frontier model** (each switch costs learning time). This is the *developer-tooling-vendor* mirror of the [[micro-productivity-trap]] adoption warning and the Beutler/OpenAI *Ask→Assist→Automate* maturity ladder above — adoption is an organisational-transformation problem (*"DevOps is an organizational transformation first"*), not a tool-procurement one.
+
+## Data-readiness as the gate + *obsess over evals*: the Goldman CIO vantage ([[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti / HBR June 2026]])
+
+[[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Marco Argenti]], CIO of [[Goldman Sachs]], contributes a **first-party CIO adoption playbook** with three load-bearing claims that sharpen this page's deployment-discipline spine:
+
+- **"AI transformation follows data transformation, not the other way around."** Agents without context "revert to chatbots"; data is the ground truth. Argenti's striking prescription: leaders should be willing to **delay AI-at-scale until the data is in order** (months or years) — *"a very unpopular concept these days."* Data readiness is itself a prioritisation signal for *which* use cases to tackle. The mechanism is the **garbage-in/garbage-out problem made worse**: AI "makes garbage output look plausible," so the usual GIGO penalty is amplified. This is the wiki's clearest CIO-level statement that the data layer, not the model, is the binding constraint on enterprise adoption.
+- **Obsess over evaluations and benchmarks.** Real organisational processes resemble the **Garbage Can model** (chaotic, nonlinear), not the clean step-by-step SOPs firms codify. Goldman's approach to applying AI to firmwide processes (client onboarding worked example): first **codify what good looks like** (process-quality metrics + experienced-operator decisions), then build evals comparing agent outputs to desired outcomes, with feedback loops so the AI self-improves. **Outcome-based, not step-by-step** (tell Maps the destination, not every turn). This is the enterprise-adoption face of the [[agent-harness]] contracts/evals layer.
+- **Demand radical targets to force genuine adoption.** "If you want your developers to change habits, ask them to be **3× more productive, not 20%**"; aim for "**90% reduction of manual touchpoints, not 20%.**" Incremental targets yield optimisation-of-the-old-process (the [[micro-productivity-trap]]); radical targets force the rethink. Even reaching halfway proves the team went through real transformation, not just speed-up.
+
+Argenti joins the wiki's CIO/executive-vantage adoption anchors ([[2026-06-02-architecting-ai-native-organizations-redesign-work-at-scale-joe-beutler|Beutler/OpenAI]] Ask→Assist→Automate; [[2025-12-22-randell-gousset-microsoft-agentic-devops-in-real-life|Microsoft]] 30/60/90) — distinctively contributing the **data-readiness precondition** the others under-weight.
 
 ## Debates and supersession
 

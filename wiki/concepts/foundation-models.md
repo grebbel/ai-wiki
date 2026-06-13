@@ -3,9 +3,9 @@ type: concept
 aliases: ["foundation model", "foundation models", "FM", "frontier model", "frontier models"]
 tags: [foundation-models, generative-ai, ai-research]
 confidence: 0.85
-last_confirmed: "2026-06-01"
-accessed_at: "2026-06-01"
-source_count: 15
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 16
 quality_score: 0.75
 quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '2 broken body wikilink(s)']
 ---
@@ -91,6 +91,10 @@ The framing has three implications worth flagging:
 3. **Where competitive advantage moves**: from model selection to the **harness layer** (memory architecture, quality contracts, learned per-customer overrides, telemetry). The "rent vs own" aphorism: *"The model is what you rent. The harness is what you own."* See [[agent-harness]] for the full treatment. As of [[2026-05-04-rethinking-agents-harness-is-all-you-need|May 2026]] this framing now has its first **empirical anchor**: an optimised harness from Khattab et al. (DSPy team) **transferred across five different foundation models** without re-optimisation, lifting all of them — turning *"plan for swap"* from a prudential design hint into a measured property of the harness layer.
 
 **Caveat against over-commoditization narrative**: [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]] documented that Claude Sonnet 4.5's "context anxiety" failure mode was *absent* on Opus 4.5 — same family, different reliability. Within-family variation can be large enough that the "models converging" framing needs nuance: the *frontier* converges in benchmark performance, but *production-relevant reliability characteristics* (long-horizon stability, refusal behaviour, cost/latency curves) can vary substantially even between sibling models. The "plan for swap, not for marriage" prescription survives the caveat — but harness designers should expect to discover model-specific quirks at production scale and budget for them.
+
+### Cross-model deliverable comparison on real work ([[2025-10-05-patwardhan-et-al-openai-gdpval|GDPval, OpenAI 2025]])
+
+GDPval supplies a rare *head-to-head, deliverable-quality* comparison across frontier families on real economic tasks (not academic benchmarks). On the gold subset, **Claude Opus 4.1 was the best** of GPT-4o / o4-mini / o3 / GPT-5 / Claude Opus 4.1 / Gemini 2.5 Pro / Grok 4, with **47.6% wins-or-ties** vs human experts. The model *personalities* are the load-bearing detail for the commodity-vs-differentiated debate above: **Claude excels at aesthetics and file formats** (`.pdf`/`.xlsx`/`.ppt`), **GPT-5 excels at accuracy and instruction-following**; Gemini and Grok most often failed by not delivering or using the wrong format. So even as raw benchmark scores converge, models retain *distinct deliverable profiles* — a reason the "swap freely" framing needs the same nuance the within-family caveat raises. GDPval also confirms performance is improving **roughly linearly over time**, consistent with the frontier-keeps-moving picture.
 
 ## Notable foundation model series (mentioned via [[2026-04-28-ai-index-report-2025|AI Index 2025]])
 

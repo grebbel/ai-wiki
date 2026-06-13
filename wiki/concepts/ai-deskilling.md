@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI deskilling", "ai-deskilling", "task composition shift", "deskilling"]
 tags: [deskilling, task-composition, ai-employment-effects, occupations]
 confidence: 0.85
-last_confirmed: "2026-06-02"
-accessed_at: "2026-06-05"
-source_count: 10
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 11
 relationships:
   - type: instance-of
     target: ai-employment-effects
@@ -136,6 +136,14 @@ The wiki's first **executive-readership-altitude prescription** on deskilling-pr
 Two concrete counter-measures Giles names: (a) **bonuses for keeping practising load-bearing skills** (coding cited as the worked example) — pays workers to retain skills they would otherwise let atrophy under AI substitution; (b) **regular manual checks of key agentic systems** — periodic forced-disengagement of the AI to maintain human know-how on the underlying operations.
 
 Convergent with [[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|Allen / AWS]]'s *protect the junior learning path* discipline and [[2026-04-21-forsgren-macvean-build-core-skills-thrive-ai-era-developer|Forsgren & Macvean]]'s *productive-struggle* discipline — Giles supplies the executive-readership news-survey altitude framing of the same anti-deskilling principle. The *Gartner agents-handling-one-third-of-business-decisions-by-2028* anchor is the forecast that makes the prescription feel urgent; if true, the *who-can-still-police-the-agents?* gap becomes a load-bearing firm-survival question by 2028-2030.
+
+## The verification-discipline countermeasure: *everyone becomes a manager* ([[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti / HBR June 2026]])
+
+[[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti]] (CIO, [[Goldman Sachs]]) sits on *both sides* of the deskilling tension — and that is what makes him a useful anchor here. On one hand he *prescribes* shedding execution habits (the banker should stop "producing every single line of content in a pitch deck"); on the other he names the discipline that prevents the shed from becoming erosion:
+
+> *"Resist the temptation of taking AI output at face value. Check the sources, supervise, and verify outputs, or learn to do so if, until now, you have only relied on the product of your own work. An agentic future requires everyone to turn into a manager of sorts."*
+
+The deskilling risk Argenti implicitly accepts (delegated execution atrophies execution skill) is bounded by a **new load-bearing skill**: source-checking, supervision, and output-verification — the "manager of sorts" competence. His **garbage-in/garbage-out** warning sharpens the stakes — *AI "makes garbage output look plausible,"* so the verification skill is harder, not easier, than checking human work. This is the *individual-habit* complement to Giles's *executive-prescription* framing above: Giles tells the firm to mandate manual checks; Argenti tells the worker the verification posture *is* the new job.
 
 ## Related concepts
 

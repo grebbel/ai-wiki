@@ -5,10 +5,13 @@ aliases: ["OpenAI"]
 tags: [openai, ai-lab, foundation-models, chatgpt, gpt-4, gpt-5, codex, agentic-engineering, sora, custom-gpts, public-benefit-corporation, nonprofit-foundation]
 since: 2015
 confidence: 0.95
-last_confirmed: "2026-06-06"
-accessed_at: "2026-06-06"
-source_count: 16
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 17
 relationships:
+  - type: published-by
+    target: 2025-10-05-patwardhan-et-al-openai-gdpval
+    via: "OpenAI research paper introducing the GDPval economically-valuable-task benchmark; public grader at evals.openai.com"
   - type: employs
     target: Aaron-Chatterji
     via: "Chief Economist"
@@ -62,6 +65,7 @@ Note OpenAI's recurring appearance on the *deployment* side of wiki sources (the
 ## Research initiatives appearing in this wiki
 
 - **Economic Research team** (led by Chief Economist [[Aaron Chatterji]]). Counterpart to Anthropic's [[Anthropic Economic Index]] initiative. Members in this wiki: [[Gawesha Weeratunga]], [[Harrison Satcher]].
+- **GDPval** ([[2025-10-05-patwardhan-et-al-openai-gdpval|Patwardhan et al. 2025]]) — OpenAI's benchmark measuring frontier-model performance on real-world economically valuable tasks (1,320 tasks, 44 occupations, top-9 US-GDP sectors), graded by head-to-head win rate vs human experts. Best model at publication: Claude Opus 4.1 (47.6% wins-or-ties). Public automated grader at evals.openai.com. The capability-measurement counterpart to OpenAI's adoption-focused Economic Research; complements [[2026-04-28-anthropic-economic-index-q4-2025|Anthropic's Economic Index]] (usage) and the [[2026-04-30-ai-index-report-2026|AI Index]] (academic benchmarks).
 - **Lowe's partnership** ([[2026-05-02-dutt-chatterji-ai-experimentation-to-transformation]]): launched **Mylow** (online customer-facing) and **Mylow Companion** (in-store associate-facing) AI interfaces in March 2025; Mylow Companion deployed across 1,700+ Lowe's stores.
 
 ## Other references

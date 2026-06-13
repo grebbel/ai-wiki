@@ -438,13 +438,16 @@ The **collection name** (`ai-wiki`) becomes a URI prefix in qmd's output: result
 
 ### Re-embedding after writes
 
-qmd's index does not auto-refresh. After ingest sessions that add or substantially edit pages, refresh:
+qmd's index does not auto-refresh. After ingest sessions that add or substantially edit pages, refresh in **two steps**:
 
 ```sh
-npx @tobilu/qmd embed
+npx @tobilu/qmd update   # re-index: discover NEW files + detect edited ones
+npx @tobilu/qmd embed    # compute embeddings for changed/added content hashes
 ```
 
-This computes embeddings only for pages whose content hash changed (qmd tracks hashes per document). On a typical post-ingest run (5–10 pages touched), this is seconds. A full rebuild is rare.
+**`update` before `embed` is load-bearing for *added* files.** `qmd embed` only embeds documents qmd already knows about — on a session that creates new pages, running `embed` alone reports *"all content hashes already have embeddings"* and silently skips the new files (they never enter the index). `qmd update` re-scans the collection root, picks up new files and edits, and *then* `embed` vectorises them. For sessions that only *edit* existing pages, `embed` alone suffices, but running both is always safe and idempotent. (Precedent: the 2026-06-12 ReAct ingest hit the silent-skip; the 2026-06-13 GDPval ingest confirmed `update` picks up the new files — "Indexed: 3 new, 13 updated".)
+
+`embed` computes embeddings only for pages whose content hash changed (qmd tracks hashes per document). On a typical post-ingest run (5–10 pages touched), this is seconds. A full rebuild is rare.
 
 ### Re-ranking by `effective_confidence`
 

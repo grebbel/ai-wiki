@@ -3,9 +3,9 @@ type: concept
 aliases: ["micro-productivity trap", "micro-productivity-trap", "offering lock-in", "process lock-in"]
 tags: [micro-productivity-trap, AI-transformation, EBITDA, process-redesign, workflow-redesign, enterprise-ai, organizational-change-vs-tech-implementation]
 confidence: 0.95
-last_confirmed: "2026-06-09"
-accessed_at: "2026-06-09"
-source_count: 29
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 30
 relationships:
   - type: instance-of
     target: enterprise-ai-adoption
@@ -209,6 +209,14 @@ Each names the same broad gap with a different vocabulary; the wiki's [[synthese
 ## The agentic-DevOps vendor-keynote articulation of the productivity paradox ([[2025-12-22-randell-gousset-microsoft-agentic-devops-in-real-life|Randell & Gousset / Microsoft Dec 2025]])
 
 A [[GitHub]]/[[Microsoft]] developer-tooling-vendor keynote lands the micro-productivity trap squarely at the **individual-developer scale**, citing the [[METR]] study: *"We have the expectation that AI is going to help us go faster. But sometimes you have to go slower to go faster."* Randell names the exact illusion the trap turns on — developers measure **slower on average while feeling faster**, because *"they see more files generated… it's that feeling of paper-pushing where I'm really busy."* His five-takeaways close is the trap's prescription in vendor language: **"focus on value, not how many lines of code we can generate with AI."** The keynote also supplies the *adoption-discipline* corollary the trap implies: **don't chase every new frontier model** (each switch costs learning time), and *"AI is powerful but not magic."* This is the **developer-tooling-vendor vantage** on the same throughput-≠-value pattern the wiki tracks from Bain (firm level), DORA/Forsgren (team level), and Storoni (neurological level) — notable precisely because it comes from a vendor whose incentive is to *sell* the acceleration, yet who warns against mistaking motion for value.
+
+## *Demand 3×, not 20%* — radical targets as the escape ([[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti / HBR June 2026]])
+
+[[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Marco Argenti]] (CIO, [[Goldman Sachs]]) gives the trap its sharpest single-line escape prescription. The trap, in his framing: *"Applying AI to streamline old processes, doing more of the same and doing it faster, can yield temporary relief, but will end up massively missing the mark in the long run."* — i.e. **optimisation is the trap; transformation is the escape.** The lever he proposes is the *magnitude of the target itself*:
+
+> *"If you want your developers to change habits, ask them to be 3x more productive, not 20%… If you want to streamline your procure-to-pay process, aim for a 90% reduction of manual touchpoints, not 20%. If you get even halfway there, you will know that your team has at least gone through the motions of radical rethinking, not just optimization."*
+
+The mechanism: a 20% target is reachable by speeding up the existing process (offering/process lock-in intact); a 3× / 90% target is *only* reachable by redesigning the work — so the radical target **forces** the process-redesign the trap's escape requires, and even partial attainment proves real rethinking occurred. This is the wiki's clearest *managerial-lever* statement of the escape, complementing Bain's four-step transformation (firm level) and the *workflow-not-task* unit-of-value framing: set targets that are impossible to hit by optimisation alone.
 
 ## Related concepts
 

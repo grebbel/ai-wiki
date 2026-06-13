@@ -3,9 +3,9 @@ type: concept
 aliases: ["jagged frontier", "jagged-frontier", "jagged technological frontier", "AI capability frontier", "jagged intelligence", "jagged skills", "jagged-intelligence", "animals vs ghosts", "ghosts not animals"]
 tags: [jagged-frontier, jagged-intelligence, AI-capabilities, knowledge-work, productivity, automation, augmentation, verifiability, animals-vs-ghosts]
 confidence: 0.93
-last_confirmed: "2026-06-01"
-accessed_at: "2026-06-01"
-source_count: 11
+last_confirmed: "2026-06-13"
+accessed_at: "2026-06-13"
+source_count: 13
 relationships:
   - type: supports
     target: automation-vs-augmentation
@@ -59,6 +59,8 @@ The jagged-frontier concept is consistent with and extended by:
 - [[ai-benchmarks]] — METR's task-horizon work measures the duration of tasks an AI can complete with 50% success, providing a related but methodologically distinct picture of capability scope.
 - [[2026-04-29-boussioux-crowdless-future|Boussioux et al. (2024)]] — in creative ideation, HAI solutions occupy a more *incremental* search space proximal to existing ideas, while human-crowd solutions exhibit more variable search at both the bottom and top extremes of novelty. The paper attributes the pattern to LLMs' training-data confinement, formal-rationality bias, and convergence toward the statistical mean. This is one face of jaggedness: AI is strong on value/quality and weak on extreme-novelty.
 - [[2026-04-30-ai-index-report-2026|AI Index 2026]] — the term "jagged frontier" is now part of the AI Index narrative (Top Takeaway #4). The report's anchoring example: **Gemini Deep Think wins gold at the IMO** while the top model reads analog clocks correctly only **50.1%** of the time. AI agents on **OSWorld** leapt from 12% → ~66% task success in one year, yet still fail roughly **1 in 3** structured-benchmark attempts. Robotic manipulation in software simulations (RLBench) reaches 89.4%, but real-world household-task success is only 12%.
+- [[2025-10-05-patwardhan-et-al-openai-gdpval|GDPval (OpenAI 2025)]] — jaggedness **by occupation and modality**, measured on real deliverables: across 44 occupations, different models win on different file types (Claude Opus 4.1 stronger on `.pdf`/`.xlsx`/`.ppt` aesthetics; GPT-5 stronger on pure text and instruction-following), and the most common loss reason is *failing to fully follow instructions* — a frontier that is uneven not just across tasks but across **deliverable formats and competence dimensions**. GDPval also shows the frontier is *steerable*: more reasoning effort, context, and scaffolding move it (a self-check prompt cut PowerPoint formatting errors 86%→64%).
+- [[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti (HBR 2026)]] — the practitioner restatement of the jaggedness *trajectory*: AI has gone "from pretty good at simple tasks and terrible at complex tasks to **excellent at simple tasks and pretty good at complex tasks**." The frontier is jagged *and moving outward*, which is why Argenti argues against anchoring one's value to any fixed "10% AI can't do."
 
 ### Mechanism: the frontier is invisible
 
