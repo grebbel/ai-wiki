@@ -24,14 +24,11 @@ items into `raw/` *without* giving up the immutable-`raw/` provenance discipline
    that collection by name. The wider library never enters the wiki. *(No `ai-wiki` collection
    exists yet — the user creates it and drags items in. The script takes `--collection <name>`, so
    the exact name is not load-bearing.)*
-3. **Full-text policy = copy the real attachment, then convert with Docling.** For each item, resolve
-   its primary attachment from Zotero storage; if it is a PDF, **copy it into `raw/<type>/<slug>.pdf`**
-   (gitignored) and convert to markdown with **[Docling](https://docling-project.github.io/docling/)**
-   (layout-aware: tables, reading order, headings, formulas). `pdftotext` is kept only as a safety-net
-   fallback if Docling errors on a malformed file. Docling also converts non-PDF attachments
-   (HTML snapshot, EPUB, DOCX), so those route through the same converter. Zotero's extracted plain
-   text is the **final fallback** only when an item has no convertible attachment at all (bare
-   webpages, notes).
+3. **Full-text policy = copy the real PDF, then convert as usual.** For each item, resolve its PDF
+   attachment from Zotero storage; if present, **copy the PDF into `raw/<type>/<slug>.pdf`**
+   (gitignored) and convert it to markdown via the repo's existing PDF pipeline
+   (`marker` → `markitdown` → `pdftotext`, whichever is installed). Zotero's extracted plain text is
+   only a **fallback** for items with no PDF attachment (webpages, notes).
 4. **No binary committed to git.** `.gitignore` already excludes `raw/**/*.pdf` (and `.docx/.epub/…`).
    The copied PDF lives locally, co-located by type; the public repo holds only the markdown stub +
    provenance fields (`zotero_item_key`, `doi`/`url`) to re-fetch.
@@ -45,9 +42,9 @@ New skill directory `.claude/skills/zotero-acquire/`, structured like `youtube-t
 ```
 .claude/skills/zotero-acquire/
   SKILL.md            # trigger + usage + the Acquire→Process contract
-  fetch_zotero.py     # pyzotero local-API client + attachment copy + Docling convert
-  requirements.txt    # pyzotero, docling, PyYAML
-  .python-version     # 3.10+ (Docling requirement)
+  fetch_zotero.py     # pyzotero local-API client + PDF copy + convert
+  requirements.txt    # pyzotero, PyYAML
+  .python-version
 ```
 
 Run pattern (via `uv`, like the youtube skill):
@@ -68,18 +65,16 @@ uv run --with-requirements .claude/skills/zotero-acquire/requirements.txt \
    same rule as the videos contract.
 4. **Route to `raw/<type>/`** via the `itemType → type` map below. This is a *first guess*; Process
    corrects it (e.g. a report typed `webpage` in Zotero).
-5. **Resolve primary attachment:** `GET /users/0/items/<itemKey>/children`, filter
-   `itemType == attachment`. Prefer `contentType == application/pdf`; else accept a convertible
-   doc (`text/html`, EPUB, DOCX). Path = `<zotero-data-dir>/storage/<attachmentKey>/<filename>`
-   (data dir default `~/Zotero`, overridable via `--data-dir`). If multiple PDFs, pick the first.
-   - **PDF exists** → copy to `raw/<type>/<slug>.pdf`; convert to `raw/<type>/<slug>.md` with
-     **Docling** (`DocumentConverter().convert(path).document.export_to_markdown()`); on Docling error,
-     fall back to `pdftotext`. Record `fulltext_source: pdf-converted` and `converter: docling | pdftotext`.
-   - **No PDF but a convertible attachment** (HTML/EPUB/DOCX) → copy it to `raw/<type>/<slug>.<ext>`
-     (gitignored) and convert with Docling. Record `fulltext_source: doc-converted`, `converter: docling`.
-   - **No convertible attachment** → fetch Zotero extracted text from the *attachment* key
-     (`GET /items/<attachmentKey>/fulltext`) if any; else leave body empty with a pointer to `url`.
-     Record `fulltext_source: zotero-extracted | none`; nothing copied.
+5. **Resolve PDF attachment:** `GET /users/0/items/<itemKey>/children`, filter
+   `itemType == attachment && contentType == application/pdf`. Path =
+   `<zotero-data-dir>/storage/<attachmentKey>/<filename>` (data dir default `~/Zotero`, overridable
+   via `--data-dir`). If multiple PDFs, pick the first.
+   - **PDF exists** → copy to `raw/<type>/<slug>.pdf`; convert to `raw/<type>/<slug>.md` via the
+     first available of `marker` / `markitdown` / `pdftotext`. Record `fulltext_source: pdf-converted`
+     and `converter: <tool>`.
+   - **No PDF** → fetch Zotero extracted text from the *attachment* key
+     (`GET /items/<attachmentKey>/fulltext`) if any attachment exists; else leave body empty with a
+     pointer to `url`. Record `fulltext_source: zotero-extracted | none`; no PDF copied.
 6. **Dedup on `zotero_item_key`:** before writing, scan `raw/**/*.md` frontmatter for an existing
    `zotero_item_key`. If found, **skip** (log `skip: already acquired`). `--force` overwrites.
 7. **Write** `raw/<type>/<slug>.md` with the contract frontmatter (below) + body.
@@ -119,9 +114,9 @@ url: "https://hai.stanford.edu/ai-index/2026-ai-index-report"
 citekey: ""                        # Better BibTeX if available
 abstract: |
   ...
-attachment: ai-index-report-2026.pdf  # copied filename; omitted when nothing copied
-fulltext_source: pdf-converted     # pdf-converted | doc-converted | zotero-extracted | none
-converter: docling                 # docling | pdftotext | null
+pdf: ai-index-report-2026.pdf      # filename only; omitted when no PDF copied
+fulltext_source: pdf-converted     # pdf-converted | zotero-extracted | none
+converter: pdftotext               # marker | markitdown | pdftotext | null
 notes: |
   Acquired 2026-06-15 from Zotero collection `ai-wiki`.
   itemType `webpage` but content is a report — confirm raw/ routing at Process.
@@ -149,7 +144,7 @@ The four canonical pre-flight fields Process must check: `title`, `url` (or `doi
 ## Out of scope / deferred
 
 - `zotero-mcp` server + repo-root `.mcp.json` (optional live-query tool).
-- Docling VLM pipeline (`--pipeline vlm`) — the default layout pipeline is enough; VLM is a later upgrade.
+- Installing `marker` (script degrades to `pdftotext`, which is present).
 - Zotero write-back (the native local API is read-only; not needed — we only read sources in).
 - Auto-Process (Process stays human-supervised by design).
 
@@ -159,10 +154,8 @@ The four canonical pre-flight fields Process must check: `title`, `url` (or `doi
   `notes:` flags it, Process corrects.
 - **Multiple attachments per item** (PDF + HTML snapshot). Mitigated: prefer `application/pdf`.
 - **Custom Zotero data dir.** Default `~/Zotero` (confirmed on this machine); `--data-dir` override.
-- **Docling first-run footprint** — pulls `torch` + downloads layout/table models (~hundreds of MB) on
-  first use, and is seconds-per-page (not instant). Mitigated: `uv` caches the install; models land in
-  `~/.cache` once; Apple-Silicon MPS acceleration applies. `pdftotext` fallback keeps the skill working
-  if Docling can't be installed/run in a given environment.
+- **`pdftotext` is unstructured** (no headings/tables). Acceptable per decision 3; a marquee paper can
+  be re-acquired with `marker` later, or `marker` installed to upgrade all future runs automatically.
 - **Local-API checkbox must be ON** (*Settings → Advanced → Allow other applications…*). Confirmed ON.
 
 ## Verification plan
