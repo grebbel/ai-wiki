@@ -345,6 +345,7 @@ Each section is flat-listed alphabetically. Once page counts grow, sections may 
 
 ## Threads
 
+- [[threads/zotero-stack-integratie|zotero-stack-integratie]] — _open_. Can the wiki read sources directly from a **local** Zotero library so adding a source no longer means hand-copying into `raw/`? Updates the May-2026 PRD with the Zotero 7 **local HTTP API** + local-MCP reality; decides on a live MCP (read) + an Acquire skill (durable ingest) scoped to a single Zotero collection, with no PDF binaries committed (Zotero is the binary store).
 - [[ai-maturity-measurement-comparison]] — _open_. How do AI Index, MIT CISR, Cisco, Werner-Le-Brun, and now Brynjolfsson all measure "AI's organizational impact" differently? The 1% / 7% / 12% / 13% spread on a single order of magnitude, plus employment-effects as a third measurement dimension.
 - [[threads/organizational-frameworks-for-ai-adoption|organizational-frameworks-for-ai-adoption]] — _closed 2026-05-05; synthesized into [[syntheses/organizational-frameworks-for-ai-adoption|the synthesis page]]_. Original thread retained for history.
 - [[threads/is-rag-dead|is-rag-dead]] — _opened retroactively 2026-04-09; closed 2026-05-12; synthesized into [[syntheses/is-rag-dead|the synthesis page]]._ Tracks the *"is RAG dead?"* question from Karpathy's 4 April 2026 LLM Wiki gist onward. Closed when 5 sources converged on *complement-not-replace*.
