@@ -61,6 +61,8 @@ Flags:
 | `--limit N` | `0` (all) | Cap items processed (handy for a test slice) |
 | `--force` | off | Re-acquire even if `zotero_item_key` already present in `raw/` |
 | `--json` | off | Emit per-item results as JSON to stdout |
+| `--no-video-delegate` | off | Disable auto-delegation of YouTube URLs to `youtube-transcript-skill` |
+| `--yt-timeout` | `30000` | Per-step timeout (ms) for the transcript fetch |
 | `--data-dir` | `~/Zotero` | Zotero data dir (where `storage/` lives) |
 | `--raw-dir` | repo `raw/` | Override target (e.g. a temp dir for testing) |
 
@@ -120,6 +122,30 @@ just the abstract or a URL pointer (fetch the real source before writing the wik
 | *(anything else)* | `articles/` (fallback) |
 
 The map lives at the top of `fetch_zotero.py`; routing is a **first guess** that Process corrects.
+
+## YouTube / Vimeo auto-delegation
+
+Zotero stores no transcript for a video, so a `videoRecording` (or any item) whose **`url` is a
+YouTube link** would otherwise land as an abstract-only stub (`fulltext_source: none`). Instead the
+script **auto-delegates to [`youtube-transcript-skill`](../youtube-transcript-skill/SKILL.md)**:
+
+1. Detects a YouTube URL (`youtube.com/watch`, `youtu.be/`, `/shorts/`, `/live/`).
+2. Runs the sibling skill via `uv` (`--json`), retrying once with a longer timeout on the skill's
+   intermittent transcript-panel flakiness.
+3. Writes `raw/videos/<video-title-slug>.md` with the **video frontmatter contract** (title, channel,
+   chapters, etc.) **plus** the two Zotero provenance fields (`zotero_item_key`, `zotero_collection`)
+   prepended — so dedup and re-location still work — and the full chaptered transcript as the body.
+
+Notes:
+
+- **Vimeo** URLs are *detected* but `youtube-transcript-skill` is **YouTube-only**, so a Vimeo item
+  falls back to the Zotero stub with a note to fetch the transcript by hand. (Pattern is ready for a
+  future Vimeo channel.)
+- Disable with `--no-video-delegate` (then a YouTube `videoRecording` lands as a normal stub).
+- The delegated file's slug comes from the **YouTube title**, which may differ from the Zotero title;
+  dedup is on `zotero_item_key`, so re-runs still skip correctly (no duplicate file).
+- If the transcript fetch returns nothing (no captions / flaky panel), the item lands as a Zotero stub
+  with a `notes:` line telling Process to re-run the skill manually.
 
 ## Attachment & full-text rules
 

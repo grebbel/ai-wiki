@@ -141,9 +141,22 @@ The four canonical pre-flight fields Process must check: `title`, `url` (or `doi
    **co-locate-by-type** practice (`raw/<type>/<slug>.pdf` next to its markdown), which the Zotero
    path depends on. (Flagged in the inspiration notes.)
 
+## Extension (landed 2026-06-15): YouTube auto-delegation
+
+A `videoRecording` (or any item) whose `url` is a YouTube link carries no transcript in Zotero, so it
+would land as an abstract-only stub. The script now **auto-delegates to `youtube-transcript-skill`**:
+detect a YouTube URL → run the sibling skill via `uv` (`--json`, one retry on the flaky transcript
+panel) → write `raw/videos/<youtube-title-slug>.md` with the **video frontmatter contract + the
+`zotero_item_key`/`zotero_collection` provenance fields prepended** + the full chaptered transcript.
+This codifies the manual workflow used to ingest the first `ai-wiki` item. Flags: `--no-video-delegate`,
+`--yt-timeout`. **Vimeo** is detected but unsupported by the YouTube-only skill — it falls back to the
+Zotero stub with a note (pattern ready for a future Vimeo channel). Dedup stays on `zotero_item_key`,
+so the YouTube-title slug differing from the Zotero-title slug does not create duplicates on re-run.
+
 ## Out of scope / deferred
 
 - `zotero-mcp` server + repo-root `.mcp.json` (optional live-query tool).
+- A Vimeo transcript channel (detected and stubbed; no fetcher exists yet).
 - Installing `marker` (script degrades to `pdftotext`, which is present).
 - Zotero write-back (the native local API is read-only; not needed — we only read sources in).
 - Auto-Process (Process stays human-supervised by design).

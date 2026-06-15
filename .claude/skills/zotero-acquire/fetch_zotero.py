@@ -78,6 +78,22 @@ CONVERTIBLE_CT = [
 # so we never commit a scraped page into the repo.
 BINARY_EXT = {"pdf", "docx", "epub", "mobi"}
 
+# Video-URL detection. A videoRecording (or any item) whose URL is a YouTube
+# watch/short/youtu.be link is auto-delegated to the youtube-transcript-skill so
+# the raw file carries the real transcript, not just Zotero's abstract. Vimeo is
+# detected too, but youtube-transcript-skill is YouTube-only — Vimeo falls back
+# to the Zotero stub with a note (no transcript channel exists yet).
+YOUTUBE_RE = re.compile(r"(?:youtube\.com/(?:watch\?v=|shorts/|live/)|youtu\.be/)", re.I)
+VIMEO_RE = re.compile(r"vimeo\.com/\d+", re.I)
+
+
+def is_youtube(url: str) -> bool:
+    return bool(url and YOUTUBE_RE.search(url))
+
+
+def is_vimeo(url: str) -> bool:
+    return bool(url and VIMEO_RE.search(url))
+
 
 # --------------------------------------------------------------------------- #
 # helpers
@@ -183,6 +199,78 @@ def convert(src: Path):
 
 
 # --------------------------------------------------------------------------- #
+# YouTube delegation (youtube-transcript-skill)
+# --------------------------------------------------------------------------- #
+def youtube_skill_dir() -> Path | None:
+    """Locate the sibling youtube-transcript-skill directory."""
+    d = Path(__file__).resolve().parent.parent / "youtube-transcript-skill"
+    return d if (d / "fetch_transcript.py").exists() else None
+
+
+def fetch_transcript_json(url: str, yt_dir: Path, timeout_ms: int = 30000, retries: int = 1):
+    """Run youtube-transcript-skill via uv and return its parsed JSON.
+
+    The skill is flaky (the transcript panel intermittently fails to render); on an
+    empty result we retry once with a longer per-step timeout. Playwright browser
+    binaries live in a global cache, so `uv run` with the skill's requirements finds
+    the already-installed Chromium. Returns the parsed dict (possibly transcript-less)
+    or None if it could not be run/parsed at all.
+    """
+    req, script = yt_dir / "requirements.txt", yt_dir / "fetch_transcript.py"
+    last, tmo = None, timeout_ms
+    for _ in range(retries + 1):
+        cmd = ["uv", "run", "--with-requirements", str(req), "python", str(script),
+               url, "--json", "--timeout", str(tmo)]
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=tmo / 1000 + 240)
+        except Exception:
+            tmo = max(tmo * 2, 60000)
+            continue
+        try:
+            last = json.loads(r.stdout)
+        except Exception:
+            last = None
+        if last and last.get("transcript"):
+            return last
+        tmo = max(tmo * 2, 60000)  # flaky-panel retry with a longer timeout
+    return last
+
+
+def build_video_markdown(meta: dict, segs: list, zkey: str, collection: str) -> str:
+    """Build a raw video file: Zotero provenance + video metadata + chaptered transcript.
+
+    Mirrors the youtube-transcript-skill markdown contract, with the two Zotero
+    provenance fields prepended so dedup-on-`zotero_item_key` and re-location still work.
+    Chapters are bucketed by their `start` LABEL (Zotero/skill `start_ms` is unreliable).
+    """
+    def to_sec(ts: str) -> int:
+        p = [int(x) for x in ts.split(":")]
+        return p[0] * 3600 + p[1] * 60 + p[2] if len(p) == 3 else p[0] * 60 + p[1]
+
+    fm = {"zotero_item_key": zkey, "zotero_collection": collection}
+    for k, v in meta.items():
+        if v not in (None, "", []):
+            fm[k] = v
+    head = yaml.dump(fm, sort_keys=False, allow_unicode=True, default_flow_style=False, width=100).rstrip()
+    out = ["---", head, "---", ""]
+
+    chapters = sorted((meta.get("chapters") or []), key=lambda c: to_sec(c.get("start", "0:00")))
+    if chapters:
+        cstarts = [to_sec(c.get("start", "0:00")) for c in chapters]
+        ci = 0
+        out += [f"## [{chapters[0].get('start')}] {chapters[0].get('title', '')}", ""]
+        for s in segs:
+            sec = to_sec(s["ts"])
+            while ci + 1 < len(chapters) and sec >= cstarts[ci + 1]:
+                ci += 1
+                out += ["", f"## [{chapters[ci].get('start')}] {chapters[ci].get('title', '')}", ""]
+            out.append(f"[{s['ts']}] {s['text'].strip()}")
+    else:
+        out += ["## Transcript", ""] + [f"[{s['ts']}] {s['text'].strip()}" for s in segs]
+    return "\n".join(out).rstrip() + "\n"
+
+
+# --------------------------------------------------------------------------- #
 # Zotero access
 # --------------------------------------------------------------------------- #
 def pick_attachment(children):
@@ -241,16 +329,49 @@ def build_stub(meta: dict, body: str) -> str:
     return f"---\n{fm}\n---\n\n{body.rstrip()}\n"
 
 
-def process_item(zot, item, collection, data_dir, raw_dir, seen, force, dry_run) -> dict:
+def process_item(zot, item, collection, data_dir, raw_dir, seen, force, dry_run,
+                 video_delegate=True, yt_dir=None, yt_timeout=30000) -> dict:
     data = item["data"]
     key = item["key"]
     itype = data.get("itemType", "")
     title = data.get("title") or "(untitled)"
     slug = slugify(title)
     folder = ITEM_TYPE_MAP.get(itype, DEFAULT_TYPE)
+    url = data.get("url", "")
 
     if key in seen and not force:
         return {"key": key, "type": itype, "slug": slug, "action": "skip (already acquired)"}
+
+    # --- YouTube/Vimeo delegation -----------------------------------------
+    # A video URL means the real content is a transcript Zotero does not hold.
+    # YouTube -> delegate to youtube-transcript-skill and write a videos/ file with
+    # the transcript + Zotero provenance. Vimeo is detected but unsupported by the
+    # skill, so it falls through to the Zotero stub with a note.
+    delegate_note = ""
+    if video_delegate and is_youtube(url):
+        if dry_run:
+            seen.add(key)
+            return {"key": key, "type": itype, "slug": slugify(title),
+                    "action": "would delegate to youtube-transcript-skill -> videos/<title>.md",
+                    "attachment": "-", "converter": "youtube-transcript", "fulltext": "transcript"}
+        yt = fetch_transcript_json(url, yt_dir, yt_timeout) if yt_dir else None
+        if yt and yt.get("transcript"):
+            ymeta = yt.get("metadata") or {}
+            vslug = slugify(ymeta.get("title") or title)
+            target = raw_dir / "videos" / f"{vslug}.md"
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(build_video_markdown(ymeta, yt["transcript"], key, collection),
+                              encoding="utf-8")
+            seen.add(key)
+            return {"key": key, "type": itype, "slug": vslug,
+                    "action": f"wrote videos/{vslug}.md (youtube-transcript)",
+                    "attachment": "-", "converter": "youtube-transcript", "fulltext": "transcript"}
+        delegate_note = (" YouTube URL detected but youtube-transcript-skill returned no transcript "
+                         "(flaky panel / no captions) — wrote a stub from Zotero metadata; re-run the "
+                         "skill manually to attach the transcript.")
+    elif video_delegate and is_vimeo(url):
+        delegate_note = (" Vimeo URL detected, but youtube-transcript-skill is YouTube-only — wrote a "
+                         "stub from Zotero metadata; fetch the Vimeo transcript by hand.")
 
     attachment_name, converter, body = "", "", ""
     fulltext_source = "none"
@@ -298,6 +419,7 @@ def process_item(zot, item, collection, data_dir, raw_dir, seen, force, dry_run)
     meta["notes"] = (
         f"Acquired from Zotero collection `{collection}`. "
         f"itemType `{itype}` routed to raw/{folder}/ — confirm routing + identity at Process."
+        + delegate_note
     )
 
     target = raw_dir / folder / f"{slug}.md"
@@ -328,10 +450,20 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true", help="Plan only; write/copy nothing")
     ap.add_argument("--force", action="store_true", help="Re-acquire even if zotero_item_key already present")
     ap.add_argument("--json", action="store_true", help="Emit per-item results as JSON to stdout")
+    ap.add_argument("--no-video-delegate", action="store_true",
+                    help="Disable auto-delegation of YouTube URLs to youtube-transcript-skill")
+    ap.add_argument("--yt-timeout", type=int, default=30000,
+                    help="Per-step timeout (ms) for the youtube-transcript-skill (default: 30000)")
     args = ap.parse_args()
 
     data_dir = Path(args.data_dir).expanduser()
     raw_dir = Path(args.raw_dir).expanduser() if args.raw_dir else repo_root() / "raw"
+
+    video_delegate = not args.no_video_delegate
+    yt_dir = youtube_skill_dir()
+    if video_delegate and yt_dir is None:
+        print("warning: youtube-transcript-skill not found alongside this skill — "
+              "YouTube items will fall back to Zotero stubs.", file=sys.stderr)
 
     zot = zotero.Zotero(0, "user", local=True)
     cols = zot.collections()
@@ -347,7 +479,8 @@ def main() -> int:
         items = items[: args.limit]
 
     seen = existing_keys(raw_dir)
-    results = [process_item(zot, it, args.collection, data_dir, raw_dir, seen, args.force, args.dry_run)
+    results = [process_item(zot, it, args.collection, data_dir, raw_dir, seen, args.force, args.dry_run,
+                            video_delegate=video_delegate, yt_dir=yt_dir, yt_timeout=args.yt_timeout)
                for it in items]
 
     if args.json:
