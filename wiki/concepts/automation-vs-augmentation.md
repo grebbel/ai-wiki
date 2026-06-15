@@ -3,9 +3,9 @@ type: concept
 aliases: ["automation vs augmentation", "automation-vs-augmentation", "automate vs augment", "AI substitution vs complementarity", "AI labor substitution", "AI labor complementarity"]
 tags: [automation, augmentation, generative-ai, ai-deployment, ai-task-design, capability-reliability-gap]
 confidence: 0.95
-last_confirmed: "2026-06-13"
-accessed_at: "2026-06-13"
-source_count: 40
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 43
 relationships:
   - type: supports
     target: ai-employment-effects
@@ -292,6 +292,19 @@ Two sources land the augmentation thesis from opposite ends — one empirical, o
 - **Prescribed** — [[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti (Goldman Sachs CIO, HBR)]] names the human-side adaptation augmentation demands: the shift from **operator to supervisor/mentor** ("the new 100%"). The value-add moves from producing every deliverable to giving clear instructions, applying judgement, and ensuring systemic controls so agents execute safely. *"An agentic future requires everyone to turn into a manager of sorts."* This is the role-redesign correlate of the [[2026-05-28-giles-wp-intelligence-new-human-machine-workforce-agentic-ai-jobs|Giles/WP]] operator→orchestrator finding, here from a first-party CIO vantage.
 
 Together they bracket the augmentation deployment model: GDPval shows it *works economically*; Argenti specifies the *mindset and role redesign* that lets an organization capture it.
+
+### 21. *Combination not replacement* (practitioner chorus) + *orchestrator not builder* (AWS): the June-2026 leadership consensus
+
+The 11–12 June 2026 video batch lands the augmentation framing at two altitudes — a CIO-practitioner chorus and AWS-vendor strategy:
+
+- **Combination, not replacement ([[2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner|MIT SMR / CIO Symposium]]).** Five of the eleven leaders independently reach the augmentation conclusion: **Keri Pearlson** — design "the new job as the combination… the marriage of agents and of people," each doing what they do best (agents sort/summarise data; people do subtle one-on-one communication); **Meghna Shah** — "collaborators, not competitors," ask "*which new job can we now do*" given orchestration of "70 processes at the same time"; **Vanessa Escrivá García** — "humans design the process and decide… AI implements"; **Max Chan** — humans "elevate themselves" while training AI to take the lower-level work. This is the wiki's densest single-source convergence on *augmentation-as-job-redesign* — and notably a *practitioner* convergence, not a consultant framework.
+- **Orchestrator, not builder ([[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich / AWS Sydney]]).** The talent half: the valuable human shifts from *building fastest* to **orchestrating fastest** — point an agent at a problem, evaluate output, steer the iteration, know when to overrule. Evidence: Anthropic's Build-with-Claude hackathon top-three finishers were **non-developers** (a lawyer, a cardiologist) beating 13,000 entrants — domain-expert-with-steering-hands beats professional-builder. This is the same builders→orchestrators role-shift already on the [[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|Allen page]], now corroborated by a second AWS strategist.
+
+The two together restate the page's core: the unit of value is **neither pure-human nor pure-agent but the orchestrated combination** — and the scarce human skill is steering/judgement, not execution.
+
+### 22. The automation/augmentation split as a *measurement weight* ([[2026-03-05-massenkoff-mccrory-anthropic-labor-market-impacts-ai|Massenkoff & McCrory / Anthropic, March 2026]])
+
+The Anthropic *observed-exposure* report makes the distinction this page tracks into a **quantitative weighting**, not just a conceptual cut. Its displacement-risk measure combines theoretical LLM capability with real-world usage **weighting automated (rather than augmentative) and work-related uses more heavily** — i.e. an occupation whose AI usage is mostly *augmentative* is scored as *less* at-risk than one with the same raw usage that skews *automated*. This is the wiki's first source to operationalise *automation-vs-augmentation as the variable that converts "exposure" into "displacement risk"* — empirical validation that the distinction is load-bearing for labor outcomes, not merely descriptive. (The downstream finding — no systematic unemployment effect yet, a slight young-hiring slowdown — lives on [[ai-employment-effects]].)
 
 ## The four-source convergence on the distinction
 

@@ -5,9 +5,9 @@ aliases: ["MIT SMR", "MIT Sloan Management Review", "Sloan Review", "Sloan Manag
 tags: [mit-smr, mit, publisher, ai-research, big-ideas-research, organizational-learning]
 since: 1959
 confidence: 0.88
-last_confirmed: "2026-06-02"
-accessed_at: "2026-06-02"
-source_count: 5
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 6
 relationships:
   - type: published-by
     target: 2026-04-28-mit-sloan-ai-maturity
@@ -18,6 +18,9 @@ relationships:
   - type: published-by
     target: 2026-05-31-peron-mit-smr-me-myself-and-ai-philips-interoperability-health-care
     via: "Carla Goulart Peron (Philips Chief Medical Officer) interviewed by Sam Ransbotham on the *Me, Myself, and AI* podcast (Season 13, 31 May 2026) on AI-for-interoperability in health care — the wiki's first dedicated healthcare-AI source and the first *Me, Myself, and AI* podcast ingest under the MIT SMR `author:` value"
+  - type: published-by
+    target: 2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner
+    via: "Multi-speaker compilation from the 2026 MIT Sloan CIO Symposium (host: EIC Abbie Lundberg); 11 leaders on human–agent collaboration"
 ---
 
 # MIT Sloan Management Review
@@ -37,6 +40,7 @@ The research-and-management magazine of [[MIT Sloan School of Management]] — d
 - [[2026-05-07-ransbotham-augmented-learners]] — Ransbotham, Kiron, Khodabandeh, Chu, Zhukov, *Learning to Manage Uncertainty, With AI* (8th annual MIT SMR × BCG study), Nov 2024.
 - [[2026-05-07-kiron-schrage-compound-benefits]] — Kiron & Schrage, *How to Reap Compound Benefits From Generative AI*, Apr 2026.
 - [[2026-05-31-peron-mit-smr-me-myself-and-ai-philips-interoperability-health-care]] — Peron (Philips CMO) interviewed by Ransbotham on *Me, Myself, and AI* podcast, S13, 31 May 2026. **The first podcast-format MIT SMR source in the wiki** (prior three are written-research outputs); also the wiki's first dedicated healthcare-AI source.
+- [[2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner]] — *Agentic AI: What Leaders Wish They Knew Sooner*, a multi-speaker compilation from the **2026 MIT Sloan CIO Symposium** hosted by EIC **Abbie Lundberg** (11 June 2026). The wiki's **first MIT SMR field-interview/video source**; 11 leaders on human–agent collaboration, including research fellow [[Michael Schrage]] (promoted to an entity on this ingest).
 
 ## Distinguishing from sibling MIT publications
 

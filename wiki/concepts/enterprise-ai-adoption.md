@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI adoption", "enterprise AI use", "business AI adoption", "organizational AI adoption", "AI maturity"]
 tags: [ai-adoption, enterprise-ai, ai-strategy, ai-maturity, ai-foundation, omniscalers, future-arenas]
 confidence: 0.95
-last_confirmed: "2026-06-13"
-accessed_at: "2026-06-13"
-source_count: 67
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 70
 relationships:
   - type: uses
     target: automation-vs-augmentation
@@ -478,6 +478,14 @@ The [[GitHub]]/[[Microsoft]] *Agentic DevOps* keynote contributes a **vendor-pra
 - **Demand radical targets to force genuine adoption.** "If you want your developers to change habits, ask them to be **3× more productive, not 20%**"; aim for "**90% reduction of manual touchpoints, not 20%.**" Incremental targets yield optimisation-of-the-old-process (the [[micro-productivity-trap]]); radical targets force the rethink. Even reaching halfway proves the team went through real transformation, not just speed-up.
 
 Argenti joins the wiki's CIO/executive-vantage adoption anchors ([[2026-06-02-architecting-ai-native-organizations-redesign-work-at-scale-joe-beutler|Beutler/OpenAI]] Ask→Assist→Automate; [[2025-12-22-randell-gousset-microsoft-agentic-devops-in-real-life|Microsoft]] 30/60/90) — distinctively contributing the **data-readiness precondition** the others under-weight.
+
+## The June-2026 leadership-altitude triple: maturity arc, data-strategy gate, and the CIO-as-conductor
+
+Three sources from the 11–12 June 2026 batch add executive-altitude adoption discipline:
+
+- **A staged maturity arc with exit criteria ([[2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner|MIT SMR / CIO Symposium]]).** Monica Caldas's IT-ops deployment is the wiki's cleanest *crawl-walk-run* field account: personal-productivity assistance → identify which workflow pieces to **reimagine** → deploy **micro-agents** ("not one agent that does everything") with **clear OKRs** and explicit **entry/exit criteria** through the maturity arc, plus a "trust fabric and governance." George Westerman's *automate-first-then-put-humans-in-the-right-places* and *rebuild-processes-around-outcomes* is the same anti-[[micro-productivity-trap]] discipline at CIO altitude. Ramesh Razdan's "car keys to a new driver" (small→medium→large trust) is the adoption-pacing metaphor.
+- **Data strategy as the adoption gate ([[2026-06-12-aws-leaders-guide-data-strategy-agentic-ai|AWS data-strategy / Sydney]]).** The keynote reframes adoption as a **data-readiness** problem: most value is blocked upstream (Gartner: 80% of data-governance initiatives fail by 2027; 99% invest in data but only 29% see value). The prescription is **business-problem-first, not gather-clean-lake** ("$50M, 5 years, one fired CIO, no value"); identify a problem → get the data that solves it right → repeat. The quotable adoption test: *"can an agent consume this without a human translating?"* And **minimum-viable-governance** (guardrails not roadblocks; open-by-default) as the way to avoid the lock-everything-down failure that drives shadow IT.
+- **The CIO shifts from owner to conductor ([[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich / AWS Sydney]]).** The role re-definition: "from owner of the stack to **conductor of the stack**." Plus a concrete *Monday-morning* sequence — pick **one workflow** (not one AI strategy), classify it USE/COMPOSE/BUILD, then work through talent/structure/governance. This corroborates the [[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|Allen]] adoption playbook (Model A is dead; map workflows to tiers) with a second AWS strategist.
 
 ## Debates and supersession
 

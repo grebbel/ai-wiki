@@ -3,9 +3,9 @@ type: concept
 aliases: ["strategy", "business strategy", "corporate strategy", "competitive strategy"]
 tags: [strategy, strategic-planning, value-creation, value-capture, theory-of-winning, playing-to-win, value-stick, roger-martin, felix-oberholzer-gee, harvard-business-review]
 confidence: 0.88
-last_confirmed: "2026-06-08"
-accessed_at: "2026-06-08"
-source_count: 5
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 6
 relationships:
   - type: supports
     target: strategic-foresight
@@ -159,6 +159,10 @@ The wiki's first **academic-strategy** treatment of how AI changes the *strategi
 - **The competitive-advantage trichotomy** (a sharp addition to this page): as AI capability advances, the *nature* of advantage may **stay Ricardian** (rooted in unique resources), **become Schumpeterian** (innovation-driven), or **erode entirely** if everyone can cheaply generate comparable strategies. The third branch is the strategy-theoretic statement of the [[2026-04-28-anand-wu-genai-playbook|paradox of access]] and the [[micro-productivity-trap]]: *"the ultimate impact on firm performance will depend on competitive dynamics,"* not on the tool. If strategy generation commoditises, advantage migrates to **complementary assets** (proprietary data, unique execution) — and, per the [[theory-based-view]], to the firm-specific, falsifiable *theory of value* an LLM trained on consensus cannot easily produce.
 
 This is the AI-era extension of the page's *strategy-as-a-theory-under-feedback* stance: the lenses above (Martin's theory of winning, Oberholzer-Gee's value stick, the TBV) describe *what* a strategy is; Csaszar et al. describe *what happens to the cognitive work of producing it* when LLMs can do parts of the search/representation/aggregation loop.
+
+### The durable-advantage principle: time-to-do vs time-to-happen ([[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich / AWS Sydney 2026]])
+
+The sharpest one-line statement of where advantage survives the commoditisation branch above: **"AI compresses the time it takes to do things. It does not compress the time it takes for things to happen."** Brovich's "Only Moats That Matter" slide sorts advantage by *which clock governs it*: the **"hard to do"** moats (workflow embeddedness, software scale, integration lock-in, engineering complexity) erode because AI compresses *doing*-time; the **"hard to get"** moats (compounding proprietary data — *years of operations*; network effects — *years of adoption*; regulatory permission — *years of process*; capital at scale — *decades of trust*; physical infrastructure — *years of building*) appreciate because their constraint is **elapsed time, trust, and physics**, which no capability gain shortens. This is the durable-advantage refinement of the trichotomy: when strategy *generation* commoditises, advantage migrates to whatever is **bottlenecked by time rather than effort** — the strategy-theoretic complement to [[foundation-models|"rent the model, own the harness"]] and the [[theory-based-view|firm-specific theory of value]].
 
 ## Debates and supersession
 

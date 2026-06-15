@@ -5,9 +5,9 @@ aliases: ["Anthropic", "Anthropic PBC", "Claude"]
 tags: [anthropic, ai-lab, foundation-models, claude, public-benefit-corporation, long-term-benefit-trust]
 since: 2021
 confidence: 0.95
-last_confirmed: "2026-05-28"
-accessed_at: "2026-05-28"
-source_count: 19
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 20
 ---
 
 # Anthropic
@@ -31,7 +31,7 @@ Ries (who plays *"no important role"* but *"a very big role"* in the founding-ad
 
 ## Research initiatives appearing in this wiki
 
-- [[Anthropic Economic Index]] — recurring measurement of real-world Claude usage on Claude.ai (consumer) and 1P API (enterprise). Five reports through March 2026.
+- [[Anthropic Economic Index]] — recurring measurement of real-world Claude usage on Claude.ai (consumer) and 1P API (enterprise). Five usage reports plus the **labor-market-impacts** branch ([[2026-03-05-massenkoff-mccrory-anthropic-labor-market-impacts-ai|Massenkoff & McCrory, March 2026]] — the "observed exposure" measure) through March 2026.
 - Rwanda partnership with **ALX** — AI literacy + Claude Pro access program for African graduates ([[2026-04-28-anthropic-economic-index-q4-2025|fourth Economic Index report]]).
 - [[Jack Clark]] — co-founder; serves on the [[AI Index]] steering committee.
 

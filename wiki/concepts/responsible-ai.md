@@ -3,9 +3,9 @@ type: concept
 aliases: ["RAI", "responsible AI", "AI ethics", "AI governance", "AI safety"]
 tags: [responsible-ai, ai-ethics, ai-governance, ai-safety, ai-policy]
 confidence: 0.95
-last_confirmed: "2026-06-09"
-accessed_at: "2026-06-09"
-source_count: 14
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 15
 relationships:
   - type: part-of
     target: enterprise-ai-adoption
@@ -200,6 +200,12 @@ The pairing with [[2026-05-31-peron-mit-smr-me-myself-and-ai-philips-interoperab
 The [[GitHub]]/[[Microsoft]] *Agentic DevOps* keynote supplies a worked example of **responsible AI implemented as platform plumbing**, not policy. Every Copilot request is routed through **Microsoft's responsible-AI pipeline**, which validates both the input and the *returned code* (security vulnerabilities, NSFW content) — *even when the chosen model is third-party* ([[Anthropic]]/[[Google]]): enough context is sent across the wire, and the response is checked before it reaches the developer, in milliseconds. The load-bearing governance control is structural rather than advisory: **by default the person who initiated a Copilot agent request cannot be the final approver to merge** into the parent branch — the human-in-the-loop is enforced by the workflow, not left to discipline. *"AI suggests, humans decide."*
 
 The keynote also names the **AI-code risk surface** RAI has to govern (presenter-cited, attribution deferred to the deck): *"322% more privilege-escalation paths in AI code,"* *"40% increase in secrets-exposure risk,"* and AI-assisted commits *"merged 4× faster, bypassing reviews."* Mechanism: frontier models are trained on the whole internet (including insecure code) and tend to offer the **cheap/easy auth (passwords/PATs) over safer OAuth** — so [[GitHub]] Advanced Security (secret + code scanning + Copilot autofix, *"found means fixed"*) is positioned as the compensating control. The wiki's first **developer-platform-vendor articulation of RAI-as-enforced-default** — complementary to the *declarative runtime-enforcement* framing in §"Runtime enforcement as a declarative discipline" below (AgentSpec governs agent *actions*; the Microsoft pipeline governs model *I/O*; both move RAI from guideline to mechanism).
+
+## Singapore's agentic-governance framework, in operational detail ([[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich / AWS Sydney 2026]])
+
+The wiki's [[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|Allen page]] names Singapore's framework as the only government model worth adopting; Brovich's Sydney talk supplies the **operational detail**. Singapore IMDA's **Model AI Governance Framework for Agentic AI v1** — launched January 2026 at Davos by Minister **Josephine Teo** — is "the first state-backed governance framework specifically designed for autonomous AI agents" (extending IMDA's 2019 general model). Four dimensions: (1) **upfront risk assessment**, (2) **human accountability chains** — "every agent action is traced to a named human," (3) **technical guardrails across the lifecycle**, (4) **end-user transparency** (users must know they're dealing with an agent and its bounds). Five distinguishing features: it's the **first to mandate agent identity management** (a verifiable identity before an agent can act); concrete testing across five risk categories (building on AI Verify + the 2025 Global AI Assurance pilot); explicit **multi-agent coordination risk** (what happens when agents disagree/escalate/emerge — "no other framework has yet"); voluntary-but-directional (de facto standard for regulated/government work); and it addresses the **deskilling trap** head-on (must show you keep training the humans who'll take over). 
+
+The architectural punchline — convergent with **Amazon Bedrock AgentCore**, which "launched on the same four" questions (who's the agent / who authorised it / what may it do / can we audit it) — is **policy enforcement *outside* the LLM loop**: "you don't ask the agent nicely not to do something; you stop it at the gateway before the LLM ever sees the request," separating who-writes-policy (security) from who-writes-the-agent (engineering). This is RAI-as-infrastructure (cf. the Microsoft-pipeline and AgentSpec framings above): "running code enforcing rules, every request, every time" — the [[agent-harness|harness]] Constraints layer raised to a governance plane.
 
 ## Debates / contradictions
 

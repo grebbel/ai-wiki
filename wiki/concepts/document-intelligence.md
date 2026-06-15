@@ -3,9 +3,9 @@ type: concept
 aliases: ["document intelligence", "document AI", "intelligent document processing", "IDP", "agentic document extraction", "document understanding", "machine document understanding"]
 tags: [document-intelligence, document-ai, agentic-document-extraction, ocr, visual-grounding, verifiable-rag, unstructured-data, idp, enterprise-ai]
 confidence: 0.72
-last_confirmed: "2026-06-09"
-accessed_at: "2026-06-09"
-source_count: 2
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 3
 relationships:
   - type: part-of
     target: enterprise-ai-adoption
@@ -45,6 +45,10 @@ Both sources land on the same accountability mechanism: **tie every output back 
 ## From extraction to outcome (the orchestration layer)
 
 High-accuracy extraction is necessary but **not sufficient** for value: documents still have to be normalised across channels, validated, and connected to systems of record. [[2026-05-26-landingai-touchpoint-to-outcome-front-office-processes|LandingAI's partner TCG/OCTO]] frames this as the *"octo-zone"* — where systems, services, and people interact to produce an outcome — and quantifies it on an insurance case (85% faster processing, 75% efficiency gain). The applied analogue is [[2026-04-09-dinakaran-yc-luminai-automating-americas-biggest-hospitals|Luminai]], which wedges a fax-triage agent into hospital administration: document understanding plus workflow orchestration converts manual paper/people process into automated outcomes.
+
+## The inverse direction: re-authoring documents *for* machines ([[2026-06-12-aws-leaders-guide-data-strategy-agentic-ai|AWS data-strategy / Sydney 2026]])
+
+Document intelligence as covered above extracts structure *out of* human-formatted documents. The AWS data-strategy keynote names the **complementary inverse**: re-author the source documents into a machine-native format so agents don't have to reverse-engineer human formatting at all. Human cues — bold, italics, indentation, PDF layout — are "overhead to a machine" (more tokens, no signal); the prescription is converting docs to **markdown** so agents reason over structure directly (headers→hierarchy, lists→arrays, links→navigable), citing **Stripe** converting its human docs this way. The keynote's four-question data test culminates in *"can an agent consume this without a human translating?"* — a crisp design target. The two directions bound the field: *extract-from-human-docs* (OCR/ADE, when you can't change the source) vs *author-for-machines* (markdown/data-products, when you control it); the latter is cheaper and lossless where feasible.
 
 ## Debates and supersession
 

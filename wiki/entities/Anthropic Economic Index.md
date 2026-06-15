@@ -6,9 +6,9 @@ tags: [anthropic-economic-index, ai-research, anthropic, claude, ai-adoption]
 parent: "[[Anthropic]]"
 since: 2025
 confidence: 0.85
-last_confirmed: "2026-05-07"
-accessed_at: "2026-05-07"
-source_count: 3
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 4
 relationships:
   - type: part-of
     target: Anthropic
@@ -41,6 +41,7 @@ Stated mission (per Anthropic): provide ongoing, empirical measurement of how AI
 | Third | August 2025 | Not separately ingested; numbers carried over |
 | **Fourth** | November 2025 | [[2026-04-28-anthropic-economic-index-q4-2025\|Ingested]] — introduces "economic primitives" framework |
 | **Fifth — *Learning curves*** | February 5–12, 2026 | [[2026-05-07-anthropic-economic-index-5-learning-curves\|Ingested]] — model selection matches task value; high-tenure users have ~3-4 pp higher success after controls; **skill-biased technological change** framing |
+| **Labor-market impacts** (Massenkoff & McCrory) | March 5, 2026 | [[2026-03-05-massenkoff-mccrory-anthropic-labor-market-impacts-ai\|Ingested]] — the **analytic/labor-impact branch** of the AEI: introduces **observed exposure** (theoretical capability × usage, weighting automated/work-related uses), validates against BLS 2024–2034 projections, finds no systematic unemployment effect yet but a ~14% young-worker hiring slowdown into exposed occupations. The methodological primary behind the wiki's "observed exposure" claims. |
 
 ## Economic primitives (introduced in fourth report)
 

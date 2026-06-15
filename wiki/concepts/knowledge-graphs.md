@@ -3,9 +3,9 @@ type: concept
 aliases: ["knowledge graph", "KG", "knowledge graphs", "knowledge-graph", "kg"]
 tags: [knowledge-graphs, kg, graph-rag, ai-grounding, ontology, relational-data, agent-harness, agentic-memory, etl, entity-extraction, relationship-extraction]
 confidence: 0.88
-last_confirmed: "2026-05-17"
-accessed_at: "2026-05-17"
-source_count: 6
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 7
 relationships:
   - type: part-of
     target: agent-harness
@@ -139,6 +139,10 @@ The wiki's prior KG sources ([[2026-04-27-surrealdb-knowledge-graphs-for-ai-agen
 The mechanism: compute clusters and cluster-pair gaps from concept-page co-occurrence; emit a **gap-prompt** (structured representation of two disconnected clusters + the densest source extracts from each); paste the gap-prompt back to the LLM and ask it to generate cluster-bridging insights using the underlying source documents. *"I point the LLM's attention to the gap that exists. I provide the underlying structure. I give it some context."* The KG is not retrieving anything; it is **telling the LLM where in its existing context to look harder**.
 
 This complements rather than replaces KG-as-retrieval. A mature stack carries both: graph-traversal for deterministic retrieval (Martin) + gap-analysis for non-generic ideation (Paranyushkin / InfraNodus).
+
+## Semantics as an agent requirement: the data-strategy vantage ([[2026-06-12-aws-leaders-guide-data-strategy-agentic-ai|AWS data-strategy / Sydney 2026]])
+
+The AWS data-strategy keynote arrives at the knowledge-graph construction story from the *agent-readiness* angle: one of the **three things agents need from data** is **semantics — the relationships between entities** (alongside machine-readable structure and memory). The recipe is the LLM-entity-extraction pipeline this page already documents: "extract the entities from unstructured data — people, places, time — and then find the associations between them," visualised as a rotatable cube where changing perspective surfaces different relationships (cats/dogs vs "AWS and Gartner connected because they're both talking about cloud strategy"). The framing's contribution is *motivational*: traditional data gives the **what**; agents demand the **why**, and "the more why we can give it, the more autonomous we can permit these agents to be" — a crisp business case for KG-as-agent-substrate that complements the page's [[2026-04-27-surrealdb-knowledge-graphs-for-ai-agents-practical-guide|SurrealDB]] engineering treatment.
 
 ## Related concepts
 

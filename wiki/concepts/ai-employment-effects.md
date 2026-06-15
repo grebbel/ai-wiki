@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI employment effects", "AI labor effects", "AI job displacement", "AI labor market", "AI employment impact"]
 tags: [employment, labor-market, ai-displacement, automation, labor-economics, age-effects]
 confidence: 0.95
-last_confirmed: "2026-06-13"
-accessed_at: "2026-06-13"
-source_count: 42
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 45
 relationships:
   - type: supports
     target: automation-vs-augmentation
@@ -99,6 +99,19 @@ The fourth Anthropic report introduces **effective AI coverage** — the share o
 - Effective coverage is *below* task coverage: **teachers, software developers**.
 
 Pooled across all reports through Nov 2025: 49% of jobs have Claude used for at least 25% of their tasks (up from 36% in Jan 2025), but the success-weighted picture is more uneven.
+
+### *Observed exposure*: the methodological primary ([[2026-03-05-massenkoff-mccrory-anthropic-labor-market-impacts-ai|Massenkoff & McCrory / Anthropic, March 2026]])
+
+This Anthropic report is the **methodological backbone** for the wiki's "observed exposure" claims (and the exact study [[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich/AWS]] presents on stage). It introduces a displacement-risk measure that combines **theoretical LLM capability** (Eloundou et al. 2023 task β-ratings) with **real-world usage** (the [[Anthropic Economic Index]]), **weighting automated and work-related uses more heavily than augmentative ones** — the weighting being what turns "exposure" into "displacement risk."
+
+Headline results (US, Current Population Survey + O*NET + AEI usage):
+
+- **Capability ≫ adoption.** Tasks fully feasible for an LLM (β=1) are 68% of observed Claude usage vs 3% for β=0 — but actual coverage remains "a fraction of what's feasible." Most-exposed occupations: **Computer Programmers (75% coverage)**, Customer Service Representatives, Data Entry Keyers (67%), financial analysts; **30% of workers have zero coverage** (cooks, bartenders, lifeguards…).
+- **Exposure ↔ weaker projected growth.** Employment-weighted regression: **+10pp coverage → −0.6pp** in the BLS 2024–2034 growth projection (slight but real; the Eloundou measure *alone* shows no such correlation — the usage-weighting adds the signal).
+- **Who's exposed:** most-exposed workers are **more likely female (+16pp), more educated (graduate degrees 17.4% vs 4.5%, ~4×), and earn 47% more** — inverting the "low-skill-first" narrative and corroborating the page's existing skill-biased findings.
+- **No unemployment effect yet; young-hiring slowdown.** Difference-in-differences (top-quartile vs zero-exposure) since ChatGPT is **indistinguishable from zero** (detectable threshold ~1pp). But the CPS job-*start* panel shows a **~14% drop in the job-finding rate for ages 22–25** into exposed occupations vs 2022 (barely significant; none for >25) — independently echoing [[2026-04-28-brynjolfsson-canaries-coal-mine|Brynjolfsson et al.]] on a different dataset.
+
+The report's stance is methodologically disciplined: **establish the measure *before* effects emerge and revisit periodically**, because past labor forecasts over-predicted (offshorability) and AI is "more like the internet or China-trade than COVID" — gradual and confounded. It chooses **unemployment** as the priority outcome (most directly captures harm). This is the wiki's citable primary for the *capability-exceeds-adoption* and *entry-level-felt-first* threads that the AEI reports, [[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|Allen]]/Brovich, and [[2026-05-28-giles-wp-intelligence-new-human-machine-workforce-agentic-ai-jobs|Giles]] otherwise carry second-hand.
 
 ### Task-content shift and deskilling ([[2026-04-28-anthropic-economic-index-q4-2025|Anthropic Economic Index, 4th report]])
 
@@ -326,6 +339,13 @@ A caveat the wiki carries on both reports: the publisher (Linux Foundation Educa
 ## The developer-tooling-vendor *displacement-but-net-growth* framing ([[2025-12-22-randell-gousset-microsoft-agentic-devops-in-real-life|Randell & Gousset / Microsoft Dec 2025]])
 
 The [[GitHub]]/[[Microsoft]] *Agentic DevOps* keynote states the wiki's debate from inside the developer-tooling vendor — and notably, the presenters foreground their *own* stake (*"I like to stay employed… I want to stay employed too"*). The framing: displacement is real and continuous (Randell's 1980s **typing-pool** analogy — a job that simply no longer exists), but it is set against the **World Economic Forum projection of 78 million net new jobs by 2030**, with the prescription being **collaborative use** (*"it's about using these agents… to work collaboratively with the agents to get stuff done. So you're not going to go away"*). This is a *vendor-practitioner* restatement of the **lump-of-labor counter-frame** above and the *jobs-redefined-not-eliminated* reading of the [[The Linux Foundation|Linux Foundation]] surveys — calibrated by the same honest caveat the wiki applies elsewhere: *"this is the data we have today. In five years, it could all be different."* The corollary the keynote ties to jobs is **skill-shift, not headcount** — the durable move is from writing every line yourself to reviewing, steering, and orchestrating agents (see [[durable-skills]] and [[agentic-engineering]]).
+
+## *Performative oversight* + *reshaping not unemployment*: the June-2026 leadership read ([[2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner|MIT SMR]] + [[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich / AWS]])
+
+Two June-2026 sources add a leadership-altitude reading of AI's labour effects:
+
+- **The skeptical-CIO worry: humans pushed into hollow oversight roles ([[2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner|MIT SMR / CIO Symposium]]).** Thomas Davenport's worry is a *labour-quality* claim, not a headcount one: agents work so much faster that human review becomes "performative" and "cursory" — people "pestered to approve things rapidly" and "not going to want to be auditors of what AI is doing." The displacement risk he names is of *meaningful human work* being replaced by **rubber-stamp auditing** nobody wants. Max Chan's counter-prescription is the optimistic version of the same dynamic: humans "replace themselves at the lower level" (training the AI to do their old work) while moving up to "top-line and bottom-line considerations" — explicit *job-laddering-up* as the augmentation path, contingent on the org actually creating the higher-level roles.
+- **The empirical spine restated: reshaping, felt at entry level ([[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich / AWS Sydney]]).** Brovich presents the [[2026-03-05-massenkoff-mccrory-anthropic-labor-market-impacts-ai|Anthropic "March study" (Massenkoff & McCrory)]] as the talk's ground truth: **observed** AI exposure ≪ **theoretical** (computer/math ~33% of what's possible; office/admin theoretical ~90%, observed a fraction); **no systematic unemployment rise** since ChatGPT; **junior hiring slowed ~14%**; and — counter to the old narrative — the most-exposed workers are "disproportionately older, more educated, and better paid." His summary ("not mass unemployment… a *reshaping*, and entry-level is where the reshaping is happening first") is a vendor-altitude restatement of the [[2026-04-28-brynjolfsson-canaries-coal-mine|Brynjolfsson Canaries]] entry-level finding, paired with the **hourglass-organization** prescription already on the [[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|Allen page]].
 
 ## Debates / contradictions
 

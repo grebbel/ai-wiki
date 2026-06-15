@@ -3,9 +3,9 @@ type: concept
 aliases: ["micro-productivity trap", "micro-productivity-trap", "offering lock-in", "process lock-in"]
 tags: [micro-productivity-trap, AI-transformation, EBITDA, process-redesign, workflow-redesign, enterprise-ai, organizational-change-vs-tech-implementation]
 confidence: 0.95
-last_confirmed: "2026-06-13"
-accessed_at: "2026-06-13"
-source_count: 30
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 31
 relationships:
   - type: instance-of
     target: enterprise-ai-adoption
@@ -217,6 +217,15 @@ A [[GitHub]]/[[Microsoft]] developer-tooling-vendor keynote lands the micro-prod
 > *"If you want your developers to change habits, ask them to be 3x more productive, not 20%… If you want to streamline your procure-to-pay process, aim for a 90% reduction of manual touchpoints, not 20%. If you get even halfway there, you will know that your team has at least gone through the motions of radical rethinking, not just optimization."*
 
 The mechanism: a 20% target is reachable by speeding up the existing process (offering/process lock-in intact); a 3× / 90% target is *only* reachable by redesigning the work — so the radical target **forces** the process-redesign the trap's escape requires, and even partial attainment proves real rethinking occurred. This is the wiki's clearest *managerial-lever* statement of the escape, complementing Bain's four-step transformation (firm level) and the *workflow-not-task* unit-of-value framing: set targets that are impossible to hit by optimisation alone.
+
+## *Automate first, then reimagine* — the CIO-Symposium restatement ([[2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner|MIT SMR / CIO Symposium]])
+
+Two of the eleven 2026 MIT Sloan CIO Symposium leaders state the trap's escape in their own words, at practitioner altitude:
+
+- **George Westerman** — *"automate first, then put the humans in the right places… rather than applying tools to the steps of the existing workflow, [if] we truly get to the agentic world, [we] think about what outcomes do we want, and rebuild those processes that will get us there."* The bolt-tools-onto-existing-steps move is precisely the trap; rebuild-for-outcomes is the escape.
+- **Monica Caldas** — *"you're not just automating and having it go faster. You actually want to have a different outcome… be very thoughtful about the workflow that you're reimagining,"* with clear OKRs and a deliberate maturity arc. The explicit *speed ≠ value* warning is the trap named from inside an IT-ops deployment.
+
+Both restate, from the CIO chair, the page's core: **task-level acceleration without workflow redesign yields motion, not value.** They converge with [[2026-06-12-argenti-hbr-thrive-alongside-ai-mindset-not-skillset|Argenti's]] *3×-not-20%* and the Bain/McKinsey reimagine-the-workflow prescription.
 
 ## Related concepts
 

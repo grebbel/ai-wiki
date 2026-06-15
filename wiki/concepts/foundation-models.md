@@ -3,9 +3,9 @@ type: concept
 aliases: ["foundation model", "foundation models", "FM", "frontier model", "frontier models"]
 tags: [foundation-models, generative-ai, ai-research]
 confidence: 0.85
-last_confirmed: "2026-06-13"
-accessed_at: "2026-06-13"
-source_count: 16
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 17
 quality_score: 0.75
 quality_notes: ['missing ## Debates and supersession (concept with >1 source)', '1 near-empty section(s)', '2 broken body wikilink(s)']
 ---
@@ -91,6 +91,10 @@ The framing has three implications worth flagging:
 3. **Where competitive advantage moves**: from model selection to the **harness layer** (memory architecture, quality contracts, learned per-customer overrides, telemetry). The "rent vs own" aphorism: *"The model is what you rent. The harness is what you own."* See [[agent-harness]] for the full treatment. As of [[2026-05-04-rethinking-agents-harness-is-all-you-need|May 2026]] this framing now has its first **empirical anchor**: an optimised harness from Khattab et al. (DSPy team) **transferred across five different foundation models** without re-optimisation, lifting all of them — turning *"plan for swap"* from a prudential design hint into a measured property of the harness layer.
 
 **Caveat against over-commoditization narrative**: [[2026-05-07-anthropic-managed-agents-decoupling-brain-hands|Anthropic Managed Agents]] documented that Claude Sonnet 4.5's "context anxiety" failure mode was *absent* on Opus 4.5 — same family, different reliability. Within-family variation can be large enough that the "models converging" framing needs nuance: the *frontier* converges in benchmark performance, but *production-relevant reliability characteristics* (long-horizon stability, refusal behaviour, cost/latency curves) can vary substantially even between sibling models. The "plan for swap, not for marriage" prescription survives the caveat — but harness designers should expect to discover model-specific quirks at production scale and budget for them.
+
+### The pricing scissors quantified ([[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Brovich / AWS Sydney 2026]])
+
+Brovich puts numbers on the commodity dynamic above: **training costs rising ~2.4× per year**, **inference costs falling ~10× per year**, so the gap — the "pricing scissors" — **opens by 12–24× per year**. Practical consequence: creating a frontier model approaches the *billions* (a handful of firms can), while *using* one collapses toward zero. This is the economic engine behind the USE/COMPOSE/BUILD decision ([[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|already on the Allen page]]) — *build* is justified only where differentiation outweighs the collapsing cost of *compose*. A second AWS strategist independently delivering the same framework strengthens the wiki's read that "rent the model, own the harness" is settled vendor doctrine, not one strategist's pitch.
 
 ### Cross-model deliverable comparison on real work ([[2025-10-05-patwardhan-et-al-openai-gdpval|GDPval, OpenAI 2025]])
 

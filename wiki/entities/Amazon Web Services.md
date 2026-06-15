@@ -1,15 +1,15 @@
 ---
 type: entity
 kind: org
-aliases: ["Amazon Web Services", "AWS"]
-tags: [tech-vendor, cloud, ai-infrastructure, hyperscaler]
+aliases: ["Amazon Web Services", "AWS", "AWS Events"]
+tags: [tech-vendor, cloud, ai-infrastructure, hyperscaler, aws-enterprise-strategy]
 parent: "[[Amazon]]"
 ticker: "AMZN (Amazon)"
 website: "https://aws.amazon.com"
 confidence: 0.85
-last_confirmed: "2026-05-25"
-accessed_at: "2026-05-25"
-source_count: 4
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 6
 ---
 
 # Amazon Web Services
@@ -27,6 +27,14 @@ Two distinct angles on AWS surface across the ingested sources:
 ### 2. As a thought-leadership platform
 
 AWS runs an "Executives in Residence" program advising Fortune 500 leadership teams. [[Jana Werner]] and [[Phil Le-Brun]] (authors of [[2026-04-28-werner-lebrun-octopus-organization|"Become an Octopus Organization"]] in HBR Nov–Dec 2025) hold these positions. The Octopus framework is implicitly AWS-aligned: customer-centricity, distributed systems, microservices, decoupling — all align with AWS's core selling points (cloud microservices, serverless, decoupled architectures).
+
+### The AWS Events keynote series ("AWS Events" YouTube channel)
+
+The **AWS Enterprise Strategy** team (former C-level executives — Jonathan Allen, **Steven Brovich**, Tom Godden, et al.) delivers a recurring executive-forum keynote on agentic-AI leadership, published on the **AWS Events** channel (an alias of this entity). Three are in the wiki, all sharing the same four-question framework (economics / talent / structure / governance) and USE/COMPOSE/BUILD doctrine:
+
+- [[2026-05-21-allen-aws-london-exec-forum-agentic-team-structures|London Exec Forum — advanced team structures]] (Jonathan Allen, 21 May 2026).
+- [[2026-06-12-aws-leaders-guide-advanced-team-structures-agentic-world|Sydney — advanced team structures]] (Steven Brovich, 12 June 2026) — the near-replication that corroborates the framework + adds quantified specifics (pricing scissors, Models A/B/C, deeper Singapore governance).
+- [[2026-06-12-aws-leaders-guide-data-strategy-agentic-ai|Sydney — data strategy in the era of agentic AI]] (former-CIO Enterprise Strategist, 12 June 2026) — the data-layer companion (data-products, markdown-for-agents, minimum-viable-governance).
 
 Discount the Octopus framing slightly for AWS's commercial interest, but the underlying argument is well-supported by examples external to AWS (Netflix, Google, Coca-Cola, U.S. Army).
 

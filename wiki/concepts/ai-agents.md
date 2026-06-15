@@ -3,9 +3,9 @@ type: concept
 aliases: ["AI agent", "AI agents", "agentic AI", "autonomous agents", "agent", "agents"]
 tags: [ai-agents, agentic-ai, generative-ai, automation, ai-deployment]
 confidence: 0.95
-last_confirmed: "2026-06-12"
-accessed_at: "2026-06-12"
-source_count: 19
+last_confirmed: "2026-06-15"
+accessed_at: "2026-06-15"
+source_count: 20
 relationships:
   - type: instance-of
     target: generative-ai
@@ -134,6 +134,18 @@ This is the **seller-side mirror** of Ognibeni's buyer-side warning that *"nobod
 [[2026-05-12-techlatest-hacker-search-engines-osint-tools-2026|TechLatest 2026]] names **"AI-Augmented Offensive & Defensive Security"** as an emerging 2026 category in which LLMs and AI agents are integrated with [[osint|OSINT]] platforms to correlate sources, identify exposures automatically, generate attack graphs, and automate reconnaissance workflows. This is the wiki's first source citing agents in a **cybersecurity/[[attack-surface-management]]** application — distinct from the coding-agent, enterprise-workflow, and agentic-commerce clusters that dominate the wiki's existing agent corpus.
 
 The claim is currently at vendor-narrative depth (no benchmarks, no named systems, no failure modes). Worth tracking: does OSINT become the first defensive-security domain to operationalise autonomous-agent workflows at scale, ahead of more cautious internal-IT use cases? The article asserts yes; the wiki has no empirical anchor yet either way.
+
+### The human-agent collaboration reality (CIO chorus, June 2026)
+
+[[2026-06-11-mit-smr-agentic-ai-what-leaders-wish-they-knew-sooner|MIT SMR's 2026 CIO Symposium compilation]] is the wiki's densest field-level read on what *actually happens* when agents enter workflows — a useful corrective to vendor optimism. Five recurring observations from the eleven leaders:
+
+- **"Agents aren't ready for prime time" (George Westerman).** The word "agent" is being applied to unsophisticated automation — "increasing the hype without necessarily increasing the value." A caution against the wiki's own enthusiasm: much labelled "agentic" is not.
+- **The autonomy myth (Melissa Swift).** You don't hand an agent a task and watch it "magically scatter away and get it done" — "you have to check the output, recheck the output, re-prompt it." Working with agents today "is not that different from humans working with humans."
+- **In-the-loop vs on-the-loop ([[Michael Schrage]]).** A sharper frame than blanket "human-in-the-loop": agents that *execute* explicit tasks vs agents that *clarify* intent, and the human's choice of sitting *in* the loop (approving each step) vs *on* the loop (supervising the system). Schrage: "I don't trust deterministic software agents yet."
+- **Performative oversight (Thomas Davenport).** The dark side of human-in-the-loop: when agents outpace humans, review degrades to cursory rubber-stamping — a nominal control that isn't one. (Carried in depth on [[agent-harness]] and [[ai-employment-effects]].)
+- **Micro-agents + trust fabric (Monica Caldas).** Production deployments tend toward *many small agents*, not one mega-agent, with humans placed "at the right places, not in every place" via an explicit governance/"trust fabric."
+
+The throughline ratifies the wiki's [[automation-vs-augmentation|augmentation]] reading — the unit of value is the *human+agent combination* — while supplying the field caveats (hype inflation, oversight quality) the vendor sources understate.
 
 ## Debates / contradictions
 
