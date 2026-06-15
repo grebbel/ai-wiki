@@ -41,12 +41,13 @@ A new raw file lands in `raw/`. Acquire **only touches `raw/`** — the wiki sou
 
 1. **Determine source type → typed `raw/` subfolder.** Organise by source *type*, not topic — different formats have different processing rules. Current typed subfolders: `articles/`, `assets/`, `books/`, `images/`, `lectures/`, `papers/`, `reports/`, `videos/`. Create new typed subfolders on the fly when a genuinely new source category appears (e.g. `raw/patents/`, `raw/interviews/`); don't ask permission for every new type.
 2. **Convert before landing.** Source formats that the LLM cannot read in one pass must be converted to markdown *before* landing in `raw/`:
-   - PDFs → markdown (`marker`, `pdftotext`, MarkItDown, or a Zotero markdown export) → `raw/papers/<slug>.md`. Keep the original PDF in `raw/assets/` for reference.
+   - PDFs → markdown (`marker`, `pdftotext`, MarkItDown, or a Zotero markdown export) → `raw/<type>/<slug>.md`. **Keep the original PDF co-located by type** next to its markdown (`raw/<type>/<slug>.pdf`, e.g. `raw/papers/<slug>.pdf`), **not** in `raw/assets/`. Raw binaries are gitignored (`.gitignore` excludes `raw/**/*.pdf` and friends), so the local PDF never reaches GitHub; the committed markdown stub plus its citation lets a reader locate the original. (The older "keep the PDF in `raw/assets/`" guidance was drift — practice co-locates by type.)
    - YouTube / podcast URLs → transcript markdown → `raw/videos/<slug>.md`. The [`youtube-transcript-skill`](.claude/skills/youtube-transcript-skill/SKILL.md) is the canonical acquire-time skill — auto-triggered by any YouTube URL request that mentions transcript / captions / subtitles, or invoked explicitly with `-o raw/videos/<slug>.md`.
+   - **Local Zotero library** → `raw/<type>/<slug>.md` (+ gitignored PDF copy). The [`zotero-acquire`](.claude/skills/zotero-acquire/SKILL.md) skill is the canonical acquire-time skill for Zotero: it reads the local Zotero 7 HTTP API via `pyzotero`, scopes to the dedicated **`ai-wiki`** collection, copies each item's PDF into `raw/<type>/`, converts it (`marker` → `markitdown` → `pdftotext`), and writes the Zotero stub contract (see [§Pre-flight check (Zotero stubs)](#pre-flight-check-zotero-stubs-the-yaml-frontmatter-contract)). Run `--dry-run` first.
    - `.docx` / `.epub` / `.html` → markdown (`pandoc`, `readability`).
-3. **Acquire-time skill contract.** A skill that lands a raw file emits the file at `raw/<type>/<slug>.md` with a canonical YAML frontmatter as its first block. The frontmatter is the *contract* between Acquire and Process — Process reads it during pre-flight checks. The video-format contract is specified in detail at [§Pre-flight check (videos): the YAML frontmatter contract](#pre-flight-check-videos-the-yaml-frontmatter-contract); new acquire-time skills (PDF→markdown, web clipper integration, podcast transcription) follow the same pattern: produce a raw file at the canonical path with the canonical frontmatter for its type.
+3. **Acquire-time skill contract.** A skill that lands a raw file emits the file at `raw/<type>/<slug>.md` with a canonical YAML frontmatter as its first block. The frontmatter is the *contract* between Acquire and Process — Process reads it during pre-flight checks. The video-format contract is specified in detail at [§Pre-flight check (videos): the YAML frontmatter contract](#pre-flight-check-videos-the-yaml-frontmatter-contract) and the Zotero-stub contract at [§Pre-flight check (Zotero stubs)](#pre-flight-check-zotero-stubs-the-yaml-frontmatter-contract); new acquire-time skills (web clipper integration, podcast transcription) follow the same pattern: produce a raw file at the canonical path with the canonical frontmatter for its type.
 4. **Re-runnable.** Re-acquiring the same source from a better channel (higher-quality transcript, full text replacing a sample) **replaces the raw file**. The wiki source page is not touched until §Process re-runs. This is why Acquire is named as a distinct phase — re-acquisition without re-processing is common and benign.
-5. **Log entry.** When Acquire runs without Process in the same session, log as `acquire | <slug or batch description>` (reverse-chronological, top of [`log.md`](wiki/log.md)). When Acquire and Process run together (the typical case), use `ingest | ...` as the umbrella op — no separate `acquire` entry needed.
+5. **Log entry.** When Acquire runs without Process in the same session, log as `acquire | <slug or batch description>` (reverse-chronological, top of [`log.md`](wiki/log.md)) — e.g. a stub-only Zotero pull logs as `acquire | zotero-batch ai-wiki (<n> items)`. When Acquire and Process run together (the typical case), use `ingest | ...` as the umbrella op — no separate `acquire` entry needed.
 
 ### Process
 A source in `raw/` has not yet been turned into a wiki page. (When invoked under the §Ingest umbrella, Acquire produced this file moments ago; when invoked standalone, the file has been sitting in `raw/` since an earlier session.)
@@ -158,6 +159,53 @@ Fixed schema fields on the source page:
 - **No separate `channel:` field on the source page** — the convention is `author = channel` for videos. The skill's `channel_id:` and `channel_url:` are not promoted into source-page frontmatter; capture them in body if substantively useful.
 
 **Body opening for video source pages.** The body begins with the YouTube `description:` rendered as a blockquote (after the H1, before the wiki's own framing). This makes the channel's stated framing of the video legible to readers before the wiki's interpretation overlays it.
+
+### Pre-flight check (Zotero stubs): the YAML frontmatter contract
+
+Sources acquired from a local Zotero library via the [`zotero-acquire`](.claude/skills/zotero-acquire/SKILL.md) skill land at `raw/<type>/<slug>.md` with this frontmatter as the first block (the Acquire→Process contract, parallel to the videos contract above):
+
+```yaml
+---
+zotero_item_key: CAJBMNHG          # dedup key + provenance (required)
+zotero_collection: ai-wiki
+item_type: webpage                 # raw Zotero itemType — a ROUTING HINT ONLY
+title: "The 2026 AI Index Report | Stanford HAI"
+authors: ["..."]                   # from Zotero creators (may be empty — fill at Process)
+date_published: 2026-04            # best-effort ISO from Zotero's freeform `date`
+doi: ""
+isbn: ""
+url: "https://..."
+citekey: ""                        # Better BibTeX "Citation Key:" from the Zotero `extra` field
+abstract: "..."
+attachment: <slug>.pdf             # copied filename (omitted when nothing copied)
+fulltext_source: pdf-converted     # pdf-converted | doc-converted | zotero-extracted | none
+converter: pdftotext               # marker | markitdown | pdftotext | "" (none)
+notes: |
+  Acquired from Zotero collection `ai-wiki`. itemType ... routed to raw/<type>/ — confirm at Process.
+---
+```
+
+**Canonical pre-flight fields the wiki cares about:** `title`, `url` (or `doi`), `date_published`, `zotero_item_key`. If `title` is missing, or both `url` and `doi` are empty, stop and ask the user.
+
+**Before treating a Zotero stub as a source for ingest:**
+
+1. **`item_type` is a routing hint, not ground truth.** The skill routes by Zotero `itemType` (`journalArticle`→`papers/`, `report`→`reports/`, `webpage`→`articles/`, …), but Zotero often mis-types (e.g. the AI Index *report* is typed `webpage`). Confirm the source's true kind from its content and **move the raw file** to the correct `raw/<type>/` folder if the routing is wrong, before writing the wiki source page.
+2. **`fulltext_source` governs how far to trust the body.** `pdf-converted`/`doc-converted` = a real conversion of the attachment (clean-ish; `pdftotext` flattens tables/cover art — verify against the PDF for figure-heavy reports); `zotero-extracted` = Zotero's lossy plain-text index (treat as partial); `none` = body is only the abstract or a URL pointer — **fetch the real source before writing the wiki page.**
+3. **The PDF is co-located and gitignored.** The original lives at `raw/<type>/<slug>.pdf` (gitignored); the wiki source page cites it via `raw:` plus `zotero_item_key`/`doi`/`url` so a reader of the public repo can re-locate it.
+4. **Dedup is on `zotero_item_key`.** Re-running the skill skips items already in `raw/`. Apply the normal three checks below (Scope / Identity / Honest scoping) — `fulltext_source` is the honest-scoping signal for Zotero stubs.
+
+#### Field mapping — Zotero stub → wiki source page
+
+| Stub field | Wiki source page | Transformation |
+| --- | --- | --- |
+| `title:` | `title:` | quote-wrap if it contains `:` |
+| `authors:` | `author:` | verbatim list; promote recurring authors to entities per [§Author-entity promotion](#author-entity-promotion) |
+| `url:` / `doi:` | `url:` / cite DOI in body | verbatim |
+| `date_published:` | `date_published:` | ISO date only |
+| `item_type:` | `kind:` + `raw/<type>/` | map Zotero type → wiki `kind:` (`paper`/`report`/`article`/`book`/…); **fix routing if mis-typed** |
+| `attachment:` | `raw:` | point at the co-located `raw/<type>/<slug>.pdf` (or the `.md` stub) |
+| `zotero_item_key:` | body provenance line | record so the source is re-locatable in Zotero |
+| `fulltext_source:` | `length:` honest-scoping note | e.g. `"~N pages (pdftotext extract; tables flattened)"` |
 
 ### Check 1 — Scope: is this the whole source?
 
