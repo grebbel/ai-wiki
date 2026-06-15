@@ -1,11 +1,13 @@
 ---
-type: thread
-status: open
-opened: 2026-06-15
+title: "Connecting the wiki to a local Zotero library"
+date: 2026-06-15
+status: notes
 tags: [zotero, ingest, acquire, mcp, tooling, integration, reference-manager, infrastructure, provenance]
 ---
 
-# Thread: Connecting the wiki to a local Zotero library
+# Connecting the wiki to a local Zotero library
+
+> Research + decision notes (not a wiki thread). Updates the May-2026 PRD (`2026-05-14-prd-zotero-stack-integratie.md`) with the Zotero 7 local-API reality. Lives in `inspiration/` — outside the Claude-owned `wiki/` contract.
 
 ## The question
 
@@ -21,7 +23,7 @@ Sub-questions:
 
 ## Background — prior art in this repo
 
-The May 2026 PRD (`inspiration/2026-05-14-prd-zotero-stack-integratie.md`) already scoped four options (A — Zotero-as-source / B — Zotero-as-mirror / C — MCP-on-the-wiki / D — full convergence) and recommended **A + C** in phasing. But it framed everything around the **cloud** Web API (`api.zotero.org`, per-account API keys) and the multi-tenant `ai-consultant` GCP/Firestore/Vertex stack. This thread **updates that PRD with the local-API reality**, which sharply lowers the cost of the "light" path and adds a cleaner option the PRD did not have.
+The May 2026 PRD (`2026-05-14-prd-zotero-stack-integratie.md` (sibling in `inspiration/`)) already scoped four options (A — Zotero-as-source / B — Zotero-as-mirror / C — MCP-on-the-wiki / D — full convergence) and recommended **A + C** in phasing. But it framed everything around the **cloud** Web API (`api.zotero.org`, per-account API keys) and the multi-tenant `ai-consultant` GCP/Firestore/Vertex stack. This thread **updates that PRD with the local-API reality**, which sharply lowers the cost of the "light" path and adds a cleaner option the PRD did not have.
 
 ## What we know so far
 
@@ -71,13 +73,13 @@ An initial scan of the *committed* repo showed only markdown under `raw/`, and t
 - **MCP scope**: leave the live MCP whole-library (read-only exploration) or constrain it to the collection too?
 - **Logging cadence**: confirm `acquire | zotero-batch …` for stub-only runs; `ingest | …` when Acquire+Process happen together.
 
-## How this thread should resolve
+## Definition of done
 
-Closes when (a) the Zotero MCP is registered and verified on the user's machine, and (b) the `zotero-acquire` skill + the CLAUDE.md pre-flight subsection have landed and ≥3 collection items have been acquired and processed end-to-end. Resolution target: either a `wiki/syntheses/` page or a CLAUDE.md §Acquire update documenting the Zotero acquire path as a first-class ingest channel.
+This work is complete when (a) the Zotero MCP is registered and verified on the user's machine, and (b) the `zotero-acquire` skill + the CLAUDE.md pre-flight subsection have landed and ≥3 collection items have been acquired and processed end-to-end. End state: a CLAUDE.md §Acquire update documenting the Zotero acquire path as a first-class ingest channel.
 
 ## References
 
-- Prior PRD: `inspiration/2026-05-14-prd-zotero-stack-integratie.md` (+ the three `…-stack-*.excalidraw` diagrams).
+- Prior PRD: `2026-05-14-prd-zotero-stack-integratie.md` (sibling in `inspiration/`) (+ the three `…-stack-*.excalidraw` diagrams).
 - Wiki schema: `CLAUDE.md` §Ingest (Acquire/Process split, the `acquire` op), §Search (the qmd `.mcp.json` registration pattern), §Verifying sources before ingest (the videos frontmatter contract this would parallel).
 - Zotero local HTTP API — [dev announcement](https://groups.google.com/g/zotero-dev/c/ElvHhIFAXrY/m/fA7SKKwsAgAJ); [pyzotero docs](https://pyzotero.readthedocs.io/en/latest/).
 - MCP servers — [54yyyu/zotero-mcp](https://github.com/54yyyu/zotero-mcp); [ZotPilot](https://forums.zotero.org/discussion/130483/).
