@@ -1,0 +1,32 @@
+---
+
+## [2026-06-16] ingest | nbra-rivm-web-sources-update
+
+- Acquired 4 newly added NBRA items from Zotero into `raw/articles/`.
+- Added raw file `raw/articles/global-health-security-rivm.md`.
+- Added raw file `raw/articles/capacity-training-materials-rivm.md`.
+- Added raw file `raw/articles/tools-rivm.md`.
+- Added raw file `raw/articles/ghs-world-map-rivm.md`.
+- Processed the 4 acquired stubs into `wiki/sources/`.
+- Added source page [[sources/2026-06-16-global-health-security-rivm|Global Health Security | RIVM]].
+- Added source page [[sources/2026-06-16-capacity-training-materials-rivm|Capacity Training Materials | RIVM]].
+- Added source page [[sources/2026-06-16-tools-rivm|Tools | RIVM]].
+- Added source page [[sources/2026-06-16-ghs-world-map-rivm|GHS world map | RIVM]].
+- Updated [[index|wiki index]] with the new sources.
+
+## [2026-06-16] ingest | nbra-batch-process-remaining-sources
+
+- Processed 7 additional NBRA-acquired raw sources into `wiki/sources/`:
+  - [[sources/2022-05-27-complementarity-of-international-instruments-in-biosecurity|Complementarity of International Instruments in the Field of Biosecurity]]
+  - [[sources/2024-02-20-we-have-to-join-forces-european-one-health-policies|We have to join forces - Current status and future European policies as discussed at the One Health EJP conference]]
+  - [[sources/2024-06-22-an-integrated-inventory-of-one-health-tools|An integrated inventory of One Health tools]]
+  - [[sources/2025-07-10-one-health-policy-communities-perspectives-on-zoonoses-risk-factors-and-management|One Health policy communities' perspectives on zoonoses risk factors and management]]
+  - [[sources/2025-08-08-application-of-the-one-health-approach-to-zoonotic-diseases-in-bhutan|Application of the One Health approach to zoonotic diseases in Bhutan]]
+  - [[sources/2025-11-12-a-haccp-one-health-framework-for-game-meat-supply-chains-zambia|A HACCP-One Health framework for game meat supply chains in Zambia]]
+  - [[sources/2026-03-16-horizon-scanning-of-invasive-plant-pests-in-zimbabwe|Horizon scanning of invasive plant pests endangering Zimbabwe's agricultural sector]]
+- Updated [[index|wiki index]] with all eight processed NBRA sources.
+
+## [2026-06-16] ingest | systematic-approach-towards-establishing-a-national-inventory-of-dangerous-pathogens
+
+- Processed first NBRA-acquired raw source into [[sources/2021-09-08-systematic-approach-towards-establishing-a-national-inventory-of-dangerous-pathogens|wiki source page]].
+- Updated [[index|wiki index]] to include the first source entry.
