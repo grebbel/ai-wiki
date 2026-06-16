@@ -1,4 +1,15 @@
 ---
+title: Log
+---
+
+## [2026-06-16] ingest | cont-001-seed-graph-structure
+
+- Seeded previously empty wiki sections with linked pages:
+- Added entities: [[entities/rivm|RIVM]], [[entities/who|World Health Organization]], [[entities/biological-weapons-convention|Biological Weapons Convention]].
+- Added concepts: [[concepts/pathogen-inventory-systems|pathogen-inventory-systems]], [[concepts/one-health-operationalization|one-health-operationalization]], [[concepts/biosecurity-capacity-building|biosecurity-capacity-building]].
+- Added thread: [[threads/one-health-implementation-gap-closure|one-health-implementation-gap-closure]].
+- Added synthesis: [[syntheses/nbra-initial-operational-baseline|nbra-initial-operational-baseline]].
+- Updated [[index|wiki index]] so Entities, Concepts, Threads, and Syntheses sections are now populated.
 
 ## [2026-06-16] ingest | nbra-rivm-web-sources-update
 
