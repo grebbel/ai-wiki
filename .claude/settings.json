@@ -1,0 +1,72 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://quartz.jzhao.xyz/\")",
+      "WebFetch(domain:quartz.jzhao.xyz)",
+      "Bash(curl -s https://raw.githubusercontent.com/jackyzha0/quartz/v4/docs/hosting.md)",
+      "Bash(npm --version)",
+      "Bash(npm ci *)",
+      "Bash(npx quartz *)",
+      "Bash(node -e ' *)",
+      "Bash(curl -sf http://localhost:8080/)",
+      "Skill(commit-commands:commit-push-pr)",
+      "Skill(commit-commands:commit-push-pr:*)",
+      "Bash(gh pr *)",
+      "Bash(git stash *)",
+      "Bash(grep -rln \"\\\\`\\\\`\\\\`dataview\" /Users/witoldtenhove/Projects/ai-wiki/wiki/ /Users/witoldtenhove/Projects/ai-wiki/CLAUDE.md /Users/witoldtenhove/Projects/ai-wiki/llm-wiki.md)",
+      "Bash(grep -rln \"\\\\`\\\\`\\\\`dataview\" /Users/witoldtenhove/Projects/ai-wiki/wiki/)",
+      "Bash(grep -c '```dataview' wiki/concepts/industry-4-0.md wiki/entities/Anthropic.md)",
+      "Bash(grep -rl '```dataview' wiki/)",
+      "Bash(awk '{print $NF}')",
+      "Bash(ls -la \"/temp/readonly/\" 2>&1 | head -10 && echo \"---\" && file \"/temp/readonly/command \\(suarsz\\)\" 2>&1)",
+      "Read(//temp/**)",
+      "Read(//temp/readonly/**)",
+      "Bash(perl -ne 'print if /\\\\.sidebar\\\\.right\\\\s*\\\\{|\\\\.sidebar[^a-z-]\\\\{/' /Users/witoldtenhove/Projects/ai-wiki/public/index.css)",
+      "Bash(node /Users/witoldtenhove/Projects/ai-wiki/scripts/session-start.mjs)",
+      "Bash(node /Users/witoldtenhove/Projects/ai-wiki/scripts/lint-page.mjs)",
+      "Bash(node /Users/witoldtenhove/Projects/ai-wiki/scripts/session-end.mjs)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(echo \"exit:$?\")",
+      "Bash(awk '/^## \\\\[2026-05-05\\\\] refactor \\\\| v0\\\\.4/,EOF' /Users/witoldtenhove/Projects/ai-wiki/wiki/log.md)",
+      "Bash(node scripts/lint-confidence.mjs)",
+      "Bash(node scripts/graph-export.mjs)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/pip list *)",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(node scripts/lint-dangling-authors.mjs)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node $CLAUDE_PROJECT_DIR/scripts/session-start.mjs"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node $CLAUDE_PROJECT_DIR/scripts/lint-page.mjs"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node $CLAUDE_PROJECT_DIR/scripts/session-end.mjs"
+          }
+        ]
+      }
+    ]
+  }
+}

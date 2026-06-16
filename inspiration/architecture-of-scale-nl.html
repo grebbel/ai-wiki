@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vier manieren om één vraag te beantwoorden · LLM-contextarchitecturen</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper:        #FCFBF6;
+    --paper-soft:   #F4F0E4;
+    --ink:          #2A2722;
+    --ink-soft:     #6B6660;
+    --ink-faint:    #A8A296;
+    --rule:         #C8C2B7;
+    --rule-soft:    #E2DDD0;
+    --blue:         #2540C8;
+    --blue-soft:    #E8EBFA;
+    --orange:       #E54B2B;
+    --orange-soft:  #FBDED4;
+    --grounded:     #1F7A4E;
+    --partial:      #C97A1F;
+    --ungrounded:   #B22A2A;
+    --reply-fail:   #FCEDEA;
+    --reply-partial:#FCF3E3;
+    --reply-ok:     #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow: auto;
+  }
+  .mono  { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+  .serif { font-family: 'Instrument Serif', Georgia, serif; }
+
+  .page {
+    min-width: 1280px;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 32px 44px 28px;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 24px;
+    min-height: 100vh;
+  }
+
+  header.main {
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 40px;
+    align-items: end;
+  }
+  .bulletin {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .byline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .byline a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.15s;
+  }
+  .byline a:hover { color: var(--ink); }
+  h1.title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--ink);
+  }
+  h1.title .accent {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: lowercase;
+    letter-spacing: -0.005em;
+  }
+
+  .query-block {
+    background: var(--blue);
+    color: white;
+    padding: 16px 20px 14px;
+    display: grid;
+    gap: 10px;
+  }
+  .query-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .query-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.62);
+    text-transform: uppercase;
+  }
+  .query-kind {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: rgba(255,255,255,0.12);
+    color: white;
+  }
+  .query-text {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.3;
+    min-height: 1.3em;
+    color: white;
+  }
+  .cursor {
+    display: inline-block;
+    width: 0.45em;
+    margin-left: 1px;
+    animation: cursor-blink 1s steps(2) infinite;
+  }
+  @keyframes cursor-blink { 0%,50% {opacity:1;} 51%,100% {opacity:0;} }
+  .query-nav { display: flex; gap: 6px; }
+  .nav-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: white;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.16); }
+  .nav-btn:active { transform: translateY(1px); }
+  .nav-btn.replay { background: white; color: var(--blue); border-color: white; font-weight: 600; }
+  .nav-btn.replay:hover { background: rgba(255,255,255,0.86); }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    align-items: stretch;
+  }
+  .col {
+    display: grid;
+    grid-template-rows: auto auto auto auto 1fr auto auto auto;
+    gap: 10px;
+  }
+  .col-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--orange);
+    margin: 0 0 -4px 0;
+    letter-spacing: -0.04em;
+  }
+  .col-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .col-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 8px 0;
+  }
+  .col-rule { height: 2px; background: var(--ink); margin-bottom: 4px; }
+
+  .section-head {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 6px;
+  }
+  .substrate-box { min-height: 220px; display: flex; flex-direction: column; }
+  .operation-line {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    font-style: italic;
+    padding: 2px 0 4px 0;
+  }
+  .reply-box {
+    padding: 12px 14px;
+    border: 1px solid var(--rule);
+    min-height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .reply-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    color: var(--ink);
+    word-break: break-word;
+  }
+  .reply-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    line-height: 1.3;
+    font-style: italic;
+  }
+
+  .status-badge {
+    padding: 10px 14px;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .status-badge.grounded   { background: var(--grounded); }
+  .status-badge.partial    { background: var(--partial); }
+  .status-badge.ungrounded { background: var(--ungrounded); }
+
+  .tile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(36px, auto);
+    gap: 5px;
+  }
+  .tile {
+    position: relative;
+    padding: 6px 7px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .tile-text {
+    position: relative;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .tile.cutoff { border-color: var(--ungrounded); border-style: dashed; }
+  .tile.cutoff .tile-text { color: var(--ungrounded); text-decoration: line-through; }
+  .tile.match  { border-color: var(--blue); }
+  .tile.match .tile-text { color: white; font-weight: 600; }
+  .tile-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--blue);
+    z-index: 1;
+    transform-origin: left center;
+  }
+
+  .bar-list { display: flex; flex-direction: column; gap: 7px; padding: 4px 0; }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 96px 1fr 36px;
+    gap: 8px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    position: relative;
+  }
+  .bar-name { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-track { height: 14px; background: var(--rule-soft); position: relative; overflow: hidden; }
+  .bar-fill { position: absolute; inset: 0; transform-origin: left center; background: var(--ink-faint); }
+  .bar-row.top .bar-fill { background: var(--blue); }
+  .bar-row.top .bar-name { color: var(--blue); font-weight: 600; }
+  .bar-pct { text-align: right; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .bar-row.top .bar-pct { color: var(--blue); font-weight: 600; }
+  .bar-row.warn::after {
+    content: '';
+    position: absolute;
+    inset: -3px -2px;
+    border: 1px solid var(--orange);
+    pointer-events: none;
+  }
+  .rag-tail {
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-soft);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .kg-host {
+    width: 100%;
+    aspect-ratio: 240 / 300;
+    max-height: 320px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .kg-svg  { width: 100%; height: 100%; display: block; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .card {
+    padding: 7px 8px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    line-height: 1.35;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 56px;
+  }
+  .card.hit { border-color: var(--grounded); background: #ECF6EF; }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 10px;
+    color: var(--ink);
+  }
+  .card.hit .card-head { color: var(--grounded); }
+  .card-stamp { font-size: 8px; color: var(--ink-soft); font-weight: 400; }
+  .card-field { color: var(--ink-soft); }
+  .card.hit .card-field { color: var(--ink); }
+
+  .takeaways {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .takeaway-cell { display: flex; flex-direction: column; gap: 6px; }
+  .takeaway-head {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .takeaway-marker { width: 18px; height: 3px; background: var(--ink-faint); }
+  .takeaway-marker.grounded   { background: var(--grounded); }
+  .takeaway-marker.partial    { background: var(--partial); }
+  .takeaway-marker.ungrounded { background: var(--ungrounded); }
+  .takeaway-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  footer.axis {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+    padding-top: 16px;
+    border-top: 2px solid var(--ink);
+  }
+  .axis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .axis-label.right { text-align: right; }
+  .axis-dots { display: flex; gap: 36px; align-items: center; }
+  .axis-dot { width: 9px; height: 9px; background: var(--ink-faint); border-radius: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  @media (max-width: 1280px) { body { overflow-x: auto; } }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "motion/react": "https://esm.sh/motion@11.15.0/react?deps=react@18.3.1,react-dom@18.3.1",
+    "htm": "https://esm.sh/htm@3.1.1"
+  }
+}
+</script>
+</head>
+<body>
+<div id="root"></div>
+<div id="err" style="display:none;position:fixed;top:0;left:0;right:0;padding:16px;background:#7f1d1d;color:#fee2e2;font-family:ui-monospace,monospace;font-size:12px;white-space:pre-wrap;z-index:9999;max-height:50vh;overflow:auto"></div>
+<script>
+  function showErr(msg) {
+    var el = document.getElementById("err");
+    if (!el) return;
+    el.style.display = "block";
+    el.textContent = (el.textContent ? el.textContent + "\n\n" : "") + msg;
+  }
+  window.addEventListener("error", function (e) {
+    showErr("Error: " + (e.error && e.error.stack ? e.error.stack : e.message));
+  });
+  window.addEventListener("unhandledrejection", function (e) {
+    showErr("Unhandled rejection: " + (e.reason && e.reason.stack ? e.reason.stack : e.reason));
+  });
+</script>
+
+<script type="module">
+import React, { useState, useRef, useEffect, useMemo } from "react"
+import { createRoot } from "react-dom/client"
+import { motion, AnimatePresence } from "motion/react"
+import htm from "htm"
+
+const html = htm.bind(React.createElement)
+
+const QUERIES = [
+  {
+    id: "common",
+    label: "Algemene kennis",
+    text: "Wat is de hoofdstad van Frankrijk?",
+    pathHint: ["q", "n1", "n3", "ans"],
+    answers: {
+      llm:  { status: "success", text: "Parijs.",                                                       note: "Onthouden tijdens training.",
+              takeaway: "Algemene publieke kennis van vóór de cutoff zit in het model. Het goedkoopste antwoord — maar werkt alleen voor algemene feiten." },
+      rag:  { status: "success", text: 'Parijs.\n[bron: geo-atlas.md §1]',                              note: "Geografisch document opgehaald.",
+              takeaway: "Voor algemene kennis is RAG overdreven — het model wist het al. U betaalt voor een ophaal-laag die hier niets toevoegt." },
+      kg:   { status: "success", text: "Frankrijk ⟶ capital_of ⟶ Parijs",                              note: "Eén getypeerde edge.",
+              takeaway: "Eén getypeerde edge volstaat. De schema-investering betaalt zich hier nog niet terug; pas bij meervoudige relaties." },
+      wiki: { status: "success", text: "# Parijs\n- Hoofdstad van Frankrijk\n- Inw. 2,1M",              note: "Voorgekookte entiteit-kaart.",
+              takeaway: "De entiteit-kaart was al door agents samengesteld. Het antwoord komt direct met citaat, tijdstempel en bron." },
+    },
+  },
+  {
+    id: "proprietary",
+    label: "Bedrijfseigen · recent",
+    text: "Wat waren de Q3 2026-verkopen voor onze Medicijn A-lijn?",
+    pathHint: ["q", "n2", "n4", "ans"],
+    answers: {
+      llm:  { status: "fail",      text: "Ik heb geen toegang tot interne financiële data.",            note: "Training-cutoff en geen externe toegang.",
+              takeaway: "Interne data van na de cutoff bestaat niet in het model. Geen geheugen, geen antwoord — hier breekt het zonder grond." },
+      rag:  { status: "success",   text: "€4,2M in Q3 2026.\n[bron: q3-2026-rapport.pdf p.7]",          note: "Intern document opgehaald — vandaag geïndexeerd.",
+              takeaway: "RAG schittert hier: nieuwe documenten gisteren geïndexeerd, antwoord met bronverwijzing. Klassiek RAG-domein." },
+      kg:   { status: "fail",      text: "Geen 'sales'-relatie in het schema.",                         note: "Domein niet gemodelleerd.",
+              takeaway: "U zou het schema eerst moeten uitbreiden met 'sales'-relaties. Hoge voorbereidingskosten; niet voor elke ad-hoc-vraag verantwoord." },
+      wiki: { status: "success",   text: "# Q3 2026 Verkoop · Medicijn A\n- Omzet: €4,2M\n- Bijgewerkt 1d geleden", note: "Agents hielden de wiki actueel.",
+              takeaway: "Agents hebben de kaart 's nachts ververst. Werkt voor lopende cijfers — mits de ingestie-pijplijn draait." },
+    },
+  },
+  {
+    id: "multihop",
+    label: "Meerstaps · relationeel",
+    text: "Welke bijwerkingen van Medicijn A komen ook voor bij Medicijn B?",
+    pathHint: ["q", "n2", "n5", "n6", "ans"],
+    answers: {
+      llm:  { status: "uncertain", text: "Beide kunnen misselijkheid veroorzaken... (niet geverifieerd)", note: "Plausibel maar ongegrond.",
+              takeaway: "Plausibel maar ongegrond — het model gokt op patronen. Hier ontstaan hallucinaties die op feiten lijken." },
+      rag:  { status: "partial",   text: "Medicijn A: [misselijkheid, hoofdpijn]\nMedicijn B: [hoofdpijn, vermoeidheid]", note: "Vindt beide — maar bijwerkingen uit proza halen is foutgevoelig.",
+              takeaway: "Beide documenten gevonden, maar 'bijwerkingen uit proza halen' is foutgevoelig. RAG breekt bij meerstaps redeneren." },
+      kg:   { status: "success",   text: "{ hoofdpijn }",                                               note: "Deterministische intersectie via 'causes'-edges.",
+              takeaway: "Intersectie op de graaf berekend, deterministisch. Geen LLM-aanroep nodig voor de redenering." },
+      wiki: { status: "success",   text: "{ hoofdpijn }",                                               note: "Twee gestructureerde kaarten samen in context gelezen.",
+              takeaway: "Twee gestructureerde kaarten samen in context; de intersectie is leesbaar in plaats van afgeleid uit proza." },
+    },
+  },
+]
+
+const LLM_TILES = [
+  { text: "Parijs = hoofdstad · FR",       matches: ["common"] },
+  { text: "Frankrijk · inw ~67M",          matches: ["common"] },
+  { text: "geografie · algemeen",          matches: ["common"] },
+  { text: "Medicijn A · indicatie pijn",   matches: ["multihop"] },
+  { text: "Medicijn A · bijwerkingen-proza", matches: ["multihop"] },
+  { text: "Medicijn B · bijwerkingen-proza", matches: ["multihop"] },
+  { text: "veelvoorkomende interacties",   matches: [] },
+  { text: "??? Q3 2026 verkoop",           matches: [],         post_cutoff: true,  query_target: "proprietary" },
+  { text: "??? Medicijn A × B vergelijk",  matches: [],         post_cutoff: true,  query_target: "multihop" },
+]
+
+const DOCS = [
+  { name: "geo-atlas.md",         kind: "md",  rel: { common: 0.93, proprietary: 0.02, multihop: 0.03 } },
+  { name: "medicijn-a-label.pdf", kind: "pdf", rel: { common: 0.02, proprietary: 0.11, multihop: 0.91 } },
+  { name: "medicijn-b-label.pdf", kind: "pdf", rel: { common: 0.02, proprietary: 0.10, multihop: 0.87 } },
+  { name: "q3-2026-rapport.pdf",  kind: "pdf", rel: { common: 0.03, proprietary: 0.96, multihop: 0.05 } },
+  { name: "farma-handboek.md",    kind: "md",  rel: { common: 0.04, proprietary: 0.07, multihop: 0.42 } },
+  { name: "beleid.pdf",           kind: "pdf", rel: { common: 0.02, proprietary: 0.31, multihop: 0.04 } },
+]
+
+const WIKI_CARDS = [
+  { name: "Parijs",      fields: ["hoofdstad_van: Frankrijk", "inw: 2,1M"],         updated: "3d", matches: ["common"] },
+  { name: "Frankrijk",   fields: ["hoofdstad: Parijs", "inw: 67M"],                 updated: "1w", matches: ["common"] },
+  { name: "Medicijn A",  fields: ["bijwerkingen:", "  [misselijkheid, hoofdpijn]"], updated: "1d", matches: ["multihop"] },
+  { name: "Medicijn B",  fields: ["bijwerkingen:", "  [hoofdpijn, vermoeidheid]"],  updated: "1d", matches: ["multihop"] },
+  { name: "Q3 Verkoop",  fields: ["medicijn_a: €4,2M", "medicijn_b: €3,1M"],        updated: "1d", matches: ["proprietary"] },
+  { name: "Bedrijf",     fields: ["fy2026: lopend"],                                 updated: "2d", matches: ["proprietary"] },
+]
+
+const KG_NODES = [
+  { id: "q",   x: 120, y:  25, r: 10, label: "Vraag",       kind: "input"  },
+  { id: "n1",  x:  50, y:  95, r:  9, label: "Frankrijk",   kind: "entity" },
+  { id: "n2",  x: 190, y:  95, r:  9, label: "Medicijn A",  kind: "entity" },
+  { id: "n3",  x:  30, y: 160, r:  9, label: "Parijs",      kind: "entity" },
+  { id: "n4",  x: 120, y: 160, r:  8, label: "misselijkheid", kind: "metric" },
+  { id: "n5",  x: 210, y: 160, r:  9, label: "hoofdpijn",   kind: "metric" },
+  { id: "n6",  x: 210, y: 220, r:  9, label: "Medicijn B",  kind: "entity" },
+  { id: "n7",  x: 140, y: 220, r:  8, label: "vermoeidheid", kind: "metric" },
+  { id: "ans", x: 120, y: 265, r: 11, label: "Antwoord",    kind: "output" },
+]
+const KG_EDGES = [
+  { from: "q",   to: "n1", type: "queries"    },
+  { from: "q",   to: "n2", type: "queries"    },
+  { from: "n1",  to: "n3", type: "capital_of" },
+  { from: "n2",  to: "n4", type: "causes"     },
+  { from: "n2",  to: "n5", type: "causes"     },
+  { from: "n6",  to: "n5", type: "causes"     },
+  { from: "n6",  to: "n7", type: "causes"     },
+  { from: "n3",  to: "ans",type: "informs"    },
+  { from: "n5",  to: "ans",type: "informs"    },
+  { from: "n4",  to: "ans",type: "informs"    },
+  { from: "n7",  to: "ans",type: "informs"    },
+]
+const KIND_RING = {
+  input:  "var(--ink)",
+  entity: "var(--ink-soft)",
+  metric: "var(--orange)",
+  output: "var(--grounded)",
+}
+
+const STATUS = {
+  success:   { label: "GEGROND",       cls: "grounded",   bg: "var(--reply-ok)"      },
+  partial:   { label: "GEDEELTELIJK",  cls: "partial",    bg: "var(--reply-partial)" },
+  uncertain: { label: "ONGEGROND",     cls: "ungrounded", bg: "var(--reply-fail)"    },
+  fail:      { label: "ONGEGROND",     cls: "ungrounded", bg: "var(--reply-fail)"    },
+}
+
+function edgesOnPath(pathIds) {
+  const out = []
+  for (let i = 0; i < pathIds.length - 1; i++) {
+    const a = pathIds[i], b = pathIds[i + 1]
+    const idx = KG_EDGES.findIndex(e => (e.from === a && e.to === b) || (e.from === b && e.to === a))
+    if (idx >= 0) out.push(idx)
+  }
+  return out
+}
+
+const ReplyBox = ({ answer, delay = 0.9, replayKey }) => {
+  if (!answer) return null
+  const s = STATUS[answer.status]
+  return html`
+    <${React.Fragment}>
+      <${motion.div}
+        key=${`reply-${replayKey}`}
+        className="reply-box"
+        style=${{ background: s.bg }}
+        initial=${{ opacity: 0, y: 6 }}
+        animate=${{ opacity: 1, y: 0 }}
+        transition=${{ delay, type: "spring", visualDuration: 0.42, bounce: 0.18 }}
+      >
+        <pre className="reply-text">${answer.text}</pre>
+        <div className="reply-note">${answer.note}</div>
+      </${motion.div}>
+      <${motion.div}
+        key=${`badge-${replayKey}`}
+        className=${`status-badge ${s.cls}`}
+        initial=${{ opacity: 0, x: 24 }}
+        animate=${{ opacity: 1, x: 0 }}
+        transition=${{ delay: delay + 0.15, type: "spring", visualDuration: 0.35, bounce: 0.2 }}
+      >
+        ${s.label}
+      </${motion.div}>
+    </${React.Fragment}>
+  `
+}
+
+const ColumnHeader = ({ num, name, sub, replayKey }) => html`
+  <${motion.h2}
+    key=${`num-${replayKey}-${num}`}
+    className="col-num"
+    initial=${{ color: "var(--orange)" }}
+    animate=${{ color: ["var(--orange)", "#FF8B6E", "var(--orange)"] }}
+    transition=${{ delay: 0.7 + (parseInt(num, 10) - 1) * 0.07, duration: 0.45, ease: "easeOut" }}
+  >${num}</${motion.h2}>
+  <p className="col-name">${name}</p>
+  <p className="col-sub">${sub}</p>
+  <div className="col-rule"></div>
+`
+
+const ColLLM = ({ query, replayKey }) => {
+  const ans = query.answers.llm
+  const isFail = ans.status === "fail"
+  return html`
+    <div className="col">
+      <${ColumnHeader} num="01" name="Contextvenster" sub="Geen prep" replayKey=${replayKey} />
+      <div className="section-head">Substraat</div>
+      <div className="substrate-box">
+        <div className="tile-grid">
+          ${LLM_TILES.map((tile, i) => {
+            const isMatch = tile.matches.includes(query.id)
+            const isCutoffHere = tile.post_cutoff && tile.query_target === query.id
+            return html`
+              <${motion.div}
+                key=${`${replayKey}-${i}`}
+                className=${`tile ${isMatch ? "match" : ""} ${tile.post_cutoff ? "cutoff" : ""}`}
+                initial=${{ opacity: 0, scale: 0.94 }}
+                animate=${{ opacity: isFail ? 0.25 : 1, scale: 1 }}
+                transition=${{ delay: 0.12 + i * 0.035, duration: 0.28 }}
+              >
+                ${isMatch && html`
+                  <${motion.div}
+                    key=${`fill-${replayKey}-${i}`}
+                    className="tile-fill"
+                    initial=${{ scaleX: 0 }}
+                    animate=${{ scaleX: 1 }}
+                    transition=${{ delay: 0.55 + i * 0.05, duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  />
+                `}
+                ${isCutoffHere && html`
+                  <${motion.div}
+                    key=${`flash-${replayKey}-${i}`}
+                    style=${{ position: "absolute", inset: 0, background: "var(--ungrounded)", zIndex: 0 }}
+                    initial=${{ opacity: 0 }}
+                    animate=${{ opacity: [0, 0.35, 0] }}
+                    transition=${{ delay: 0.5 + i * 0.05, duration: 1.1, times: [0, 0.4, 1] }}
+                  />
+                `}
+                <div className="tile-text">${tile.text}</div>
+              </${motion.div}>
+            `
+          })}
+        </div>
+      </div>
+      <div className="section-head">Werking</div>
+      <p className="operation-line">Alleen trainingsgeheugen. Eenmalig getraind — geen externe opzoeking.</p>
+      <div className="section-head">Antwoord</div>
+      <${ReplyBox} answer=${ans} replayKey=${replayKey} delay=${1.4} />
+    </div>
+  `
+}
+
+const ColRAG = ({ query, replayKey }) => {
+  const ans = query.answers.rag
+  const ranked = useMemo(() => {
+    return DOCS
+      .map((d, i) => ({ i, r: d.rel[query.id] }))
+      .sort((a, b) => b.r - a.r)
+  }, [query])
+  const topIdx = new Set(ranked.slice(0, 3).map(x => x.i))
+  const rankOf = (i) => ranked.findIndex(r => r.i === i)
+  const isMultihop = query.id === "multihop"
+
+  return html`
+    <div className="col">
+      <${ColumnHeader} num="02" name="RAG" sub="Lage prep" replayKey=${replayKey} />
+      <div className="section-head">Substraat · 200.000+ docs</div>
+      <div className="substrate-box">
+        <div className="bar-list">
+          ${DOCS.map((doc, i) => {
+            const isTop = topIdx.has(i)
+            const r = rankOf(i)
+            const score = doc.rel[query.id]
+            const isExtractRisk = isMultihop && isTop && (doc.name === "medicijn-a-label.pdf" || doc.name === "medicijn-b-label.pdf")
+            return html`
+              <${motion.div}
+                key=${`${replayKey}-${i}`}
+                className=${`bar-row ${isTop ? "top" : ""} ${isExtractRisk ? "warn" : ""}`}
+                initial=${{ opacity: 0 }}
+                animate=${{ opacity: 1 }}
+                transition=${{ delay: 0.2 + i * 0.045, duration: 0.25 }}
+              >
+                <span className="bar-name">${doc.name}</span>
+                <div className="bar-track">
+                  <${motion.div}
+                    key=${`fill-${replayKey}-${i}`}
+                    className="bar-fill"
+                    initial=${{ scaleX: 0 }}
+                    animate=${{ scaleX: score }}
+                    transition=${{ delay: 0.4 + i * 0.05, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </div>
+                <span className="bar-pct">${(score * 100).toFixed(0)}%</span>
+              </${motion.div}>
+            `
+          })}
+        </div>
+        <div className="rag-tail">↓ top-3 in LLM-context geladen ↓</div>
+      </div>
+      <div className="section-head">Werking</div>
+      <p className="operation-line">Top-K-resultaat over een corpus. index → 200.000 docs → cosinus-overeenkomst → top-3</p>
+      <div className="section-head">Antwoord</div>
+      <${ReplyBox} answer=${ans} replayKey=${replayKey} delay=${1.55} />
+    </div>
+  `
+}
+
+const ColKG = ({ query, replayKey }) => {
+  const ans = query.answers.kg
+  const highlightEdges = useMemo(() => edgesOnPath(query.pathHint), [query])
+  const nodeMap = useMemo(() => Object.fromEntries(KG_NODES.map(n => [n.id, n])), [])
+  const pathNodes = query.pathHint
+  const isMultihop = query.id === "multihop" && ans.status === "success"
+
+  return html`
+    <div className="col">
+      <${ColumnHeader} num="03" name="Knowledge graph" sub="Hoge prep" replayKey=${replayKey} />
+      <div className="section-head">Substraat · getypeerde entiteiten + edges</div>
+      <div className="substrate-box">
+        <div className="kg-host">
+          <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid meet" className="kg-svg">
+            <defs>
+              <filter id="kg-glow"><feGaussianBlur stdDeviation="2"/></filter>
+            </defs>
+
+            ${KG_EDGES.map((e, i) => {
+              const f = nodeMap[e.from], t = nodeMap[e.to]
+              return html`
+                <line key=${`b${i}`}
+                  x1=${f.x} y1=${f.y} x2=${t.x} y2=${t.y}
+                  stroke="#2A2722" strokeOpacity="0.18" strokeWidth="1" strokeDasharray="2,2" />
+              `
+            })}
+
+            ${ans.status === "success" ? highlightEdges.map((edgeIdx, k) => {
+              const e = KG_EDGES[edgeIdx]
+              const f = nodeMap[e.from], t = nodeMap[e.to]
+              return html`
+                <${motion.line}
+                  key=${`${replayKey}-h${edgeIdx}`}
+                  x1=${f.x} y1=${f.y} x2=${t.x} y2=${t.y}
+                  stroke="#2540C8" strokeWidth="2.2" strokeLinecap="round"
+                  initial=${{ pathLength: 0, opacity: 0 }}
+                  animate=${{ pathLength: 1, opacity: 1 }}
+                  transition=${{ duration: 0.5, delay: 0.4 + k * 0.18 }}
+                />
+              `
+            }) : null}
+
+            ${isMultihop ? html`
+              <${motion.circle}
+                key=${`isect-${replayKey}`}
+                cx=${nodeMap.n5.x} cy=${nodeMap.n5.y} r="14"
+                fill="none" stroke="#2540C8" strokeWidth="1.5"
+                initial=${{ opacity: 0, scale: 0.6 }}
+                animate=${{ opacity: [0, 0.9, 0], scale: [0.6, 2.2, 2.6] }}
+                transition=${{ delay: 1.4, duration: 1.1, times: [0, 0.4, 1] }}
+                style=${{ transformOrigin: `${nodeMap.n5.x}px ${nodeMap.n5.y}px` }}
+              />
+            ` : null}
+
+            ${ans.status === "fail" ? html`
+              <${React.Fragment}>
+                <${motion.line}
+                  key=${`x1-${replayKey}`}
+                  x1="85" y1="125" x2="155" y2="200"
+                  stroke="#B22A2A" strokeWidth="3"
+                  initial=${{ pathLength: 0 }}
+                  animate=${{ pathLength: 1 }}
+                  transition=${{ delay: 0.5, duration: 0.3 }}
+                />
+                <${motion.line}
+                  key=${`x2-${replayKey}`}
+                  x1="155" y1="125" x2="85" y2="200"
+                  stroke="#B22A2A" strokeWidth="3"
+                  initial=${{ pathLength: 0 }}
+                  animate=${{ pathLength: 1 }}
+                  transition=${{ delay: 0.7, duration: 0.3 }}
+                />
+                <${motion.text}
+                  key=${`xt-${replayKey}`}
+                  x="120" y="225" textAnchor="middle" fontSize="11" fontWeight="600"
+                  fill="#B22A2A" fontFamily="JetBrains Mono, monospace" letterSpacing="2"
+                  initial=${{ opacity: 0 }}
+                  animate=${{ opacity: 1 }}
+                  transition=${{ delay: 1.0, duration: 0.3 }}
+                >GEEN PAD</${motion.text}>
+              </${React.Fragment}>
+            ` : null}
+
+            ${KG_NODES.map((n) => {
+              const isOnPath = pathNodes.includes(n.id) && ans.status === "success"
+              return html`
+                <${motion.g}
+                  key=${`n-${replayKey}-${n.id}`}
+                  initial=${{ opacity: 0 }}
+                  animate=${{ opacity: 1 }}
+                  transition=${{ delay: 0.2 + Number.parseInt(n.id.replace(/[^0-9]/g, "") || "0", 10) * 0.04, duration: 0.3 }}
+                >
+                  <circle
+                    cx=${n.x} cy=${n.y} r=${n.r}
+                    fill="var(--paper)"
+                    stroke=${KIND_RING[n.kind]}
+                    strokeWidth=${isOnPath ? 2 : 1.2}
+                    opacity=${isOnPath ? 1 : 0.55} />
+                  <circle
+                    cx=${n.x} cy=${n.y} r=${n.r * 0.35}
+                    fill=${KIND_RING[n.kind]}
+                    opacity=${isOnPath ? 1 : 0.5} />
+                  <text
+                    x=${n.x} y=${n.y + n.r + 11}
+                    textAnchor="middle"
+                    fill=${isOnPath ? "var(--ink)" : "var(--ink-soft)"}
+                    fontSize="8" fontWeight=${isOnPath ? 600 : 400}
+                    fontFamily="JetBrains Mono, monospace">${n.label}</text>
+                </${motion.g}>
+              `
+            })}
+          </svg>
+        </div>
+      </div>
+      <div className="section-head">Werking</div>
+      <p className="operation-line">Getypeerde edges + BFS over entiteiten. Ontwerp het schema — onderhoud de edges.</p>
+      <div className="section-head">Antwoord</div>
+      <${ReplyBox} answer=${ans} replayKey=${replayKey} delay=${1.7} />
+    </div>
+  `
+}
+
+const ColWiki = ({ query, replayKey }) => {
+  const ans = query.answers.wiki
+  return html`
+    <div className="col">
+      <${ColumnHeader} num="04" name="LLM-wiki" sub="Doorlopende prep" replayKey=${replayKey} />
+      <div className="section-head">Substraat · door agents bijgehouden kaarten</div>
+      <div className="substrate-box">
+        <div className="card-grid">
+          ${WIKI_CARDS.map((card, i) => {
+            const isHit = card.matches.includes(query.id)
+            return html`
+              <${motion.div}
+                key=${`${replayKey}-${i}`}
+                className=${`card ${isHit ? "hit" : ""}`}
+                initial=${{ opacity: 0, y: 4 }}
+                animate=${{ opacity: 1, y: 0 }}
+                transition=${{ delay: 0.25 + i * 0.04, duration: 0.3 }}
+              >
+                <div className="card-head">
+                  <span># ${card.name}</span>
+                  <${motion.span}
+                    key=${`stamp-${replayKey}-${i}`}
+                    className="card-stamp"
+                    initial=${{ rotate: 0 }}
+                    animate=${ isHit ? { rotate: [0, -25, 0] } : { rotate: 0 } }
+                    transition=${{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
+                  >↻${card.updated}</${motion.span}>
+                </div>
+                ${card.fields.map((f, j) => html`
+                  <${motion.div}
+                    key=${`f-${replayKey}-${i}-${j}`}
+                    className="card-field"
+                    initial=${{ opacity: isHit ? 0 : 1, x: isHit ? -4 : 0 }}
+                    animate=${{ opacity: 1, x: 0 }}
+                    transition=${ isHit ? { delay: 0.75 + j * 0.12, duration: 0.3 } : { duration: 0 } }
+                  >${f}</${motion.div}>
+                `)}
+              </${motion.div}>
+            `
+          })}
+        </div>
+      </div>
+      <div className="section-head">Werking</div>
+      <p className="operation-line">Entiteit-kaarten · voorgecompileerd en geciteerd. Agents lezen en schrijven tussen sessies.</p>
+      <div className="section-head">Antwoord</div>
+      <${ReplyBox} answer=${ans} replayKey=${replayKey} delay=${1.85} />
+    </div>
+  `
+}
+
+const QueryBlock = ({ query, queryIdx, onPrev, onNext, onReplay, typeKey }) => {
+  const [visible, setVisible] = useState("")
+  useEffect(() => {
+    let i = 0
+    setVisible("")
+    let timer
+    const tick = () => {
+      i++
+      setVisible(query.text.slice(0, i))
+      if (i < query.text.length) timer = setTimeout(tick, 22)
+    }
+    timer = setTimeout(tick, 22)
+    return () => clearTimeout(timer)
+  }, [query.text, typeKey])
+
+  return html`
+    <div className="query-block">
+      <div className="query-row">
+        <span className="query-label">Voorbeeldvraag · ${queryIdx + 1}/${QUERIES.length}</span>
+        <span className="query-kind">${query.label}</span>
+      </div>
+      <div className="query-text">
+        ${visible}<span className="cursor">▎</span>
+      </div>
+      <div className="query-nav">
+        <button className="nav-btn" onClick=${onPrev}>◀ Vorige</button>
+        <button className="nav-btn" onClick=${onNext}>Volgende ▶</button>
+        <button className="nav-btn replay" onClick=${onReplay}>⟳ Opnieuw</button>
+      </div>
+    </div>
+  `
+}
+
+const TakeawayRow = ({ query, replayKey }) => {
+  const cols = [
+    { key: "llm",  status: query.answers.llm.status,  text: query.answers.llm.takeaway  },
+    { key: "rag",  status: query.answers.rag.status,  text: query.answers.rag.takeaway  },
+    { key: "kg",   status: query.answers.kg.status,   text: query.answers.kg.takeaway   },
+    { key: "wiki", status: query.answers.wiki.status, text: query.answers.wiki.takeaway },
+  ]
+  return html`
+    <div className="takeaways">
+      ${cols.map((c, i) => {
+        const s = STATUS[c.status]
+        return html`
+          <${motion.div}
+            key=${`tk-${replayKey}-${i}`}
+            className="takeaway-cell"
+            initial=${{ opacity: 0, y: 6 }}
+            animate=${{ opacity: 1, y: 0 }}
+            transition=${{ delay: 2.2 + i * 0.12, duration: 0.35, ease: "easeOut" }}
+          >
+            <div className=${`takeaway-marker ${s.cls}`}></div>
+            <div className="takeaway-head">Interpretatie</div>
+            <div className="takeaway-text">${c.text}</div>
+          </${motion.div}>
+        `
+      })}
+    </div>
+  `
+}
+
+const FootAxis = ({ query, replayKey }) => {
+  const arches = [
+    { key: "llm",  label: "Contextvenster" },
+    { key: "rag",  label: "RAG" },
+    { key: "kg",   label: "Knowledge graph" },
+    { key: "wiki", label: "LLM-wiki" },
+  ]
+  const successFlags = arches.map(a => query.answers[a.key].status === "success")
+  const winnerIdx = successFlags.lastIndexOf(true)
+
+  return html`
+    <footer className="axis">
+      <div className="axis-label">← Minder voorinvestering</div>
+      <div className="axis-dots">
+        ${arches.map((a, i) => html`
+          <${motion.div}
+            key=${`dot-${replayKey}-${i}`}
+            className="axis-dot"
+            initial=${{ scale: 0.6, opacity: 0.4 }}
+            animate=${ i === winnerIdx
+              ? { scale: [0.6, 1.6, 1.0], opacity: [0.4, 1, 1], backgroundColor: ["var(--ink-faint)", "var(--grounded)", "var(--grounded)"] }
+              : successFlags[i]
+                ? { scale: 1, opacity: 1, backgroundColor: "var(--ink)" }
+                : { scale: 1, opacity: 0.7, backgroundColor: "var(--ink-faint)" }
+            }
+            transition=${{ delay: 1.5 + i * 0.15, duration: 0.4, ease: "easeOut" }}
+          />
+        `)}
+      </div>
+      <div className="axis-label right">Meer voorinvestering →</div>
+    </footer>
+  `
+}
+
+const App = () => {
+  const [queryIdx, setQueryIdx] = useState(0)
+  const [replayKey, setReplayKey] = useState(0)
+  const query = QUERIES[queryIdx]
+
+  const replay = () => {
+    setQueryIdx(0)
+    setReplayKey(k => k + 1)
+  }
+  const cycle = (dir) => {
+    setQueryIdx((i) => (i + dir + QUERIES.length) % QUERIES.length)
+    setReplayKey(k => k + 1)
+  }
+  const typeKey = `${queryIdx}-${replayKey}`
+
+  return html`
+    <div className="page">
+      <header className="main">
+        <div>
+          <div className="bulletin">Interactieve vergelijking · LLM-contextarchitecturen · Mei 2026</div>
+          <div className="byline">Door Witek ten Hove · <a href="mailto:witek@businessdatasolutions.nl">witek@businessdatasolutions.nl</a></div>
+          <h1 className="title">
+            Vier manieren<br/>
+            om <span className="accent">één</span> vraag te beantwoorden.
+          </h1>
+        </div>
+        <${QueryBlock}
+          query=${query}
+          queryIdx=${queryIdx}
+          onPrev=${() => cycle(-1)}
+          onNext=${() => cycle(1)}
+          onReplay=${replay}
+          typeKey=${typeKey}
+        />
+      </header>
+
+      <div className="columns">
+        <${ColLLM}  query=${query} replayKey=${typeKey} />
+        <${ColRAG}  query=${query} replayKey=${typeKey} />
+        <${ColKG}   query=${query} replayKey=${typeKey} />
+        <${ColWiki} query=${query} replayKey=${typeKey} />
+      </div>
+
+      <${TakeawayRow} query=${query} replayKey=${typeKey} />
+
+      <${FootAxis} query=${query} replayKey=${typeKey} />
+    </div>
+  `
+}
+
+createRoot(document.getElementById("root")).render(html`<${App} />`)
+</script>
+</body>
+</html>
