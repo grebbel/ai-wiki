@@ -9,13 +9,13 @@ import { LatexNoSingleDollar } from "./extensions/latex-no-single-dollar"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "AI-Wiki",
+    pageTitle: "GHS-Wiki",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: null,
     locale: "en-US",
-    baseUrl: "businessdatasolutions.github.io/ai-wiki",
+    baseUrl: "grebbel.github.io/ghs-wiki",
     ignorePatterns: [
       "private",
       "templates",

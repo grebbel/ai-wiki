@@ -1,8 +1,8 @@
-# AI-Wiki
+# GHS-Wiki
 
 A persistent, LLM-maintained knowledge base on AI, software engineering, and organisational strategy — built as a [digital garden](https://maggieappleton.com/garden-history) and published with [Quartz v4](https://quartz.jzhao.xyz/).
 
-Browse the site: **[businessdatasolutions.github.io/ai-wiki](https://businessdatasolutions.github.io/ai-wiki)**
+Browse the site: **[grebbel.github.io/ghs-wiki](https://grebbel.github.io/ghs-wiki)**
 
 > *Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase.*
 > — Andrej Karpathy, [LLM Wiki](llm-wiki.md)

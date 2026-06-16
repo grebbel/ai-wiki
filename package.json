@@ -1,6 +1,6 @@
 {
-  "name": "ai-wiki",
-  "description": "Frontend for the AI-Wiki, built with Quartz",
+  "name": "ghs-wiki",
+  "description": "Frontend for the GHS-Wiki, built with Quartz",
   "private": true,
   "version": "0.1.0",
   "type": "module",

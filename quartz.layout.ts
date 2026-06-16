@@ -10,7 +10,7 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [RelationshipsPanel()],
   footer: CatalogFooter({
     links: {
-      GitHub: "https://github.com/businessdatasolutions/ai-wiki",
+      GitHub: "https://github.com/grebbel/ghs-wiki",
     },
   }),
 }
