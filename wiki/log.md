@@ -2,6 +2,25 @@
 title: Log
 ---
 
+## [2026-06-18] ingest | zot-003-nbra-refresh-execution
+
+- Executed trigger: "Update ghs-wiki from NBRA collection using ZOT_003 workflow".
+- Acquire step processed 17 NBRA top-level items and refreshed raw stubs (including webpage URL fallback extraction where needed).
+- Process step generated 86 source templates and 4 new raw stubs; after manual relevance cleanup, 3 NBRA source templates were retained.
+- Fixed template-generation robustness issues encountered during run:
+  - empty `date_published` no longer crashes generation;
+  - collection filtering now skips non-requested Zotero collections.
+- Build validation succeeded: 112 markdown files parsed, 306 files emitted.
+
+## [2026-06-18] ingest | prep-016-zotero-web-url-fetch-fallback
+
+- Implemented website-content fallback in Zotero acquire flow for URL-only web entries.
+- Updated `.claude/skills/zotero-acquire/fetch_zotero.py` so web-like items (`webpage`, `blogPost`, `document`, etc.) attempt direct URL fetch when attachment/fulltext extraction returns empty.
+- Added lightweight HTML-to-text extraction (remove script/style/HTML tags, normalize whitespace, cap output length) and write result into raw stub body.
+- New provenance marker: `fulltext_source: url-fetched` for successful URL fallback extraction.
+- Added CLI option `--url-timeout` (default: 20s) to control website fetch timeout.
+- Validation: dry-run on NBRA confirmed mixed behavior (`zotero-extracted` when available, `url-fetched` when fallback used).
+
 ## [2026-06-18] ingest | zot-004-ipcc-ar6-orphan-attachment
 
 - **Discovery**: IPCC_AR6_SYR_FullVolume.pdf exists in NBRA Zotero collection (key: ANSAH9AN) but was not auto-acquired by fetch_zotero.py.

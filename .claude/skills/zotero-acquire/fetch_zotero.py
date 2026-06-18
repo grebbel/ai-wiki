@@ -26,6 +26,7 @@ communicate with Zotero").
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import shutil
@@ -33,6 +34,7 @@ import subprocess
 import sys
 import tempfile
 import unicodedata
+import urllib.request
 from pathlib import Path
 
 try:
@@ -65,6 +67,14 @@ ITEM_TYPE_MAP = {
     "podcast": "videos",
 }
 DEFAULT_TYPE = "articles"
+WEB_LIKE_TYPES = {
+    "webpage",
+    "blogPost",
+    "document",
+    "magazineArticle",
+    "newspaperArticle",
+    "report",
+}
 
 # Attachment contentType -> short kind, in preference order (PDF first).
 CONVERTIBLE_CT = [
@@ -306,6 +316,62 @@ def zotero_fulltext(zot, attachment_key: str):
     return "", "none"
 
 
+def fetch_url_text(url: str, timeout_s: int = 20):
+    """Best-effort fetch of webpage text for URL-only Zotero entries.
+
+    Returns (content, source), where source is one of:
+      - "url-fetched": successful extraction
+      - "none": fetch failed or empty
+    """
+    if not url:
+        return "", "none"
+
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/124.0 Safari/537.36"
+            )
+        },
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+            raw = resp.read(2_000_000)
+    except Exception:
+        return "", "none"
+
+    text = raw.decode("utf-8", errors="replace")
+    # Remove script/style blocks and tags; keep a compact readable body.
+    text = re.sub(r"<script\\b[^>]*>.*?</script>", " ", text, flags=re.I | re.S)
+    text = re.sub(r"<style\\b[^>]*>.*?</style>", " ", text, flags=re.I | re.S)
+    text = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
+
+    title = ""
+    m = re.search(r"<title[^>]*>(.*?)</title>", text, flags=re.I | re.S)
+    if m:
+        title = html.unescape(re.sub(r"\\s+", " ", m.group(1))).strip()
+
+    body = re.sub(r"<[^>]+>", "\n", text)
+    body = html.unescape(body)
+    lines = [re.sub(r"\\s+", " ", ln).strip() for ln in body.splitlines()]
+    lines = [ln for ln in lines if ln]
+    body = "\n".join(lines)
+
+    if not body:
+        return "", "none"
+
+    if len(body) > 30000:
+        body = body[:30000].rstrip() + "\n\n_(truncated)_"
+
+    if title and not body.lower().startswith(title.lower()):
+        body = f"# {title}\n\n{body}"
+
+    return body, "url-fetched"
+
+
 def existing_keys(raw_dir: Path) -> set[str]:
     keys: set[str] = set()
     for md in raw_dir.rglob("*.md"):
@@ -330,7 +396,7 @@ def build_stub(meta: dict, body: str) -> str:
 
 
 def process_item(zot, item, collection, data_dir, raw_dir, seen, force, dry_run,
-                 video_delegate=True, yt_dir=None, yt_timeout=30000) -> dict:
+                 video_delegate=True, yt_dir=None, yt_timeout=30000, url_timeout=20) -> dict:
     data = item["data"]
     key = item["key"]
     itype = data.get("itemType", "")
@@ -396,6 +462,9 @@ def process_item(zot, item, collection, data_dir, raw_dir, seen, force, dry_run,
         else:
             body, fulltext_source = zotero_fulltext(zot, att["key"])
 
+    if not body and url and itype in WEB_LIKE_TYPES:
+        body, fulltext_source = fetch_url_text(url, timeout_s=url_timeout)
+
     if not body:
         body = data.get("abstractNote") or "_(no extractable full text — see source URL)_"
 
@@ -454,6 +523,8 @@ def main() -> int:
                     help="Disable auto-delegation of YouTube URLs to youtube-transcript-skill")
     ap.add_argument("--yt-timeout", type=int, default=30000,
                     help="Per-step timeout (ms) for the youtube-transcript-skill (default: 30000)")
+    ap.add_argument("--url-timeout", type=int, default=20,
+                    help="Timeout (seconds) for webpage URL fetch fallback (default: 20)")
     args = ap.parse_args()
 
     data_dir = Path(args.data_dir).expanduser()
@@ -480,7 +551,8 @@ def main() -> int:
 
     seen = existing_keys(raw_dir)
     results = [process_item(zot, it, args.collection, data_dir, raw_dir, seen, args.force, args.dry_run,
-                            video_delegate=video_delegate, yt_dir=yt_dir, yt_timeout=args.yt_timeout)
+                            video_delegate=video_delegate, yt_dir=yt_dir, yt_timeout=args.yt_timeout,
+                            url_timeout=args.url_timeout)
                for it in items]
 
     if args.json:

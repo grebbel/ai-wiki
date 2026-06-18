@@ -260,7 +260,12 @@ def main():
         
         # Determine output filename (use date + slugified title)
         fm = stub_data["frontmatter"]
-        date_str = fm.get("date_published", "2026-01-01").split()[0]  # ISO date format
+        coll = str(fm.get("zotero_collection", "")).strip().lower()
+        if args.collection and coll and coll != args.collection.strip().lower():
+            continue
+
+        raw_date = str(fm.get("date_published", "")).strip()
+        date_str = raw_date.split()[0] if raw_date else "2026-01-01"
         title_slug = re.sub(r'[^\w\s-]', '', fm.get("title", "untitled").lower())
         title_slug = re.sub(r'[\s_-]+', '-', title_slug).strip("-")[:60]
         output_name = f"{date_str}-{title_slug}.md"
