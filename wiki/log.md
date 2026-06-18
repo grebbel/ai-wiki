@@ -2,6 +2,15 @@
 title: Log
 ---
 
+## [2026-06-18] ingest | zot-004-ipcc-ar6-orphan-attachment
+
+- **Discovery**: IPCC_AR6_SYR_FullVolume.pdf exists in NBRA Zotero collection (key: ANSAH9AN) but was not auto-acquired by fetch_zotero.py.
+- **Root cause**: Item is an orphan attachment (itemType: "attachment", parentItem: null) not linked to any top-level item (journalArticle, book, report). The fetch script only processes top-level items with binary attachments.
+- **Manual ingest**: Created wiki source page [[sources/2023-03-21-ipcc-ar6-synthesis-report-climate-change|IPCC AR6 Synthesis Report: Climate Change 2023]] with full frontmatter, findings, and implementation implications.
+- **Rationale**: IPCC AR6 is critical context for understanding biosecurity and health security in climate-altered landscapes; informs risk assessment and preparedness under climate change scenarios.
+- **Status**: Now indexed in [[index|wiki index]] with concepts linking to biosecurity-capacity-building and one-health-operationalization.
+- **Process improvement**: Identified need to handle orphan attachments in fetch script (future enhancement).
+
 ## [2026-06-18] ingest | zot-002-nbra-update-new-items
 
 - Fetched newly added NBRA items via Zotero local API (NBRA collection: 15 total items, 13 previously processed, 2 new).

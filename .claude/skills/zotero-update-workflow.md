@@ -1,6 +1,6 @@
 # ZOT_003: Efficient NBRA Collection Update Workflow
 
-## To update wiki, type in comment chat: Update ghs-wiki from NBRA collection using ZOT_003 workflow 
+
 
 ## Overview
 This document proposes an efficient method for updating ghs-wiki when new items are added to the Zotero NBRA collection. The workflow balances automation with human oversight and is triggered via manual comment.
