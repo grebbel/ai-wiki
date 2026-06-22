@@ -2,6 +2,20 @@
 title: Log
 ---
 
+## [2026-06-22] ingest | zot-003-nbra-backlog-process
+
+- Executed trigger: "Update ghs-wiki from NBRA collection using ZOT_003 workflow".
+- Acquire check found 23 NBRA Zotero items and 0 newly fetchable additions; all collection items were already present in `raw/`.
+- Processed 6 previously unindexed NBRA raw stubs into `wiki/sources/`:
+  - [[sources/2010-12-03-biosafety-and-biosecurity-as-essential-pillars-of-international-health-security|Biosafety and biosecurity as essential pillars of international health security and cross-cutting elements of biological nonproliferation]]
+  - [[sources/2016-national-laboratory-planning-developing-sustainable-biocontainment-laboratories|National Laboratory Planning: Developing Sustainable Biocontainment Laboratories in Limited Resource Areas]]
+  - [[sources/2019-establishment-of-a-national-inventory-of-dangerous-pathogens-in-uganda|Establishment of a National Inventory of Dangerous Pathogens in the Republic of Uganda]]
+  - [[sources/2021-01-01-ghs-index-report-and-data|GHS Index Report and Data]]
+  - [[sources/2023-ar6-synthesis-report-climate-change-2023-ipcc-portal|AR6 Synthesis Report: Climate Change 2023 — IPCC]]
+  - [[sources/2024-06-01-learning-from-history-of-natural-disasters-in-the-sahel|Learning from history of natural disasters in the Sahel: a comprehensive analysis and lessons for future resilience]]
+- Updated [[index|wiki index]] to include the new sources in chronological order.
+- Notes: two of the new sources are web or portal entries; two are abstract-only because Zotero did not provide attachment full text.
+
 ## [2026-06-18] ingest | zot-003-nbra-refresh-execution
 
 - Executed trigger: "Update ghs-wiki from NBRA collection using ZOT_003 workflow".
