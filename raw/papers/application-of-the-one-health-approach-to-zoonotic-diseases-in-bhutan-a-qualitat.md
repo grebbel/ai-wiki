@@ -1,5 +1,5 @@
 ---
-zotero_item_key: D4M2LV7P
+zotero_item_key: 5VGD3EFY
 zotero_collection: NBRA
 item_type: journalArticle
 title: 'Application of the One Health approach to zoonotic diseases in Bhutan: A qualitative assessment

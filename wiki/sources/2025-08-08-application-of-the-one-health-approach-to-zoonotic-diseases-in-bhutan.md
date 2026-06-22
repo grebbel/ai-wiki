@@ -16,7 +16,7 @@ url: "http://www.cabidigitallibrary.org/doi/10.1079/cabionehealth.2025.0025"
 doi: "10.1079/cabionehealth.2025.0025"
 length: "~journal article (zotero-extracted full text; verify quoted details against PDF)"
 raw: "../../raw/papers/application-of-the-one-health-approach-to-zoonotic-diseases-in-bhutan-a-qualitat.md"
-zotero_item_key: D4M2LV7P
+zotero_item_key: 5VGD3EFY
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -51,5 +51,5 @@ This qualitative assessment shows that Bhutan's One Health strategy has a solid 
 
 ## Provenance
 
-- Zotero item key: D4M2LV7P
+- Zotero item key: 5VGD3EFY
 - Collection: NBRA

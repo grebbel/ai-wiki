@@ -12,7 +12,7 @@ url: "https://www.frontiersin.org/articles/10.3389/fpubh.2022.894389/full"
 doi: "10.3389/fpubh.2022.894389"
 length: "~journal article (zotero-extracted full text; verify legal detail against PDF)"
 raw: "../../raw/papers/complementarity-of-international-instruments-in-the-field-of-biosecurity.md"
-zotero_item_key: HEZMSGKS
+zotero_item_key: 7CV88EGC
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -48,5 +48,5 @@ The paper argues that full IHR implementation improves biosecurity readiness but
 
 ## Provenance
 
-- Zotero item key: HEZMSGKS
+- Zotero item key: 7CV88EGC
 - Collection: NBRA

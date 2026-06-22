@@ -13,7 +13,7 @@ url: "http://www.cabidigitallibrary.org/doi/10.1079/cabionehealth.2024.0005"
 doi: "10.1079/cabionehealth.2024.0005"
 length: "~conference-policy synthesis article (zotero-extracted full text)"
 raw: "../../raw/papers/we-have-to-join-forces-current-status-and-future-european-policies-as-discussed.md"
-zotero_item_key: 9XJ9MYY5
+zotero_item_key: HHPTEXNG
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -48,5 +48,5 @@ This article synthesizes multi-stakeholder policy discussions from a European On
 
 ## Provenance
 
-- Zotero item key: 9XJ9MYY5
+- Zotero item key: HHPTEXNG
 - Collection: NBRA

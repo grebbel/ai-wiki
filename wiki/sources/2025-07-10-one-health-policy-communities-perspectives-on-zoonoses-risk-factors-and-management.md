@@ -16,7 +16,7 @@ url: "http://www.cabidigitallibrary.org/doi/10.1079/cabionehealth.2025.0023"
 doi: "10.1079/cabionehealth.2025.0023"
 length: "~journal article (zotero-extracted full text; verify diagram detail against PDF)"
 raw: "../../raw/papers/one-health-policy-communities-perspectives-on-zoonoses-risk-factors-and-manageme.md"
-zotero_item_key: MQ3J3FSG
+zotero_item_key: 95XGPR3M
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -51,5 +51,5 @@ The study maps how policy communities conceptualize zoonoses risk in Peru and sh
 
 ## Provenance
 
-- Zotero item key: MQ3J3FSG
+- Zotero item key: 95XGPR3M
 - Collection: NBRA

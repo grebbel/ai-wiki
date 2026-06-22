@@ -1,5 +1,5 @@
 ---
-zotero_item_key: U3P7RLKV
+zotero_item_key: 6EZ8JSBG
 zotero_collection: NBRA
 item_type: journalArticle
 title: Systematic approach towards establishing a National Inventory of Dangerous Pathogens

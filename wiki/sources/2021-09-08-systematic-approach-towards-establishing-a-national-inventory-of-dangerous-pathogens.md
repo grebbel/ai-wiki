@@ -15,7 +15,7 @@ url: "https://www.tandfonline.com/doi/full/10.1080/16549716.2021.1971866"
 doi: "10.1080/16549716.2021.1971866"
 length: "~9 pages (zotero-extracted full text; figures/tables should be checked against the PDF)"
 raw: "../../raw/papers/systematic-approach-towards-establishing-a-national-inventory-of-dangerous-patho.md"
-zotero_item_key: U3P7RLKV
+zotero_item_key: 6EZ8JSBG
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -52,5 +52,5 @@ This paper proposes a practical four-phase method for countries to build and mai
 
 ## Provenance
 
-- Zotero item key: U3P7RLKV
+- Zotero item key: 6EZ8JSBG
 - Collection: NBRA

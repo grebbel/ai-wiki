@@ -8,7 +8,7 @@ date_published: 2026-06-16
 url: "https://www.rivm.nl/en/global-health-security/toolkits"
 length: "web page (zotero-extracted text)"
 raw: "../../raw/articles/tools-rivm.md"
-zotero_item_key: WHNDDIYN
+zotero_item_key: RP4W35B6
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -39,5 +39,5 @@ This page catalogs practical RIVM-linked toolkits used for biosecurity and labor
 
 ## Provenance
 
-- Zotero item key: WHNDDIYN
+- Zotero item key: RP4W35B6
 - Collection: NBRA

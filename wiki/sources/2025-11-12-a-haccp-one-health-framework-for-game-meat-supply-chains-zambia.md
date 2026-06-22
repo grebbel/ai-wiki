@@ -12,7 +12,7 @@ url: "http://www.cabidigitallibrary.org/doi/10.1079/cabionehealth.2025.0035"
 doi: "10.1079/cabionehealth.2025.0035"
 length: "~journal article (zotero-extracted full text; verify tabular detail against PDF)"
 raw: "../../raw/papers/a-haccp-one-health-framework-for-estimating-and-managing-food-safety-risk-in-gam.md"
-zotero_item_key: WNG9GPIV
+zotero_item_key: Q65R5GJM
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -47,5 +47,5 @@ This study maps food-safety hazards across farmed and wild game-meat supply chai
 
 ## Provenance
 
-- Zotero item key: WNG9GPIV
+- Zotero item key: Q65R5GJM
 - Collection: NBRA

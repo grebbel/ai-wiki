@@ -14,7 +14,7 @@ url: "http://www.cabidigitallibrary.org/doi/10.1079/cabionehealth.2026.0007"
 doi: "10.1079/cabionehealth.2026.0007"
 length: "~journal article (zotero-extracted full text; verify numeric tables against PDF)"
 raw: "../../raw/papers/horizon-scanning-of-invasive-plant-pests-endangering-zimbabwes-agricultural-sect.md"
-zotero_item_key: LZB8HNIM
+zotero_item_key: RXVZ95PH
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -49,5 +49,5 @@ This paper uses horizon-scanning and pest-risk methods to prioritize invasive pe
 
 ## Provenance
 
-- Zotero item key: LZB8HNIM
+- Zotero item key: RXVZ95PH
 - Collection: NBRA

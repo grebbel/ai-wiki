@@ -15,7 +15,7 @@ url: "https://doi.org/10.1186/s13690-023-01223-y"
 doi: "10.1186/s13690-023-01223-y"
 length: "~12 pages (full-text synthesis from PDF)"
 raw: "../../raw/papers/preparedness-impacts-and-responses-of-public-health-emergencies-towards-health-s.md"
-zotero_item_key: 6BWWFDNH
+zotero_item_key: 25XUEPZJ
 zotero_collection: NBRA
 fulltext_source: pdf
 tags:

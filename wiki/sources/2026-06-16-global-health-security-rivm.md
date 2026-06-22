@@ -8,7 +8,7 @@ date_published: 2026-06-16
 url: "https://www.rivm.nl/en/global-health-security"
 length: "web page (zotero-extracted text)"
 raw: "../../raw/articles/global-health-security-rivm.md"
-zotero_item_key: Q6VF875I
+zotero_item_key: 4DRG58ME
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -39,5 +39,5 @@ This is the RIVM umbrella page for its global health security program, describin
 
 ## Provenance
 
-- Zotero item key: Q6VF875I
+- Zotero item key: 4DRG58ME
 - Collection: NBRA

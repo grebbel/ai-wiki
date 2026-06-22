@@ -36,7 +36,7 @@ url: "http://www.cabidigitallibrary.org/doi/10.1079/cabionehealth.2024.0017"
 doi: "10.1079/cabionehealth.2024.0017"
 length: "~journal article (zotero-extracted full text; check figures/tables in PDF)"
 raw: "../../raw/papers/an-integrated-inventory-of-one-health-tools-mapping-and-analysis-of-globally-ava.md"
-zotero_item_key: JHJBACUQ
+zotero_item_key: C8YPKZLX
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -71,5 +71,5 @@ The paper inventories 50 globally used One Health tools and identifies major imp
 
 ## Provenance
 
-- Zotero item key: JHJBACUQ
+- Zotero item key: C8YPKZLX
 - Collection: NBRA

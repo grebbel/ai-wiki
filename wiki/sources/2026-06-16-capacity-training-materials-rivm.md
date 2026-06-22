@@ -8,7 +8,7 @@ date_published: 2026-06-16
 url: "https://www.rivm.nl/en/global-health-security/capacity-training-materials"
 length: "web page (zotero-extracted text)"
 raw: "../../raw/articles/capacity-training-materials-rivm.md"
-zotero_item_key: KTZ9GRPM
+zotero_item_key: HB77N9SM
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -39,5 +39,5 @@ This page outlines RIVM's blended-learning training offer for global health secu
 
 ## Provenance
 
-- Zotero item key: KTZ9GRPM
+- Zotero item key: HB77N9SM
 - Collection: NBRA

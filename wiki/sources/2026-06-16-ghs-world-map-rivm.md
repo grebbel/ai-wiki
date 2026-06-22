@@ -8,7 +8,7 @@ date_published: 2026-06-16
 url: "https://www.rivm.nl/en/global-health-security/world-map"
 length: "web page (zotero-extracted text)"
 raw: "../../raw/articles/ghs-world-map-rivm.md"
-zotero_item_key: WHZ2SMD2
+zotero_item_key: UBJ9ZZJC
 zotero_collection: NBRA
 fulltext_source: zotero-extracted
 tags:
@@ -39,5 +39,5 @@ This page provides a geographic overview of completed and active RIVM global hea
 
 ## Provenance
 
-- Zotero item key: WHZ2SMD2
+- Zotero item key: UBJ9ZZJC
 - Collection: NBRA
