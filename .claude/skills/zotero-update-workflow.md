@@ -18,7 +18,10 @@ This document proposes an efficient method for updating ghs-wiki when new items 
   5. Update wiki/log.md
   6. Build and verify
 
-**Issue**: Steps 3-5 are repetitive and error-prone. Sources need metadata extraction, metadata formatting, and careful frontmatter assembly.
+**Issue**: Steps 3-5 are repetitive and error-prone. A second issue surfaced during execution: the old helper script scanned the full `raw/` tree and mixed together three different cases that should be treated separately:
+- genuinely new raw stubs that do not yet have source pages;
+- already-processed stubs whose `zotero_item_key` changed after a refresh;
+- reviewed source pages that are ready for index/log finalize.
 
 ---
 
@@ -58,16 +61,51 @@ Use a helper script to generate source page stubs with:
 - Suggested concept/entity links based on title keywords
 
 ```bash
-# Proposed command (helper script not yet implemented):
-python process_stubs_batch.py --collection NBRA --mode=template
+# Changed-only preview
+uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=dry-run
+
+# Changed-only template generation
+uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=template
 ```
 
 This would:
-1. Scan `raw/papers/` for NEW markdown files (tracking against git history)
-2. Extract YAML frontmatter
-3. Generate wiki source page templates in `wiki/sources/`
-4. Pre-fill Related Concepts with keyword matching
-5. Output summary of generated files
+1. Scan only changed raw markdown files by default
+2. Keep only raw stubs that are not yet represented in `wiki/sources/`
+3. Extract YAML frontmatter
+4. Generate wiki source page templates in `wiki/sources/`
+5. Pre-fill Related Concepts with keyword matching
+6. Output summary + list of files for review
+
+Backlog processing remains available, but only when explicitly requested with `--all-stubs`.
+
+#### New Repair Slice: Provenance Refresh
+When a fetch refreshes existing raw stubs and only `zotero_item_key` values change, that should not be treated as a new ingest batch.
+
+```bash
+uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=provenance-refresh
+```
+
+This mode:
+1. Scans only changed raw markdown files
+2. Keeps only raw stubs that already map to `wiki/sources/`
+3. Aligns `zotero_item_key` in the corresponding source pages
+4. Leaves `wiki/index.md` and `wiki/log.md` untouched
+
+#### New Finalize Slice: gated index/log automation
+Once the generated source pages are reviewed and placeholder-free, finalize is allowed to update `wiki/index.md` and `wiki/log.md`.
+
+```bash
+uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=finalize --log-slug zot-003-nbra-update
+```
+
+This mode:
+1. Scans only changed source pages by default
+2. Refuses to proceed when placeholders remain
+3. Refuses to auto-finalize batches above a small threshold unless `--force` is supplied
+4. Rebuilds the Sources section in `wiki/index.md`
+5. Prepends a matching ingest entry to `wiki/log.md`
+
+These guards prevent the old failure mode where a broad repo scan created an unexpectedly large ingest surface.
 
 **Advantages**: 
 - 70% time savings for routine processing
@@ -88,22 +126,17 @@ This would:
 
 ### Phase 3: Index & Log Updates
 
-#### Automated Index Generation (Helper Script Needed)
-```bash
-python regenerate_wiki_index.py --source-dir wiki/sources/ --index-file wiki/index.md
-```
+#### Automated Index Generation
+Index regeneration is now bundled into `process_stubs_batch.py --mode=finalize` rather than a separate helper script.
 
-This would:
-1. Scan `wiki/sources/` for all source pages
-2. Extract `title`, `date_published`, `tags` from frontmatter
-3. Sort chronologically
-4. Regenerate wiki/index.md sources section
-5. Preserve other sections (Entities, Concepts, Threads, Syntheses)
-
-**Advantage**: Eliminates manual index updates
+This mode:
+1. Scans only the changed reviewed source pages by default
+2. Rebuilds the Sources section from all existing `wiki/sources/` pages
+3. Preserves other sections (Entities, Concepts, Threads, Syntheses)
+4. Refuses large or placeholder-heavy batches unless explicitly forced
 
 #### Log Entry Generation
-Each batch ingest automatically prepends to `wiki/log.md`:
+Each clean finalize batch prepends to `wiki/log.md`:
 ```markdown
 ## [YYYY-MM-DD] ingest | zot-nnn-batch-update-nb-ra
 
@@ -133,17 +166,21 @@ When new items are added to NBRA in Zotero, execute:
     cd ghs-wiki/.claude/skills/zotero-acquire
     uv run --python 3.12 --with-requirements requirements.txt python fetch_zotero.py --collection NBRA
 
-    # 2. Identify NEW stubs (compare timestamps to last run)
-    ls -lt ghs-wiki/raw/papers/*.md | head
+  # 2. Preview only changed unprocessed stubs
+  cd ghs-wiki
+  uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=dry-run
 
-    # 3. Process each new stub into wiki/sources/
-    # [Instructions for manual processing follow]
+  # 3. Generate templates for that same small delta
+  uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=template
 
-    # 4. Update index
-    # [Index update command]
+  # 4. If the change is only key churn on existing stubs instead, run:
+  uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=provenance-refresh
 
-    # 5. Build and verify
-    cd ghs-wiki && npm run build && git status
+  # 5. After reviewing generated pages, finalize the small clean batch
+  uv run --with pyyaml python .claude/skills/process_stubs_batch.py --collection NBRA --mode=finalize --log-slug zot-003-nbra-update
+
+  # 6. Build and verify
+  npm run build && git status
 ```
 
 **Option 2: Conversational Comment in Copilot Chat**
@@ -151,61 +188,27 @@ Simply ask: "Execute ZOT_003 update for NBRA collection"
 
 This triggers:
 1. Fetch of new items
-2. Identification of new stubs
+2. Identification of changed unprocessed stubs only
 3. Processing via chosen method (A, B, or C)
-4. Index/log updates
-5. Build verification
+4. Optional provenance refresh if only keys changed
+5. Gated index/log finalize
+6. Build verification
 
 ---
 
 ## Proposed Helper Scripts (Implementation Plan)
 
 ### Script 1: `process_stubs_batch.py` 
-**Purpose**: Generate wiki source page templates from raw stubs
+**Purpose**: Handle the three small workflow slices explicitly
 
 ```python
-# Usage:
-# python process_stubs_batch.py --collection NBRA --mode=template
-#
-# Reads: raw/papers/*.md (new files from recent fetch)
-# Writes: wiki/sources/*.md (generated template pages)
-# Features:
-# - Extracts YAML frontmatter from stubs
-# - Identifies new vs. already-processed
-# - Generates wiki source page skeleton
-# - Suggests concept/entity links via keyword matching
-# - Outputs summary + list of files for review
+# Modes:
+# - dry-run: changed raw stubs not yet represented in wiki/sources/
+# - template: generate source page skeletons for that same small delta
+# - provenance-refresh: repair zotero_item_key drift for already-processed stubs
+# - finalize: auto-update wiki/index.md and wiki/log.md only for small clean reviewed batches
 ```
-
-### Script 2: `regenerate_wiki_index.py`
-**Purpose**: Auto-maintain wiki/index.md sources section
-
-```python
-# Usage:
-# python regenerate_wiki_index.py --source-dir wiki/sources/ --index-file wiki/index.md
-#
-# Reads: wiki/sources/*.md (all source pages)
-# Writes: wiki/index.md (updated sources section only)
-# Features:
-# - Chronological sorting by date_published
-# - Preserves other index sections (Entities, Concepts, etc.)
-# - Generates source list with summaries from TL;DR sections
-```
-
-### Script 3: `prep_log_entry.py`
-**Purpose**: Generate formatted log entries for ingest batches
-
-```python
-# Usage:
-# python prep_log_entry.py --new-sources wiki/sources/2024-*.md
-#
-# Reads: New source pages (by pattern or file list)
-# Outputs: Markdown log entry formatted for prepending to wiki/log.md
-# Features:
-# - Extracts titles and dates
-# - Formats as wiki links
-# - Counts and summarizes batch
-```
+The index/log responsibilities previously described as separate helper scripts are now folded into `finalize`.
 
 ---
 
@@ -213,9 +216,10 @@ This triggers:
 
 | Trigger | Frequency | Method | Time Cost |
 |---------|-----------|--------|-----------|
-| Ad-hoc check | Weekly | Fetch + Manual A | 20-40 min |
-| Batch ingest | Bi-weekly | Batch B + Manual | 30-50 min (5-10 items) |
-| Urgent priority | As needed | Fetch + Single A | 10-15 min per item |
+| Ad-hoc check | Weekly | Fetch + changed-only dry-run | 2-5 min |
+| Small ingest | As needed | Template + finalize | 10-25 min |
+| Provenance-only repair | As needed | provenance-refresh | 2-5 min |
+| Large backlog | Rare | `--all-stubs` + manual review | Explicitly slower by design |
 
 ---
 
@@ -224,7 +228,8 @@ This triggers:
 When executing the next NBRA update, follow this checklist:
 
 - [ ] **Acquire**: Run fetch_zotero.py from correct directory
-- [ ] **Identify**: List new stubs (timestamps vs. last run)
+- [ ] **Identify**: Run changed-only dry-run first
+- [ ] **Decide**: Is this a new-stub batch or only provenance refresh?
 - [ ] **Review**: Read raw stub YAML and content
 - [ ] **Create**: Generate wiki/sources/ pages (manual or template-assisted)
   - [ ] Frontmatter: Copy/verify key fields
@@ -233,8 +238,7 @@ When executing the next NBRA update, follow this checklist:
   - [ ] Key Findings: Extract 3-5 main points
   - [ ] Implementation Implications: Add practical insights
   - [ ] Related Concepts: Link to existing wiki concepts
-- [ ] **Index**: Update wiki/index.md (manual or auto-regenerate)
-- [ ] **Log**: Prepend entry to wiki/log.md
+- [ ] **Finalize**: Auto-update wiki/index.md and wiki/log.md only after the batch is reviewed and small
 - [ ] **Verify**: `npm run build` and `git status`
 - [ ] **Commit**: Stage and commit with clear message
 
@@ -244,14 +248,14 @@ When executing the next NBRA update, follow this checklist:
 
 ### Immediate (No script needed yet)
 1. Document the current manual workflow in this file ✓
-2. Use **Method A** (inline processing) for 1-2 more batches
-3. Track time and pain points
-4. Identify which steps would benefit most from automation
+2. Use changed-only dry-run before every ingest
+3. Reserve `--all-stubs` for intentional backlog work only
+4. Keep provenance refresh separate from content ingest
 
 ### Short-term (1-2 weeks)
-1. Implement `process_stubs_batch.py` (Priority: HIGH)
-2. Implement `regenerate_wiki_index.py` (Priority: HIGH)
-3. Test hybrid workflow (Method C) with next batch
+1. Validate the new split workflow on the next real NBRA delta
+2. Refine finalize thresholds if typical batches are larger than expected
+3. Optionally add an explicit `--since-ref` mode if changed-only based on working tree becomes too narrow
 4. Refine based on experience
 
 ### Long-term (Future)
@@ -266,11 +270,11 @@ When executing the next NBRA update, follow this checklist:
 
 | Current Workflow | Time per 5-item batch | Automation Potential |
 |---|---|---|
-| Fully manual (Method A) | ~60 minutes | – |
-| Template-assisted (Method B) | ~35 minutes | 42% reduction |
-| Hybrid (Method C) | ~40 minutes | 33% reduction with better quality |
+| Old broad-scan workflow | Unpredictable | Mixed new items, backlog, and provenance drift |
+| Changed-only hybrid | Predictable small batches | Default path for routine updates |
+| Provenance-refresh slice | Minimal | Keeps raw/source keys aligned without fake ingest work |
 
-**Recommendation**: Implement Method C (Hybrid) with Scripts 1-2 to achieve 33% time savings while maintaining quality oversight.
+**Recommendation**: Use the split workflow by default: changed-only dry-run, template only for truly new stubs, provenance-refresh only for key churn, and finalize only for reviewed small clean batches.
 
 ---
 
@@ -286,7 +290,8 @@ When executing the next NBRA update, follow this checklist:
 
 This will:
 1. Fetch new items from NBRA
-2. Process using chosen method
-3. Update index/log
-4. Build and verify
-5. Report results
+2. Preview only the changed unprocessed delta
+3. Process using chosen method
+4. Run provenance refresh only if needed
+5. Finalize index/log only when the reviewed batch is small and clean
+6. Build and verify
